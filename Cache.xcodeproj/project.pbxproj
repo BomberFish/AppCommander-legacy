@@ -14,6 +14,11 @@
 		D6E5529229B165420083E6A5 /* CacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5529129B165420083E6A5 /* CacheTests.swift */; };
 		D6E5529C29B165420083E6A5 /* CacheUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5529B29B165420083E6A5 /* CacheUITests.swift */; };
 		D6E5529E29B165420083E6A5 /* CacheUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5529D29B165420083E6A5 /* CacheUITestsLaunchTests.swift */; };
+		D6E552B229B16E170083E6A5 /* helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E552AC29B16E170083E6A5 /* helpers.m */; };
+		D6E552B329B16E170083E6A5 /* vm_unaligned_copy_switch_race.c in Sources */ = {isa = PBXBuildFile; fileRef = D6E552AD29B16E170083E6A5 /* vm_unaligned_copy_switch_race.c */; };
+		D6E552B429B16E170083E6A5 /* grant_full_disk_access.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E552B029B16E170083E6A5 /* grant_full_disk_access.m */; };
+		D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552B629B16E640083E6A5 /* Alert++.swift */; };
+		D6E552B929B16E640083E6A5 /* Haptic++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552B729B16E640083E6A5 /* Haptic++.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,15 @@
 		D6E5529729B165420083E6A5 /* CacheUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CacheUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E5529B29B165420083E6A5 /* CacheUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheUITests.swift; sourceTree = "<group>"; };
 		D6E5529D29B165420083E6A5 /* CacheUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D6E552AB29B16E160083E6A5 /* Cache-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cache-Bridging-Header.h"; sourceTree = "<group>"; };
+		D6E552AC29B16E170083E6A5 /* helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = helpers.m; sourceTree = "<group>"; };
+		D6E552AD29B16E170083E6A5 /* vm_unaligned_copy_switch_race.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vm_unaligned_copy_switch_race.c; sourceTree = "<group>"; };
+		D6E552AE29B16E170083E6A5 /* helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = helpers.h; sourceTree = "<group>"; };
+		D6E552AF29B16E170083E6A5 /* vm_unaligned_copy_switch_race.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vm_unaligned_copy_switch_race.h; sourceTree = "<group>"; };
+		D6E552B029B16E170083E6A5 /* grant_full_disk_access.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = grant_full_disk_access.m; sourceTree = "<group>"; };
+		D6E552B129B16E170083E6A5 /* grant_full_disk_access.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grant_full_disk_access.h; sourceTree = "<group>"; };
+		D6E552B629B16E640083E6A5 /* Alert++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alert++.swift"; sourceTree = "<group>"; };
+		D6E552B729B16E640083E6A5 /* Haptic++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Haptic++.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				D6E5528029B165400083E6A5 /* CacheApp.swift */,
+				D6E552B529B16E500083E6A5 /* Extras */,
 				D6E5528229B165400083E6A5 /* ContentView.swift */,
+				D6E552AA29B16DC70083E6A5 /* Exploit */,
 				D6E5528429B165410083E6A5 /* Assets.xcassets */,
 				D6E5528629B165410083E6A5 /* Preview Content */,
 			);
@@ -125,6 +141,29 @@
 				D6E5529D29B165420083E6A5 /* CacheUITestsLaunchTests.swift */,
 			);
 			path = CacheUITests;
+			sourceTree = "<group>";
+		};
+		D6E552AA29B16DC70083E6A5 /* Exploit */ = {
+			isa = PBXGroup;
+			children = (
+				D6E552B129B16E170083E6A5 /* grant_full_disk_access.h */,
+				D6E552B029B16E170083E6A5 /* grant_full_disk_access.m */,
+				D6E552AE29B16E170083E6A5 /* helpers.h */,
+				D6E552AC29B16E170083E6A5 /* helpers.m */,
+				D6E552AD29B16E170083E6A5 /* vm_unaligned_copy_switch_race.c */,
+				D6E552AF29B16E170083E6A5 /* vm_unaligned_copy_switch_race.h */,
+				D6E552AB29B16E160083E6A5 /* Cache-Bridging-Header.h */,
+			);
+			path = Exploit;
+			sourceTree = "<group>";
+		};
+		D6E552B529B16E500083E6A5 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				D6E552B629B16E640083E6A5 /* Alert++.swift */,
+				D6E552B729B16E640083E6A5 /* Haptic++.swift */,
+			);
+			path = Extras;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +234,7 @@
 				TargetAttributes = {
 					D6E5527C29B165400083E6A5 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 					};
 					D6E5528C29B165420083E6A5 = {
 						CreatedOnToolsVersion = 14.2;
@@ -257,7 +297,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6E552B929B16E640083E6A5 /* Haptic++.swift in Sources */,
 				D6E5528329B165400083E6A5 /* ContentView.swift in Sources */,
+				D6E552B229B16E170083E6A5 /* helpers.m in Sources */,
+				D6E552B429B16E170083E6A5 /* grant_full_disk_access.m in Sources */,
+				D6E552B329B16E170083E6A5 /* vm_unaligned_copy_switch_race.c in Sources */,
+				D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */,
 				D6E5528129B165400083E6A5 /* CacheApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +390,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -399,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -414,12 +459,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cache/Preview Content\"";
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Caché";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -429,10 +477,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.Cache;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Cache/Exploit/Cache-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -443,12 +493,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cache/Preview Content\"";
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Caché";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -458,10 +511,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.Cache;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Cache/Exploit/Cache-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

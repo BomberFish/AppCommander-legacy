@@ -1,0 +1,22 @@
+//
+//  helpers.h
+//  PsychicPaper
+//
+//  Created by Hariz Shirazi on 2023-02-04.
+//
+
+#ifndef helpers_h
+#define helpers_h
+
+char* get_temp_file_path(void);
+void test_nsexpressions(void);
+char* set_up_tmp_file(void);
+
+void xpc_crasher(char* service_name);
+
+void respringBackboard(void);
+void respringFrontboard(void);
+
+#define ROUND_DOWN_PAGE(val) (val & ~(PAGE_SIZE - 1ULL))
+
+#endif /* helpers_h */
