@@ -19,6 +19,7 @@
 		D6E552B429B16E170083E6A5 /* grant_full_disk_access.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E552B029B16E170083E6A5 /* grant_full_disk_access.m */; };
 		D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552B629B16E640083E6A5 /* Alert++.swift */; };
 		D6E552B929B16E640083E6A5 /* Haptic++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552B729B16E640083E6A5 /* Haptic++.swift */; };
+		D6E552BC29B179820083E6A5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552BB29B179820083E6A5 /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		D6E552B629B16E640083E6A5 /* Alert++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alert++.swift"; sourceTree = "<group>"; };
 		D6E552B729B16E640083E6A5 /* Haptic++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Haptic++.swift"; sourceTree = "<group>"; };
 		D6E552BA29B1790E0083E6A5 /* CoreServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreServices.h; sourceTree = "<group>"; };
+		D6E552BB29B179820083E6A5 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				D6E5528029B165400083E6A5 /* CacheApp.swift */,
 				D6E552B529B16E500083E6A5 /* Extras */,
 				D6E5528229B165400083E6A5 /* ContentView.swift */,
+				D6E552BB29B179820083E6A5 /* Common.swift */,
 				D6E552AA29B16DC70083E6A5 /* Exploit */,
 				D6E5528429B165410083E6A5 /* Assets.xcassets */,
 				D6E5528629B165410083E6A5 /* Preview Content */,
@@ -299,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6E552BC29B179820083E6A5 /* Common.swift in Sources */,
 				D6E552B929B16E640083E6A5 /* Haptic++.swift in Sources */,
 				D6E5528329B165400083E6A5 /* ContentView.swift in Sources */,
 				D6E552B229B16E170083E6A5 /* helpers.m in Sources */,
