@@ -130,7 +130,8 @@ class ApplicationManager {
     }
 }
 
-struct SBApp {
+struct SBApp: Identifiable {
+    var id = UUID()
     var bundleIdentifier: String
     var name: String
     var bundleURL: URL

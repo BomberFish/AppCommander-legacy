@@ -12,11 +12,10 @@ struct ContentView: View {
         NavigationView {
             List {
                 // TODO: list apps!!!!!!!
-                AppCell(imageName: "Placeholder", bundleid: "com.example.placeholder", title: "Placeholder")
-                Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
-                ForEach(getApps()) {SBApp in
+                ForEach(getApps()) {app in
                     AppCell(imageName: "Placeholder", bundleid: "com.example.placeholder", title: "Placeholder")
                 }
+                Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
             }
             .navigationTitle("Caché")
         }
@@ -25,9 +24,9 @@ struct ContentView: View {
         do {
             return try ApplicationManager.getApps()
         } catch {
-            UIApplication.shared.alert(body: "Unable to get apps.", withButton: false)
+            UIApplication.shared.alert(body: "Unable to get installed apps.", withButton: false)
         }
-        fatalError()
+        return [SBApp(bundleIdentifier: "com.example.placeholder", name: "Placeholder", bundleURL: URL.init(string: "/")!, pngIconPaths: [""], hiddenFromSpringboard: false)]
     }
 }
 
