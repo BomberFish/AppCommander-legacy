@@ -11,6 +11,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
+                // TODO: list apps!!!!!!!
                 AppCell(imageName: "Placeholder", bundleid: "com.example.placeholder", title: "Placeholder")
                 Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
             }
