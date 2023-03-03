@@ -8,25 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var allAppsUpdated = allApps
     var body: some View {
         NavigationView {
             List {
                 // TODO: list apps!!!!!!!
-                ForEach(getApps()) {app in
-                    AppCell(imageName: "Placeholder", bundleid: app.bundleIdentifier, title: app.name)
+                if allAppsUpdated[0].bundleIdentifier == "ca.bomberfish.there.is.no.reason.for.this.bundleid.to.exist.seriously.placeholder" && allAppsUpdated[0].name == "Placeholder" {
+                    ProgressView()
+                } else {
+                    ForEach(allAppsUpdated) {app in
+                        AppCell(imageName: "Placeholder", bundleid: app.bundleIdentifier, title: app.name)
+                    }
+                    Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
                 }
-                Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
             }
             .navigationTitle("Caché")
         }
-    }
-    private func getApps() -> [SBApp] {
-        do {
-            return try ApplicationManager.getApps()
-        } catch {
-            UIApplication.shared.alert(body: "Unable to get installed apps.", withButton: false)
-        }
-        return [SBApp(bundleIdentifier: "com.example.placeholder", name: "Placeholder", bundleURL: URL.init(string: "/")!, pngIconPaths: [""], hiddenFromSpringboard: false)]
     }
 }
 

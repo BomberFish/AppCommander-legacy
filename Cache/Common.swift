@@ -54,7 +54,7 @@ enum GenericError: Error {
     case runtimeError(String)
 }
 
-// code from appabetical
+// stolen from appabetical :trolley:
 class ApplicationManager {
     private static var fm = FileManager.default
     
@@ -130,7 +130,7 @@ class ApplicationManager {
     }
 }
 
-struct SBApp: Identifiable {
+struct SBApp: Identifiable, Equatable {
     var id = UUID()
     var bundleIdentifier: String
     var name: String
