@@ -1,5 +1,5 @@
 //
-//  Views.swift
+//  AppCell.swift
 //  Cache
 //
 //  Created by Hariz Shirazi on 2023-03-03.
@@ -9,15 +9,16 @@ import Foundation
 import SwiftUI
 
 struct AppCell: View {
-    var imageName: String
+    var imagePath: String
     var bundleid: String
     var title: String
     
     var body: some View {
         HStack(alignment: .center) {
             Group {
-                    if imageName != "" {
-                        Image(imageName)
+                    if imagePath != "" {
+                        //Image(uiImage: UIImage(contentsOfFile: imagePath) ?? UIImage(imageLiteralResourceName: "placeholder"))
+                        Image("Placeholder")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }

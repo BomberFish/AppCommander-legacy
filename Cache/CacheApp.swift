@@ -13,7 +13,7 @@ let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as?
 struct CacheApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
                 .onAppear {
                     print("Caché version \(appVersion)")
                     unsandbox()

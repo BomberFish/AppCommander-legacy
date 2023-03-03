@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  Cache
 //
 //  Created by Hariz Shirazi on 2023-03-02.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     @State var isUnsandboxed = false
     var body: some View {
         NavigationView {
@@ -16,8 +16,9 @@ struct ContentView: View {
                 if !isUnsandboxed {
                     ProgressView()
                 } else {
+                    // TODO: icons!
                     ForEach(try! ApplicationManager.getApps()) {app in
-                        AppCell(imageName: "Placeholder", bundleid: app.bundleIdentifier, title: app.name)
+                        AppCell(imagePath: " ", bundleid: app.bundleIdentifier, title: app.name)
                     }
                 }
                 Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
@@ -33,6 +34,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }
