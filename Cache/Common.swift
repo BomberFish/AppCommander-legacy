@@ -138,3 +138,5 @@ struct SBApp {
     var pngIconPaths: [String]
     var hiddenFromSpringboard: Bool
 }
+
+
