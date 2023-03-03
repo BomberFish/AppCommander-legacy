@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // does nothing lololo
 enum GenericError: Error {

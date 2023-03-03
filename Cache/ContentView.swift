@@ -25,6 +25,9 @@ struct ContentView: View {
             .navigationTitle("Caché")
             
         }
+        .onAppear {
+            isUnsandboxed = unsandbox()
+        }
     }
 }
 
