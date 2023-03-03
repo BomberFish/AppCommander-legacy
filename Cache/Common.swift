@@ -139,4 +139,3 @@ struct SBApp {
     var hiddenFromSpringboard: Bool
 }
 
-

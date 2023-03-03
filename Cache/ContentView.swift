@@ -14,9 +14,20 @@ struct ContentView: View {
                 // TODO: list apps!!!!!!!
                 AppCell(imageName: "Placeholder", bundleid: "com.example.placeholder", title: "Placeholder")
                 Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
+                ForEach(getApps()) {SBApp in
+                    AppCell(imageName: "Placeholder", bundleid: "com.example.placeholder", title: "Placeholder")
+                }
             }
             .navigationTitle("Caché")
         }
+    }
+    private func getApps() -> [SBApp] {
+        do {
+            return try ApplicationManager.getApps()
+        } catch {
+            UIApplication.shared.alert(body: "Unable to get apps.", withButton: false)
+        }
+        fatalError()
     }
 }
 
