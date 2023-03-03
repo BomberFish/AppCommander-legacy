@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var allApps =  try! ApplicationManager.getApps()
+    @State var allApps = [SBApp(bundleIdentifier: "ca.bomberfish.there.is.no.reason.for.this.bundleid.to.exist.seriously.placeholder", name: "Placeholder", bundleURL: URL.init(string: "/")!, pngIconPaths: [""], hiddenFromSpringboard: false)]
     var body: some View {
         NavigationView {
             List {
@@ -16,13 +16,14 @@ struct ContentView: View {
                 if allApps[0].bundleIdentifier == "ca.bomberfish.there.is.no.reason.for.this.bundleid.to.exist.seriously.placeholder" && allApps[0].name == "Placeholder" {
                     ProgressView()
                 } else {
-                    ForEach(allApps) {app in
+                    ForEach(try! ApplicationManager.getApps()) {app in
                         AppCell(imageName: "Placeholder", bundleid: app.bundleIdentifier, title: app.name)
                     }
-                    Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
                 }
+                Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
             }
             .navigationTitle("Caché")
+            
         }
     }
 }
