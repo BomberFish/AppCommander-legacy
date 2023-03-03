@@ -49,6 +49,11 @@ struct AppCell: View {
     }
 }
 
+// does nothing lololo
+enum GenericError: Error {
+    case runtimeError(String)
+}
+
 // code from appabetical
 class ApplicationManager {
     private static var fm = FileManager.default
@@ -79,16 +84,16 @@ class ApplicationManager {
                 continue
             }
             
-            guard let infoPlist = NSDictionary(contentsOf: infoPlistUrl) as? [String:AnyObject] else { throw "Error opening info.plist for \(bundleUrl.absoluteString)" }
-            guard let CFBundleIdentifier = infoPlist["CFBundleIdentifier"] as? String else { throw "No bundle ID for \(bundleUrl.absoluteString)" }
+            guard let infoPlist = NSDictionary(contentsOf: infoPlistUrl) as? [String:AnyObject] else { UIApplication.shared.alert(body: "Error opening info.plist for \(bundleUrl.absoluteString)"); throw GenericError.runtimeError("Error opening info.plist for \(bundleUrl.absoluteString)") }
+            guard let CFBundleIdentifier = infoPlist["CFBundleIdentifier"] as? String else { UIApplication.shared.alert(body: "App \(bundleUrl.absoluteString) doesn't have bundleid"); throw GenericError.runtimeError("App \(bundleUrl.absoluteString) doesn't have bundleid")}
             
             var app = SBApp(bundleIdentifier: CFBundleIdentifier, name: "Unknown", bundleURL: bundleUrl, pngIconPaths: [], hiddenFromSpringboard: false)
             
             if infoPlist.keys.contains("CFBundleDisplayName") {
-                guard let CFBundleDisplayName = infoPlist["CFBundleDisplayName"] as? String else { throw "Error reading display name for \(bundleUrl.absoluteString)" }
+                guard let CFBundleDisplayName = infoPlist["CFBundleDisplayName"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw GenericError.runtimeError("Error reading display name for \(bundleUrl.absoluteString)") }
                 app.name = CFBundleDisplayName
             } else if infoPlist.keys.contains("CFBundleName") {
-                guard let CFBundleName = infoPlist["CFBundleName"] as? String else { throw "Error reading name for \(bundleUrl.absoluteString)" }
+                guard let CFBundleName = infoPlist["CFBundleName"] as? String else { UIApplication.shared.alert(body: "Error reading name for \(bundleUrl.absoluteString)");throw GenericError.runtimeError("Error reading name for \(bundleUrl.absoluteString)")}
                 app.name = CFBundleName
             }
             
@@ -132,8 +137,4 @@ struct SBApp {
     
     var pngIconPaths: [String]
     var hiddenFromSpringboard: Bool
-    
-    func originalIconURL(fileName: String) -> URL {
-        originalIconsDir.appendingPathComponent(bundleIdentifier + "----" + fileName)
-    }
 }
