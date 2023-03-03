@@ -26,7 +26,7 @@ struct MainView: View {
                 } header: {
                     Label("Apps", systemImage: "square.grid.2x2")
                 } footer: {
-                    // take that suslocation
+                    // haha take that suslocation!
                     Text("You've come a long way, traveler. Have a :lungs:.\n🫁")
                 }
             }
