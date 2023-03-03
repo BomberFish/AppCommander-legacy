@@ -12,16 +12,23 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             List {
-                // TODO: list apps!!!!!!!
-                if !isUnsandboxed {
-                    ProgressView()
-                } else {
-                    // TODO: icons!
-                    ForEach(try! ApplicationManager.getApps()) {app in
-                        AppCell(imagePath: " ", bundleid: app.bundleIdentifier, title: app.name)
+                Section(header: Label("Caché \(appVersion)", systemImage: "info.circle").textCase(.none)){}
+                Section {
+                    // TODO: list apps!!!!!!!
+                    if !isUnsandboxed {
+                        ProgressView()
+                    } else {
+                        // TODO: icons!
+                        ForEach(try! ApplicationManager.getApps()) {app in
+                            AppCell(imagePath: " ", bundleid: app.bundleIdentifier, title: app.name)
+                        }
                     }
+                } header: {
+                    Label("Apps", systemImage: "square.grid.2x2")
+                } footer: {
+                    // take that suslocation
+                    Text("You've come a long way, traveler. Have a :lungs:.\n🫁")
                 }
-                Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
             }
             .navigationTitle("Caché")
             

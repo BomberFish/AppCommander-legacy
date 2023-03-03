@@ -22,6 +22,7 @@
 		D6E552BC29B179820083E6A5 /* Unsandbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552BB29B179820083E6A5 /* Unsandbox.swift */; };
 		D6E552BE29B2A0CC0083E6A5 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */; };
 		D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */; };
+		D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552C529B2BE730083E6A5 /* AppView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		D6E552BB29B179820083E6A5 /* Unsandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsandbox.swift; sourceTree = "<group>"; };
 		D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
+		D6E552C529B2BE730083E6A5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				D6E5528229B165400083E6A5 /* MainView.swift */,
+				D6E552C529B2BE730083E6A5 /* AppView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				D6E552BC29B179820083E6A5 /* Unsandbox.swift in Sources */,
 				D6E552B929B16E640083E6A5 /* Haptic++.swift in Sources */,
 				D6E5528329B165400083E6A5 /* MainView.swift in Sources */,
+				D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */,
 				D6E552B229B16E170083E6A5 /* helpers.m in Sources */,
 				D6E552B429B16E170083E6A5 /* grant_full_disk_access.m in Sources */,
 				D6E552B329B16E170083E6A5 /* vm_unaligned_copy_switch_race.c in Sources */,
