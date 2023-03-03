@@ -58,6 +58,7 @@
 		D6E552B129B16E170083E6A5 /* grant_full_disk_access.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grant_full_disk_access.h; sourceTree = "<group>"; };
 		D6E552B629B16E640083E6A5 /* Alert++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alert++.swift"; sourceTree = "<group>"; };
 		D6E552B729B16E640083E6A5 /* Haptic++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Haptic++.swift"; sourceTree = "<group>"; };
+		D6E552BA29B1790E0083E6A5 /* CoreServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreServices.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +150,7 @@
 				D6E552B129B16E170083E6A5 /* grant_full_disk_access.h */,
 				D6E552B029B16E170083E6A5 /* grant_full_disk_access.m */,
 				D6E552AE29B16E170083E6A5 /* helpers.h */,
+				D6E552BA29B1790E0083E6A5 /* CoreServices.h */,
 				D6E552AC29B16E170083E6A5 /* helpers.m */,
 				D6E552AD29B16E170083E6A5 /* vm_unaligned_copy_switch_race.c */,
 				D6E552AF29B16E170083E6A5 /* vm_unaligned_copy_switch_race.h */,
@@ -468,6 +470,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Caché";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Grant access to the sandbox. Required for app functionality";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -502,6 +505,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Caché";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Grant access to the sandbox. Required for app functionality";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
