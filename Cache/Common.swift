@@ -173,6 +173,5 @@ func unsandbox() {
                 UIApplication.shared.alert(title: "Exploit Not Supported", body: "Please install via TrollStore")
             }
         }
-        print(isUnsandboxed)
     }
 }
