@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var allAppsUpdated = allApps
+    @State var allApps =  try! ApplicationManager.getApps()
     var body: some View {
         NavigationView {
             List {
                 // TODO: list apps!!!!!!!
-                if allAppsUpdated[0].bundleIdentifier == "ca.bomberfish.there.is.no.reason.for.this.bundleid.to.exist.seriously.placeholder" && allAppsUpdated[0].name == "Placeholder" {
+                if allApps[0].bundleIdentifier == "ca.bomberfish.there.is.no.reason.for.this.bundleid.to.exist.seriously.placeholder" && allApps[0].name == "Placeholder" {
                     ProgressView()
                 } else {
-                    ForEach(allAppsUpdated) {app in
+                    ForEach(allApps) {app in
                         AppCell(imageName: "Placeholder", bundleid: app.bundleIdentifier, title: app.name)
                     }
                     Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}

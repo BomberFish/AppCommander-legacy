@@ -9,8 +9,6 @@ import SwiftUI
 
 var isUnsandboxed = false
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
-// FIXME: there might be a better way to do this :trolley:
-var allApps = [SBApp(bundleIdentifier: "ca.bomberfish.there.is.no.reason.for.this.bundleid.to.exist.seriously.placeholder", name: "Placeholder", bundleURL: URL.init(string: "/")!, pngIconPaths: [""], hiddenFromSpringboard: false)]
 
 @main
 struct CacheApp: App {
@@ -75,14 +73,6 @@ struct CacheApp: App {
 
                     Haptic.shared.notify(.success)
                     UIApplication.shared.alert(title: "Please read", body: "This app is still very much in development. If you bootloop, I will laugh at you.")
-                    do {
-                        print(allApps)
-                        allApps = try ApplicationManager.getApps()
-                        print("=============================================================")
-                        print(allApps)
-                    } catch {
-                        print("oh shit oh fuck no apps??!??!?!!??!?!!?!??!?!?!?!!?!?")
-                    }
                 }
         }
     }
