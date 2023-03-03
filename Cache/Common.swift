@@ -48,3 +48,9 @@ struct AppCell: View {
         .foregroundColor(.accentColor)
     }
 }
+
+struct App: Codable {
+    var icon: URL
+    var bundleID: String
+    var name: String
+}
