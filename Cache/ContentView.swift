@@ -13,7 +13,7 @@ struct ContentView: View {
             List {
                 // TODO: list apps!!!!!!!
                 ForEach(getApps()) {app in
-                    AppCell(imageName: "Placeholder", bundleid: "com.example.placeholder", title: "Placeholder")
+                    AppCell(imageName: "Placeholder", bundleid: app.bundleIdentifier, title: app.name)
                 }
                 Section(footer: Label("Caché \(appVersion)", systemImage: "info.circle")){}
             }
