@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var allApps = [SBApp(bundleIdentifier: "ca.bomberfish.there.is.no.reason.for.this.bundleid.to.exist.seriously.placeholder", name: "Placeholder", bundleURL: URL.init(string: "/")!, pngIconPaths: [""], hiddenFromSpringboard: false)]
+    @State var isUnsandboxed = false
     var body: some View {
         NavigationView {
             List {
                 // TODO: list apps!!!!!!!
-                if allApps[0].bundleIdentifier == "ca.bomberfish.there.is.no.reason.for.this.bundleid.to.exist.seriously.placeholder" && allApps[0].name == "Placeholder" {
+                if !isUnsandboxed {
                     ProgressView()
                 } else {
                     ForEach(try! ApplicationManager.getApps()) {app in
