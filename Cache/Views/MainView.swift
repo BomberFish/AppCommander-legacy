@@ -50,7 +50,7 @@ struct MainView: View {
             .onChange(of: searchText) { searchText in
              
                 if !searchText.isEmpty {
-                    apps = allApps.filter { $0.name.contains(searchText) }
+                    apps = allApps.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
                 } else {
                     apps = allApps
                 }
