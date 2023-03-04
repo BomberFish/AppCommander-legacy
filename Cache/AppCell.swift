@@ -32,7 +32,7 @@ struct AppCell: View {
                                 .aspectRatio(contentMode: .fit)
                         }
                     }
-                    .cornerRadius(large ? 16 : 14)
+                    .cornerRadius(large ? 14 : 12)
                     .frame(width: large ? 58 : 48, height: large ? 58 : 48)
                     
                     VStack {
@@ -53,14 +53,18 @@ struct AppCell: View {
         } else {
             HStack(alignment: .center) {
                 Group {
-                    if imagePath != "" {
-                        //Image(uiImage: UIImage(contentsOfFile: imagePath) ?? UIImage(imageLiteralResourceName: "placeholder"))
+                    if imagePath.contains("this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao") {
                         Image("Placeholder")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }  else {
+                        let image = UIImage(contentsOfFile: imagePath)
+                        Image(uiImage: image ?? UIImage.init(named: "Placeholder")!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
                 }
-                .cornerRadius(large ? 16 : 14)
+                .cornerRadius(large ? 14 : 12)
                 .frame(width: large ? 58 : 48, height: large ? 58 : 48)
                 
                 VStack {
