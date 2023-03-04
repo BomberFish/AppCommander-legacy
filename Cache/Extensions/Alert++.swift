@@ -39,10 +39,10 @@ extension UIApplication {
     func confirmAlertDestructive(title: String = "Error", body: String, onOK: @escaping () -> (), destructActionText: String) {
         DispatchQueue.main.async {
             currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)
-            currentUIAlertController?.addAction(.init(title: "Cancel", style: .cancel))
             currentUIAlertController?.addAction(.init(title: destructActionText, style: .destructive, handler: { _ in
                 onOK()
             }))
+            currentUIAlertController?.addAction(.init(title: "Cancel", style: .cancel))
             self.present(alert: currentUIAlertController!)
         }
     }

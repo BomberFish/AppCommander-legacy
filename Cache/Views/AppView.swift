@@ -13,17 +13,27 @@ struct AppView: View {
     @State public var name = ""
     var body: some View {
             List {
-                Section{AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false)}
-                Button(role: .destructive) {
-                    UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: notimplementedalert, destructActionText: "Delete")
-                } label: {
-                    Label("Delete app data", systemImage: "trash")
-                        .foregroundColor(Color(UIColor.systemRed))
-                }
-                Button {
-                    notimplementedalert()
-                } label: {
-                    Label("Delete app cache", systemImage: "trash")
+                Section{AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false)}header: { Label("App Details", systemImage: "info.circle") }
+                Section {
+                    Button(role: .destructive) {
+                        UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: notimplementedalert, destructActionText: "Delete")
+                    } label: {
+                        Label("Delete app data", systemImage: "trash")
+                            .foregroundColor(Color(UIColor.systemRed))
+                    }
+                    Button {
+                        notimplementedalert()
+                    } label: {
+                        Label("Delete app cache", systemImage: "trash")
+                    }
+                    
+                    Button {
+                        UIApplication.shared.alert(title: "Data directory", body: "Path: \(getDataDir(bundleID: bundleId))")
+                    } label: {
+                        Label("Get data directory (alert)", systemImage: "folder")
+                    }
+                } header: {
+                    Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
                 }
             }
             .navigationTitle(name)

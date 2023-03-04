@@ -24,6 +24,7 @@
 		D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */; };
 		D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552C529B2BE730083E6A5 /* AppView.swift */; };
 		D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = D6E552C829B2D60D0083E6A5 /* MarqueeText */; };
+		D6E552CC29B2E9F50083E6A5 /* RemovalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552CB29B2E9F50083E6A5 /* RemovalFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
 		D6E552C529B2BE730083E6A5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		D6E552CB29B2E9F50083E6A5 /* RemovalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovalFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				D6E552C329B2BE0D0083E6A5 /* Extras */,
 				D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */,
 				D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */,
+				D6E552CB29B2E9F50083E6A5 /* RemovalFunctions.swift */,
 				D6E552AA29B16DC70083E6A5 /* Exploit */,
 				D6E5528429B165410083E6A5 /* Assets.xcassets */,
 				D6E5528629B165410083E6A5 /* Preview Content */,
@@ -343,6 +346,7 @@
 				D6E552B229B16E170083E6A5 /* helpers.m in Sources */,
 				D6E552B429B16E170083E6A5 /* grant_full_disk_access.m in Sources */,
 				D6E552B329B16E170083E6A5 /* vm_unaligned_copy_switch_race.c in Sources */,
+				D6E552CC29B2E9F50083E6A5 /* RemovalFunctions.swift in Sources */,
 				D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */,
 				D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */,
 				D6E5528129B165400083E6A5 /* CacheApp.swift in Sources */,
