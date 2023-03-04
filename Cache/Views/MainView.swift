@@ -16,13 +16,22 @@ struct MainView: View {
                 Section {
                     // TODO: list apps!!!!!!!
                     if !isUnsandboxed {
+                        Spacer()
                         ProgressView()
+                        Spacer()
                     } else {
                         // TODO: icons!
                         ForEach(try! ApplicationManager.getApps()) {app in
-                            AppCell(imagePath: " ", bundleid: app.bundleIdentifier, name: app.name, large: false, link: true)
+                            AppCell(imagePath: (app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path), bundleid: app.bundleIdentifier, name: app.name, large: false, link: true)
                                 .onAppear {
+                                    print("===")
+                                    print((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path)
+                                    print(((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path).contains("this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"))
+                                    print("=====")
                                     print(app.bundleURL)
+                                    print("=======")
+                                    print(app.pngIconPaths)
+                                    print("=========")
                                 }
                         }
                     }
