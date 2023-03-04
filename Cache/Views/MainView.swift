@@ -20,7 +20,7 @@ struct MainView: View {
                     } else {
                         // TODO: icons!
                         ForEach(try! ApplicationManager.getApps()) {app in
-                            AppCell(imagePath: " ", bundleid: app.bundleIdentifier, title: app.name)
+                            AppCell(imagePath: " ", bundleid: app.bundleIdentifier, name: app.name, large: false, link: true)
                         }
                     }
                 } header: {

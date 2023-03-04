@@ -14,7 +14,7 @@ struct AppView: View {
     var body: some View {
         NavigationView {
             List {
-                AppCell(imagePath: iconPath, bundleid: bundleId, title: name)
+                AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false)
             }
         }
     }
