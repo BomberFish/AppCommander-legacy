@@ -1,6 +1,6 @@
 //
 //  AppCell.swift
-//  Cache
+//  Caché
 //
 //  Created by Hariz Shirazi on 2023-03-03.
 //

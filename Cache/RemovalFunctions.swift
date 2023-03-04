@@ -1,6 +1,6 @@
 //
 //  RemovalFunctions.swift
-//  Cache
+//  Caché
 //
 //  Created by Hariz Shirazi on 2023-03-03.
 //
@@ -23,14 +23,14 @@ func getDataDir(bundleID: String) -> URL {
     
     for dir in dirlist {
         print(dir)
-        do {
-            mmcontents = try String(contentsOf: URL.init(string: "/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist")!)
-        } catch {
-            UIApplication.shared.alert(body: "Error reading \("/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist")")
-        }
-        if mmcontents.contains(bundleID) {
+        let mmpath = "/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist"
+        print(mmpath)
+        let mmDict = NSDictionary(contentsOfFile: mmpath)
+        print(mmDict)
+        if mmDict!["MCMMetadataIdentifier"] as! String == bundleID {
             returnedurl = URL.init(string: "/var/mobile/Containers/Data/Application")!.appendingPathComponent(dir)
         }
     }
     return returnedurl!
 }
+
