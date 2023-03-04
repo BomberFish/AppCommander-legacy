@@ -27,21 +27,21 @@ struct AppCell: View {
                                 .aspectRatio(contentMode: .fit)
                         }
                     }
-                    .cornerRadius(10)
-                    .frame(width: large ? 80 : 48, height: large ? 80 : 48)
+                    .cornerRadius(large ? 16 : 14)
+                    .frame(width: large ? 60 : 48, height: large ? 60 : 48)
                     
                     VStack {
                         HStack {
                             Text(name)
                                 .fontWeight(.bold)
-                                .font(large ? .title : .headline)
+                                .font(large ? .title2 : .headline)
                             .padding(.horizontal, 6)
                             Spacer()
                         }
                         HStack {
                             Text(bundleid)
                                 .padding(.horizontal, 6)
-                                .font(large ? .title2 : .footnote)
+                                .font(large ? .headline : .footnote)
                             Spacer()
                         }
                     }
@@ -58,8 +58,8 @@ struct AppCell: View {
                             .aspectRatio(contentMode: .fit)
                     }
                 }
-                .cornerRadius(10)
-                .frame(width: large ? 80 : 48, height: large ? 80 : 48)
+                .cornerRadius(large ? 16 : 14)
+                .frame(width: large ? 60 : 48, height: large ? 60 : 48)
                 
                 VStack {
                     HStack {

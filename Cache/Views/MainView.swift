@@ -21,6 +21,9 @@ struct MainView: View {
                         // TODO: icons!
                         ForEach(try! ApplicationManager.getApps()) {app in
                             AppCell(imagePath: " ", bundleid: app.bundleIdentifier, name: app.name, large: false, link: true)
+                                .onAppear {
+                                    print(app.bundleURL)
+                                }
                         }
                     }
                 } header: {

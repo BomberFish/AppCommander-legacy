@@ -13,9 +13,23 @@ struct AppView: View {
     @State public var name = ""
     var body: some View {
             List {
-                AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false)
+                Section{AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false)}
+                Button(role: .destructive) {
+                    UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: notimplementedalert, destructActionText: "Delete")
+                } label: {
+                    Label("Delete app data", systemImage: "trash")
+                        .foregroundColor(Color(UIColor.systemRed))
+                }
+                Button {
+                    notimplementedalert()
+                } label: {
+                    Label("Delete app cache", systemImage: "trash")
+                }
             }
             .navigationTitle(name)
+    }
+    func notimplementedalert() {
+        UIApplication.shared.alert(title: "Not implemented", body: "lol")
     }
 }
 
