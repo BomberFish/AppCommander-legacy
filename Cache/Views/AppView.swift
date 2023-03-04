@@ -16,6 +16,7 @@ struct AppView: View {
             List {
                 AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false)
             }
+            .navigationTitle(name)
         }
     }
 }
