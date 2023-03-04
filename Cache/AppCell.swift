@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MarqueeText
 import SwiftUI
 
 struct AppCell: View {
@@ -28,20 +29,17 @@ struct AppCell: View {
                         }
                     }
                     .cornerRadius(large ? 16 : 14)
-                    .frame(width: large ? 60 : 48, height: large ? 60 : 48)
+                    .frame(width: large ? 58 : 48, height: large ? 58 : 48)
                     
                     VStack {
                         HStack {
-                            Text(name)
-                                .fontWeight(.bold)
-                                .font(large ? .title2 : .headline)
+                            MarqueeText(text: name, font:  UIFont.preferredFont(forTextStyle: large ? .title2 : .headline), leftFade: 16, rightFade: 16, startDelay: 0.5)
                             .padding(.horizontal, 6)
                             Spacer()
                         }
                         HStack {
-                            Text(bundleid)
+                            MarqueeText(text: bundleid, font:  UIFont.preferredFont(forTextStyle: large ? .headline : .footnote), leftFade: 16, rightFade: 16, startDelay: 0.5)
                                 .padding(.horizontal, 6)
-                                .font(large ? .headline : .footnote)
                             Spacer()
                         }
                     }
@@ -59,20 +57,17 @@ struct AppCell: View {
                     }
                 }
                 .cornerRadius(large ? 16 : 14)
-                .frame(width: large ? 60 : 48, height: large ? 60 : 48)
+                .frame(width: large ? 58 : 48, height: large ? 58 : 48)
                 
                 VStack {
                     HStack {
-                        Text(name)
-                            .fontWeight(.bold)
-                            .font(large ? .title2 : .headline)
+                        MarqueeText(text: name, font:  UIFont.preferredFont(forTextStyle: large ? .title2 : .headline), leftFade: 16, rightFade: 16, startDelay: 0.5)
                         .padding(.horizontal, 6)
                         Spacer()
                     }
                     HStack {
-                        Text(bundleid)
+                        MarqueeText(text: bundleid, font:  UIFont.preferredFont(forTextStyle: large ? .headline : .footnote), leftFade: 16, rightFade: 16, startDelay: 0.5)
                             .padding(.horizontal, 6)
-                            .font(large ? .headline : .footnote)
                         Spacer()
                     }
                 }

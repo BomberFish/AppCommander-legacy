@@ -23,6 +23,7 @@
 		D6E552BE29B2A0CC0083E6A5 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */; };
 		D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */; };
 		D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552C529B2BE730083E6A5 /* AppView.swift */; };
+		D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = D6E552C829B2D60D0083E6A5 /* MarqueeText */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +214,9 @@
 			dependencies = (
 			);
 			name = Cache;
+			packageProductDependencies = (
+				D6E552C829B2D60D0083E6A5 /* MarqueeText */,
+			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* Cache.app */;
 			productType = "com.apple.product-type.application";
@@ -285,6 +290,9 @@
 				Base,
 			);
 			mainGroup = D6E5527429B165400083E6A5;
+			packageReferences = (
+				D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */,
+			);
 			productRefGroup = D6E5527E29B165400083E6A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -673,6 +681,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joekndy/MarqueeText";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D6E552C829B2D60D0083E6A5 /* MarqueeText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */;
+			productName = MarqueeText;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D6E5527529B165400083E6A5 /* Project object */;
 }
