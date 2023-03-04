@@ -16,7 +16,6 @@ struct CacheApp: App {
             MainView()
                 .onAppear {
                     print("Caché version \(appVersion)")
-                    unsandbox()
                     if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let url = URL(string: "https://api.github.com/repos/BomberFish/Caché/releases/latest") {
                         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
                             guard let data = data else { return }
