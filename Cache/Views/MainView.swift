@@ -43,7 +43,7 @@ struct MainView: View {
                     Text("You've come a long way, traveler. Have a :lungs:.\n🫁")
                 }
             }
-            // FIXME: Search is currently broken
+            // FIXME: Search is currently non-functional
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .navigationTitle("Caché")
             
