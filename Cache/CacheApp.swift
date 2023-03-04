@@ -33,7 +33,7 @@ struct CacheApp: App {
                     }
 
                     Haptic.shared.notify(.success)
-                    UIApplication.shared.alert(title: "Please read", body: "This app is still very much in development. If you bootloop, I will laugh at you.")
+                    UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If you bootloop, I will point and laugh at you.")
                 }
         }
     }
