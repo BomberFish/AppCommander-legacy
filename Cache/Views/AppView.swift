@@ -12,12 +12,10 @@ struct AppView: View {
     @State public var bundleId = ""
     @State public var name = ""
     var body: some View {
-        NavigationView {
             List {
                 AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false)
             }
             .navigationTitle(name)
-        }
     }
 }
 
