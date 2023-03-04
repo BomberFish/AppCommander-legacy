@@ -62,6 +62,14 @@ struct MainView: View {
             allApps = try! ApplicationManager.getApps()
             apps = allApps
         }
+        .refreshable {
+            if !isUnsandboxed {
+                isUnsandboxed = unsandbox()
+            } else {
+                allApps = try! ApplicationManager.getApps()
+                apps = allApps
+            }
+        }
     }
 }
 
