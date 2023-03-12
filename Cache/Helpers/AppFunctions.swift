@@ -1,5 +1,5 @@
 //
-//  RemovalFunctions.swift
+//  AppFunctions.swift
 //  Caché
 //
 //  Created by Hariz Shirazi on 2023-03-03.
@@ -12,7 +12,6 @@ func getDataDir(bundleID: String) -> URL {
     let fm = FileManager.default
     var returnedurl = URL.init(string: "none")
     var dirlist = [""]
-    var mmcontents = ""
     
     do {
         dirlist = try fm.contentsOfDirectory(atPath: "/var/mobile/Containers/Data/Application")
