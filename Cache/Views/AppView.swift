@@ -32,6 +32,11 @@ struct AppView: View {
                     } label: {
                         Label("Get data directory (alert)", systemImage: "folder")
                     }
+                    Button {
+                        notimplementedalert()
+                    } label: {
+                        Label("Export IPA", systemImage: "arrow.down.app")
+                    }
                 } header: {
                     Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
                 }
