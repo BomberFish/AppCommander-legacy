@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D6E5528129B165400083E6A5 /* CacheApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5528029B165400083E6A5 /* CacheApp.swift */; };
+		D6E5528129B165400083E6A5 /* AppCommanderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5528029B165400083E6A5 /* AppCommanderApp.swift */; };
 		D6E5528329B165400083E6A5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5528229B165400083E6A5 /* MainView.swift */; };
 		D6E5528529B165410083E6A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6E5528429B165410083E6A5 /* Assets.xcassets */; };
 		D6E5528829B165410083E6A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6E5528729B165410083E6A5 /* Preview Assets.xcassets */; };
@@ -45,14 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D6E5527D29B165400083E6A5 /* Cache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cache.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6E5528029B165400083E6A5 /* CacheApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheApp.swift; sourceTree = "<group>"; };
+		D6E5527D29B165400083E6A5 /* AppCommander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppCommander.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6E5528029B165400083E6A5 /* AppCommanderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommanderApp.swift; sourceTree = "<group>"; };
 		D6E5528229B165400083E6A5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D6E5528429B165410083E6A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6E5528729B165410083E6A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D6E5528D29B165420083E6A5 /* CacheTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CacheTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6E5528D29B165420083E6A5 /* AppCommanderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppCommanderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E5529129B165420083E6A5 /* CacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTests.swift; sourceTree = "<group>"; };
-		D6E5529729B165420083E6A5 /* CacheUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CacheUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6E5529729B165420083E6A5 /* AppCommanderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppCommanderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E5529B29B165420083E6A5 /* CacheUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheUITests.swift; sourceTree = "<group>"; };
 		D6E5529D29B165420083E6A5 /* CacheUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D6E552AB29B16E160083E6A5 /* Cache-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cache-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -111,9 +111,9 @@
 		D6E5527E29B165400083E6A5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6E5527D29B165400083E6A5 /* Cache.app */,
-				D6E5528D29B165420083E6A5 /* CacheTests.xctest */,
-				D6E5529729B165420083E6A5 /* CacheUITests.xctest */,
+				D6E5527D29B165400083E6A5 /* AppCommander.app */,
+				D6E5528D29B165420083E6A5 /* AppCommanderTests.xctest */,
+				D6E5529729B165420083E6A5 /* AppCommanderUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,7 +121,7 @@
 		D6E5527F29B165400083E6A5 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				D6E5528029B165400083E6A5 /* CacheApp.swift */,
+				D6E5528029B165400083E6A5 /* AppCommanderApp.swift */,
 				D6E552B529B16E500083E6A5 /* Extensions */,
 				D6E552C429B2BE3C0083E6A5 /* Views */,
 				D6E552C329B2BE0D0083E6A5 /* Extras */,
@@ -204,9 +204,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D6E5527C29B165400083E6A5 /* Cache */ = {
+		D6E5527C29B165400083E6A5 /* AppCommander */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6E552A129B165420083E6A5 /* Build configuration list for PBXNativeTarget "Cache" */;
+			buildConfigurationList = D6E552A129B165420083E6A5 /* Build configuration list for PBXNativeTarget "AppCommander" */;
 			buildPhases = (
 				D6E5527929B165400083E6A5 /* Sources */,
 				D6E5527A29B165400083E6A5 /* Frameworks */,
@@ -216,17 +216,17 @@
 			);
 			dependencies = (
 			);
-			name = Cache;
+			name = AppCommander;
 			packageProductDependencies = (
 				D6E552C829B2D60D0083E6A5 /* MarqueeText */,
 			);
 			productName = Cache;
-			productReference = D6E5527D29B165400083E6A5 /* Cache.app */;
+			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D6E5528C29B165420083E6A5 /* CacheTests */ = {
+		D6E5528C29B165420083E6A5 /* AppCommanderTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6E552A429B165420083E6A5 /* Build configuration list for PBXNativeTarget "CacheTests" */;
+			buildConfigurationList = D6E552A429B165420083E6A5 /* Build configuration list for PBXNativeTarget "AppCommanderTests" */;
 			buildPhases = (
 				D6E5528929B165420083E6A5 /* Sources */,
 				D6E5528A29B165420083E6A5 /* Frameworks */,
@@ -237,14 +237,14 @@
 			dependencies = (
 				D6E5528F29B165420083E6A5 /* PBXTargetDependency */,
 			);
-			name = CacheTests;
+			name = AppCommanderTests;
 			productName = CacheTests;
-			productReference = D6E5528D29B165420083E6A5 /* CacheTests.xctest */;
+			productReference = D6E5528D29B165420083E6A5 /* AppCommanderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D6E5529629B165420083E6A5 /* CacheUITests */ = {
+		D6E5529629B165420083E6A5 /* AppCommanderUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6E552A729B165420083E6A5 /* Build configuration list for PBXNativeTarget "CacheUITests" */;
+			buildConfigurationList = D6E552A729B165420083E6A5 /* Build configuration list for PBXNativeTarget "AppCommanderUITests" */;
 			buildPhases = (
 				D6E5529329B165420083E6A5 /* Sources */,
 				D6E5529429B165420083E6A5 /* Frameworks */,
@@ -255,9 +255,9 @@
 			dependencies = (
 				D6E5529929B165420083E6A5 /* PBXTargetDependency */,
 			);
-			name = CacheUITests;
+			name = AppCommanderUITests;
 			productName = CacheUITests;
-			productReference = D6E5529729B165420083E6A5 /* CacheUITests.xctest */;
+			productReference = D6E5529729B165420083E6A5 /* AppCommanderUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -284,7 +284,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D6E5527829B165400083E6A5 /* Build configuration list for PBXProject "Cache" */;
+			buildConfigurationList = D6E5527829B165400083E6A5 /* Build configuration list for PBXProject "AppCommander" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -300,9 +300,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D6E5527C29B165400083E6A5 /* Cache */,
-				D6E5528C29B165420083E6A5 /* CacheTests */,
-				D6E5529629B165420083E6A5 /* CacheUITests */,
+				D6E5527C29B165400083E6A5 /* AppCommander */,
+				D6E5528C29B165420083E6A5 /* AppCommanderTests */,
+				D6E5529629B165420083E6A5 /* AppCommanderUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -349,7 +349,7 @@
 				D6E552CC29B2E9F50083E6A5 /* RemovalFunctions.swift in Sources */,
 				D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */,
 				D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */,
-				D6E5528129B165400083E6A5 /* CacheApp.swift in Sources */,
+				D6E5528129B165400083E6A5 /* AppCommanderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,12 +375,12 @@
 /* Begin PBXTargetDependency section */
 		D6E5528F29B165420083E6A5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D6E5527C29B165400083E6A5 /* Cache */;
+			target = D6E5527C29B165400083E6A5 /* AppCommander */;
 			targetProxy = D6E5528E29B165420083E6A5 /* PBXContainerItemProxy */;
 		};
 		D6E5529929B165420083E6A5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D6E5527C29B165400083E6A5 /* Cache */;
+			target = D6E5527C29B165400083E6A5 /* AppCommander */;
 			targetProxy = D6E5529829B165420083E6A5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -512,7 +512,7 @@
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Caché";
+				INFOPLIST_KEY_CFBundleDisplayName = AppCommander;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Grant access to the sandbox. Required for app functionality";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -525,7 +525,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.f1shy-dev.ControlConfig2";
+				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Cache/Exploit/Cache-Bridging-Header.h";
@@ -547,7 +547,7 @@
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Caché";
+				INFOPLIST_KEY_CFBundleDisplayName = AppCommander;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Grant access to the sandbox. Required for app functionality";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -560,7 +560,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.f1shy-dev.ControlConfig2";
+				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Cache/Exploit/Cache-Bridging-Header.h";
@@ -585,7 +585,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cache.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cache";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppCommander.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppCommander";
 			};
 			name = Debug;
 		};
@@ -605,7 +605,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cache.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cache";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppCommander.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppCommander";
 			};
 			name = Release;
 		};
@@ -648,7 +648,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D6E5527829B165400083E6A5 /* Build configuration list for PBXProject "Cache" */ = {
+		D6E5527829B165400083E6A5 /* Build configuration list for PBXProject "AppCommander" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6E5529F29B165420083E6A5 /* Debug */,
@@ -657,7 +657,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6E552A129B165420083E6A5 /* Build configuration list for PBXNativeTarget "Cache" */ = {
+		D6E552A129B165420083E6A5 /* Build configuration list for PBXNativeTarget "AppCommander" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6E552A229B165420083E6A5 /* Debug */,
@@ -666,7 +666,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6E552A429B165420083E6A5 /* Build configuration list for PBXNativeTarget "CacheTests" */ = {
+		D6E552A429B165420083E6A5 /* Build configuration list for PBXNativeTarget "AppCommanderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6E552A529B165420083E6A5 /* Debug */,
@@ -675,7 +675,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6E552A729B165420083E6A5 /* Build configuration list for PBXNativeTarget "CacheUITests" */ = {
+		D6E552A729B165420083E6A5 /* Build configuration list for PBXNativeTarget "AppCommanderUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6E552A829B165420083E6A5 /* Debug */,

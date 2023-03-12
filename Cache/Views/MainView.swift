@@ -15,7 +15,7 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Label("Caché \(appVersion)", systemImage: "info.circle").textCase(.none)){}
+                Section(header: Label("AppCommander \(appVersion)", systemImage: "info.circle").textCase(.none)){}
                 Section {
                     if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
                         Spacer()
@@ -46,7 +46,7 @@ struct MainView: View {
             }
             .listStyle(InsetGroupedListStyle())
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search apps...")
-            .navigationTitle("Caché")
+            .navigationTitle("AppCommander")
             .onChange(of: searchText) { searchText in
              
                 if !searchText.isEmpty {
