@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ZIPFoundation
 
 func getDataDir(bundleID: String) -> URL {
     let fm = FileManager.default
@@ -33,7 +34,21 @@ func getDataDir(bundleID: String) -> URL {
     return returnedurl!
 }
 
-func appToIpa(bundleurl: URL) -> Bool {
-    // FIXME: lol
-    return true
+func appToIpa(bundleurl: URL) {
+    do {
+        let uuid = UUID().uuidString
+        try? FileManager.default.removeItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid))
+        print("rmed file")
+        try FileManager.default.createDirectory(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload"), withIntermediateDirectories: true)
+        print("made payload dir \(FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload"))")
+        try FileManager.default.copyItem(at: bundleurl, to: FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload").appendingPathComponent(bundleurl.lastPathComponent))
+        print("copied \(bundleurl) to \(FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload").appendingPathComponent(bundleurl.lastPathComponent))")
+        try FileManager().zipItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload"), to: FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa"))
+        print("zipped \(FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload")) to \(FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa"))")
+        let vc = UIActivityViewController(activityItems: [FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa") as Any], applicationActivities: nil)
+        UIApplication.shared.windows[0].rootViewController?.present(vc, animated: true)
+    } catch {
+        print("error at the next step")
+        UIApplication.shared.alert(body: "There was an error exporting the ipa.")
+    }
 }

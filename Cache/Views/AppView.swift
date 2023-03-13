@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct AppView: View {
-    @State public var iconPath = ""
-    @State public var bundleId = ""
-    @State public var name = ""
+    @State public var iconPath: String
+    @State public var bundleId: String
+    @State public var name: String
+    @State public var bundleurl: URL
     var body: some View {
             List {
-                Section{AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false)}header: { Label("App Details", systemImage: "info.circle") }
+                Section{AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl)}header: { Label("App Details", systemImage: "info.circle") }
                 Section {
+                    Button {
+                        appToIpa(bundleurl: bundleurl)
+                    } label: {
+                        Label("Export IPA", systemImage: "arrow.down.app")
+                    }
                     Button(role: .destructive) {
                         UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: notimplementedalert, destructActionText: "Delete")
                     } label: {
@@ -32,11 +38,6 @@ struct AppView: View {
                     } label: {
                         Label("Get data directory (alert)", systemImage: "folder")
                     }
-                    Button {
-                        notimplementedalert()
-                    } label: {
-                        Label("Export IPA", systemImage: "arrow.down.app")
-                    }
                 } header: {
                     Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
                 }
@@ -50,6 +51,6 @@ struct AppView: View {
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView(iconPath: "", bundleId: "com.example.placeholder", name: "Placeholder")
+        AppView(iconPath: "", bundleId: "com.example.placeholder", name: "Placeholder", bundleurl: URL(string: "/path/to/foo/bar/baz")!)
     }
 }

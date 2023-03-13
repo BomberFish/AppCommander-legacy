@@ -15,7 +15,8 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Label("AppCommander \(appVersion)", systemImage: "info.circle").textCase(.none)){}
+                Section(header:
+                    Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)){}
                 Section {
                     if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
                         Spacer()
@@ -24,7 +25,7 @@ struct MainView: View {
                     } else {
                         // TODO: icons!
                         ForEach(apps) {app in
-                            AppCell(imagePath: (app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path), bundleid: app.bundleIdentifier, name: app.name, large: false, link: true)
+                            AppCell(imagePath: (app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path), bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL)
                                 .onAppear {
                                     print("===")
                                     print((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path)
