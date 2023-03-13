@@ -59,8 +59,12 @@ struct MainView: View {
         }
         .onAppear {
             isUnsandboxed = unsandbox()
-            allApps = try! ApplicationManager.getApps()
-            apps = allApps
+            if !isUnsandboxed {
+                isUnsandboxed = unsandbox()
+            } else {
+                allApps = try! ApplicationManager.getApps()
+                apps = allApps
+            }
         }
         .refreshable {
             if !isUnsandboxed {
