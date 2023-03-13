@@ -15,6 +15,14 @@ struct AppView: View {
     var body: some View {
             List {
                 Section{AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl)}header: { Label("App Details", systemImage: "info.circle") }
+//                    .contextMenu {
+//                        if isFilzaInstalled() {
+//                            Button(action: {openInFilza(path: bundleurl.relativePath)}, label: {Label("Open in Filza", systemImage: "arrow.up.forward.app")})
+//                        }
+//                        if isSantanderInstalled() {
+//                            Button(action: {openInFilza(path: bundleurl.relativePath)}, label: {Label("Open in Santander", systemImage: "arrow.up.forward.app")})
+//                        }
+//                    }
                 Section {
                     Button {
                         appToIpa(bundleurl: bundleurl)

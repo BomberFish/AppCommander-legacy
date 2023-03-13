@@ -83,6 +83,14 @@ struct AppCell: View {
                     }
                 }
                 MarqueeText(text: bundleURL.relativePath, font:  UIFont.preferredFont(forTextStyle: large ? .subheadline : .footnote), leftFade: 16, rightFade: 16, startDelay: 0.5)
+                    .contextMenu {
+                        if isFilzaInstalled() {
+                            Button(action: {openInFilza(path: bundleURL.relativePath)}, label: {Label("Open in Filza", systemImage: "arrow.up.forward.app")})
+                        }
+                        if isSantanderInstalled() {
+                            Button(action: {openInFilza(path: bundleURL.relativePath)}, label: {Label("Open in Santander", systemImage: "arrow.up.forward.app")})
+                        }
+                    }
             }
         }
     }

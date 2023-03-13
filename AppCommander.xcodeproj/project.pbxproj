@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AppCommander-Info.plist"; sourceTree = "<group>"; };
 		D6E5527D29B165400083E6A5 /* AppCommander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppCommander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E5528029B165400083E6A5 /* AppCommanderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommanderApp.swift; sourceTree = "<group>"; };
 		D6E5528229B165400083E6A5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		D6E5527429B165400083E6A5 = {
 			isa = PBXGroup;
 			children = (
+				D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */,
 				D6E5527F29B165400083E6A5 /* Cache */,
 				D6E5529029B165420083E6A5 /* CacheTests */,
 				D6E5529A29B165420083E6A5 /* CacheUITests */,
@@ -516,6 +518,7 @@
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AppCommander-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = AppCommander;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Grant access to the sandbox. Required for app functionality";
@@ -551,6 +554,7 @@
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AppCommander-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = AppCommander;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Grant access to the sandbox. Required for app functionality";

@@ -52,3 +52,20 @@ func appToIpa(bundleurl: URL) {
         UIApplication.shared.alert(body: "There was an error exporting the ipa.")
     }
 }
+
+func isFilzaInstalled() -> Bool {
+    return UIApplication.shared.canOpenURL(URL(string: "filza://")!)
+}
+
+func isSantanderInstalled() -> Bool {
+    return UIApplication.shared.canOpenURL(URL(string: "santander://")!)
+}
+
+// thanks serena uwu
+func openInSantander(path: String) {
+    UIApplication.shared.open(URL(string: "santander://\(path)")!, options: [:], completionHandler: nil)
+}
+
+func openInFilza(path: String) {
+    UIApplication.shared.alert(body: "Opening in filza is not implemented yet")
+}
