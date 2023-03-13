@@ -33,3 +33,7 @@ func getDataDir(bundleID: String) -> URL {
     return returnedurl!
 }
 
+func appToIpa(bundleurl: URL) -> Bool {
+    // FIXME: lol
+    return true
+}

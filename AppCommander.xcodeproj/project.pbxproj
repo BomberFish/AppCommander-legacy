@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */; };
 		D6E5528129B165400083E6A5 /* AppCommanderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5528029B165400083E6A5 /* AppCommanderApp.swift */; };
 		D6E5528329B165400083E6A5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5528229B165400083E6A5 /* MainView.swift */; };
 		D6E5528529B165410083E6A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6E5528429B165410083E6A5 /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
+				D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +221,7 @@
 			name = AppCommander;
 			packageProductDependencies = (
 				D6E552C829B2D60D0083E6A5 /* MarqueeText */,
+				D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */,
 			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
@@ -295,6 +298,7 @@
 			mainGroup = D6E5527429B165400083E6A5;
 			packageReferences = (
 				D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */,
+				D6402EBE29BE5C9A00E2F0C0 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
 			productRefGroup = D6E5527E29B165400083E6A5 /* Products */;
 			projectDirPath = "";
@@ -525,7 +529,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.iPod1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Cache/Exploit/Cache-Bridging-Header.h";
@@ -560,7 +564,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.iPod1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Cache/Exploit/Cache-Bridging-Header.h";
@@ -687,6 +691,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D6402EBE29BE5C9A00E2F0C0 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.16;
+			};
+		};
 		D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/joekndy/MarqueeText";
@@ -698,6 +710,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6402EBE29BE5C9A00E2F0C0 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
 		D6E552C829B2D60D0083E6A5 /* MarqueeText */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */;
