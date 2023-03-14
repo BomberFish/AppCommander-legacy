@@ -15,7 +15,10 @@ struct AppView: View {
     @State public var sbapp: SBApp
     var body: some View {
             List {
-                Section{AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl, sbapp: sbapp)}header: { Label("App Details", systemImage: "info.circle") }
+                Section{
+                    AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl, sbapp: sbapp)
+                    NavigationLink(destination: {MoreInfoView(sbapp: sbapp, iconPath: iconPath)}, label: {Label("More Info", systemImage: "info.circle")})
+                }header: { Label("App Details", systemImage: "info.circle")}
 //                    .contextMenu {
 //                        if isFilzaInstalled() {
 //                            Button(action: {openInFilza(path: bundleurl.relativePath)}, label: {Label("Open in Filza", systemImage: "arrow.up.forward.app")})
@@ -28,7 +31,7 @@ struct AppView: View {
                     Button {
                         appToIpa(bundleurl: bundleurl)
                     } label: {
-                        Label("Export IPA", systemImage: "arrow.down.app")
+                        Label("Export IPA (Currently broken)", systemImage: "arrow.down.app")
                     }
                     Button(role: .destructive) {
                         UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: notimplementedalert, destructActionText: "Delete")
