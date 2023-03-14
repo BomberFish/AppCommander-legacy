@@ -12,9 +12,10 @@ struct AppView: View {
     @State public var bundleId: String
     @State public var name: String
     @State public var bundleurl: URL
+    @State public var sbapp: SBApp
     var body: some View {
             List {
-                Section{AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl)}header: { Label("App Details", systemImage: "info.circle") }
+                Section{AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl, sbapp: sbapp)}header: { Label("App Details", systemImage: "info.circle") }
 //                    .contextMenu {
 //                        if isFilzaInstalled() {
 //                            Button(action: {openInFilza(path: bundleurl.relativePath)}, label: {Label("Open in Filza", systemImage: "arrow.up.forward.app")})
@@ -59,6 +60,6 @@ struct AppView: View {
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView(iconPath: "", bundleId: "com.example.placeholder", name: "Placeholder", bundleurl: URL(string: "/path/to/foo/bar/baz")!)
+        AppView(iconPath: "", bundleId: "com.example.placeholder", name: "Placeholder", bundleurl: URL(string: "/path/to/foo/bar/baz")!, sbapp: SBApp(bundleIdentifier: "com.example.placeholder", name: "Placeholder", bundleURL: URL(string: "/path/to/foo/bar/baz")!, pngIconPaths: [""], hiddenFromSpringboard: false))
     }
 }

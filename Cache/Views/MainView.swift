@@ -25,7 +25,7 @@ struct MainView: View {
                     } else {
                         // TODO: icons!
                         ForEach(apps) {app in
-                            AppCell(imagePath: (app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path), bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL)
+                            AppCell(imagePath: (app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path), bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
                                 .onAppear {
                                     print("===")
                                     print((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path)

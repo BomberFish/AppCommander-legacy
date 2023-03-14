@@ -16,10 +16,11 @@ struct AppCell: View {
     var large: Bool
     var link: Bool
     var bundleURL: URL
+    var sbapp: SBApp
     
     var body: some View {
         if link {
-            NavigationLink(destination: AppView(iconPath: imagePath, bundleId: bundleid, name: name, bundleurl: bundleURL)) {
+            NavigationLink(destination: AppView(iconPath: imagePath, bundleId: bundleid, name: name, bundleurl: bundleURL, sbapp: sbapp)) {
                 HStack(alignment: .center) {
                     Group {
                         if imagePath.contains("this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao") {
