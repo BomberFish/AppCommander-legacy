@@ -39,7 +39,7 @@ struct MainView: View {
                         }
                     }
                 } header: {
-                    Label("Apps", systemImage: "square.grid.2x2")
+                    Label("Apps (\(apps.count))", systemImage: "square.grid.2x2")
                 } footer: {
                     // haha take that suslocation!
                     Text("You've come a long way, traveler. Have a :lungs:.\n🫁")

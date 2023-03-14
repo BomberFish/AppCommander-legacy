@@ -532,7 +532,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.iPod1;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Cache/Exploit/Cache-Bridging-Header.h";
@@ -568,7 +568,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.iPod1;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Cache/Exploit/Cache-Bridging-Header.h";
