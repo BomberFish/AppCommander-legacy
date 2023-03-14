@@ -10,15 +10,15 @@ import SwiftUI
 struct MainView: View {
     @State var isUnsandboxed = false
     @State private var searchText = ""
-    @State var allApps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
-    @State var apps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+    @State var allApps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+    @State var apps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
     var body: some View {
         NavigationView {
             List {
                 Section(header:
                     Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)){}
                 Section {
-                    if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
+                    if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
                         Spacer()
                         ProgressView()
                         Spacer()

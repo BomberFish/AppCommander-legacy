@@ -46,7 +46,15 @@ class ApplicationManager {
             guard let infoPlist = NSDictionary(contentsOf: infoPlistUrl) as? [String:AnyObject] else { UIApplication.shared.alert(body: "Error opening info.plist for \(bundleUrl.absoluteString)"); throw GenericError.runtimeError("Error opening info.plist for \(bundleUrl.absoluteString)") }
             guard let CFBundleIdentifier = infoPlist["CFBundleIdentifier"] as? String else { UIApplication.shared.alert(body: "App \(bundleUrl.absoluteString) doesn't have bundleid"); throw GenericError.runtimeError("App \(bundleUrl.absoluteString) doesn't have bundleid")}
             
-            var app = SBApp(bundleIdentifier: CFBundleIdentifier, name: "Unknown", bundleURL: bundleUrl, pngIconPaths: [], hiddenFromSpringboard: false)
+            var app = SBApp(bundleIdentifier: CFBundleIdentifier, name: "Unknown", bundleURL: bundleUrl, version: "Unknown", pngIconPaths: [], hiddenFromSpringboard: false)
+            
+            if infoPlist.keys.contains("CFBundleShortVersionString") {
+                guard let CFBundleShortVersionString = infoPlist["CFBundleShortVersionString"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw GenericError.runtimeError("Error reading display name for \(bundleUrl.absoluteString)") }
+                app.version = CFBundleShortVersionString
+            } else if infoPlist.keys.contains("CFBundleVersion") {
+                guard let CFBundleVersion = infoPlist["CFBundleVersion"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw GenericError.runtimeError("Error reading display name for \(bundleUrl.absoluteString)") }
+                app.version = CFBundleVersion
+            }
             
             if infoPlist.keys.contains("CFBundleDisplayName") {
                 guard let CFBundleDisplayName = infoPlist["CFBundleDisplayName"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw GenericError.runtimeError("Error reading display name for \(bundleUrl.absoluteString)") }
@@ -94,6 +102,7 @@ struct SBApp: Identifiable, Equatable {
     var bundleIdentifier: String
     var name: String
     var bundleURL: URL
+    var version: String
     
     var pngIconPaths: [String]
     var hiddenFromSpringboard: Bool

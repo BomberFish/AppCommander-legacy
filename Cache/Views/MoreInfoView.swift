@@ -20,8 +20,7 @@ struct MoreInfoView: View {
                 .contextMenu {
                     Button(action: {UIPasteboard.general.string = sbapp.bundleIdentifier}, label: {Label("Copy", systemImage: "doc.on.clipboard")})
                 }
-            // FIXME: Add version to SBApp
-            Text("Version: \(sbapp.name)")
+            Text("Version: \(sbapp.version)")
                 .contextMenu {
                     Button(action: {UIPasteboard.general.string = sbapp.name}, label: {Label("Copy", systemImage: "doc.on.clipboard")})
                 }
@@ -52,6 +51,6 @@ struct MoreInfoView: View {
 
 struct MoreInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        MoreInfoView(sbapp: SBApp(bundleIdentifier: "com.example.placeholder", name: "Placeholder", bundleURL: URL(string: "/path/to/foo/bar/baz")!, pngIconPaths: [""], hiddenFromSpringboard: false), iconPath: "")
+        MoreInfoView(sbapp: SBApp(bundleIdentifier: "com.example.placeholder", name: "Placeholder", bundleURL: URL(string: "/path/to/foo/bar/baz")!, version: "1.0.0", pngIconPaths: [""], hiddenFromSpringboard: false), iconPath: "")
     }
 }
