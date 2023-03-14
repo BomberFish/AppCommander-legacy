@@ -66,6 +66,7 @@ func openInSantander(path: String) {
     UIApplication.shared.open(URL(string: "santander://\(path)")!, options: [:], completionHandler: nil)
 }
 
+// thanks bing ai
 func openInFilza(path: String) {
-    UIApplication.shared.alert(body: "Opening in filza is not implemented yet")
+    UIApplication.shared.open(URL(string: "filza://\(path)")!, options: [:], completionHandler: nil)
 }
