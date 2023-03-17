@@ -28,28 +28,41 @@ struct AppView: View {
 //                        }
 //                    }
                 Section {
-                    Button {
-                        appToIpa(bundleurl: bundleurl)
-                    } label: {
-                        Label("Export IPA (Currently broken)", systemImage: "arrow.down.app")
-                    }
                     Button(role: .destructive) {
-                        UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: notimplementedalert, destructActionText: "Delete")
+                        UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
+                            delDirectoryContents(path: getDataDir(bundleID: bundleId).absoluteString)
+                        }, destructActionText: "Delete")
                     } label: {
                         Label("Delete app data", systemImage: "trash")
                             .foregroundColor(Color(UIColor.systemRed))
                     }
+                    Button(role: .destructive) {
+                        UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
+                            let dataDirectory = getDataDir(bundleID: bundleId)
+                            delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").absoluteString)
+                        }, destructActionText: "Delete")
+                    } label: {
+                        Label("Delete app documents", systemImage: "trash")
+                            .foregroundColor(Color(UIColor.systemRed))
+                    }
                     Button {
-                        notimplementedalert()
+                        let dataDirectory = getDataDir(bundleID: bundleId)
+                        delDirectoryContents(path: dataDirectory.appendingPathComponent("Library/Caches").absoluteString)
                     } label: {
                         Label("Delete app cache", systemImage: "trash")
                     }
                     
-                    Button {
-                        UIApplication.shared.alert(title: "Data directory", body: "Path: \(getDataDir(bundleID: bundleId))")
-                    } label: {
-                        Label("Get data directory (alert)", systemImage: "folder")
-                    }
+//                    Button {
+//                        UIApplication.shared.alert(title: "Data directory", body: "Path: \(getDataDir(bundleID: bundleId))")
+//                    } label: {
+//                        Label("Get data directory (alert)", systemImage: "folder")
+//                    }
+                    
+                        Button {
+                            appToIpa(bundleurl: bundleurl)
+                        } label: {
+                            Label("Export IPA (Currently broken)", systemImage: "arrow.down.app")
+                        }
                 } header: {
                     Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
                 }

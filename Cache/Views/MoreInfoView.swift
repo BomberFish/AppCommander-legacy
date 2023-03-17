@@ -32,6 +32,7 @@ struct MoreInfoView: View {
                     if isSantanderInstalled() {
                         Button(action: {openInFilza(path: sbapp.bundleURL.path)}, label: {Label("Open in Santander", systemImage: "arrow.up.forward.app")})
                     }
+                    Button(action: {UIPasteboard.general.string =  getDataDir(bundleID: sbapp.bundleIdentifier).path}, label: {Label("Copy", systemImage: "doc.on.clipboard")})
                 }
             Text("Data directory: \(getDataDir(bundleID: sbapp.bundleIdentifier))")
                 .contextMenu {

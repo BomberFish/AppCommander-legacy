@@ -69,4 +69,25 @@ func openInSantander(path: String) {
 // thanks bing ai
 func openInFilza(path: String) {
     UIApplication.shared.open(URL(string: "filza://\(path)")!, options: [:], completionHandler: nil)
+}       
+
+func delDirectoryContents(path: String) {
+    var contents: [String] = [""]
+    do {
+        contents = try FileManager.default.contentsOfDirectory(atPath: path)
+    } catch {
+        UIApplication.shared.alert(body: "Could not get contents of directory?!")
+    }
+    if contents != [""] {
+        for file in contents {
+            do {
+                try FileManager.default.removeItem(atPath: file)
+                UIApplication.shared.alert(title: "Success", body: "Successfully deleted!")
+                Haptic.shared.notify(.success)
+            } catch {
+                UIApplication.shared.alert(body: "Could not remove file \(file)")
+                Haptic.shared.notify(.error)
+            }
+        }
+    }
 }
