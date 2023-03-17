@@ -91,3 +91,10 @@ func delDirectoryContents(path: String) {
         }
     }
 }
+
+func openApp(bundleID: String) -> Bool {
+    guard let obj = objc_getClass("LSApplicationWorkspace") as? NSObject else { return false }
+    let workspace = obj.perform(Selector(("defaultWorkspace")))?.takeUnretainedValue() as? NSObject
+    let open = workspace?.perform(Selector(("openApplicationWithBundleID:")), with: bundleID) != nil
+    return open
+}

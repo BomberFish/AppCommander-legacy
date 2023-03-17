@@ -36,6 +36,13 @@ struct MainView: View {
                                     print(app.pngIconPaths)
                                     print("=========")
                                 }
+                                .contextMenu {
+                                    Button(action: {
+                                        openApp(bundleID: app.bundleIdentifier)
+                                    }, label: {
+                                        Label("Open App", systemImage: "arrow.up.forward.app")
+                                    })
+                                }
                         }
                     }
                 } header: {
