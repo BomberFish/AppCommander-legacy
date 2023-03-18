@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */; };
 		D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */; };
+		D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */ = {isa = PBXBuildFile; productRef = D6D22B6129C64AC20095645B /* LocalConsole */; };
+		D6D22B6629C64D180095645B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6529C64D180095645B /* SettingsView.swift */; };
+		D6D22B6829C64D2A0095645B /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6729C64D2A0095645B /* AnalyticsView.swift */; };
+		D6D22B6B29C64DAD0095645B /* AnalyticsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6A29C64DAD0095645B /* AnalyticsSheet.swift */; };
+		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
 		D6E5528129B165400083E6A5 /* AppCommanderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5528029B165400083E6A5 /* AppCommanderApp.swift */; };
 		D6E5528329B165400083E6A5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5528229B165400083E6A5 /* MainView.swift */; };
 		D6E5528529B165410083E6A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6E5528429B165410083E6A5 /* Assets.xcassets */; };
@@ -49,6 +54,10 @@
 /* Begin PBXFileReference section */
 		D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AppCommander-Info.plist"; sourceTree = "<group>"; };
 		D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
+		D6D22B6529C64D180095645B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D6D22B6729C64D2A0095645B /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
+		D6D22B6A29C64DAD0095645B /* AnalyticsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSheet.swift; sourceTree = "<group>"; };
+		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D6E5527D29B165400083E6A5 /* AppCommander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppCommander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E5528029B165400083E6A5 /* AppCommanderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommanderApp.swift; sourceTree = "<group>"; };
 		D6E5528229B165400083E6A5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -82,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
+				D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */,
 				D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +119,24 @@
 				D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D6D22B6429C64D0F0095645B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D6D22B6529C64D180095645B /* SettingsView.swift */,
+				D6D22B6729C64D2A0095645B /* AnalyticsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D6D22B6929C64D9E0095645B /* AnalyticsSheet */ = {
+			isa = PBXGroup;
+			children = (
+				D6D22B6A29C64DAD0095645B /* AnalyticsSheet.swift */,
+				D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */,
+			);
+			path = AnalyticsSheet;
 			sourceTree = "<group>";
 		};
 		D6E5527429B165400083E6A5 = {
@@ -204,6 +232,8 @@
 				D6E5528229B165400083E6A5 /* MainView.swift */,
 				D6E552C529B2BE730083E6A5 /* AppView.swift */,
 				D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */,
+				D6D22B6929C64D9E0095645B /* AnalyticsSheet */,
+				D6D22B6429C64D0F0095645B /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +257,7 @@
 			packageProductDependencies = (
 				D6E552C829B2D60D0083E6A5 /* MarqueeText */,
 				D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */,
+				D6D22B6129C64AC20095645B /* LocalConsole */,
 			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
@@ -304,6 +335,7 @@
 			packageReferences = (
 				D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */,
 				D6402EBE29BE5C9A00E2F0C0 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */,
 			);
 			productRefGroup = D6E5527E29B165400083E6A5 /* Products */;
 			projectDirPath = "";
@@ -347,13 +379,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */,
+				D6D22B6B29C64DAD0095645B /* AnalyticsSheet.swift in Sources */,
 				D6E552BE29B2A0CC0083E6A5 /* ApplicationManager.swift in Sources */,
 				D6E552BC29B179820083E6A5 /* Unsandbox.swift in Sources */,
 				D6E552B929B16E640083E6A5 /* Haptic++.swift in Sources */,
+				D6D22B6829C64D2A0095645B /* AnalyticsView.swift in Sources */,
 				D6E5528329B165400083E6A5 /* MainView.swift in Sources */,
 				D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */,
 				D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */,
 				D6E552B229B16E170083E6A5 /* helpers.m in Sources */,
+				D6D22B6629C64D180095645B /* SettingsView.swift in Sources */,
 				D6E552B429B16E170083E6A5 /* grant_full_disk_access.m in Sources */,
 				D6E552B329B16E170083E6A5 /* vm_unaligned_copy_switch_race.c in Sources */,
 				D6E552CC29B2E9F50083E6A5 /* AppFunctions.swift in Sources */,
@@ -707,6 +743,14 @@
 				minimumVersion = 0.9.16;
 			};
 		};
+		D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BomberFish/LocalConsole";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/joekndy/MarqueeText";
@@ -722,6 +766,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6402EBE29BE5C9A00E2F0C0 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
+		};
+		D6D22B6129C64AC20095645B /* LocalConsole */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */;
+			productName = LocalConsole;
 		};
 		D6E552C829B2D60D0083E6A5 /* MarqueeText */ = {
 			isa = XCSwiftPackageProductDependency;

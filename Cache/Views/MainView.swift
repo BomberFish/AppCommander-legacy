@@ -67,7 +67,13 @@ struct MainView: View {
                     apps = allApps
                 }
             }
-            
+            .toolbar {
+                NavigationLink {
+                    SettingsView()
+                } label: {
+                    Label("", systemImage: "gear")
+                }
+            }
         }
         .onAppear {
             isUnsandboxed = unsandbox()

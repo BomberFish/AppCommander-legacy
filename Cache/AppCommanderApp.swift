@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import LocalConsole
 
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
+
+let consoleManager = LCManager.shared
 
 @main
 struct AppCommanderApp: App {
@@ -34,6 +37,7 @@ struct AppCommanderApp: App {
 
                     Haptic.shared.notify(.success)
                     UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
+                    consoleManager.isVisible = UserDefaults.standard.bool(forKey: "LCEnabled")
                 }
         }
     }
