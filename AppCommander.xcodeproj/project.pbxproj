@@ -66,7 +66,7 @@
 		D6E5529729B165420083E6A5 /* AppCommanderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppCommanderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E5529B29B165420083E6A5 /* CacheUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheUITests.swift; sourceTree = "<group>"; };
 		D6E5529D29B165420083E6A5 /* CacheUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D6E552AB29B16E160083E6A5 /* Cache-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cache-Bridging-Header.h"; sourceTree = "<group>"; };
+		D6E552AB29B16E160083E6A5 /* AppCommander-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppCommander-Bridging-Header.h"; sourceTree = "<group>"; };
 		D6E552AC29B16E170083E6A5 /* helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = helpers.m; sourceTree = "<group>"; };
 		D6E552AD29B16E170083E6A5 /* vm_unaligned_copy_switch_race.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vm_unaligned_copy_switch_race.c; sourceTree = "<group>"; };
 		D6E552AE29B16E170083E6A5 /* helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = helpers.h; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */,
-				D6E5527F29B165400083E6A5 /* Cache */,
+				D6E5527F29B165400083E6A5 /* AppCommander */,
 				D6E5529029B165420083E6A5 /* CacheTests */,
 				D6E5529A29B165420083E6A5 /* CacheUITests */,
 				D6E5527E29B165400083E6A5 /* Products */,
@@ -148,7 +148,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D6E5527F29B165400083E6A5 /* Cache */ = {
+		D6E5527F29B165400083E6A5 /* AppCommander */ = {
 			isa = PBXGroup;
 			children = (
 				D6E5528029B165400083E6A5 /* AppCommanderApp.swift */,
@@ -159,7 +159,7 @@
 				D6E5528429B165410083E6A5 /* Assets.xcassets */,
 				D6E5528629B165410083E6A5 /* Preview Content */,
 			);
-			path = Cache;
+			path = AppCommander;
 			sourceTree = "<group>";
 		};
 		D6E5528629B165410083E6A5 /* Preview Content */ = {
@@ -198,7 +198,7 @@
 				D6E552AC29B16E170083E6A5 /* helpers.m */,
 				D6E552AD29B16E170083E6A5 /* vm_unaligned_copy_switch_race.c */,
 				D6E552AF29B16E170083E6A5 /* vm_unaligned_copy_switch_race.h */,
-				D6E552AB29B16E160083E6A5 /* Cache-Bridging-Header.h */,
+				D6E552AB29B16E160083E6A5 /* AppCommander-Bridging-Header.h */,
 			);
 			path = Exploit;
 			sourceTree = "<group>";
@@ -563,7 +563,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Cache/Exploit/Cache-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppCommander/Exploit/AppCommander-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -599,7 +599,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Cache/Exploit/Cache-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppCommander/Exploit/AppCommander-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
