@@ -38,7 +38,11 @@ struct MainView: View {
                                 }
                                 .contextMenu {
                                     Button(action: {
-                                        openApp(bundleID: app.bundleIdentifier)
+                                        if openApp(bundleID: app.bundleIdentifier) {
+                                            Haptic.shared.notify(.success)
+                                        } else {
+                                            Haptic.shared.notify(.error)
+                                        }
                                     }, label: {
                                         Label("Open App", systemImage: "arrow.up.forward.app")
                                     })

@@ -26,7 +26,7 @@ func getDataDir(bundleID: String) -> URL {
         let mmpath = "/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist"
         print(mmpath)
         let mmDict = NSDictionary(contentsOfFile: mmpath)
-        print(mmDict)
+        print(mmDict as Any)
         if mmDict!["MCMMetadataIdentifier"] as! String == bundleID {
             returnedurl = URL.init(string: "/var/mobile/Containers/Data/Application")!.appendingPathComponent(dir)
         }
