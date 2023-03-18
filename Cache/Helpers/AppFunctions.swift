@@ -46,9 +46,11 @@ func appToIpa(bundleurl: URL) {
         try FileManager().zipItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload"), to: FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa"))
         print("zipped \(FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload")) to \(FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa"))")
         let vc = UIActivityViewController(activityItems: [FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa") as Any], applicationActivities: nil)
+        Haptic.shared.notify(.success)
         UIApplication.shared.windows[0].rootViewController?.present(vc, animated: true)
     } catch {
         print("error at the next step")
+        Haptic.shared.notify(.error)
         UIApplication.shared.alert(body: "There was an error exporting the ipa.")
     }
 }

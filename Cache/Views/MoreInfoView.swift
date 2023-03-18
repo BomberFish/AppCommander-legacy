@@ -11,6 +11,7 @@ struct MoreInfoView: View {
     @State public var sbapp: SBApp
     @State public var iconPath: String
     var body: some View {
+        // TODO: Make this look nice
         List {
             Text("Name: \(sbapp.name)")
                 .contextMenu {

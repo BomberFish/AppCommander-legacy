@@ -29,7 +29,9 @@ struct AppView: View {
 //                    }
                 Section {
                     Button(role: .destructive) {
+                        Haptic.shared.play(.medium)
                         UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
+                            Haptic.shared.play(.medium)
                             delDirectoryContents(path: getDataDir(bundleID: bundleId).absoluteString)
                         }, destructActionText: "Delete")
                     } label: {
@@ -37,7 +39,9 @@ struct AppView: View {
                             .foregroundColor(Color(UIColor.systemRed))
                     }
                     Button(role: .destructive) {
+                        Haptic.shared.play(.medium)
                         UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
+                            Haptic.shared.play(.medium)
                             let dataDirectory = getDataDir(bundleID: bundleId)
                             delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").absoluteString)
                         }, destructActionText: "Delete")
@@ -46,6 +50,7 @@ struct AppView: View {
                             .foregroundColor(Color(UIColor.systemRed))
                     }
                     Button {
+                        Haptic.shared.play(.medium)
                         let dataDirectory = getDataDir(bundleID: bundleId)
                         delDirectoryContents(path: dataDirectory.appendingPathComponent("Library/Caches").absoluteString)
                     } label: {
@@ -59,6 +64,7 @@ struct AppView: View {
 //                    }
                     
                         Button {
+                            Haptic.shared.play(.medium)
                             appToIpa(bundleurl: bundleurl)
                         } label: {
                             Label("Export IPA (Currently broken)", systemImage: "arrow.down.app")
