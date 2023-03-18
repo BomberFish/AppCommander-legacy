@@ -82,11 +82,14 @@ func delDirectoryContents(path: String) {
     }
     if contents != [""] {
         for file in contents {
+            print("Deleting \(file)")
             do {
                 try FileManager.default.removeItem(atPath: file)
+                print("Probably deleted \(file)")
                 UIApplication.shared.alert(title: "Success", body: "Successfully deleted!")
                 Haptic.shared.notify(.success)
             } catch {
+                print("Failed to delete \(file)")
                 UIApplication.shared.alert(body: "Could not remove file \(file)")
                 Haptic.shared.notify(.error)
             }

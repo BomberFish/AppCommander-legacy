@@ -52,7 +52,7 @@ struct AppView: View {
                     Button {
                         Haptic.shared.play(.medium)
                         let dataDirectory = getDataDir(bundleID: bundleId)
-                        delDirectoryContents(path: dataDirectory.appendingPathComponent("Library/Caches").absoluteString)
+                        delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).absoluteString)
                     } label: {
                         Label("Delete app cache", systemImage: "trash")
                     }
