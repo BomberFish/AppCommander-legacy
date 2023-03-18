@@ -12,7 +12,7 @@ struct SettingsView: View {
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
     @State var analyticsLevel: Int = UserDefaults.standard.integer(forKey: "analyticsLevel")
     // found the funny!
-    @State var sex: Bool = false
+    @State var sex: Bool = UserDefaults.standard.bool(forKey: "sex")
     var body: some View {
         List {
             Section {
@@ -60,10 +60,15 @@ struct SettingsView: View {
                         }
                     Toggle(isOn: $sex, label:{Text("😏      Sex")})
                         .tint(.accentColor)
+                        .onChange(of: sex) { new in
+                            // set the user defaults
+                            UserDefaults.standard.set(new, forKey: "sex")
+                        }
                 } header: {
                     Label("Debug", systemImage: "ladybug")
                 }
             }
+            Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)){}
         }
         .navigationTitle("Settings")
     }

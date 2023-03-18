@@ -10,13 +10,12 @@ import SwiftUI
 struct MainView: View {
     @State var isUnsandboxed = false
     @State private var searchText = ""
+    @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
     @State var allApps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
     @State var apps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
     var body: some View {
         NavigationView {
             List {
-                Section(header:
-                    Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)){}
                 Section {
                     if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
                         Spacer()
@@ -27,14 +26,16 @@ struct MainView: View {
                         ForEach(apps) {app in
                             AppCell(imagePath: (app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path), bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
                                 .onAppear {
-                                    print("===")
-                                    print((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path)
-                                    print(((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path).contains("this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"))
-                                    print("=====")
-                                    print(app.bundleURL)
-                                    print("=======")
-                                    print(app.pngIconPaths)
-                                    print("=========")
+                                    if debugEnabled {
+                                        print("===")
+                                        print((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path)
+                                        print(((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path).contains("this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"))
+                                        print("=====")
+                                        print(app.bundleURL)
+                                        print("=======")
+                                        print(app.pngIconPaths)
+                                        print("=========")
+                                    }
                                 }
                                 .contextMenu {
                                     Button(action: {

@@ -36,6 +36,17 @@ extension UIApplication {
         }
     }
     
+    func choiceAlert(title: String = "Error", body: String, onOK: @escaping () -> ()) {
+        DispatchQueue.main.async {
+            currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)
+            currentUIAlertController?.addAction(.init(title: "No", style: .cancel))
+            currentUIAlertController?.addAction(.init(title: "Yes", style: .default, handler: { _ in
+                onOK()
+            }))
+            self.present(alert: currentUIAlertController!)
+        }
+    }
+    
     func confirmAlertDestructive(title: String = "Error", body: String, onOK: @escaping () -> (), destructActionText: String) {
         DispatchQueue.main.async {
             currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)

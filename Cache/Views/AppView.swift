@@ -18,15 +18,7 @@ struct AppView: View {
                 Section{
                     AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl, sbapp: sbapp)
                     NavigationLink(destination: {MoreInfoView(sbapp: sbapp, iconPath: iconPath)}, label: {Label("More Info", systemImage: "info.circle")})
-                }header: { Label("App Details", systemImage: "info.circle")}
-//                    .contextMenu {
-//                        if isFilzaInstalled() {
-//                            Button(action: {openInFilza(path: bundleurl.relativePath)}, label: {Label("Open in Filza", systemImage: "arrow.up.forward.app")})
-//                        }
-//                        if isSantanderInstalled() {
-//                            Button(action: {openInFilza(path: bundleurl.relativePath)}, label: {Label("Open in Santander", systemImage: "arrow.up.forward.app")})
-//                        }
-//                    }
+                } header: {Label("App Details", systemImage: "info.circle")}
                 Section {
                     Button(role: .destructive) {
                         Haptic.shared.play(.medium)

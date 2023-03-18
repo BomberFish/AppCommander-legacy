@@ -9,8 +9,8 @@ import SwiftUI
 import LocalConsole
 
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
-
 let consoleManager = LCManager.shared
+let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 
 @main
 struct AppCommanderApp: App {
@@ -36,8 +36,19 @@ struct AppCommanderApp: App {
                     }
 
                     Haptic.shared.notify(.success)
-                    UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
                     consoleManager.isVisible = UserDefaults.standard.bool(forKey: "LCEnabled")
+                    if launchedBefore  {
+                        print("Not first launch.")
+                        UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
+                    } else {
+                        print("First launch, setting UserDefault.")
+                        // FIXME: body really sucks
+                        UIApplication.shared.choiceAlert(title: "Analytics", body: "Allow AppCommander to send anonymized data to improve your experience?", onOK: {
+                            UserDefaults.standard.set(1, forKey: "analyticsLevel")
+                            UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
+                        })
+                        UserDefaults.standard.set(true, forKey: "launchedBefore")
+                    }
                 }
         }
     }
