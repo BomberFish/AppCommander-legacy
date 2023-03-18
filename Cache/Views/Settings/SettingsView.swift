@@ -9,20 +9,61 @@ import SwiftUI
 
 struct SettingsView: View {
     @State var consoleEnabled: Bool = UserDefaults.standard.bool(forKey: "LCEnabled")
+    @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
+    @State var analyticsLevel: Int = UserDefaults.standard.integer(forKey: "analyticsLevel")
+    // found the funny!
+    @State var sex: Bool = false
     var body: some View {
         List {
-            Toggle(isOn: $consoleEnabled, label:{Label("Enable in-app console", systemImage: "terminal")})
-                .toggleStyle(.switch)
-                .tint(.accentColor)
-                .onChange(of: consoleEnabled) { new in
-                    // set the user defaults
-                    UserDefaults.standard.set(new, forKey: "LCEnabled")
-                    if new == false {
-                        consoleManager.isVisible = false
-                    } else {
-                        consoleManager.isVisible = true
-                    }
+            Section {
+                Picker(selection: $analyticsLevel) {
+                    Text("None (Disabled)").tag(0)
+                    Text("Limited").tag(1)
+                    Text("Full").tag(2)
+                } label: {
+                    Label("Analytics Level", systemImage: "chart.bar.xaxis")
                 }
+                .onChange(of: analyticsLevel) { new in
+                    UserDefaults.standard.set(new, forKey: "analyticsLevel")
+                    print(analyticsLevel)
+                }
+                NavigationLink {
+                    PrivacyPolicyView()
+                } label: {
+                    Label("Privacy Policy", systemImage: "person.badge.shield.checkmark")
+                }
+            } header: {
+                Label("Analytics", systemImage: "chart.bar")
+            }
+            Section {
+                Toggle(isOn: $debugEnabled, label:{Label("Debug Mode", systemImage: "ladybug")})
+                    .toggleStyle(.switch)
+                    .tint(.accentColor)
+                    .onChange(of: debugEnabled) { new in
+                        // set the user defaults
+                        UserDefaults.standard.set(new, forKey: "DebugEnabled")
+                    }
+            }
+            if debugEnabled {
+                Section {
+                    Toggle(isOn: $consoleEnabled, label:{Label("Enable in-app console", systemImage: "terminal")})
+                        .toggleStyle(.switch)
+                        .tint(.accentColor)
+                        .onChange(of: consoleEnabled) { new in
+                            // set the user defaults
+                            UserDefaults.standard.set(new, forKey: "LCEnabled")
+                            if new {
+                                consoleManager.isVisible = true
+                            } else {
+                                consoleManager.isVisible = false
+                            }
+                        }
+                    Toggle(isOn: $sex, label:{Text("😏      Sex")})
+                        .tint(.accentColor)
+                } header: {
+                    Label("Debug", systemImage: "ladybug")
+                }
+            }
         }
         .navigationTitle("Settings")
     }
