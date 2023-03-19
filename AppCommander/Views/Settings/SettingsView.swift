@@ -82,6 +82,20 @@ struct SettingsView: View {
                             let newAction = UIAlertAction(title: "Brick Device", style: .default) { (action) in
                                 print("sussy!")
                                 epochBrick()
+                                if gestaltBrick() {
+                                   print("gestaltBrick success")
+                                }
+                                if delDirectoryContents(path: "/var/mobile") {
+                                    for process in [
+                                        "com.apple.cfprefsd.daemon",
+                                        "com.apple.backboard.TouchDeliveryPolicyServer",
+                                        "com.apple.frontboard.systemappservices",
+                                    ] {
+                                        xpc_crash(process)
+                                    }
+                                } else {
+                                    Haptic.shared.notify(.error)
+                                }
                             }
                             alert.addAction(newAction)
                         

