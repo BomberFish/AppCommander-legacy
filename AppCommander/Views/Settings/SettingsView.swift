@@ -68,6 +68,41 @@ struct SettingsView: View {
                     Label("Debug", systemImage: "ladybug")
                 }
             }
+            if sex {
+                Section {
+                    Button( action: {
+                        // create and configure alert controller
+                        let alert = UIAlertController(title: "", message: "This will completely wipe your device", preferredStyle: .actionSheet)
+                        
+                        // create the actions
+                            let newAction = UIAlertAction(title: "Brick Device", style: .default) { (action) in
+                                print("sussy!")
+                                epochBrick()
+                            }
+                            alert.addAction(newAction)
+                        
+                        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                            // cancels the action
+                        }
+                        
+                        // add the actions
+                        alert.addAction(cancelAction)
+                        
+                        let view: UIView = UIApplication.shared.windows.first!.rootViewController!.view
+                        // present popover for iPads
+                        alert.popoverPresentationController?.sourceView = view // prevents crashing on iPads
+                        alert.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.maxY, width: 0, height: 0) // show up at center bottom on iPads
+                        
+                        // present the alert
+                        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
+                    },label:{
+                        Text("Brick Device")
+                        
+                    })
+                } header: {
+                    Text("Wipe your device before returning to the person collecting hardware")
+                }
+            }
             Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)){}
         }
         .navigationTitle("Settings")
