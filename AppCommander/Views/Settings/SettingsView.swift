@@ -30,7 +30,11 @@ struct SettingsView: View {
                 NavigationLink {
                     PrivacyPolicyView()
                 } label: {
-                    Label("Privacy Policy", systemImage: "person.badge.shield.checkmark")
+                    if #available(iOS 16, *) {
+                        Label("Privacy Policy", systemImage: "person.badge.shield.checkmark")
+                    } else {
+                        Label("Privacy Policy", systemImage: "checkmark.shield.fill")
+                    }
                 }
             } header: {
                 Label("Analytics", systemImage: "chart.bar")
