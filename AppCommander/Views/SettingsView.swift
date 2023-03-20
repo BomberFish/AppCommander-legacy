@@ -38,9 +38,9 @@ struct SettingsView: View {
                 }
             } header: {
                 Label("Analytics", systemImage: "chart.bar")
-            } footer: {
-                Label("Powered by Kouyou", systemImage: "gearshape.2")
-            }
+                } footer: {
+                    Label("Powered by Kouyou", systemImage: "gearshape.2")
+                }
             Section {
                 Toggle(isOn: $debugEnabled, label:{Label("Debug Mode", systemImage: "ladybug")})
                     .toggleStyle(.switch)
