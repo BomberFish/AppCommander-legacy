@@ -6,16 +6,26 @@
 //
 
 import SwiftUI
+import WebKit
+ 
+struct WebView: UIViewRepresentable {
+ 
+    var url: URL
+ 
+    func makeUIView(context: Context) -> WKWebView {
+        return WKWebView()
+    }
+ 
+    func updateUIView(_ webView: WKWebView, context: Context) {
+        let request = URLRequest(url: url)
+        webView.load(request)
+    }
+}
 
 struct PrivacyPolicyView: View {
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                Text("\n\nwe dont sell your data 👍👍👍\n\n\n")
-                Text("**Full**\n- Device Model\n- Device iOS Version\n- Whether it is your first launch or not\n- Language Region\n- Anonymized crash logs, IF you click \"report to developer\".\n- App version (for updates)\n\n**Limited**\n- App version (for updates)\n- Whether it is your first launch or not\n\n**None**\nNo HTTP requests ever sent.")
-            }
-        }
-            .navigationTitle("Privacy Policy")
+        WebView(url: URL(string: "https://bomberfish.ca/misc/kouyou-privacy-policy.html")!)
+            .navigationTitle("Kouyou Privacy Policy")
     }
 }
 
