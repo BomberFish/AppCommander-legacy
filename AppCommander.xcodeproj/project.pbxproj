@@ -119,14 +119,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D6D22B6429C64D0F0095645B /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				D6D22B6529C64D180095645B /* SettingsView.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		D6E5527429B165400083E6A5 = {
 			isa = PBXGroup;
 			children = (
@@ -222,7 +214,7 @@
 				D6E552C529B2BE730083E6A5 /* AppView.swift */,
 				D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */,
 				D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */,
-				D6D22B6429C64D0F0095645B /* Settings */,
+				D6D22B6529C64D180095645B /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
