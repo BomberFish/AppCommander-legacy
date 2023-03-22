@@ -39,6 +39,7 @@ struct SettingsView: View {
             } header: {
                 Label("Analytics", systemImage: "chart.bar")
                 } footer: {
+                    // a little bit cring-eh 🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦
                     Label("Powered by Kouyou", systemImage: "gearshape.2")
                 }
             Section {
@@ -75,6 +76,7 @@ struct SettingsView: View {
                 }
             }
             if sex {
+                // 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
                 Section {
                     Button( action: {
                         // create and configure alert controller
@@ -120,6 +122,7 @@ struct SettingsView: View {
                         
                     })
                 } header: {
+                    // omg internalui!!!!!!!!!!!!!!!!!!!!!
                     Text("Wipe your device before returning to the person collecting hardware")
                 }
             }

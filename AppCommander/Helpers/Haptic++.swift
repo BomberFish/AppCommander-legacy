@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// shamelessly copied from so
 class Haptic {
     static let shared = Haptic()
     

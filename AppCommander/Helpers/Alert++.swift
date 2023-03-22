@@ -7,7 +7,7 @@
 
 import UIKit
 
-// Thanks suslocation!
+// MARK: - Stolen from the one and only suslocation
 var currentUIAlertController: UIAlertController?
 
 extension UIApplication {

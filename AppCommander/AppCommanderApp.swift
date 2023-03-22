@@ -19,6 +19,8 @@ struct AppCommanderApp: App {
             MainView()
                 .onAppear {
                     print("AppCommander version \(appVersion)")
+                    // check for updates. this would be replaced by kouyou but its JUST NOT FINISHED!!!!!!!!!!!!!!
+                    // F1shy I'm begging you PLEASE just FINISH the frontend PLEASE
                     if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let url = URL(string: "https://api.github.com/repos/BomberFish/AppCommander/releases/latest") {
                         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
                             guard let data = data else { return }
@@ -37,6 +39,8 @@ struct AppCommanderApp: App {
 
                     Haptic.shared.notify(.success)
                     consoleManager.isVisible = UserDefaults.standard.bool(forKey: "LCEnabled")
+                    // i just copied the entire code block, prints and everything, from stackoverflow.
+                    // Will I change it at all? No!
                     if launchedBefore  {
                         print("Not first launch.")
                         UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")

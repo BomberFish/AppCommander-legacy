@@ -11,6 +11,7 @@ struct MainView: View {
     @State var isUnsandboxed = false
     @State private var searchText = ""
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
+    // MARK: - Literally the worst code ever. Will I fix it? No!
     @State var allApps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
     @State var apps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
     var body: some View {

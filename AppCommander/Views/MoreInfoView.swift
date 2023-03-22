@@ -14,6 +14,7 @@ struct MoreInfoView: View {
         // TODO: Make this look nice
         List {
             Text("Name: \(sbapp.name)")
+                // TODO: 💀
                 .contextMenu {
                     Button(action: {UIPasteboard.general.string = sbapp.name}, label: {Label("Copy", systemImage: "doc.on.clipboard")})
                 }

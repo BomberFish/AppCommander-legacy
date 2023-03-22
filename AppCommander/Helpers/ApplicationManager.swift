@@ -14,6 +14,7 @@ enum GenericError: Error {
 }
 
 // stolen from appabetical :trolley:
+// I do not know how this code works but all I know is that it does.
 class ApplicationManager {
     private static var fm = FileManager.default
     
@@ -67,6 +68,7 @@ class ApplicationManager {
             // obtaining png icons inside bundle. defined in info.plist
             if app.bundleIdentifier == "com.apple.mobiletimer" {
                 // use correct paths for clock, because it has arrows
+                // This looks absolutely horrible, why do we even try
                 app.pngIconPaths += ["circle_borderless@2x~iphone.png"]
             }
             if let CFBundleIcons = infoPlist["CFBundleIcons"] {

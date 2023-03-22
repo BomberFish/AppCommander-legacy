@@ -24,6 +24,7 @@ struct AppView: View {
                         Haptic.shared.play(.medium)
                         UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                             Haptic.shared.play(.medium)
+                            // god fuck these warnings i could not give a singular flying fuck
                             delDirectoryContents(path: getDataDir(bundleID: bundleId).absoluteString)
                         }, destructActionText: "Delete")
                     } label: {
@@ -67,6 +68,7 @@ struct AppView: View {
             }
             .navigationTitle(name)
     }
+    // 💀
     func notimplementedalert() {
         UIApplication.shared.alert(title: "Not implemented", body: "lol")
     }

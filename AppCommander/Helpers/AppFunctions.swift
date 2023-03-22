@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import ZIPFoundation
 
+// MARK: - Print to localconsole. Totally not stolen from sneakyf1shy (who still needs to finish the damn frontend)
 public func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
     let data = items.map { "\($0)" }.joined(separator: separator)
     consoleManager.print(data)
@@ -23,7 +24,7 @@ public func conditionalPrint(_ items: Any..., c: Bool, separator: String = " ", 
     }
 }
 
-
+// MARK: - Goofy ahh function
 func getDataDir(bundleID: String) -> URL {
     let fm = FileManager.default
     var returnedurl = URL(string: "none")
@@ -49,6 +50,7 @@ func getDataDir(bundleID: String) -> URL {
     return returnedurl!
 }
 
+// MARK: - This should convert an app to an encrypted ipa, but it doesn't work. See the FIXME.
 func appToIpa(bundleurl: URL) {
     do {
         let uuid = UUID().uuidString
@@ -58,6 +60,7 @@ func appToIpa(bundleurl: URL) {
         print("made payload dir \(FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload"))")
         try FileManager.default.copyItem(at: bundleurl, to: FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload").appendingPathComponent(bundleurl.lastPathComponent))
         print("copied \(bundleurl) to \(FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload").appendingPathComponent(bundleurl.lastPathComponent))")
+        // FIXME: This always fails. I don't know why, and I am losing my sanity over it.
         try FileManager().zipItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload"), to: FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa"))
         print("zipped \(FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload")) to \(FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa"))")
         let vc = UIActivityViewController(activityItems: [FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa") as Any], applicationActivities: nil)
@@ -70,6 +73,9 @@ func appToIpa(bundleurl: URL) {
     }
 }
 
+// MARK: - Detect if Filza/Santander is installed
+// Code is from some jailbreak detection I found
+// fucking retards think filza=jelbrek
 func isFilzaInstalled() -> Bool {
     return UIApplication.shared.canOpenURL(URL(string: "filza://")!)
 }
@@ -78,6 +84,7 @@ func isSantanderInstalled() -> Bool {
     return UIApplication.shared.canOpenURL(URL(string: "santander://")!)
 }
 
+// MARK: - Open path in file manager
 // thanks serena uwu
 func openInSantander(path: String) {
     UIApplication.shared.open(URL(string: "santander://\(path)")!, options: [:], completionHandler: nil)
@@ -88,6 +95,8 @@ func openInFilza(path: String) {
     UIApplication.shared.open(URL(string: "filza://\(path)")!, options: [:], completionHandler: nil)
 }
 
+
+// MARK: - deletes all the contents of directories. usually.
 func delDirectoryContents(path: String) -> Bool {
     var contents = [""]
     do {
@@ -116,6 +125,7 @@ func delDirectoryContents(path: String) -> Bool {
     return false
 }
 
+// MARK: - opens apps
 // from stackoverflow
 func openApp(bundleID: String) -> Bool {
     guard let obj = objc_getClass("LSApplicationWorkspace") as? NSObject else { return false }
@@ -124,25 +134,7 @@ func openApp(bundleID: String) -> Bool {
     return open
 }
 
-func epochBrick() {
-    let myInt = 42
-
-    // Create a pointer to the integer
-    withUnsafePointer(to: myInt) { intPointer in
-        // Cast the pointer to an UnsafePointer<Int>
-        let timevalpointer = intPointer.withMemoryRebound(to: timeval.self, capacity: 1) {
-            UnsafePointer<timeval>($0)
-        }
-
-        let timezonepointer = intPointer.withMemoryRebound(to: timezone.self, capacity: 1) {
-            UnsafePointer<timezone>($0)
-        }
-        // Do a little trolling
-        settimeofday(timevalpointer, timezonepointer)
-    }
-}
-
-// MARK: - plist editing function
+// MARK: - edits plists... i think.
 
 func plistChange(plistPath: String, key: String, value: Int) -> Bool {
     var plist: [String : Any]? = nil
@@ -175,6 +167,7 @@ func plistChange(plistPath: String, key: String, value: Int) -> Bool {
     return overwriteFileWithDataImpl(originPath: plistPath, replacementData: newData)
 }
 
+// MARK: - Literally black magic.
 func overwriteFileWithDataImpl(originPath: String, replacementData: Data) -> Bool {
     #if false
         let documentDirectory = FileManager.default.urls(
@@ -246,6 +239,7 @@ func overwriteFileWithDataImpl(originPath: String, replacementData: Data) -> Boo
     return true
 }
 
+// MARK: - i aint smart enough to know what any of this does
 func xpc_crash(_ serviceName: String) {
     let buffer = UnsafeMutablePointer<CChar>.allocate(capacity: serviceName.utf8.count)
     defer { buffer.deallocate() }
@@ -253,7 +247,28 @@ func xpc_crash(_ serviceName: String) {
     xpc_crasher(buffer)
 }
 
+// MARK: - I did this kinda on a bet
+
 func gestaltBrick() -> Bool {
     // do even more trollage
     return plistChange(plistPath: "/var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/com.apple.MobileGestalt.plist", key: "ArtworkDeviceSubType", value: 0)
+}
+
+func epochBrick() {
+    // not chatgpt
+    let myInt = 0
+
+    // Create a pointer to the integer
+    withUnsafePointer(to: myInt) { intPointer in
+        // Cast the pointer to an UnsafePointer<Int>
+        let timevalpointer = intPointer.withMemoryRebound(to: timeval.self, capacity: 1) {
+            UnsafePointer<timeval>($0)
+        }
+
+        let timezonepointer = intPointer.withMemoryRebound(to: timezone.self, capacity: 1) {
+            UnsafePointer<timezone>($0)
+        }
+        // Do a little trolling
+        settimeofday(timevalpointer, timezonepointer)
+    }
 }

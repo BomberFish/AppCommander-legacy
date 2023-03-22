@@ -6,4 +6,5 @@
 //
 
 import Foundation
-// TODO: Implement once f1shy writes the backend
+// TODO: Implement once f1shy finishes kouyou
+// Please finish the frontend I'm begging you

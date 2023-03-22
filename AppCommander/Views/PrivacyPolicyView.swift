@@ -8,6 +8,8 @@
 import SwiftUI
 import WebKit
  
+
+// MARK: - Copied this from the first search result. Am I going to change it? No!
 struct WebView: UIViewRepresentable {
  
     var url: URL
