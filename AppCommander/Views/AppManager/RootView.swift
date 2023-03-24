@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct RootView: View {
     var body: some View {
@@ -14,10 +15,12 @@ struct RootView: View {
                 .tabItem {
                             Label("App Manager", systemImage: "list.bullet")
                         }
-            AppabeticalView()
-                .tabItem {
-                            Label("Home Screen", systemImage: "apps.iphone")
-                        }
+            if !(UIDevice.current.userInterfaceIdiom == .pad) {
+                AppabeticalView()
+                    .tabItem {
+                        Label("Home Screen", systemImage: "apps.iphone")
+                    }
+            }
         }
     }
 }
