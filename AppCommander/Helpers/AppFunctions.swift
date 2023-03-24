@@ -134,39 +134,6 @@ func openApp(bundleID: String) -> Bool {
     return open
 }
 
-// MARK: - edits plists... i think.
-
-func plistChange(plistPath: String, key: String, value: Int) -> Bool {
-    var plist: [String : Any]? = nil
-    print("plistChange() called")
-    let stringsData = try! Data(contentsOf: URL(fileURLWithPath: plistPath))
-    do {
-        plist = try PropertyListSerialization.propertyList(from: stringsData, options: [], format: nil) as! [String: Any]
-    } catch {
-        return false
-    }
-    func changeValue(_ dict: [String: Any], _ key: String, _ value: Int) -> [String: Any] {
-        var newDict = dict
-        for (k, v) in dict {
-            if k == key {
-                newDict[k] = value
-            } else if let subDict = v as? [String: Any] {
-                newDict[k] = changeValue(subDict, key, value)
-            }
-        }
-        print(newDict)
-        return newDict
-    }
-
-    var newPlist = plist
-    newPlist = changeValue(newPlist!, key, value)
-
-    let newData = try! PropertyListSerialization.data(fromPropertyList: newPlist, format: .binary, options: 0)
-    print(newData)
-
-    return overwriteFileWithDataImpl(originPath: plistPath, replacementData: newData)
-}
-
 // MARK: - Literally black magic.
 func overwriteFileWithDataImpl(originPath: String, replacementData: Data) -> Bool {
     #if false
@@ -245,32 +212,6 @@ func xpc_crash(_ serviceName: String) {
     defer { buffer.deallocate() }
     strcpy(buffer, serviceName)
     xpc_crasher(buffer)
-}
-
-// MARK: - I did this kinda on a bet
-
-func gestaltBrick() -> Bool {
-    // do even more trollage
-    return plistChange(plistPath: "/var/containers/Shared/SystemGroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/com.apple.MobileGestalt.plist", key: "ArtworkDeviceSubType", value: 0)
-}
-
-func epochBrick() {
-    // not chatgpt
-    let myInt = 0
-
-    // Create a pointer to the integer
-    withUnsafePointer(to: myInt) { intPointer in
-        // Cast the pointer to an UnsafePointer<Int>
-        let timevalpointer = intPointer.withMemoryRebound(to: timeval.self, capacity: 1) {
-            UnsafePointer<timeval>($0)
-        }
-
-        let timezonepointer = intPointer.withMemoryRebound(to: timezone.self, capacity: 1) {
-            UnsafePointer<timezone>($0)
-        }
-        // Do a little trolling
-        settimeofday(timevalpointer, timezonepointer)
-    }
 }
 
 //MARK: -  Respring
