@@ -13,6 +13,9 @@
 		D6D22B6629C64D180095645B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6529C64D180095645B /* SettingsView.swift */; };
 		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
 		D6D22B6F29C65D6B0095645B /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6E29C65D6B0095645B /* Analytics.swift */; };
+		D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7A29CDCBF000D019D1 /* Dynamic */; };
+		D6E3FC7E29CDCC2000D019D1 /* ApplicationsWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7D29CDCC2000D019D1 /* ApplicationsWrapper */; };
+		D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */; };
 		D6E5528129B165400083E6A5 /* AppCommanderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5528029B165400083E6A5 /* AppCommanderApp.swift */; };
 		D6E5528329B165400083E6A5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5528229B165400083E6A5 /* MainView.swift */; };
 		D6E5528529B165410083E6A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6E5528429B165410083E6A5 /* Assets.xcassets */; };
@@ -88,9 +91,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */,
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
 				D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */,
 				D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */,
+				D6E3FC7E29CDCC2000D019D1 /* ApplicationsWrapper in Frameworks */,
+				D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +245,9 @@
 				D6E552C829B2D60D0083E6A5 /* MarqueeText */,
 				D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */,
 				D6D22B6129C64AC20095645B /* LocalConsole */,
+				D6E3FC7A29CDCBF000D019D1 /* Dynamic */,
+				D6E3FC7D29CDCC2000D019D1 /* ApplicationsWrapper */,
+				D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */,
 			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
@@ -317,6 +326,8 @@
 				D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */,
 				D6402EBE29BE5C9A00E2F0C0 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */,
+				D6E3FC7929CDCBF000D019D1 /* XCRemoteSwiftPackageReference "Dynamic" */,
+				D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */,
 			);
 			productRefGroup = D6E5527E29B165400083E6A5 /* Products */;
 			projectDirPath = "";
@@ -731,6 +742,22 @@
 				kind = branch;
 			};
 		};
+		D6E3FC7929CDCBF000D019D1 /* XCRemoteSwiftPackageReference "Dynamic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mhdhejazi/Dynamic";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SerenaKit/PrivateKits";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/joekndy/MarqueeText";
@@ -751,6 +778,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */;
 			productName = LocalConsole;
+		};
+		D6E3FC7A29CDCBF000D019D1 /* Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E3FC7929CDCBF000D019D1 /* XCRemoteSwiftPackageReference "Dynamic" */;
+			productName = Dynamic;
+		};
+		D6E3FC7D29CDCC2000D019D1 /* ApplicationsWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
+			productName = ApplicationsWrapper;
+		};
+		D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
+			productName = AssetCatalogWrapper;
 		};
 		D6E552C829B2D60D0083E6A5 /* MarqueeText */ = {
 			isa = XCSwiftPackageProductDependency;

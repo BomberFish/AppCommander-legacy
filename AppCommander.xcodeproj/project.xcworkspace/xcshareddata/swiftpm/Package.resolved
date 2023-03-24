@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "dynamic",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mhdhejazi/Dynamic",
+      "state" : {
+        "revision" : "ab9a2570862d54aed2663691bb767f881226a12f",
+        "version" : "1.2.0"
+      }
+    },
+    {
       "identity" : "localconsole",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BomberFish/LocalConsole",
@@ -16,6 +25,15 @@
       "state" : {
         "branch" : "master",
         "revision" : "e18d514455563ad00581e0d825146c6f15b1c6c4"
+      }
+    },
+    {
+      "identity" : "privatekits",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SerenaKit/PrivateKits",
+      "state" : {
+        "branch" : "main",
+        "revision" : "622ec6ef3020622946d3512cde95b6a35530996c"
       }
     },
     {
