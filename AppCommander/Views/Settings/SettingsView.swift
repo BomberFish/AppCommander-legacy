@@ -36,10 +36,10 @@ struct SettingsView: View {
                 }
             } header: {
                 Label("Analytics", systemImage: "chart.bar")
-                } footer: {
-                    // a little bit cring-eh 🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦
-                    Label("Powered by Kouyou", systemImage: "gearshape.2")
-                }
+            } footer: {
+                // a little bit cring-eh 🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦
+                Label("Powered by Kouyou", systemImage: "gearshape.2")
+            }
             Section {
                 LinkCell(imageName: "bomberfish", url: "https://github.com/BomberFish", title: "BomberFish", contribution: "Main Developer", circle: true)
                 LinkCell(imageName: "floppa", url: "https://github.com/Avangelista", title: "Avangelista", contribution: "Appabetical", circle: true)
@@ -49,7 +49,7 @@ struct SettingsView: View {
                 Label("Credits", systemImage: "heart")
             }
             Section {
-                Toggle(isOn: $debugEnabled, label:{Label("Debug Mode", systemImage: "ladybug")})
+                Toggle(isOn: $debugEnabled, label: { Label("Debug Mode", systemImage: "ladybug") })
                     .toggleStyle(.switch)
                     .tint(.accentColor)
                     .onChange(of: debugEnabled) { new in
@@ -59,7 +59,7 @@ struct SettingsView: View {
             }
             if debugEnabled {
                 Section {
-                    Toggle(isOn: $consoleEnabled, label:{Label("Enable in-app console", systemImage: "terminal")})
+                    Toggle(isOn: $consoleEnabled, label: { Label("Enable in-app console", systemImage: "terminal") })
                         .toggleStyle(.switch)
                         .tint(.accentColor)
                         .onChange(of: consoleEnabled) { new in
@@ -71,13 +71,13 @@ struct SettingsView: View {
                                 consoleManager.isVisible = false
                             }
                         }
-                    Button(action: respringFrontboard, label: {Label("Restart frontboard", systemImage: "arrow.counterclockwise")})
-                    Button(action: respringBackboard, label: {Label("Restart backboard", systemImage: "arrow.counterclockwise")})
+                    Button(action: respringFrontboard, label: { Label("Restart frontboard", systemImage: "arrow.counterclockwise") })
+                    Button(action: respringBackboard, label: { Label("Restart backboard", systemImage: "arrow.counterclockwise") })
                 } header: {
                     Label("Debug", systemImage: "ladybug")
                 }
             }
-            Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)){}
+            Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)) {}
         }
         .navigationTitle("Settings")
     }

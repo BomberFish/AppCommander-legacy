@@ -5,11 +5,10 @@
 //  Created by Hariz Shirazi on 2023-03-24.
 //
 
-import SwiftUI
 import MobileCoreServices
+import SwiftUI
 
 struct AppabeticalView: View {
-    
     // Settings variables
     @State private var selectedItems = [Int]()
     @State private var pageOp = IconStateManager.PageSortingOption.individually
@@ -18,7 +17,6 @@ struct AppabeticalView: View {
     @State private var widgetOp = IconStateManager.WidgetOptions.top
     
     @Environment(\.openURL) var openURL
-    
     
     var body: some View {
         NavigationView {
@@ -37,14 +35,14 @@ struct AppabeticalView: View {
                         Text("A-Z").tag(IconStateManager.SortOption.alphabetically)
                         Text("Z-A").tag(IconStateManager.SortOption.alphabeticallyReversed)
                         Text("Color").tag(IconStateManager.SortOption.color)
-                    }.onChange(of: sortOp, perform: {nv in if nv == .color && folderOp == .alongside { folderOp = .separately }})
+                    }.onChange(of: sortOp, perform: { nv in if nv == .color, folderOp == .alongside { folderOp = .separately }})
                     Picker(selection: $pageOp, label: Label("Pages", systemImage: "rectangle.split.3x1")) {
                         Text("Sort pages independently").tag(IconStateManager.PageSortingOption.individually)
                         Text("Sort apps across pages").tag(IconStateManager.PageSortingOption.acrossPages)
                     }
                     Picker(selection: $folderOp, label: Label("Folders", systemImage: "folder")) {
                         Text("Retain current order").tag(IconStateManager.FolderSortingOption.noSort)
-                        if (sortOp == .alphabetically || sortOp == .alphabeticallyReversed) {
+                        if sortOp == .alphabetically || sortOp == .alphabeticallyReversed {
                             Text("Sort mixed with apps").tag(IconStateManager.FolderSortingOption.alongside)
                         }
                         Text("Sort separate from apps").tag(IconStateManager.FolderSortingOption.separately)
@@ -58,7 +56,7 @@ struct AppabeticalView: View {
                         Label("Sort Apps", systemImage: "checkmark.circle")
                     }).disabled(selectedItems.isEmpty)
                 }
-                Section(footer: Text((fm.fileExists(atPath: savedLayoutUrl.path) ?  "The previously saved layout will be overwritten." : "It is recommended you save your current layout before experimenting as only one undo is possible." ))) {
+                Section(footer: Text(fm.fileExists(atPath: savedLayoutUrl.path) ? "The previously saved layout will be overwritten." : "It is recommended you save your current layout before experimenting as only one undo is possible.")) {
                     Button(action: {
                         restoreBackup()
                     }, label: {
@@ -80,16 +78,15 @@ struct AppabeticalView: View {
         }
     }
     
-    
     // Sort the selected pages
     func sortPage() {
         do {
             let pageCount = try IconStateManager.shared.pageCount()
-            selectedItems = selectedItems.filter {$0 - 1 < pageCount }
+            selectedItems = selectedItems.filter { $0 - 1 < pageCount }
             if selectedItems.isEmpty { return }
             
             try IconStateManager.shared.sortPages(selectedPages: selectedItems, sortOption: sortOp, pageSortingOption: pageOp, folderSortingOption: folderOp)
-        } catch {  UIApplication.shared.alert(body: error.localizedDescription) }
+        } catch { UIApplication.shared.alert(body: error.localizedDescription) }
     }
     
     func saveLayout() {
@@ -101,7 +98,7 @@ struct AppabeticalView: View {
             do {
                 try BackupManager.restoreBackup()
                 respring()
-            } catch {  UIApplication.shared.alert(body: error.localizedDescription) }
+            } catch { UIApplication.shared.alert(body: error.localizedDescription) }
         }, noCancel: false)
     }
     
@@ -110,7 +107,7 @@ struct AppabeticalView: View {
             do {
                 try BackupManager.restoreLayout()
                 respring()
-            } catch {  UIApplication.shared.alert(body: error.localizedDescription) }
+            } catch { UIApplication.shared.alert(body: error.localizedDescription) }
         }, noCancel: false)
     }
 }
@@ -120,4 +117,3 @@ struct AppabeticalView_Previews: PreviewProvider {
         AppabeticalView()
     }
 }
-

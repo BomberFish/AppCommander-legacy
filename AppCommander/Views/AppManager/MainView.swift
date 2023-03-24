@@ -11,21 +11,23 @@ struct MainView: View {
     @State var isUnsandboxed = false
     @State private var searchText = ""
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
+
     // MARK: - Literally the worst code ever. Will I fix it? No!
-    @State var allApps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
-    @State var apps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+
+    @State var allApps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+    @State var apps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL.init(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
+                    if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
                         Spacer()
                         ProgressView()
                         Spacer()
                     } else {
                         // TODO: icons!
-                        ForEach(apps) {app in
-                            AppCell(imagePath: (app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path), bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
+                        ForEach(apps) { app in
+                            AppCell(imagePath: app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path, bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
                                 .onAppear {
                                     if debugEnabled {
                                         print("===")
@@ -62,7 +64,7 @@ struct MainView: View {
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search apps...")
             .navigationTitle("AppCommander")
             .onChange(of: searchText) { searchText in
-             
+
                 if !searchText.isEmpty {
                     apps = allApps.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
                 } else {

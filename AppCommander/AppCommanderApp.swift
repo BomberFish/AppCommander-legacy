@@ -5,8 +5,8 @@
 //  Created by Hariz Shirazi on 2023-03-02.
 //
 
-import SwiftUI
 import LocalConsole
+import SwiftUI
 
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
@@ -41,7 +41,7 @@ struct AppCommanderApp: App {
                     consoleManager.isVisible = UserDefaults.standard.bool(forKey: "LCEnabled")
                     // i just copied the entire code block, prints and everything, from stackoverflow.
                     // Will I change it at all? No!
-                    if launchedBefore  {
+                    if launchedBefore {
                         print("Not first launch.")
                         UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
                     } else {

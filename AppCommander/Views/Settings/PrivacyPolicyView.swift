@@ -7,17 +7,16 @@
 
 import SwiftUI
 import WebKit
- 
 
 // MARK: - Copied this from the first search result. Am I going to change it? No!
+
 struct WebView: UIViewRepresentable {
- 
     var url: URL
- 
+
     func makeUIView(context: Context) -> WKWebView {
         return WKWebView()
     }
- 
+
     func updateUIView(_ webView: WKWebView, context: Context) {
         let request = URLRequest(url: url)
         webView.load(request)

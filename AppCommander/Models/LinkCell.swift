@@ -5,8 +5,8 @@
 //  Created by Hariz Shirazi on 2023-03-24.
 //
 
-import SwiftUI
 import Foundation
+import SwiftUI
 
 struct LinkCell: View {
     var imageName: String
@@ -15,7 +15,7 @@ struct LinkCell: View {
     var contribution: String
     var systemImage: Bool = false
     var circle: Bool = false
-    
+
     var body: some View {
         HStack(alignment: .center) {
             Group {
@@ -33,7 +33,7 @@ struct LinkCell: View {
             }
             .cornerRadius(circle ? .infinity : 0)
             .frame(width: 24, height: 24)
-            
+
             VStack {
                 HStack {
                     Button(action: {

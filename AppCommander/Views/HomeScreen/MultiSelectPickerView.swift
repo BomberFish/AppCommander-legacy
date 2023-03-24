@@ -14,13 +14,13 @@ struct MultiSelectPickerView: View {
     @State var pages: (Int, [Int])
     @Binding var selectedItems: [Int]
     @Binding var pageOp: IconStateManager.PageSortingOption
- 
+
     var body: some View {
         Form {
             List {
                 let (numPages, hiddenPages) = pages
                 Section(header: Text("Pages"), footer: hiddenPages.isEmpty ? Text("") : Text("All hidden pages will be unhidden.")) {
-                    ForEach(0...numPages - 1, id: \.self) { item in
+                    ForEach(0 ... numPages - 1, id: \.self) { item in
                         Button(action: {
                             if self.selectedItems.contains(item) {
                                 self.selectedItems.removeAll(where: { $0 == item })

@@ -16,40 +16,39 @@ struct MoreInfoView: View {
             Text("Name: \(sbapp.name)")
                 // TODO: 💀
                 .contextMenu {
-                    Button(action: {UIPasteboard.general.string = sbapp.name}, label: {Label("Copy", systemImage: "doc.on.clipboard")})
+                    Button(action: { UIPasteboard.general.string = sbapp.name }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
                 }
             Text("Bundle ID: \(sbapp.bundleIdentifier)")
                 .contextMenu {
-                    Button(action: {UIPasteboard.general.string = sbapp.bundleIdentifier}, label: {Label("Copy", systemImage: "doc.on.clipboard")})
+                    Button(action: { UIPasteboard.general.string = sbapp.bundleIdentifier }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
                 }
             Text("Version: \(sbapp.version)")
                 .contextMenu {
-                    Button(action: {UIPasteboard.general.string = sbapp.name}, label: {Label("Copy", systemImage: "doc.on.clipboard")})
+                    Button(action: { UIPasteboard.general.string = sbapp.name }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
                 }
             Text("Bundle Path: \(sbapp.bundleURL.path)")
                 .contextMenu {
                     if isFilzaInstalled() {
-                        Button(action: {openInFilza(path: sbapp.bundleURL.path)}, label: {Label("Open in Filza", systemImage: "arrow.up.forward.app")})
+                        Button(action: { openInFilza(path: sbapp.bundleURL.path) }, label: { Label("Open in Filza", systemImage: "arrow.up.forward.app") })
                     }
                     if isSantanderInstalled() {
-                        Button(action: {openInSantander(path: sbapp.bundleURL.path)}, label: {Label("Open in Santander", systemImage: "arrow.up.forward.app")})
+                        Button(action: { openInSantander(path: sbapp.bundleURL.path) }, label: { Label("Open in Santander", systemImage: "arrow.up.forward.app") })
                     }
-                    Button(action: {UIPasteboard.general.string =  getDataDir(bundleID: sbapp.bundleIdentifier).path}, label: {Label("Copy", systemImage: "doc.on.clipboard")})
+                    Button(action: { UIPasteboard.general.string = getDataDir(bundleID: sbapp.bundleIdentifier).path }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
                 }
             Text("Data directory: \(getDataDir(bundleID: sbapp.bundleIdentifier))")
                 .contextMenu {
                     if isFilzaInstalled() {
-                        Button(action: {openInFilza(path: getDataDir(bundleID: sbapp.bundleIdentifier).path)}, label: {Label("Open in Filza", systemImage: "arrow.up.forward.app")})
+                        Button(action: { openInFilza(path: getDataDir(bundleID: sbapp.bundleIdentifier).path) }, label: { Label("Open in Filza", systemImage: "arrow.up.forward.app") })
                     }
                     if isSantanderInstalled() {
-                        Button(action: {openInSantander(path: getDataDir(bundleID: sbapp.bundleIdentifier).path)}, label: {Label("Open in Santander", systemImage: "arrow.up.forward.app")})
+                        Button(action: { openInSantander(path: getDataDir(bundleID: sbapp.bundleIdentifier).path) }, label: { Label("Open in Santander", systemImage: "arrow.up.forward.app") })
                     }
-                    Button(action: {UIPasteboard.general.string =  getDataDir(bundleID: sbapp.bundleIdentifier).path}, label: {Label("Copy", systemImage: "doc.on.clipboard")})
+                    Button(action: { UIPasteboard.general.string = getDataDir(bundleID: sbapp.bundleIdentifier).path }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
                 }
         }
         .navigationTitle("More Info")
     }
-    
 }
 
 struct MoreInfoView_Previews: PreviewProvider {
