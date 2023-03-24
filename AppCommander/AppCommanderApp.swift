@@ -16,7 +16,7 @@ let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 struct AppCommanderApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            RootView()
                 .onAppear {
                     print("AppCommander version \(appVersion)")
                     // check for updates. this would be replaced by kouyou but its JUST NOT FINISHED!!!!!!!!!!!!!!
