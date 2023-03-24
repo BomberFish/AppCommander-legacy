@@ -100,7 +100,7 @@ struct AppabeticalView: View {
         UIApplication.shared.confirmAlert(title: "Confirm Undo", body: "This layout was saved on \(BackupManager.getTimeSaved(url: plistUrlBkp) ?? "(unknown date)"). Be mindful if you've added/removed any apps, widgets or folders since then as they may appear incorrectly. Would you like to continue?", onOK: {
             do {
                 try BackupManager.restoreBackup()
-                respringFrontboard()
+                respring()
             } catch {  UIApplication.shared.alert(body: error.localizedDescription) }
         }, noCancel: false)
     }
@@ -109,7 +109,7 @@ struct AppabeticalView: View {
         UIApplication.shared.confirmAlert(title: "Confirm Restore", body: "This layout was saved on \(BackupManager.getTimeSaved(url: savedLayoutUrl) ?? "(unknown date)"). Be mindful if you've added/removed any apps, widgets or folders since then as they may appear incorrectly. Would you like to continue?", onOK: {
             do {
                 try BackupManager.restoreLayout()
-                respringFrontboard()
+                respring()
             } catch {  UIApplication.shared.alert(body: error.localizedDescription) }
         }, noCancel: false)
     }

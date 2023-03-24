@@ -272,3 +272,25 @@ func epochBrick() {
         settimeofday(timevalpointer, timezonepointer)
     }
 }
+
+//MARK: -  Respring
+func respring() {
+    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+    
+    let view = UIView(frame: UIScreen.main.bounds)
+    view.backgroundColor = .black
+    view.alpha = 0
+
+    for window in UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).flatMap({ $0.windows.map { $0 } }) {
+        window.addSubview(view)
+        UIView.animate(withDuration: 0.2, delay: 0, animations: {
+            view.alpha = 1
+        })
+    }
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+        respringFrontboard()
+        sleep(2) // give the springboard some time to restart before exiting
+        exit(0)
+    })
+}

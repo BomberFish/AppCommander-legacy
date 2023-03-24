@@ -71,6 +71,8 @@ struct SettingsView: View {
                                 consoleManager.isVisible = false
                             }
                         }
+                    Button(action: respringFrontboard, label: {Label("Restart frontboard", systemImage: "arrow.counterclockwise")})
+                    Button(action: respringBackboard, label: {Label("Restart backboard", systemImage: "arrow.counterclockwise")})
                 } header: {
                     Label("Debug", systemImage: "ladybug")
                 }
