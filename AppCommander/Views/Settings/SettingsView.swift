@@ -43,6 +43,14 @@ struct SettingsView: View {
                     Label("Powered by Kouyou", systemImage: "gearshape.2")
                 }
             Section {
+                LinkCell(imageName: "bomberfish", url: "https://github.com/BomberFish", title: "BomberFish", contribution: "Main Developer", circle: true)
+                LinkCell(imageName: "floppa", url: "https://github.com/Avangelista", title: "Avangelista", contribution: "Appabetical", circle: true)
+                LinkCell(imageName: "suslocation", url: "https://github.com/sourcelocation", title: "sourcelocation", contribution: "Various Code Snippets, Appabetical", circle: true)
+                LinkCell(imageName: "other_fish", url: "https://github.com/f1shy-dev", title: "sneakyf1shy", contribution: "Analytics", circle: true)
+            } header: {
+                Label("Credits", systemImage: "heart")
+            }
+            Section {
                 Toggle(isOn: $debugEnabled, label:{Label("Debug Mode", systemImage: "ladybug")})
                     .toggleStyle(.switch)
                     .tint(.accentColor)
