@@ -47,7 +47,7 @@ struct AppCommanderApp: App {
                     } else {
                         print("First launch, setting UserDefault.")
                         // FIXME: body really sucks
-                        UIApplication.shared.choiceAlert(title: "Analytics", body: "Allow AppCommander to send anonymized data to improve your experience?", onOK: {
+                        UIApplication.shared.choiceAlert(title: "Analytics", body: "Allow AppCommander to send anonymized data? Your preference can always be changed in the app settings.", onOK: {
                             UserDefaults.standard.set(1, forKey: "analyticsLevel")
                             UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
                         })
