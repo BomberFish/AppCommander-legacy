@@ -167,6 +167,15 @@
 			path = Appabetical;
 			sourceTree = "<group>";
 		};
+		D6E3FC9A29CDECFD00D019D1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */,
+				D6D22B6529C64D180095645B /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		D6E5527429B165400083E6A5 = {
 			isa = PBXGroup;
 			children = (
@@ -269,9 +278,8 @@
 				D6E3FC8129CDDFE600D019D1 /* RootView.swift */,
 				D6E552C529B2BE730083E6A5 /* AppView.swift */,
 				D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */,
-				D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */,
 				D6E3FC9529CDE51A00D019D1 /* Appabetical */,
-				D6D22B6529C64D180095645B /* SettingsView.swift */,
+				D6E3FC9A29CDECFD00D019D1 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
