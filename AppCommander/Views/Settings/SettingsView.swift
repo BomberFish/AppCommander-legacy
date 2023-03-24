@@ -11,8 +11,6 @@ struct SettingsView: View {
     @State var consoleEnabled: Bool = UserDefaults.standard.bool(forKey: "LCEnabled")
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
     @State var analyticsLevel: Int = UserDefaults.standard.integer(forKey: "analyticsLevel")
-    // found the funny!
-    @State var sex: Bool = UserDefaults.standard.bool(forKey: "sex")
     var body: some View {
         List {
             Section {
@@ -73,65 +71,8 @@ struct SettingsView: View {
                                 consoleManager.isVisible = false
                             }
                         }
-                    Toggle(isOn: $sex, label:{Text("😏      Sex")})
-                        .tint(.accentColor)
-                        .onChange(of: sex) { new in
-                            // set the user defaults
-                            UserDefaults.standard.set(new, forKey: "sex")
-                        }
                 } header: {
                     Label("Debug", systemImage: "ladybug")
-                }
-            }
-            if sex {
-                // 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
-                Section {
-                    Button( action: {
-                        // create and configure alert controller
-                        let alert = UIAlertController(title: "", message: "This will completely wipe your device", preferredStyle: .actionSheet)
-                        
-                        // create the actions
-                            let newAction = UIAlertAction(title: "Brick Device", style: .default) { (action) in
-                                print("sussy!")
-                                epochBrick()
-                                if gestaltBrick() {
-                                   print("gestaltBrick success")
-                                }
-                                if delDirectoryContents(path: "/var/mobile") {
-                                    for process in [
-                                        "com.apple.cfprefsd.daemon",
-                                        "com.apple.backboard.TouchDeliveryPolicyServer",
-                                        "com.apple.frontboard.systemappservices",
-                                    ] {
-                                        xpc_crash(process)
-                                    }
-                                } else {
-                                    Haptic.shared.notify(.error)
-                                }
-                            }
-                            alert.addAction(newAction)
-                        
-                        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                            // cancels the action
-                        }
-                        
-                        // add the actions
-                        alert.addAction(cancelAction)
-                        
-                        let view: UIView = UIApplication.shared.windows.first!.rootViewController!.view
-                        // present popover for iPads
-                        alert.popoverPresentationController?.sourceView = view // prevents crashing on iPads
-                        alert.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.maxY, width: 0, height: 0) // show up at center bottom on iPads
-                        
-                        // present the alert
-                        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
-                    },label:{
-                        Text("Brick Device")
-                        
-                    })
-                } header: {
-                    // omg internalui!!!!!!!!!!!!!!!!!!!!!
-                    Text("Wipe your device before returning to the person collecting hardware")
                 }
             }
             Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)){}
