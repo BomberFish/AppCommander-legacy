@@ -21,6 +21,10 @@ struct RootView: View {
                         Label("Home Screen", systemImage: "apps.iphone")
                     }
             }
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
         }
     }
 }

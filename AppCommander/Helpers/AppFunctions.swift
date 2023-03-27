@@ -51,30 +51,32 @@ func getDataDir(bundleID: String) -> URL {
 }
 
 // MARK: - This should convert an app to an encrypted ipa, but it doesn't work. See the FIXME.
-func appToIpa(bundleurl: URL) {
+func appToIpa(app: SBApp) {
     do {
         let uuid = UUID().uuidString
+        let payloaddir = FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload")
+        let filename = app.name + "_" + app.version + "_" + uuid
         try? FileManager.default.removeItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid))
         print("rmed file")
-        try FileManager.default.createDirectory(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload"), withIntermediateDirectories: true)
-        print("made payload dir \(FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload"))")
-        try FileManager.default.copyItem(at: bundleurl, to: FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload").appendingPathComponent(bundleurl.lastPathComponent))
-        print("copied \(bundleurl) to \(FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload").appendingPathComponent(bundleurl.lastPathComponent))")
+        try FileManager.default.createDirectory(at: payloaddir, withIntermediateDirectories: true)
+        print("made payload dir \(payloaddir)")
+        try FileManager.default.copyItem(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
+        print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))")
         // FIXME: This always fails. I don't know why, and I am losing my sanity over it.
-        try FileManager().zipItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload"), to: FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa"))
-        print("zipped \(FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload")) to \(FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa"))")
-        let vc = UIActivityViewController(activityItems: [FileManager.default.temporaryDirectory.appendingPathComponent("App_Encrypted").appendingPathExtension("ipa") as Any], applicationActivities: nil)
+        try FileManager().zipItem(at: payloaddir, to: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))
+        print("zipped \(payloaddir) to \(FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))")
+        let vc = UIActivityViewController(activityItems: [FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa") as Any], applicationActivities: nil)
         Haptic.shared.notify(.success)
         UIApplication.shared.windows[0].rootViewController?.present(vc, animated: true)
     } catch {
         print("error at the next step")
         Haptic.shared.notify(.error)
-        UIApplication.shared.alert(body: "There was an error exporting the ipa.")
+        UIApplication.shared.alert(body: "There was an error exporting the ipa.\n\(error.localizedDescription)")
     }
 }
 
 // MARK: - Detect if Filza/Santander is installed
-// Code is from some jailbreak detection I found
+// Code is from some jailbreak detection I found online
 // fucking retards think filza=jelbrek
 func isFilzaInstalled() -> Bool {
     return UIApplication.shared.canOpenURL(URL(string: "filza://")!)
@@ -235,3 +237,5 @@ func respring() {
         exit(0)
     })
 }
+
+// MARK: - Backup & Restore

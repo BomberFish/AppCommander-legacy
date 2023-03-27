@@ -58,7 +58,7 @@ struct AppView: View {
 
                 Button {
                     Haptic.shared.play(.medium)
-                    appToIpa(bundleurl: bundleurl)
+                    appToIpa(app: sbapp)
                 } label: {
                     Label("Export IPA (Currently broken)", systemImage: "arrow.down.app")
                 }

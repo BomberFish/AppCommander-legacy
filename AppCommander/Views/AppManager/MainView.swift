@@ -71,14 +71,15 @@ struct MainView: View {
                     apps = allApps
                 }
             }
-            .toolbar {
-                NavigationLink {
-                    SettingsView()
-                } label: {
-                    Label("", systemImage: "gear")
-                }
-            }
+//            .toolbar {
+//                NavigationLink {
+//                    SettingsView()
+//                } label: {
+//                    Label("", systemImage: "gear")
+//                }
+//            }
         }
+        // FIXME: god this really slows the app down dont it
         .onAppear {
             isUnsandboxed = unsandbox()
             if !isUnsandboxed {
