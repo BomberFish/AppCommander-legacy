@@ -118,7 +118,7 @@ func delDirectoryContents(path: String) -> Bool {
                 return true
             } catch {
                 print("Failed to delete \(file)")
-                UIApplication.shared.alert(body: "Could not remove file \(file)")
+                UIApplication.shared.alert(body: error.localizedDescription)
                 Haptic.shared.notify(.error)
                 return false
             }

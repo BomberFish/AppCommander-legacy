@@ -15,6 +15,15 @@ struct SettingsView: View {
         NavigationView {
             List {
                 Section {
+                    Button(action: {
+                        delDirectoryContents(path: FileManager.default.temporaryDirectory.path)
+                    }, label: {
+                        Label("Delete temporary storage", systemImage: "trash")
+                    })
+                } header: {
+                    Label("Storage Management", systemImage: "internaldrive")
+                }
+                Section {
                     Picker(selection: $analyticsLevel) {
                         Text("None (Disabled)").tag(0)
                         Text("Limited").tag(1)

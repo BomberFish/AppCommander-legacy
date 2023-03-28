@@ -24,7 +24,7 @@ struct MoreInfoView: View {
                 }
             Text("Version: \(sbapp.version)")
                 .contextMenu {
-                    Button(action: { UIPasteboard.general.string = sbapp.name }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
+                    Button(action: { UIPasteboard.general.string = sbapp.version }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
                 }
             Text("Bundle Path: \(sbapp.bundleURL.path)")
                 .contextMenu {
@@ -34,7 +34,7 @@ struct MoreInfoView: View {
                     if isSantanderInstalled() {
                         Button(action: { openInSantander(path: sbapp.bundleURL.path) }, label: { Label("Open in Santander", systemImage: "arrow.up.forward.app") })
                     }
-                    Button(action: { UIPasteboard.general.string = getDataDir(bundleID: sbapp.bundleIdentifier).path }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
+                    Button(action: { UIPasteboard.general.string = sbapp.bundleURL.path }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
                 }
             Text("Data directory: \(getDataDir(bundleID: sbapp.bundleIdentifier))")
                 .contextMenu {

@@ -13,6 +13,8 @@
 		D6D22B6629C64D180095645B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6529C64D180095645B /* SettingsView.swift */; };
 		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
 		D6D22B6F29C65D6B0095645B /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6E29C65D6B0095645B /* Analytics.swift */; };
+		D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6629D25CC600DD6C4A /* BackupView.swift */; };
+		D6D55A6929D26D7800DD6C4A /* AppBackupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */; };
 		D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7A29CDCBF000D019D1 /* Dynamic */; };
 		D6E3FC7E29CDCC2000D019D1 /* ApplicationsWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7D29CDCC2000D019D1 /* ApplicationsWrapper */; };
 		D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */; };
@@ -20,7 +22,7 @@
 		D6E3FC8429CDE07700D019D1 /* Color++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8329CDE07700D019D1 /* Color++.swift */; };
 		D6E3FC8629CDE2F300D019D1 /* SpringBoardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8529CDE2F300D019D1 /* SpringBoardItem.swift */; };
 		D6E3FC8929CDE31600D019D1 /* IconStateItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */; };
-		D6E3FC8B29CDE33700D019D1 /* BackupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8A29CDE33700D019D1 /* BackupManager.swift */; };
+		D6E3FC8B29CDE33700D019D1 /* HomeBackupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */; };
 		D6E3FC8D29CDE34900D019D1 /* IconStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8C29CDE34900D019D1 /* IconStateManager.swift */; };
 		D6E3FC8F29CDE3D500D019D1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8E29CDE3D500D019D1 /* String.swift */; };
 		D6E3FC9129CDE43400D019D1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC9029CDE43400D019D1 /* Constants.swift */; };
@@ -71,11 +73,13 @@
 		D6D22B6529C64D180095645B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D6D22B6E29C65D6B0095645B /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		D6D55A6629D25CC600DD6C4A /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
+		D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBackupManager.swift; sourceTree = "<group>"; };
 		D6E3FC8129CDDFE600D019D1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D6E3FC8329CDE07700D019D1 /* Color++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color++.swift"; sourceTree = "<group>"; };
 		D6E3FC8529CDE2F300D019D1 /* SpringBoardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringBoardItem.swift; sourceTree = "<group>"; };
 		D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconStateItemManager.swift; sourceTree = "<group>"; };
-		D6E3FC8A29CDE33700D019D1 /* BackupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupManager.swift; sourceTree = "<group>"; };
+		D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBackupManager.swift; sourceTree = "<group>"; };
 		D6E3FC8C29CDE34900D019D1 /* IconStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconStateManager.swift; sourceTree = "<group>"; };
 		D6E3FC8E29CDE3D500D019D1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D6E3FC9029CDE43400D019D1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -155,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */,
-				D6E3FC8A29CDE33700D019D1 /* BackupManager.swift */,
+				D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */,
 				D6E3FC8C29CDE34900D019D1 /* IconStateManager.swift */,
 			);
 			path = Managers;
@@ -186,6 +190,7 @@
 				D6E3FC8129CDDFE600D019D1 /* RootView.swift */,
 				D6E552C529B2BE730083E6A5 /* AppView.swift */,
 				D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */,
+				D6D55A6629D25CC600DD6C4A /* BackupView.swift */,
 			);
 			path = AppManager;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				D6E552CB29B2E9F50083E6A5 /* AppFunctions.swift */,
+				D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */,
 				D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */,
 				D6E552B629B16E640083E6A5 /* Alert++.swift */,
 				D6E3FC8529CDE2F300D019D1 /* SpringBoardItem.swift */,
@@ -454,7 +460,9 @@
 				D6E3FC8D29CDE34900D019D1 /* IconStateManager.swift in Sources */,
 				D6E5528329B165400083E6A5 /* MainView.swift in Sources */,
 				D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */,
+				D6D55A6929D26D7800DD6C4A /* AppBackupManager.swift in Sources */,
 				D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */,
+				D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */,
 				D6E552B229B16E170083E6A5 /* helpers.m in Sources */,
 				D6D22B6629C64D180095645B /* SettingsView.swift in Sources */,
 				D6E3FC9729CDE52900D019D1 /* AppabeticalView.swift in Sources */,
@@ -462,7 +470,7 @@
 				D6E552B329B16E170083E6A5 /* vm_unaligned_copy_switch_race.c in Sources */,
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
 				D6E552CC29B2E9F50083E6A5 /* AppFunctions.swift in Sources */,
-				D6E3FC8B29CDE33700D019D1 /* BackupManager.swift in Sources */,
+				D6E3FC8B29CDE33700D019D1 /* HomeBackupManager.swift in Sources */,
 				D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */,
 				D6E3FC8429CDE07700D019D1 /* Color++.swift in Sources */,
 				D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */,

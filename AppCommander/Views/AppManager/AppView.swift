@@ -19,7 +19,13 @@ struct AppView: View {
                 AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl, sbapp: sbapp)
                 NavigationLink(destination: { MoreInfoView(sbapp: sbapp, iconPath: iconPath) }, label: { Label("More Info", systemImage: "info.circle") })
             } header: { Label("App Details", systemImage: "info.circle") }
+            
             Section {
+                NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore", systemImage: "externaldrive.badge.timemachine") })
+            }
+            
+            Section {
+                
                 Button(role: .destructive) {
                     Haptic.shared.play(.medium)
                     UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
@@ -49,21 +55,18 @@ struct AppView: View {
                 } label: {
                     Label("Delete app cache", systemImage: "trash")
                 }
-
-//                    Button {
-//                        UIApplication.shared.alert(title: "Data directory", body: "Path: \(getDataDir(bundleID: bundleId))")
-//                    } label: {
-//                        Label("Get data directory (alert)", systemImage: "folder")
-//                    }
-
+            } header: {
+                Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
+            }
+            
+            
+            Section {
                 Button {
                     Haptic.shared.play(.medium)
                     appToIpa(app: sbapp)
                 } label: {
-                    Label("Export IPA (Currently broken)", systemImage: "arrow.down.app")
+                    Label("Export Encrypted IPA", systemImage: "arrow.down.app")
                 }
-            } header: {
-                Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
             }
         }
         .navigationTitle(name)
