@@ -81,6 +81,8 @@ struct MainView: View {
         }
         // FIXME: god this really slows the app down dont it
         .onAppear {
+#if targetEnvironment(simulator)
+            #else
             isUnsandboxed = unsandbox()
             if !isUnsandboxed {
                 isUnsandboxed = unsandbox()
@@ -88,16 +90,21 @@ struct MainView: View {
                 allApps = try! ApplicationManager.getApps()
                 apps = allApps
             }
+            #endif
         }
         .refreshable {
+#if targetEnvironment(simulator)
+            #else
             if !isUnsandboxed {
                 isUnsandboxed = unsandbox()
             } else {
                 allApps = try! ApplicationManager.getApps()
                 apps = allApps
             }
+            #endif
         }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
