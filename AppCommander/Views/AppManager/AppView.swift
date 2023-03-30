@@ -31,7 +31,7 @@ struct AppView: View {
                     UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                         Haptic.shared.play(.medium)
                         // god fuck these warnings i could not give a singular flying fuck
-                        FileActionManager.delDirectoryContents(path: getDataDir(bundleID: bundleId).absoluteString)
+                        FileActionManager.delDirectoryContents(path: ApplicationManager.getDataDir(bundleID: bundleId).absoluteString)
                     }, destructActionText: "Delete")
                 } label: {
                     Label("Delete app data", systemImage: "trash")
@@ -41,7 +41,7 @@ struct AppView: View {
                     Haptic.shared.play(.medium)
                     UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                         Haptic.shared.play(.medium)
-                        let dataDirectory = getDataDir(bundleID: bundleId)
+                        let dataDirectory = ApplicationManager.getDataDir(bundleID: bundleId)
                         FileActionManager.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").absoluteString)
                     }, destructActionText: "Delete")
                 } label: {
@@ -50,7 +50,7 @@ struct AppView: View {
                 }
                 Button {
                     Haptic.shared.play(.medium)
-                    let dataDirectory = getDataDir(bundleID: bundleId)
+                    let dataDirectory = ApplicationManager.getDataDir(bundleID: bundleId)
                     FileActionManager.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).absoluteString)
                 } label: {
                     Label("Delete app cache", systemImage: "trash")
@@ -63,7 +63,7 @@ struct AppView: View {
             Section {
                 Button {
                     Haptic.shared.play(.medium)
-                    appToIpa(app: sbapp)
+                    ApplicationManager.exportIPA(app: sbapp)
                 } label: {
                     Label("Export Encrypted IPA", systemImage: "arrow.down.app")
                 }

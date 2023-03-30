@@ -42,7 +42,7 @@ struct MainView: View {
                                 }
                                 .contextMenu {
                                     Button(action: {
-                                        if openApp(bundleID: app.bundleIdentifier) {
+                                        if ApplicationManager.openApp(bundleID: app.bundleIdentifier) {
                                             Haptic.shared.notify(.success)
                                         } else {
                                             Haptic.shared.notify(.error)

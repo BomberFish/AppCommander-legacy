@@ -14,5 +14,7 @@ struct Backup: Identifiable, Equatable {
 }
 
 public struct AppBackupManager {
-    
+    public static func backup(bundleID: String) {
+        
+    }
 }
