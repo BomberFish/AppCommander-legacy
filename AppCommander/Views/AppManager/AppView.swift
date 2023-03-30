@@ -13,6 +13,7 @@ struct AppView: View {
     @State public var name: String
     @State public var bundleurl: URL
     @State public var sbapp: SBApp
+    @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
     var body: some View {
         List {
             Section {
@@ -20,9 +21,11 @@ struct AppView: View {
                 NavigationLink(destination: { MoreInfoView(sbapp: sbapp, iconPath: iconPath) }, label: { Label("More Info", systemImage: "info.circle") })
             } header: { Label("App Details", systemImage: "info.circle") }
             
-//            Section {
-//                NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore", systemImage: "externaldrive.badge.timemachine") })
-//            }
+            if debugEnabled {
+                Section {
+                    NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore", systemImage: "externaldrive.badge.timemachine") })
+                }
+            }
             
             Section {
                 

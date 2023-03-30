@@ -14,16 +14,45 @@ public struct AbsoluteSolver {
             let fileAttributes = try FileManager.default.attributesOfItem(atPath: at.path)
             let owner = fileAttributes[.ownerAccountName] as? String ?? "unknown"
             if owner == "root" {
-                return MDCReplace.replaceFile(at: at, with: with)
+                print("[AbsoluteSolver] Using MDC method")
+                return MDCModify.replaceFile(at: at, with: with)
             } else if owner == "mobile" {
-                return FMReplace.replaceFile(at: at, with: with)
+                print("[AbsoluteSolver] Using FM method")
+                return FMModify.replaceFile(at: at, with: with)
             } else if owner == "unknown" {
-                UIApplication.shared.alert(body: "Error removing file at \(at.path) (Strategy: AS)\nCould not find owner?!")
+                print("[AbsoluteSolver] Error: Could not find owner?!")
+                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\nCould not find owner?!")
             } else {
-                UIApplication.shared.alert(body: "Error removing file at \(at.path) (Strategy: AS)\nUnexpected file owner!")
+                print("[AbsoluteSolver] Error: Unexpected owner!")
+                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\nUnexpected file owner!")
             }
         } catch {
-            UIApplication.shared.alert(body: "Error removing file at \(at.path) (Strategy: AS)\n\(error.localizedDescription)")
+            print("[AbsoluteSolver] Error: \(error.localizedDescription)")
+            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\n\(error.localizedDescription)")
+        }
+        return false
+    }
+    
+    public static func delete(at: URL) -> Bool {
+        do {
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath: at.path)
+            let owner = fileAttributes[.ownerAccountName] as? String ?? "unknown"
+            if owner == "root" {
+                print("[AbsoluteSolver] Using MDC method")
+                return MDCModify.deleteFile(at: at)
+            } else if owner == "mobile" {
+                print("[AbsoluteSolver] Using FM method")
+                return FMModify.deleteFile(at: at)
+            } else if owner == "unknown" {
+                print("[AbsoluteSolver] Error: Could not find owner?!")
+                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\nCould not find owner?!")
+            } else {
+                print("[AbsoluteSolver] Error: Unexpected owner!")
+                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\nUnexpected file owner!")
+            }
+        } catch {
+            print("[AbsoluteSolver] Error: \(error.localizedDescription)")
+            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\n\(error.localizedDescription)")
         }
         return false
     }

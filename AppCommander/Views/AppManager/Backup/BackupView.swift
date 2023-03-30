@@ -13,6 +13,9 @@ struct BackupView: View {
     var body: some View {
         List {
             Section {
+                NavigationLink(destination: { ReplaceTestingView(app: app) }, label: { Label("Replace Testing", systemImage: "wrench.and.screwdriver") })
+            }
+            Section {
                 Button(action: {
                     fakebackups.append(Backup(app: app, time: Date()))
                 }, label: {
