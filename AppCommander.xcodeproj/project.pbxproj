@@ -159,8 +159,16 @@
 			isa = PBXGroup;
 			children = (
 				D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */,
+				D6D55A6D29D5A51700DD6C4A /* MergeStrategies */,
 			);
 			path = Backup;
+			sourceTree = "<group>";
+		};
+		D6D55A6D29D5A51700DD6C4A /* MergeStrategies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MergeStrategies;
 			sourceTree = "<group>";
 		};
 		D6E3FC8729CDE30A00D019D1 /* Managers */ = {

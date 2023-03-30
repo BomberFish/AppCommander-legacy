@@ -12,3 +12,7 @@ struct Backup: Identifiable, Equatable {
     var id = UUID()
     var time: Date
 }
+
+public struct AppBackupManager {
+    
+}

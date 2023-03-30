@@ -90,22 +90,22 @@ struct AppabeticalView: View {
     }
     
     func saveLayout() {
-        BackupManager.saveLayout()
+        HomeBackupManager.saveLayout()
     }
     
     func restoreBackup() {
-        UIApplication.shared.confirmAlert(title: "Confirm Undo", body: "This layout was saved on \(BackupManager.getTimeSaved(url: plistUrlBkp) ?? "(unknown date)"). Be mindful if you've added/removed any apps, widgets or folders since then as they may appear incorrectly. Would you like to continue?", onOK: {
+        UIApplication.shared.confirmAlert(title: "Confirm Undo", body: "This layout was saved on \(HomeBackupManager.getTimeSaved(url: plistUrlBkp) ?? "(unknown date)"). Be mindful if you've added/removed any apps, widgets or folders since then as they may appear incorrectly. Would you like to continue?", onOK: {
             do {
-                try BackupManager.restoreBackup()
+                try HomeBackupManager.restoreBackup()
                 respring()
             } catch { UIApplication.shared.alert(body: error.localizedDescription) }
         }, noCancel: false)
     }
     
     func restoreLayout() {
-        UIApplication.shared.confirmAlert(title: "Confirm Restore", body: "This layout was saved on \(BackupManager.getTimeSaved(url: savedLayoutUrl) ?? "(unknown date)"). Be mindful if you've added/removed any apps, widgets or folders since then as they may appear incorrectly. Would you like to continue?", onOK: {
+        UIApplication.shared.confirmAlert(title: "Confirm Restore", body: "This layout was saved on \(HomeBackupManager.getTimeSaved(url: savedLayoutUrl) ?? "(unknown date)"). Be mindful if you've added/removed any apps, widgets or folders since then as they may appear incorrectly. Would you like to continue?", onOK: {
             do {
-                try BackupManager.restoreLayout()
+                try HomeBackupManager.restoreLayout()
                 respring()
             } catch { UIApplication.shared.alert(body: error.localizedDescription) }
         }, noCancel: false)

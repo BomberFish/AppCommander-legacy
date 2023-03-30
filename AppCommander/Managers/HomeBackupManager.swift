@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BackupManager {
+class HomeBackupManager {
     /// Save a homescreen backup manually
     static func saveLayout() {
         func copyAndAlert() {

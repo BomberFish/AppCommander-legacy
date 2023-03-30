@@ -18,7 +18,7 @@ public class IconStateManager {
     }
     
     public func sortPages(selectedPages: [Int], sortOption: SortOption, pageSortingOption: PageSortingOption, folderSortingOption: FolderSortingOption) throws {
-        try BackupManager.makeBackup()
+        try HomeBackupManager.makeBackup()
         
         // Open IconState.plist
         guard var plist = NSDictionary(contentsOf: plistUrl) as? [String:AnyObject] else { return }
