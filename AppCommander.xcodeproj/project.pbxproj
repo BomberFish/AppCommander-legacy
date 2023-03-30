@@ -155,11 +155,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D6D55A6C29D5A4C900DD6C4A /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */,
+			);
+			path = Backup;
+			sourceTree = "<group>";
+		};
 		D6E3FC8729CDE30A00D019D1 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */,
 				D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */,
+				D6D55A6C29D5A4C900DD6C4A /* Backup */,
 				D6E3FC8C29CDE34900D019D1 /* IconStateManager.swift */,
 			);
 			path = Managers;
@@ -277,7 +286,6 @@
 			isa = PBXGroup;
 			children = (
 				D6E552CB29B2E9F50083E6A5 /* AppFunctions.swift */,
-				D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */,
 				D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */,
 				D6E552B629B16E640083E6A5 /* Alert++.swift */,
 				D6E3FC8529CDE2F300D019D1 /* SpringBoardItem.swift */,
