@@ -104,7 +104,7 @@ public class IconStateManager {
         do {
             if try validateIconState(old: plistUrl, new: plistUrlNew) {
                 let _ = try fm.replaceItemAt(plistUrl, withItemAt: plistUrlNew)
-                respring()
+                MDC.respring()
             }
         } catch {
             throw "New IconState appears to be invalid. Sorting has been aborted, and no system files have been edited. Specific error: \(error.localizedDescription). Please screenshot and report."

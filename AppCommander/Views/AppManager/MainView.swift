@@ -83,9 +83,9 @@ struct MainView: View {
         .onAppear {
 #if targetEnvironment(simulator)
             #else
-            isUnsandboxed = unsandbox()
+            isUnsandboxed = MDC.unsandbox()
             if !isUnsandboxed {
-                isUnsandboxed = unsandbox()
+                isUnsandboxed = MDC.unsandbox()
             } else {
                 allApps = try! ApplicationManager.getApps()
                 apps = allApps
@@ -96,7 +96,7 @@ struct MainView: View {
 #if targetEnvironment(simulator)
             #else
             if !isUnsandboxed {
-                isUnsandboxed = unsandbox()
+                isUnsandboxed = MDC.unsandbox()
             } else {
                 allApps = try! ApplicationManager.getApps()
                 apps = allApps

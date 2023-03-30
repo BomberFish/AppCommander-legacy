@@ -16,7 +16,7 @@ struct SettingsView: View {
             List {
                 Section {
                     Button(action: {
-                        delDirectoryContents(path: FileManager.default.temporaryDirectory.path)
+                        FileActionManager.delDirectoryContents(path: FileManager.default.temporaryDirectory.path)
                     }, label: {
                         Label("Delete temporary storage", systemImage: "trash")
                     })

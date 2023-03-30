@@ -31,7 +31,7 @@ struct AppView: View {
                     UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                         Haptic.shared.play(.medium)
                         // god fuck these warnings i could not give a singular flying fuck
-                        delDirectoryContents(path: getDataDir(bundleID: bundleId).absoluteString)
+                        FileActionManager.delDirectoryContents(path: getDataDir(bundleID: bundleId).absoluteString)
                     }, destructActionText: "Delete")
                 } label: {
                     Label("Delete app data", systemImage: "trash")
@@ -42,7 +42,7 @@ struct AppView: View {
                     UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                         Haptic.shared.play(.medium)
                         let dataDirectory = getDataDir(bundleID: bundleId)
-                        delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").absoluteString)
+                        FileActionManager.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").absoluteString)
                     }, destructActionText: "Delete")
                 } label: {
                     Label("Delete app documents", systemImage: "trash")
@@ -51,7 +51,7 @@ struct AppView: View {
                 Button {
                     Haptic.shared.play(.medium)
                     let dataDirectory = getDataDir(bundleID: bundleId)
-                    delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).absoluteString)
+                    FileActionManager.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).absoluteString)
                 } label: {
                     Label("Delete app cache", systemImage: "trash")
                 }
