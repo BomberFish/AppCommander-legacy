@@ -19,18 +19,7 @@ public struct FileActionManager {
         if contents != [""] {
             for file in contents {
                 print("Deleting \(file)")
-                do {
-                    try FileManager.default.removeItem(atPath: file)
-                    print("Probably deleted \(file)")
-                    UIApplication.shared.alert(title: "Success", body: "Successfully deleted!")
-                    Haptic.shared.notify(.success)
-                    return true
-                } catch {
-                    print("Failed to delete \(file)")
-                    UIApplication.shared.alert(body: error.localizedDescription)
-                    Haptic.shared.notify(.error)
-                    return false
-                }
+                return AbsoluteSolver.delete(at: URL(fileURLWithPath: file))
             }
         }
         return false
