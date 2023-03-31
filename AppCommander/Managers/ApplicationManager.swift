@@ -86,7 +86,6 @@ class ApplicationManager {
         var dotAppDirs: [URL] = []
         
         let systemAppsDir = try fm.contentsOfDirectory(at: systemApplicationsUrl, includingPropertiesForKeys: nil)
-        dotAppDirs += systemAppsDir
         let userAppsDir = try fm.contentsOfDirectory(at: userApplicationsUrl, includingPropertiesForKeys: nil)
         
         for userAppFolder in userAppsDir {
@@ -95,6 +94,8 @@ class ApplicationManager {
                 dotAppDirs.append(dotApp)
             }
         }
+        
+        dotAppDirs += systemAppsDir
         
         var apps: [SBApp] = []
         
