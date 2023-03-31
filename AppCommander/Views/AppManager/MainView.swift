@@ -73,26 +73,29 @@ struct MainView: View {
             }
             .toolbar {
                 HStack {
-                    Menu("Sort") {
+                    Menu(content: {
                         Button(action: {
                             apps = allApps
                         }, label: {
                             Label("None", image: "list.bullet")
                         })
+                        Menu("Alphabetical") {
+                            Button(action: {
+                                apps = allApps.sorted { $0.name < $1.name }
+                            }, label: {
+                                Label("Case-sensitive", image: "character")
+                            })
+                            
+                            Button(action: {
+                                apps = allApps.sorted { $0.name.lowercased() < $1.name.lowercased() }
+                            }, label: {
+                                Label("Case-insensitive", image: "textformat")
+                            })
+                        }
                         
-                        Button(action: {
-                            apps = allApps.sorted { $0.name < $1.name }
-                        }, label: {
-                            Label("Alphabetical", image: "character")
-                        })
-                        
-                        Button(action: {
-                            apps = allApps.sorted { $0.name.lowercased() < $1.name.lowercased() }
-                        }, label: {
-                            Label("Alphabetical (case-insensitive)", image: "textformat")
-                        })
-                        
-                    }
+                    }, label: {
+                        Label("Sort", systemImage: "line.3.horizontal.decrease.circle")
+                    })
                 }
             }
         }

@@ -14,6 +14,7 @@
 		D6609A9E29D73D680033F66D /* FSOperations in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9D29D73D680033F66D /* FSOperations */; };
 		D6609AA029D73D680033F66D /* NSTask in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9F29D73D680033F66D /* NSTask */; };
 		D6609AA229D73D680033F66D /* SVGWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609AA129D73D680033F66D /* SVGWrapper */; };
+		D674868529D7821300BCE952 /* FM++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D674868429D7821300BCE952 /* FM++.swift */; };
 		D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */ = {isa = PBXBuildFile; productRef = D6D22B6129C64AC20095645B /* LocalConsole */; };
 		D6D22B6629C64D180095645B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6529C64D180095645B /* SettingsView.swift */; };
 		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
@@ -80,6 +81,7 @@
 /* Begin PBXFileReference section */
 		D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AppCommander-Info.plist"; sourceTree = "<group>"; };
 		D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
+		D674868429D7821300BCE952 /* FM++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FM++.swift"; sourceTree = "<group>"; };
 		D6D22B6529C64D180095645B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D6D22B6E29C65D6B0095645B /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		D6E3FC8729CDE30A00D019D1 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				D6E552CB29B2E9F50083E6A5 /* AppFunctions.swift */,
 				D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */,
 				D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */,
 				D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */,
@@ -282,7 +285,7 @@
 				D6E5528029B165400083E6A5 /* AppCommanderApp.swift */,
 				D6E3FC9029CDE43400D019D1 /* Constants.swift */,
 				D6E3FC8729CDE30A00D019D1 /* Managers */,
-				D6E552B529B16E500083E6A5 /* Helpers */,
+				D6E552B529B16E500083E6A5 /* Extensions */,
 				D6E552C429B2BE3C0083E6A5 /* Views */,
 				D617EEEF29BE5927001CCAC2 /* Models */,
 				D6E552AA29B16DC70083E6A5 /* Exploit */,
@@ -332,10 +335,9 @@
 			path = Exploit;
 			sourceTree = "<group>";
 		};
-		D6E552B529B16E500083E6A5 /* Helpers */ = {
+		D6E552B529B16E500083E6A5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D6E552CB29B2E9F50083E6A5 /* AppFunctions.swift */,
 				D6E552B629B16E640083E6A5 /* Alert++.swift */,
 				D6E3FC8529CDE2F300D019D1 /* SpringBoardItem.swift */,
 				D6E3FC8329CDE07700D019D1 /* Color++.swift */,
@@ -344,8 +346,9 @@
 				D6E3FC9229CDE4C600D019D1 /* UIImage+UIImageAverageColorAddition.m */,
 				D6D22B6E29C65D6B0095645B /* Analytics.swift */,
 				D6E3FC8E29CDE3D500D019D1 /* String.swift */,
+				D674868429D7821300BCE952 /* FM++.swift */,
 			);
-			path = Helpers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D6E552C429B2BE3C0083E6A5 /* Views */ = {
@@ -535,6 +538,7 @@
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
 				D6E552CC29B2E9F50083E6A5 /* AppFunctions.swift in Sources */,
 				D6E3FC8B29CDE33700D019D1 /* HomeBackupManager.swift in Sources */,
+				D674868529D7821300BCE952 /* FM++.swift in Sources */,
 				D6D55A7229D5A76400DD6C4A /* FMModify.swift in Sources */,
 				D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */,
 				D6E3FC8429CDE07700D019D1 /* Color++.swift in Sources */,
