@@ -10,6 +10,8 @@ import SwiftUI
 struct MoreInfoView: View {
     @State public var sbapp: SBApp
     @State public var iconPath: String
+    @State private var appsize: UInt64 = 0
+    @State private var docsize: UInt64 = 0
     var body: some View {
         // TODO: Make this look nice
         List {
@@ -46,8 +48,24 @@ struct MoreInfoView: View {
                     }
                     Button(action: { UIPasteboard.general.string = ApplicationManager.getDataDir(bundleID: sbapp.bundleIdentifier).path }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
                 }
+            Text("App Size: \(ByteCountFormatter().string(fromByteCount: Int64(appsize)))")
+                .contextMenu {
+                    Button(action: { UIPasteboard.general.string = ByteCountFormatter().string(fromByteCount: Int64(appsize)) }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
+                }
+            Text("Documents Size: \(ByteCountFormatter().string(fromByteCount: Int64(docsize)))")
+                .contextMenu {
+                    Button(action: { UIPasteboard.general.string = ByteCountFormatter().string(fromByteCount: Int64(docsize)) }, label: { Label("Copy", systemImage: "doc.on.clipboard") })
+                }
         }
         .navigationTitle("More Info")
+        .onAppear {
+            do {
+                appsize = try FileManager.default.allocatedSizeOfDirectory(at: sbapp.bundleURL)
+                docsize = try FileManager.default.allocatedSizeOfDirectory(at: ApplicationManager.getDataDir(bundleID: sbapp.bundleIdentifier))
+            } catch {
+                
+            }
+        }
     }
 }
 

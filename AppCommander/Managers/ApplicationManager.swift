@@ -35,11 +35,11 @@ class ApplicationManager {
         }
 
         for dir in dirlist {
-            print(dir)
+            //print(dir)
             let mmpath = "/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist"
-            print(mmpath)
+            //print(mmpath)
             let mmDict = NSDictionary(contentsOfFile: mmpath)
-            print(mmDict as Any)
+            //print(mmDict as Any)
             if mmDict!["MCMMetadataIdentifier"] as! String == bundleID {
                 returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
             }

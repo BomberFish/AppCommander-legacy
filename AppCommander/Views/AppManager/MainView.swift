@@ -29,7 +29,7 @@ struct MainView: View {
                         ForEach(apps) { app in
                             AppCell(imagePath: app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path, bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
                                 .onAppear {
-                                    if debugEnabled {
+                                    if false {
                                         print("===")
                                         print((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path)
                                         print(((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path).contains("this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"))
@@ -77,19 +77,19 @@ struct MainView: View {
                         Button(action: {
                             apps = allApps
                         }, label: {
-                            Label("None", image: "list.bullet")
+                            Label("None", systemImage: "list.bullet")
                         })
                         Menu("Alphabetical") {
                             Button(action: {
                                 apps = allApps.sorted { $0.name < $1.name }
                             }, label: {
-                                Label("Case-sensitive", image: "character")
+                                Label("Case-sensitive", systemImage: "character")
                             })
                             
                             Button(action: {
                                 apps = allApps.sorted { $0.name.lowercased() < $1.name.lowercased() }
                             }, label: {
-                                Label("Case-insensitive", image: "textformat")
+                                Label("Case-insensitive", systemImage: "textformat")
                             })
                         }
                         
