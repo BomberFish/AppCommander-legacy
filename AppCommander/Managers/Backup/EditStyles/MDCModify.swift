@@ -24,7 +24,7 @@ public struct MDCModify {
     
     public static func delete(at: URL) -> Bool {
         Haptic.shared.notify(.error)
-        UIApplication.shared.alert(body: "Deleting files with MDC is not supported!")
+        UIApplication.shared.alert(body: "Deleting files with MDC is not supported... yet.")
         return false
     }
 }

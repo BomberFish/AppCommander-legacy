@@ -58,3 +58,9 @@ struct AppCommanderApp: App {
         }
     }
 }
+
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+        MDC.isMDCSafe = false
+    }
+}

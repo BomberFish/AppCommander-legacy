@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 public struct MDC {
+    
+    public static var isMDCSafe: Bool = true
+    
     public static func unsandbox() -> Bool {
         // MARK: 🫁
         

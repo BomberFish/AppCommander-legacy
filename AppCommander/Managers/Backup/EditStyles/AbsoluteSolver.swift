@@ -16,8 +16,14 @@ public struct AbsoluteSolver {
             let fileAttributes = try FileManager.default.attributesOfItem(atPath: at.path)
             let owner = fileAttributes[.ownerAccountName] as? String ?? "unknown"
             if owner == "root" {
-                print("[AbsoluteSolver] Using MDC method")
-                return MDCModify.replace(at: at, with: with)
+                if MDC.isMDCSafe {
+                    print("[AbsoluteSolver] Using MDC method")
+                    return MDCModify.replace(at: at, with: with)
+                } else {
+                    print("[AbsoluteSolver] PANIC!!! OUT OF RAM!!! THIS IS REALLY REALLY REALLY BAD!!!!!")
+                    Haptic.shared.notify(.error)
+                    UIApplication.shared.alert(body: "AbsoluteSolver: Overwrite failed!\nInsufficient RAM! Please reopen the app.", withButton: false)
+                }
             } else if owner == "mobile" {
                 print("[AbsoluteSolver] Using FM method")
                 return FMModify.replace(at: at, with: with)
