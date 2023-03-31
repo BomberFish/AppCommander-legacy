@@ -46,8 +46,7 @@ class ApplicationManager {
         }
         return returnedurl!
     }
-    
-    // MARK: - This should convert an app to an encrypted ipa, but it doesn't work. See the FIXME.
+
     public static func exportIPA(app: SBApp) {
         do {
             let uuid = UUID().uuidString
@@ -59,7 +58,6 @@ class ApplicationManager {
             print("made payload dir \(payloaddir)")
             try FileManager.default.copyItem(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
             print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))")
-            // FIXME: This always fails. I don't know why, and I am losing my sanity over it.
             try FileManager().zipItem(at: payloaddir, to: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))
             print("zipped \(payloaddir) to \(FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))")
             let vc = UIActivityViewController(activityItems: [FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa") as Any], applicationActivities: nil)

@@ -30,14 +30,22 @@ public enum AppBackupManager {
         
         print(datadir, docsdir, backupfolderdir, backupfolderdirexists, backupdir, backupdirexists)
         do {
-            try fm.createDirectory(at: backupdir.appendingPathComponent("test", conformingTo: .directory), withIntermediateDirectories: true)
+            try fm.createDirectory(at: backupdir, withIntermediateDirectories: true)
             Haptic.shared.notify(.success)
         } catch {
             UIApplication.shared.alert(body: error.localizedDescription)
             Haptic.shared.notify(.error)    
         }
         do {
-            try fm.zipItem(at: datadir, to: backupdir.appendingPathComponent(DateFormatter().string(from: Date())).appendingPathExtension("zip"))
+            print(backupdir.appendingPathComponent(DateFormatter().string(from: Date())).appendingPathExtension("zip"))
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d YYYY, HH:mm:ss"
+            let name = dateFormatter.string(from: date)
+            print("name: ", name)
+            let backupdest = (((backupdir).appendingPathExtension(name)))
+            print(backupdest)
+            try fm.zipItem(at: datadir, to: backupdest.appendingPathExtension(name).appendingPathExtension("zip"))
             Haptic.shared.notify(.success)
         } catch {
             UIApplication.shared.alert(body: error.localizedDescription)

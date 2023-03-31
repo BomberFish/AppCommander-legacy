@@ -107,7 +107,7 @@ public class IconStateManager {
                 MDC.respring()
             }
         } catch {
-            throw "New IconState appears to be invalid. Sorting has been aborted, and no system files have been edited. Specific error: \(error.localizedDescription). Please screenshot and report."
+            throw "New IconState appears to be invalid. Sorting has been aborted, and no system files have been edited. Specific error: \(error.localizedDescription). Please screenshot and report to #appcommander-private-betas."
         }
     }
     

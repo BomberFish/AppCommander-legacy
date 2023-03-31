@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BackupView: View {
     @State public var app: SBApp
-    @State private var fakebackups: [Backup] = []
+    @State private var backups: [Backup] = []
     var body: some View {
         List {
             HStack {
@@ -29,7 +29,7 @@ struct BackupView: View {
                 })
             }
             Section {
-                ForEach(AppBackupManager.getBackups(app: app)) {backup in
+                ForEach(backups) {backup in
                     HStack {
                         Text("Backup taken \(backup.time)")
                         Spacer()
@@ -43,9 +43,12 @@ struct BackupView: View {
             }
         }
         .navigationTitle("Backups")
-//        .onAppear {
-//            fakebackups.append(Backup(app: app, time: Date()))
-//        }
+        .refreshable {
+            backups = AppBackupManager.getBackups(app: app)
+        }
+        .onAppear {
+            backups = AppBackupManager.getBackups(app: app)
+        }
     }
 }
 
