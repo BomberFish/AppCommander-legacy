@@ -71,15 +71,32 @@ struct MainView: View {
                     apps = allApps
                 }
             }
-//            .toolbar {
-//                NavigationLink {
-//                    SettingsView()
-//                } label: {
-//                    Label("", systemImage: "gear")
-//                }
-//            }
+            .toolbar {
+                HStack {
+                    Menu("Sort") {
+                        Button(action: {
+                            apps = allApps
+                        }, label: {
+                            Label("None", image: "list.bullet")
+                        })
+                        
+                        Button(action: {
+                            apps = allApps.sorted { $0.name < $1.name }
+                        }, label: {
+                            Label("Alphabetical", image: "character")
+                        })
+                        
+                        Button(action: {
+                            apps = allApps.sorted { $0.name.lowercased() < $1.name.lowercased() }
+                        }, label: {
+                            Label("Alphabetical (case-insensitive)", image: "textformat")
+                        })
+                        
+                    }
+                }
+            }
         }
-        // FIXME: god this really slows the app down dont it
+        // FIXME: this really slows the app down dont it :(
         .onAppear {
 #if targetEnvironment(simulator)
             #else
