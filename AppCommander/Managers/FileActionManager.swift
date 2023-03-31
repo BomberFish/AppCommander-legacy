@@ -14,6 +14,10 @@ public struct FileActionManager {
         var contents = [""]
         do {
             contents = try FileManager.default.contentsOfDirectory(atPath: path)
+            for file in contents {
+                print("Deleting \(file)")
+                return AbsoluteSolver.delete(at: URL(fileURLWithPath: path).appendingPathComponent(file))
+            }
         } catch {
             UIApplication.shared.alert(body: "Could not get contents of directory?!\n\(error.localizedDescription)")
             return false

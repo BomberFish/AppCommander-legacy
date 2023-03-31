@@ -8,17 +8,19 @@
 import Foundation
 import SwiftUI
 
+
+// Absolute Solver: A file manager that will modify/delete files By Any Means Necessary™
 public struct AbsoluteSolver {
-    public static func replaceFile(at: URL, with: NSData) -> Bool {
+    public static func replace(at: URL, with: NSData) -> Bool {
         do {
             let fileAttributes = try FileManager.default.attributesOfItem(atPath: at.path)
             let owner = fileAttributes[.ownerAccountName] as? String ?? "unknown"
             if owner == "root" {
                 print("[AbsoluteSolver] Using MDC method")
-                return MDCModify.replaceFile(at: at, with: with)
+                return MDCModify.replace(at: at, with: with)
             } else if owner == "mobile" {
                 print("[AbsoluteSolver] Using FM method")
-                return FMModify.replaceFile(at: at, with: with)
+                return FMModify.replace(at: at, with: with)
             } else if owner == "unknown" {
                 print("[AbsoluteSolver] Error: Could not find owner?!")
                 Haptic.shared.notify(.error)
@@ -42,10 +44,10 @@ public struct AbsoluteSolver {
             let owner = fileAttributes[.ownerAccountName] as? String ?? "unknown"
             if owner == "root" {
                 print("[AbsoluteSolver] Using MDC method")
-                return MDCModify.deleteFile(at: at)
+                return MDCModify.delete(at: at)
             } else if owner == "mobile" {
                 print("[AbsoluteSolver] Using FM method")
-                return FMModify.deleteFile(at: at)
+                return FMModify.delete(at: at)
             } else if owner == "unknown" {
                 print("[AbsoluteSolver] Error: Could not find owner?!")
                 Haptic.shared.notify(.error)

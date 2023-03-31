@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 public struct FMModify {
-    public static func replaceFile(at: URL, with: NSData) -> Bool {
+    public static func replace(at: URL, with: NSData) -> Bool {
         let success = with.write(to: at, atomically: true)
         if !success {
             print("[FMModify] FM overwrite failed!")
@@ -21,7 +21,7 @@ public struct FMModify {
         }
         return success
     }
-    public static func deleteFile(at: URL) -> Bool {
+    public static func delete(at: URL) -> Bool {
         do {
             try FileManager.default.removeItem(at: at)
             print("[FMModify] FM delete success!")

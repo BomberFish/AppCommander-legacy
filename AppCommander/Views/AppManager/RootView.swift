@@ -9,9 +9,10 @@ import SwiftUI
 import UIKit
 
 struct RootView: View {
+    @State var isUnsandboxed = false
     var body: some View {
         TabView {
-            MainView()
+            MainView(isUnsandboxed: isUnsandboxed)
                 .tabItem {
                     Label("App Manager", systemImage: "list.bullet")
                 }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 public struct MDCModify {
-    public static func replaceFile(at: URL, with: NSData) -> Bool {
+    public static func replace(at: URL, with: NSData) -> Bool {
         let success = MDC.overwriteFileWithDataImpl(originPath: at.path, replacementData: Data(with))
         if !success {
             print("[MDCReplace] MDC overwrite failed")
@@ -22,7 +22,7 @@ public struct MDCModify {
         return success
     }
     
-    public static func deleteFile(at: URL) -> Bool {
+    public static func delete(at: URL) -> Bool {
         Haptic.shared.notify(.error)
         UIApplication.shared.alert(body: "Deleting files with MDC is not supported!")
         return false

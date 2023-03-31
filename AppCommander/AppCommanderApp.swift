@@ -19,6 +19,7 @@ struct AppCommanderApp: App {
             RootView()
                 .onAppear {
                     print("AppCommander version \(appVersion)")
+                    let userDefaults = UserDefaults.standard
                     // check for updates. this would be replaced by kouyou but its JUST NOT FINISHED!!!!!!!!!!!!!!
                     // F1shy I'm begging you PLEASE just FINISH the frontend PLEASE
                     if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let url = URL(string: "https://api.github.com/repos/BomberFish/AppCommander/releases/latest") {
@@ -38,7 +39,7 @@ struct AppCommanderApp: App {
                     }
 
                     Haptic.shared.notify(.success)
-                    consoleManager.isVisible = UserDefaults.standard.bool(forKey: "LCEnabled")
+                    consoleManager.isVisible = userDefaults.bool(forKey: "LCEnabled")
                     // i just copied the entire code block, prints and everything, from stackoverflow.
                     // Will I change it at all? No!
                     if launchedBefore {
@@ -48,10 +49,10 @@ struct AppCommanderApp: App {
                         print("First launch, setting UserDefault.")
                         // FIXME: body really sucks
                         UIApplication.shared.choiceAlert(title: "Analytics", body: "NOTE: Analytics are currently non-functional.\nAllow AppCommander to send anonymized data? Your preference can always be changed in the app settings.", onOK: {
-                            UserDefaults.standard.set(1, forKey: "analyticsLevel")
+                            userDefaults.set(1, forKey: "analyticsLevel")
                             UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
                         })
-                        UserDefaults.standard.set(true, forKey: "launchedBefore")
+                        userDefaults.set(true, forKey: "launchedBefore")
                     }
                 }
         }

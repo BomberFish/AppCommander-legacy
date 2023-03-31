@@ -46,3 +46,8 @@ func openInSantander(path: String) {
 func openInFilza(path: String) {
     UIApplication.shared.open(URL(string: "filza://\(path)")!, options: [:], completionHandler: nil)
 }
+
+// MARK: - 💀
+func notimplementedalert() {
+    UIApplication.shared.alert(title: "Not implemented", body: "lol")
+}

@@ -248,8 +248,8 @@
 		D6E3FC9B29CDED1600D019D1 /* AppManager */ = {
 			isa = PBXGroup;
 			children = (
-				D6E5528229B165400083E6A5 /* MainView.swift */,
 				D6E3FC8129CDDFE600D019D1 /* RootView.swift */,
+				D6E5528229B165400083E6A5 /* MainView.swift */,
 				D6E552C529B2BE730083E6A5 /* AppView.swift */,
 				D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */,
 				D6D55A7A29D5EDCD00DD6C4A /* Backup */,

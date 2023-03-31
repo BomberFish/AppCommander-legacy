@@ -18,12 +18,23 @@ struct AppView: View {
         List {
             Section {
                 AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl, sbapp: sbapp)
+                Button(action: {
+                    if ApplicationManager.openApp(bundleID: sbapp.bundleIdentifier) {
+                        Haptic.shared.notify(.success)
+                    } else {
+                        Haptic.shared.notify(.error)
+                    }
+                }, label: {
+                    Label("Open App", systemImage: "arrow.up.forward.app")
+                })
                 NavigationLink(destination: { MoreInfoView(sbapp: sbapp, iconPath: iconPath) }, label: { Label("More Info", systemImage: "info.circle") })
             } header: { Label("App Details", systemImage: "info.circle") }
             
             if debugEnabled {
                 Section {
                     NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore [EXPERIMENTAL]", systemImage: "externaldrive.badge.timemachine") })
+                } header: {
+                    Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
                 }
             }
             
@@ -33,8 +44,8 @@ struct AppView: View {
                     Haptic.shared.play(.medium)
                     UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                         Haptic.shared.play(.medium)
-                        // god fuck these warnings i could not give a singular flying fuck
-                        FileActionManager.delDirectoryContents(path: ApplicationManager.getDataDir(bundleID: bundleId).absoluteString)
+                        // on god fuck these warnings i could not give a singular flying fuck
+                        FileActionManager.delDirectoryContents(path: ApplicationManager.getDataDir(bundleID: bundleId).path)
                     }, destructActionText: "Delete")
                 } label: {
                     Label("Delete app data", systemImage: "trash")
@@ -45,7 +56,7 @@ struct AppView: View {
                     UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                         Haptic.shared.play(.medium)
                         let dataDirectory = ApplicationManager.getDataDir(bundleID: bundleId)
-                        FileActionManager.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").absoluteString)
+                        FileActionManager.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").path)
                     }, destructActionText: "Delete")
                 } label: {
                     Label("Delete app documents", systemImage: "trash")
@@ -54,12 +65,14 @@ struct AppView: View {
                 Button {
                     Haptic.shared.play(.medium)
                     let dataDirectory = ApplicationManager.getDataDir(bundleID: bundleId)
-                    FileActionManager.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).absoluteString)
+                    FileActionManager.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).path)
                 } label: {
                     Label("Delete app cache", systemImage: "trash")
                 }
             } header: {
-                Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
+                if !debugEnabled {
+                    Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
+                }
             }
             
             
@@ -73,11 +86,6 @@ struct AppView: View {
             }
         }
         .navigationTitle(name)
-    }
-
-    // 💀
-    func notimplementedalert() {
-        UIApplication.shared.alert(title: "Not implemented", body: "lol")
     }
 }
 

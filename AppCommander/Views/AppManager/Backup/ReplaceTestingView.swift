@@ -21,7 +21,7 @@ struct ReplaceTestingView: View {
             }
             Section {
                 Button(action: {
-                    if FMModify.replaceFile(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!)) {
+                    if FMModify.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!)) {
                         UIApplication.shared.alert(body: "Success!")
                     } else {
                         UIApplication.shared.alert(body: "Failed!")
@@ -30,7 +30,7 @@ struct ReplaceTestingView: View {
                     Label("FileManager", systemImage: "folder")
                 })
                 Button(action: {
-                    if MDCModify.replaceFile(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!)) {
+                    if MDCModify.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!)) {
                         UIApplication.shared.alert(body: "Success!")
                     } else {
                         UIApplication.shared.alert(body: "Failed!")
@@ -39,7 +39,7 @@ struct ReplaceTestingView: View {
                     Label("MDC", systemImage: "doc.on.doc")
                 })
                 Button(action: {
-                    if AbsoluteSolver.replaceFile(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!)) {
+                    if AbsoluteSolver.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!)) {
                         UIApplication.shared.alert(body: "Success!")
                     } else {
                         UIApplication.shared.alert(body: "Failed!")

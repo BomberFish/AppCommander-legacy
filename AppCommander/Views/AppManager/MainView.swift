@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var isUnsandboxed = false
+    @State public var isUnsandboxed: Bool
     @State private var searchText = ""
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
 
@@ -130,6 +130,6 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(isUnsandboxed: true)
     }
 }
