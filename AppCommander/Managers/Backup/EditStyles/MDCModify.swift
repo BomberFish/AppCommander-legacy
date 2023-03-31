@@ -13,14 +13,17 @@ public struct MDCModify {
         let success = MDC.overwriteFileWithDataImpl(originPath: at.path, replacementData: Data(with))
         if !success {
             print("[MDCReplace] MDC overwrite failed")
+            Haptic.shared.notify(.error)
             UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: MacDirtyCow)")
         } else {
             print("[MDCReplace] MDC overwrite success!")
+            Haptic.shared.notify(.success)
         }
         return success
     }
     
     public static func deleteFile(at: URL) -> Bool {
+        Haptic.shared.notify(.error)
         UIApplication.shared.alert(body: "Deleting files with MDC is not supported!")
         return false
     }

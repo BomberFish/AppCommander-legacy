@@ -41,7 +41,7 @@ class ApplicationManager {
             let mmDict = NSDictionary(contentsOfFile: mmpath)
             print(mmDict as Any)
             if mmDict!["MCMMetadataIdentifier"] as! String == bundleID {
-                returnedurl = URL(string: "/var/mobile/Containers/Data/Application")!.appendingPathComponent(dir)
+                returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
             }
         }
         return returnedurl!

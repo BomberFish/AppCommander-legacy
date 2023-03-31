@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */; };
 		D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */; };
+		D6609A9A29D73D680033F66D /* CompressionWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9929D73D680033F66D /* CompressionWrapper */; };
+		D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9B29D73D680033F66D /* DiskImagesWrapper */; };
+		D6609A9E29D73D680033F66D /* FSOperations in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9D29D73D680033F66D /* FSOperations */; };
+		D6609AA029D73D680033F66D /* NSTask in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9F29D73D680033F66D /* NSTask */; };
+		D6609AA229D73D680033F66D /* SVGWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609AA129D73D680033F66D /* SVGWrapper */; };
 		D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */ = {isa = PBXBuildFile; productRef = D6D22B6129C64AC20095645B /* LocalConsole */; };
 		D6D22B6629C64D180095645B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6529C64D180095645B /* SettingsView.swift */; };
 		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
@@ -130,12 +135,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6609AA029D73D680033F66D /* NSTask in Frameworks */,
 				D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */,
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
 				D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */,
+				D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */,
 				D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */,
 				D6E3FC7E29CDCC2000D019D1 /* ApplicationsWrapper in Frameworks */,
+				D6609AA229D73D680033F66D /* SVGWrapper in Frameworks */,
+				D6609A9E29D73D680033F66D /* FSOperations in Frameworks */,
 				D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */,
+				D6609A9A29D73D680033F66D /* CompressionWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +173,13 @@
 				D6E3FC9C29CDED8900D019D1 /* LinkCell.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D6609A9829D73D680033F66D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D6D55A6C29D5A4C900DD6C4A /* Backup */ = {
@@ -202,6 +219,7 @@
 				D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */,
 				D6D55A6C29D5A4C900DD6C4A /* Backup */,
 				D6E3FC8C29CDE34900D019D1 /* IconStateManager.swift */,
+				D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -244,6 +262,7 @@
 				D6E5529029B165420083E6A5 /* CacheTests */,
 				D6E5529A29B165420083E6A5 /* CacheUITests */,
 				D6E5527E29B165400083E6A5 /* Products */,
+				D6609A9829D73D680033F66D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -317,7 +336,6 @@
 			isa = PBXGroup;
 			children = (
 				D6E552CB29B2E9F50083E6A5 /* AppFunctions.swift */,
-				D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */,
 				D6E552B629B16E640083E6A5 /* Alert++.swift */,
 				D6E3FC8529CDE2F300D019D1 /* SpringBoardItem.swift */,
 				D6E3FC8329CDE07700D019D1 /* Color++.swift */,
@@ -363,6 +381,11 @@
 				D6E3FC7A29CDCBF000D019D1 /* Dynamic */,
 				D6E3FC7D29CDCC2000D019D1 /* ApplicationsWrapper */,
 				D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */,
+				D6609A9929D73D680033F66D /* CompressionWrapper */,
+				D6609A9B29D73D680033F66D /* DiskImagesWrapper */,
+				D6609A9D29D73D680033F66D /* FSOperations */,
+				D6609A9F29D73D680033F66D /* NSTask */,
+				D6609AA129D73D680033F66D /* SVGWrapper */,
 			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
@@ -909,6 +932,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6402EBE29BE5C9A00E2F0C0 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
+		};
+		D6609A9929D73D680033F66D /* CompressionWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
+			productName = CompressionWrapper;
+		};
+		D6609A9B29D73D680033F66D /* DiskImagesWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
+			productName = DiskImagesWrapper;
+		};
+		D6609A9D29D73D680033F66D /* FSOperations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
+			productName = FSOperations;
+		};
+		D6609A9F29D73D680033F66D /* NSTask */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
+			productName = NSTask;
+		};
+		D6609AA129D73D680033F66D /* SVGWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
+			productName = SVGWrapper;
 		};
 		D6D22B6129C64AC20095645B /* LocalConsole */ = {
 			isa = XCSwiftPackageProductDependency;

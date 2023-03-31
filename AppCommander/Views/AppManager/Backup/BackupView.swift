@@ -12,20 +12,26 @@ struct BackupView: View {
     @State private var fakebackups: [Backup] = []
     var body: some View {
         List {
+            HStack {
+                Spacer()
+                Text("🚧 UNDER CONSTRUCTION!! 🚧")
+                    .font(.system(.title2))
+                Spacer()
+            }
             Section {
                 NavigationLink(destination: { ReplaceTestingView(app: app) }, label: { Label("Replace Testing", systemImage: "wrench.and.screwdriver") })
             }
             Section {
                 Button(action: {
-                    fakebackups.append(Backup(app: app, time: Date()))
+                    AppBackupManager.backup(app: app)
                 }, label: {
                     Label("Back up now", systemImage: "arrow.down.app")
                 })
             }
             Section {
-                ForEach(fakebackups) { fakebackup in
+                ForEach(AppBackupManager.getBackups(app: app)) {backup in
                     HStack {
-                        Text("Backup taken \(fakebackup.time)")
+                        Text("Backup taken \(backup.time)")
                         Spacer()
                         Button(action: {
                             UIApplication.shared.confirmAlertDestructive(title:"Confirmation", body: "Restore this backup?", onOK: {UIApplication.shared.alert(body: "not implemented")}, destructActionText: "Restore")

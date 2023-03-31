@@ -21,13 +21,16 @@ public struct AbsoluteSolver {
                 return FMModify.replaceFile(at: at, with: with)
             } else if owner == "unknown" {
                 print("[AbsoluteSolver] Error: Could not find owner?!")
+                Haptic.shared.notify(.error)
                 UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nCould not find owner?!")
             } else {
                 print("[AbsoluteSolver] Error: Unexpected owner!")
+                Haptic.shared.notify(.error)
                 UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nUnexpected file owner!")
             }
         } catch {
             print("[AbsoluteSolver] Error: \(error.localizedDescription)")
+            Haptic.shared.notify(.error)
             UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)")
         }
         return false
@@ -45,13 +48,16 @@ public struct AbsoluteSolver {
                 return FMModify.deleteFile(at: at)
             } else if owner == "unknown" {
                 print("[AbsoluteSolver] Error: Could not find owner?!")
+                Haptic.shared.notify(.error)
                 UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nCould not find owner?!")
             } else {
                 print("[AbsoluteSolver] Error: Unexpected owner!")
+                Haptic.shared.notify(.error)
                 UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nUnexpected file owner!")
             }
         } catch {
             print("[AbsoluteSolver] Error: \(error.localizedDescription)")
+            Haptic.shared.notify(.error)
             UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)")
         }
         return false
