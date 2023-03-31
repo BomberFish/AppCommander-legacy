@@ -9,10 +9,7 @@
 		<string>filza</string>
 		<string>santander</string>
 	</array>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
 </dict>
 </plist>
