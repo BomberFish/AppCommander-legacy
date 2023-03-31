@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+
 public struct FileActionManager {
     // MARK: - deletes all the contents of directories. usually.
     public static func delDirectoryContents(path: String) -> Bool {
@@ -13,7 +15,7 @@ public struct FileActionManager {
         do {
             contents = try FileManager.default.contentsOfDirectory(atPath: path)
         } catch {
-            UIApplication.shared.alert(body: "Could not get contents of directory?!")
+            UIApplication.shared.alert(body: "Could not get contents of directory?!\n\(error.localizedDescription)")
             return false
         }
         if contents != [""] {

@@ -8,6 +8,7 @@
 import Foundation
 import AssetCatalogWrapper
 import ApplicationsWrapper
+import SwiftUI
 
 class IconStateItemHelper {
     static let shared = IconStateItemHelper()

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class HomeBackupManager {
     /// Save a homescreen backup manually

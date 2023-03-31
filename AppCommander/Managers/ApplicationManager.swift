@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
 // does nothing lololo
 enum GenericError: Error {
@@ -31,7 +31,7 @@ class ApplicationManager {
             dirlist = try fm.contentsOfDirectory(atPath: "/var/mobile/Containers/Data/Application")
             print(dirlist)
         } catch {
-            UIApplication.shared.alert(body: "Could not access /var/mobile/Containers/Data/Application")
+            UIApplication.shared.alert(body: "Could not access /var/mobile/Containers/Data/Application.\n\(error.localizedDescription)")
         }
 
         for dir in dirlist {

@@ -23,7 +23,7 @@ struct AppView: View {
             
             if debugEnabled {
                 Section {
-                    NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore", systemImage: "externaldrive.badge.timemachine") })
+                    NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore [EXPERIMENTAL]", systemImage: "externaldrive.badge.timemachine") })
                 }
             }
             

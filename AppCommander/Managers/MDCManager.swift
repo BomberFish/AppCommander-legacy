@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public struct MDC {
     public static func unsandbox() -> Bool {

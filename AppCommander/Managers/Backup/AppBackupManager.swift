@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import ZIPFoundation
 
 struct Backup: Identifiable, Equatable {
