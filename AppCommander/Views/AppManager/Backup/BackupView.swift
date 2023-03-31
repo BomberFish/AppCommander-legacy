@@ -47,6 +47,24 @@ struct BackupView: View {
             backups = AppBackupManager.getBackups(app: app)
         }
         .onAppear {
+            let fm = FileManager.default
+            let docsdir = (fm.urls(for: .documentDirectory, in: .userDomainMask))[0]
+            
+            let backupfolderdir = docsdir.appendingPathComponent("Backups", conformingTo: .directory)
+            let backupfolderdirexists = fm.fileExists(atPath: backupfolderdir.path)
+            
+            let backupdir = backupfolderdir.appendingPathComponent(app.bundleIdentifier, conformingTo: .directory)
+            let backupdirexists = fm.fileExists(atPath: backupfolderdir.path)
+            
+            print(docsdir, backupfolderdir, backupfolderdirexists, backupdir, backupdirexists)
+            do {
+                try fm.createDirectory(at: backupdir, withIntermediateDirectories: true)
+                Haptic.shared.notify(.success)
+            } catch {
+                UIApplication.shared.alert(body: error.localizedDescription)
+                Haptic.shared.notify(.error)
+            }
+            
             backups = AppBackupManager.getBackups(app: app)
         }
     }
