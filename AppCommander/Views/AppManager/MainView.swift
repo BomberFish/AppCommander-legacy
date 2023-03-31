@@ -98,23 +98,24 @@ struct MainView: View {
                     })
                 }
             }
+            
+            .refreshable {
+    #if targetEnvironment(simulator)
+                #else
+                if !isUnsandboxed {
+                    isUnsandboxed = MDC.unsandbox()
+                } else {
+                    allApps = try! ApplicationManager.getApps()
+                    apps = allApps
+                }
+                #endif
+            }
         }
         // FIXME: this really slows the app down dont it :(
         .onAppear {
 #if targetEnvironment(simulator)
             #else
             isUnsandboxed = MDC.unsandbox()
-            if !isUnsandboxed {
-                isUnsandboxed = MDC.unsandbox()
-            } else {
-                allApps = try! ApplicationManager.getApps()
-                apps = allApps
-            }
-            #endif
-        }
-        .refreshable {
-#if targetEnvironment(simulator)
-            #else
             if !isUnsandboxed {
                 isUnsandboxed = MDC.unsandbox()
             } else {
