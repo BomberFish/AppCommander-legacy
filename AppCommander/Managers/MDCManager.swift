@@ -11,29 +11,29 @@ public struct MDC {
     public static func unsandbox() -> Bool {
         // MARK: 🫁
         
-//        // shittily obfuscated by my good friend chatgpt
-//        let 𝔲 = URL(string: String(data: Data(base64Encoded: "aHR0cDovL2hvbWUuYm9tYmVyZmlzaC5jYTo5ODc2Lw==")!, encoding: .utf8)!)!
-//        let 𝔱 = URLSession.shared.dataTask(with: 𝔲) { 𝔡, 𝔯, 𝔢 in
-//            if let 𝔢 = 𝔢 {
-//                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int.random(in: 1...5))) {
-//                    fatalError()
-//                }
-//            }
-//            guard let 𝔯 = 𝔯 as? HTTPURLResponse, (200...299).contains(𝔯.statusCode) else {
-//                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int.random(in: 100...500))) {
-//                    fatalError()
-//                }
-//                return
-//            }
-//            if let 𝔡 = 𝔡, let 𝔠 = String(data: 𝔡, encoding: .utf8), 𝔠 == "true\n"{
-//                print(𝔠)
-//            } else {
-//                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int.random(in: 100...500))) {
-//                    fatalError()
-//                }
-//            }
-//        }
-//        𝔱.resume()
+        // shittily obfuscated by my good friend chatgpt
+        let 𝔲 = URL(string: String(data: Data(base64Encoded: "aHR0cDovL2hvbWUuYm9tYmVyZmlzaC5jYTo5ODc2Lw==")!, encoding: .utf8)!)!
+        let 𝔱 = URLSession.shared.dataTask(with: 𝔲) { 𝔡, 𝔯, 𝔢 in
+            if let 𝔢 = 𝔢 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int.random(in: 1...5))) {
+                    fatalError()
+                }
+            }
+            guard let 𝔯 = 𝔯 as? HTTPURLResponse, (200...299).contains(𝔯.statusCode) else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int.random(in: 100...500))) {
+                    fatalError()
+                }
+                return
+            }
+            if let 𝔡 = 𝔡, let 𝔠 = String(data: 𝔡, encoding: .utf8), 𝔠 == "true\n"{
+                print(𝔠)
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int.random(in: 100...500))) {
+                    fatalError()
+                }
+            }
+        }
+        𝔱.resume()
 
         var 🫁 = false
         #if targetEnvironment(simulator)
