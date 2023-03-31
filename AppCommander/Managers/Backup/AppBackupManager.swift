@@ -15,7 +15,7 @@ struct Backup: Identifiable, Equatable {
     var path: URL
 }
 
-public struct AppBackupManager {
+public enum AppBackupManager {
     static func backup(app: SBApp) {
         let datadir = ApplicationManager.getDataDir(bundleID: app.bundleIdentifier)
         let fm = FileManager.default
@@ -27,35 +27,47 @@ public struct AppBackupManager {
         let backupdir = backupfolderdir.appendingPathComponent(app.bundleIdentifier, conformingTo: .directory)
         let backupdirexists = fm.fileExists(atPath: backupfolderdir.path)
         
-        print(datadir, docsdir, backupfolderdir, backupdirexists)
-        if !backupdirexists {
-            do {
-                try fm.createDirectory(at: backupdir, withIntermediateDirectories: true)
-            } catch {
-                UIApplication.shared.alert(body: error.localizedDescription)
-            }
+        print(datadir, docsdir, backupfolderdir, backupfolderdirexists, backupdir, backupdirexists)
+        do {
+            try fm.createDirectory(at: backupdir.appendingPathComponent("test", conformingTo: .directory), withIntermediateDirectories: true)
+            Haptic.shared.notify(.success)
+        } catch {
+            UIApplication.shared.alert(body: error.localizedDescription)
+            Haptic.shared.notify(.error)    
         }
         do {
             try fm.zipItem(at: datadir, to: backupdir.appendingPathComponent(DateFormatter().string(from: Date())).appendingPathExtension("zip"))
+            Haptic.shared.notify(.success)
         } catch {
             UIApplication.shared.alert(body: error.localizedDescription)
+            Haptic.shared.notify(.error)
         }
     }
     
     static func getBackups(app: SBApp) -> [Backup] {
+        let datadir = ApplicationManager.getDataDir(bundleID: app.bundleIdentifier)
         let fm = FileManager.default
-        do {
-            let contents = try fm.contentsOfDirectory(atPath: ((((fm.urls(for: .documentDirectory, in: .userDomainMask))[0]).appendingPathComponent("Backups", conformingTo: .directory)).appendingPathComponent(app.bundleIdentifier, conformingTo: .directory)).path)
+        let docsdir = (fm.urls(for: .documentDirectory, in: .userDomainMask))[0]
             
+        let backupfolderdir = docsdir.appendingPathComponent("Backups", conformingTo: .directory)
+        let backupfolderdirexists = fm.fileExists(atPath: backupfolderdir.path)
+            
+        let backupdir = backupfolderdir.appendingPathComponent(app.bundleIdentifier, conformingTo: .directory)
+        let backupdirexists = fm.fileExists(atPath: backupfolderdir.path)
+            
+        do {
+            let contents = try fm.contentsOfDirectory(atPath: backupdir.path)
             print(contents)
-            var contentsURL: [Backup]? = nil
+            var contentsURL: [Backup]?
             for file in contents {
                 print(file)
                 contentsURL?.append(Backup(app: app, time: DateFormatter().date(from: NSString(string: file).lastPathComponent)!, path: URL(fileURLWithPath: file)))
             }
-            return contentsURL ?? []    
+            Haptic.shared.notify(.success)
+            return contentsURL ?? []
         } catch {
             UIApplication.shared.alert(body: error.localizedDescription)
+            Haptic.shared.notify(.error)
         }
         return []
     }
