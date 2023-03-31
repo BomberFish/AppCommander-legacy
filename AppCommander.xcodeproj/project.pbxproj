@@ -169,19 +169,19 @@
 			isa = PBXGroup;
 			children = (
 				D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */,
-				D6D55A6D29D5A51700DD6C4A /* MergeStrategies */,
+				D6D55A6D29D5A51700DD6C4A /* EditStyles */,
 			);
 			path = Backup;
 			sourceTree = "<group>";
 		};
-		D6D55A6D29D5A51700DD6C4A /* MergeStrategies */ = {
+		D6D55A6D29D5A51700DD6C4A /* EditStyles */ = {
 			isa = PBXGroup;
 			children = (
 				D6D55A7129D5A76400DD6C4A /* FMModify.swift */,
 				D6D55A7329D5A76E00DD6C4A /* MDCModify.swift */,
 				D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */,
 			);
-			path = MergeStrategies;
+			path = EditStyles;
 			sourceTree = "<group>";
 		};
 		D6D55A7A29D5EDCD00DD6C4A /* Backup */ = {

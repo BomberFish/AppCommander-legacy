@@ -13,7 +13,7 @@ public struct MDCModify {
         let success = MDC.overwriteFileWithDataImpl(originPath: at.path, replacementData: Data(with))
         if !success {
             print("[MDCReplace] MDC overwrite failed")
-            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: MDC)")
+            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: MacDirtyCow)")
         } else {
             print("[MDCReplace] MDC overwrite success!")
         }

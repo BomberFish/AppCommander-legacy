@@ -21,14 +21,14 @@ public struct AbsoluteSolver {
                 return FMModify.replaceFile(at: at, with: with)
             } else if owner == "unknown" {
                 print("[AbsoluteSolver] Error: Could not find owner?!")
-                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\nCould not find owner?!")
+                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nCould not find owner?!")
             } else {
                 print("[AbsoluteSolver] Error: Unexpected owner!")
-                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\nUnexpected file owner!")
+                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nUnexpected file owner!")
             }
         } catch {
             print("[AbsoluteSolver] Error: \(error.localizedDescription)")
-            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\n\(error.localizedDescription)")
+            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)")
         }
         return false
     }
@@ -45,14 +45,14 @@ public struct AbsoluteSolver {
                 return FMModify.deleteFile(at: at)
             } else if owner == "unknown" {
                 print("[AbsoluteSolver] Error: Could not find owner?!")
-                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\nCould not find owner?!")
+                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nCould not find owner?!")
             } else {
                 print("[AbsoluteSolver] Error: Unexpected owner!")
-                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\nUnexpected file owner!")
+                UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nUnexpected file owner!")
             }
         } catch {
             print("[AbsoluteSolver] Error: \(error.localizedDescription)")
-            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: AS)\n\(error.localizedDescription)")
+            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)")
         }
         return false
     }

@@ -13,7 +13,7 @@ public struct FMModify {
         let success = with.write(to: at, atomically: true)
         if !success {
             print("[FMModify] FM overwrite failed!")
-            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Strategy: FM)")
+            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: FileManager)")
         } else {
             print("[FMModify] FM overwrite success!")
         }
@@ -26,7 +26,7 @@ public struct FMModify {
             return true
         } catch {
             print("[FMModify] FM delete failed!")
-            UIApplication.shared.alert(body: "Error deleting file at \(at.path) (Strategy: FM)\n\(error.localizedDescription)")
+            UIApplication.shared.alert(body: "Error deleting file at \(at.path) (Edit Style: FileManager)\n\(error.localizedDescription)")
             return false
         }
     }
