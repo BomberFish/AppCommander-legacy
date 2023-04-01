@@ -21,6 +21,7 @@ class IconStateItemHelper {
         let apps = LSApplicationWorkspace.default().allApplications()
         if apps.isEmpty {
             // Private api didn't work, time to go old fashioned
+            print("Manually searching for apps...")
             do {
                 var dotAppDirs: [URL] = []
                 let systemAppsDir = try fm.contentsOfDirectory(at: systemApplicationsUrl, includingPropertiesForKeys: nil)
