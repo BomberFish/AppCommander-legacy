@@ -58,6 +58,9 @@ struct SettingsView: View {
                 } header: {
                     Label("Credits", systemImage: "heart")
                 }
+                
+                Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)) {}
+                
                 Section {
                     Toggle(isOn: $debugEnabled, label: { Label("Debug Mode", systemImage: "ladybug") })
                         .toggleStyle(.switch)
@@ -87,7 +90,6 @@ struct SettingsView: View {
                         Label("Debug", systemImage: "ladybug")
                     }
                 }
-                Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)) {}
             }
             .navigationTitle("Settings")
         }
