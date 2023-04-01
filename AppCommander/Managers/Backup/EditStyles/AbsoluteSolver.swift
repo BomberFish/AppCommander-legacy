@@ -11,6 +11,7 @@ import SwiftUI
 
 // Absolute Solver: A file manager that will modify/delete files By Any Means Necessary™
 public struct AbsoluteSolver {
+    // replace files
     public static func replace(at: URL, with: NSData) -> Bool {
         do {
             let fileAttributes = try FileManager.default.attributesOfItem(atPath: at.path)
@@ -44,6 +45,7 @@ public struct AbsoluteSolver {
         return false
     }
     
+    // chainsaw hand time
     public static func delete(at: URL) -> Bool {
         do {
             let fileAttributes = try FileManager.default.attributesOfItem(atPath: at.path)

@@ -119,7 +119,11 @@ class ApplicationManager {
             
             if infoPlist.keys.contains("CFBundleDisplayName") {
                 guard let CFBundleDisplayName = infoPlist["CFBundleDisplayName"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw GenericError.runtimeError("Error reading display name for \(bundleUrl.absoluteString)") }
-                app.name = CFBundleDisplayName
+                if CFBundleDisplayName != "" {
+                    app.name = CFBundleDisplayName
+                } else {
+                    app.name = ((NSURL(fileURLWithPath: bundleUrl.path).deletingPathExtension)?.lastPathComponent)!
+                }
             } else if infoPlist.keys.contains("CFBundleName") {
                 guard let CFBundleName = infoPlist["CFBundleName"] as? String else { UIApplication.shared.alert(body: "Error reading name for \(bundleUrl.absoluteString)");throw GenericError.runtimeError("Error reading name for \(bundleUrl.absoluteString)")}
                 app.name = CFBundleName
