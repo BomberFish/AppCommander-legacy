@@ -16,6 +16,10 @@ struct RootView: View {
                 .tabItem {
                     Label("App Manager", systemImage: "list.bullet")
                 }
+            ToolsView()
+                .tabItem {
+                    Label("Tools", systemImage: "hammer")
+                }
             if !(UIDevice.current.userInterfaceIdiom == .pad) {
                 AppabeticalView()
                     .tabItem {

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */; };
 		D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */; };
+		D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */; };
+		D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */; };
+		D65AA4C929D8613900C3EBE7 /* FileContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */; };
+		D65AA4CC29D8615400C3EBE7 /* WhitelistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */; };
 		D6609A9A29D73D680033F66D /* CompressionWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9929D73D680033F66D /* CompressionWrapper */; };
 		D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9B29D73D680033F66D /* DiskImagesWrapper */; };
 		D6609A9E29D73D680033F66D /* FSOperations in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9D29D73D680033F66D /* FSOperations */; };
@@ -81,6 +85,10 @@
 /* Begin PBXFileReference section */
 		D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AppCommander-Info.plist"; sourceTree = "<group>"; };
 		D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
+		D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
+		D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistView.swift; sourceTree = "<group>"; };
+		D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentsView.swift; sourceTree = "<group>"; };
+		D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistManager.swift; sourceTree = "<group>"; };
 		D674868429D7821300BCE952 /* FM++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FM++.swift"; sourceTree = "<group>"; };
 		D6D22B6529C64D180095645B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
@@ -177,6 +185,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D65AA4C329D85FEA00C3EBE7 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */,
+				D65AA4CA29D8613C00C3EBE7 /* Whitelist */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D65AA4CA29D8613C00C3EBE7 /* Whitelist */ = {
+			isa = PBXGroup;
+			children = (
+				D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */,
+				D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */,
+			);
+			path = Whitelist;
+			sourceTree = "<group>";
+		};
 		D6609A9829D73D680033F66D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +243,7 @@
 			children = (
 				D6E552CB29B2E9F50083E6A5 /* AppFunctions.swift */,
 				D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */,
+				D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */,
 				D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */,
 				D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */,
 				D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */,
@@ -252,6 +279,7 @@
 				D6E5528229B165400083E6A5 /* MainView.swift */,
 				D6E552C529B2BE730083E6A5 /* AppView.swift */,
 				D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */,
+				D65AA4C329D85FEA00C3EBE7 /* Tools */,
 				D6D55A7A29D5EDCD00DD6C4A /* Backup */,
 			);
 			path = AppManager;
@@ -517,8 +545,11 @@
 				D6E3FC8F29CDE3D500D019D1 /* String.swift in Sources */,
 				D6E3FC8629CDE2F300D019D1 /* SpringBoardItem.swift in Sources */,
 				D6D55A7029D5A69E00DD6C4A /* FileActionManager.swift in Sources */,
+				D65AA4C929D8613900C3EBE7 /* FileContentsView.swift in Sources */,
 				D6E3FC9929CDE6F500D019D1 /* MultiSelectPickerView.swift in Sources */,
+				D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */,
 				D6D22B6F29C65D6B0095645B /* Analytics.swift in Sources */,
+				D65AA4CC29D8615400C3EBE7 /* WhitelistManager.swift in Sources */,
 				D6E3FC8229CDDFE600D019D1 /* RootView.swift in Sources */,
 				D6E3FC8929CDE31600D019D1 /* IconStateItemManager.swift in Sources */,
 				D6E552B929B16E640083E6A5 /* Haptic++.swift in Sources */,
@@ -534,6 +565,7 @@
 				D6D22B6629C64D180095645B /* SettingsView.swift in Sources */,
 				D6E3FC9729CDE52900D019D1 /* AppabeticalView.swift in Sources */,
 				D6E552B429B16E170083E6A5 /* grant_full_disk_access.m in Sources */,
+				D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */,
 				D6E552B329B16E170083E6A5 /* vm_unaligned_copy_switch_race.c in Sources */,
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
 				D6E552CC29B2E9F50083E6A5 /* AppFunctions.swift in Sources */,

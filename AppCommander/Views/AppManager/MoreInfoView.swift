@@ -63,7 +63,7 @@ struct MoreInfoView: View {
                 appsize = try FileManager.default.allocatedSizeOfDirectory(at: sbapp.bundleURL)
                 docsize = try FileManager.default.allocatedSizeOfDirectory(at: ApplicationManager.getDataDir(bundleID: sbapp.bundleIdentifier))
             } catch {
-                
+                UIApplication.shared.alert(body: error.localizedDescription)
             }
         }
     }
