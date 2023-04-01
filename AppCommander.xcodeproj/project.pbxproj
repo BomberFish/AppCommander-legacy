@@ -62,7 +62,7 @@
 		D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */; };
 		D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552C529B2BE730083E6A5 /* AppView.swift */; };
 		D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = D6E552C829B2D60D0083E6A5 /* MarqueeText */; };
-		D6E552CC29B2E9F50083E6A5 /* AppFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552CB29B2E9F50083E6A5 /* AppFunctions.swift */; };
+		D6E552CC29B2E9F50083E6A5 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552CB29B2E9F50083E6A5 /* CommonFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,7 +137,7 @@
 		D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
 		D6E552C529B2BE730083E6A5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
-		D6E552CB29B2E9F50083E6A5 /* AppFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFunctions.swift; sourceTree = "<group>"; };
+		D6E552CB29B2E9F50083E6A5 /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,7 +241,7 @@
 		D6E3FC8729CDE30A00D019D1 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				D6E552CB29B2E9F50083E6A5 /* AppFunctions.swift */,
+				D6E552CB29B2E9F50083E6A5 /* CommonFunctions.swift */,
 				D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */,
 				D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */,
 				D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */,
@@ -568,7 +568,7 @@
 				D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */,
 				D6E552B329B16E170083E6A5 /* vm_unaligned_copy_switch_race.c in Sources */,
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
-				D6E552CC29B2E9F50083E6A5 /* AppFunctions.swift in Sources */,
+				D6E552CC29B2E9F50083E6A5 /* CommonFunctions.swift in Sources */,
 				D6E3FC8B29CDE33700D019D1 /* HomeBackupManager.swift in Sources */,
 				D674868529D7821300BCE952 /* FM++.swift in Sources */,
 				D6D55A7229D5A76400DD6C4A /* FMModify.swift in Sources */,

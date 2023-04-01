@@ -49,5 +49,5 @@ func openInFilza(path: String) {
 
 // MARK: - 💀
 func notimplementedalert() {
-    UIApplication.shared.alert(title: "Not implemented", body: "lol")
+    UIApplication.shared.alert(title: "Not implemented", body: "")
 }
