@@ -11,7 +11,15 @@ struct ToolsView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: { WhitelistView() }, label: { Label("Whitelist", systemImage: "app.badge.checkmark") })
+                Section {
+                    NavigationLink(destination: { WhitelistView() }, label: { Label("Whitelist", systemImage: "app.badge.checkmark") })
+                }
+                
+                Section {
+                    NavigationLink(destination: { ReplaceTestingView() }, label: { Label("Replace Testing", systemImage: "wrench.and.screwdriver") })
+                } header: {
+                    Label("Testing Only", systemImage: "ladybug")
+                }
             }
             .navigationTitle("Tools")
         }

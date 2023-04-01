@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ReplaceTestingView: View {
-    @State public var app: SBApp
     let testfile = FileManager.default.temporaryDirectory.appendingPathComponent("testfile")
     var body: some View {
         List {
@@ -84,6 +83,6 @@ struct ReplaceTestingView: View {
 
 struct ReplaceTestingView_Previews: PreviewProvider {
     static var previews: some View {
-        ReplaceTestingView(app: SBApp(bundleIdentifier: "com.example.placeholder", name: "Placeholder", bundleURL: URL(string: "/path/to/foo/bar/baz")!, version: "1.0.0", pngIconPaths: [""], hiddenFromSpringboard: false))
+        ReplaceTestingView()
     }
 }

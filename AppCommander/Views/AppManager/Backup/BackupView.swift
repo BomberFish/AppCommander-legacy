@@ -19,9 +19,6 @@ struct BackupView: View {
                 Spacer()
             }
             Section {
-                NavigationLink(destination: { ReplaceTestingView(app: app) }, label: { Label("Replace Testing", systemImage: "wrench.and.screwdriver") })
-            }
-            Section {
                 Button(action: {
                     AppBackupManager.backup(app: app)
                 }, label: {
