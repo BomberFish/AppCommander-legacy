@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */; };
+		D638E1A929DA02DF004CCA55 /* AVAudioPlayerNode++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */; };
+		D638E1AB29DA031E004CCA55 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1AA29DA031E004CCA55 /* PlayerClass.swift */; };
+		D638E1AD29DA05B2004CCA55 /* AppleLoopsMixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1AC29DA05B2004CCA55 /* AppleLoopsMixView.swift */; };
+		D638E1AF29DA0BDD004CCA55 /* Apple Loops Mix.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D638E1AE29DA0BDC004CCA55 /* Apple Loops Mix.m4a */; };
 		D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */; };
 		D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */; };
 		D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */; };
@@ -85,7 +89,10 @@
 /* Begin PBXFileReference section */
 		D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AppCommander-Info.plist"; sourceTree = "<group>"; };
 		D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
-		D638E1A629D9FF2E004CCA55 /* Apple Loops Mix.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Loops Mix.m4a"; sourceTree = "<group>"; };
+		D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayerNode++.swift"; sourceTree = "<group>"; };
+		D638E1AA29DA031E004CCA55 /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
+		D638E1AC29DA05B2004CCA55 /* AppleLoopsMixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoopsMixView.swift; sourceTree = "<group>"; };
+		D638E1AE29DA0BDC004CCA55 /* Apple Loops Mix.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Loops Mix.m4a"; sourceTree = "<group>"; };
 		D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistView.swift; sourceTree = "<group>"; };
 		D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentsView.swift; sourceTree = "<group>"; };
@@ -186,10 +193,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D638E1A729DA0205004CCA55 /* AppleLoopsMix */ = {
+			isa = PBXGroup;
+			children = (
+				D638E1AC29DA05B2004CCA55 /* AppleLoopsMixView.swift */,
+			);
+			path = AppleLoopsMix;
+			sourceTree = "<group>";
+		};
 		D65AA4C329D85FEA00C3EBE7 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
 				D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */,
+				D638E1A729DA0205004CCA55 /* AppleLoopsMix */,
 				D65AA4CA29D8613C00C3EBE7 /* Whitelist */,
 			);
 			path = Tools;
@@ -251,6 +267,7 @@
 				D6D55A6C29D5A4C900DD6C4A /* Backup */,
 				D6E3FC8C29CDE34900D019D1 /* IconStateManager.swift */,
 				D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */,
+				D638E1AA29DA031E004CCA55 /* PlayerClass.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -311,7 +328,7 @@
 		D6E5527F29B165400083E6A5 /* AppCommander */ = {
 			isa = PBXGroup;
 			children = (
-				D638E1A629D9FF2E004CCA55 /* Apple Loops Mix.m4a */,
+				D638E1AE29DA0BDC004CCA55 /* Apple Loops Mix.m4a */,
 				D6E5528029B165400083E6A5 /* AppCommanderApp.swift */,
 				D6E3FC9029CDE43400D019D1 /* Constants.swift */,
 				D6E3FC8729CDE30A00D019D1 /* Managers */,
@@ -370,6 +387,7 @@
 			children = (
 				D6E552B629B16E640083E6A5 /* Alert++.swift */,
 				D6E3FC8529CDE2F300D019D1 /* SpringBoardItem.swift */,
+				D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */,
 				D6E3FC8329CDE07700D019D1 /* Color++.swift */,
 				D6E552B729B16E640083E6A5 /* Haptic++.swift */,
 				D6E3FC9329CDE4C700D019D1 /* UIImage+UIImageAverageColorAddition.h */,
@@ -517,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6E5528829B165410083E6A5 /* Preview Assets.xcassets in Resources */,
+				D638E1AF29DA0BDD004CCA55 /* Apple Loops Mix.m4a in Resources */,
 				D6E5528529B165410083E6A5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,12 +595,15 @@
 				D6D55A7229D5A76400DD6C4A /* FMModify.swift in Sources */,
 				D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */,
 				D6E3FC8429CDE07700D019D1 /* Color++.swift in Sources */,
+				D638E1AD29DA05B2004CCA55 /* AppleLoopsMixView.swift in Sources */,
 				D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */,
+				D638E1A929DA02DF004CCA55 /* AVAudioPlayerNode++.swift in Sources */,
 				D6D55A7C29D5EE0800DD6C4A /* ReplaceTestingView.swift in Sources */,
 				D6E5528129B165400083E6A5 /* AppCommanderApp.swift in Sources */,
 				D6E3FC9429CDE4C700D019D1 /* UIImage+UIImageAverageColorAddition.m in Sources */,
 				D6E3FC9129CDE43400D019D1 /* Constants.swift in Sources */,
 				D6D55A7629D5A77400DD6C4A /* AbsoluteSolver.swift in Sources */,
+				D638E1AB29DA031E004CCA55 /* PlayerClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ToolsView: View {
+    @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
     var body: some View {
         NavigationView {
             List {
@@ -17,6 +18,9 @@ struct ToolsView: View {
                 
                 Section {
                     NavigationLink(destination: { ReplaceTestingView() }, label: { Label("Replace Testing", systemImage: "wrench.and.screwdriver") })
+                    if debugEnabled {
+                        NavigationLink(destination: { AppleLoopsMixView() }, label: { Label("Apple Loops Mix", systemImage: "apple.logo") })
+                    }
                 } header: {
                     Label("Testing Only", systemImage: "ladybug")
                 }
