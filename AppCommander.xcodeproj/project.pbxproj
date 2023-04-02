@@ -85,6 +85,7 @@
 /* Begin PBXFileReference section */
 		D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AppCommander-Info.plist"; sourceTree = "<group>"; };
 		D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
+		D638E1A629D9FF2E004CCA55 /* Apple Loops Mix.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Loops Mix.m4a"; sourceTree = "<group>"; };
 		D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistView.swift; sourceTree = "<group>"; };
 		D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentsView.swift; sourceTree = "<group>"; };
@@ -310,6 +311,7 @@
 		D6E5527F29B165400083E6A5 /* AppCommander */ = {
 			isa = PBXGroup;
 			children = (
+				D638E1A629D9FF2E004CCA55 /* Apple Loops Mix.m4a */,
 				D6E5528029B165400083E6A5 /* AppCommanderApp.swift */,
 				D6E3FC9029CDE43400D019D1 /* Constants.swift */,
 				D6E3FC8729CDE30A00D019D1 /* Managers */,

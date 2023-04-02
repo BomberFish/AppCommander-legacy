@@ -20,27 +20,29 @@ struct ReplaceTestingView: View {
             }
             Section {
                 Button(action: {
-                    if FMModify.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!)) {
+                    do {
+                        try FMModify.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!))
                         UIApplication.shared.alert(body: "Success!")
-                    } else {
+                    } catch {
                         UIApplication.shared.alert(body: "Failed!")
                     }
                 }, label: {
                     Label("FileManager", systemImage: "folder")
                 })
                 Button(action: {
-                    if MDCModify.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!)) {
+                    do { try MDCModify.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!))
                         UIApplication.shared.alert(body: "Success!")
-                    } else {
+                    } catch {
                         UIApplication.shared.alert(body: "Failed!")
                     }
                 }, label: {
                     Label("MDC", systemImage: "doc.on.doc")
                 })
                 Button(action: {
-                    if AbsoluteSolver.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!)) {
+                    do {
+                        try AbsoluteSolver.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!))
                         UIApplication.shared.alert(body: "Success!")
-                    } else {
+                    } catch {
                         UIApplication.shared.alert(body: "Failed!")
                     }
                 }, label: {

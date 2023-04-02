@@ -9,29 +9,26 @@ import Foundation
 import SwiftUI
 
 public struct FMModify {
-    public static func replace(at: URL, with: NSData) -> Bool {
+    public static func replace(at: URL, with: NSData) throws {
         let success = with.write(to: at, atomically: true)
         if !success {
             print("[FMModify] FM overwrite failed!")
             Haptic.shared.notify(.error)
-            UIApplication.shared.alert(body: "Error replacing file at \(at.path) (Edit Style: FileManager)")
+            throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: FileManager)")
         } else {
             print("[FMModify] FM overwrite success!")
             Haptic.shared.notify(.success)
         }
-        return success
     }
-    public static func delete(at: URL) -> Bool {
+    public static func delete(at: URL) throws {
         do {
             try FileManager.default.removeItem(at: at)
             print("[FMModify] FM delete success!")
             Haptic.shared.notify(.success)
-            return true
         } catch {
             print("[FMModify] FM delete failed!")
             Haptic.shared.notify(.error)
-            UIApplication.shared.alert(body: "Error deleting file at \(at.path) (Edit Style: FileManager)\n\(error.localizedDescription)")
-            return false
+            throw GenericError.runtimeError("Error deleting file at \(at.path) (Edit Style: FileManager)\n\(error.localizedDescription)")
         }
     }
 }
