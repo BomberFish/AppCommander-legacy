@@ -14,7 +14,7 @@ public struct MDCModify {
         if !success {
             print("[MDCReplace] MDC overwrite failed")
             Haptic.shared.notify(.error)
-            throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: MacDirtyCow)")
+            throw "Error replacing file at \(at.path) (Edit Style: MacDirtyCow)"
         } else {
             print("[MDCReplace] MDC overwrite success!")
             Haptic.shared.notify(.success)
@@ -23,6 +23,6 @@ public struct MDCModify {
     
     public static func delete(at: URL) throws {
         Haptic.shared.notify(.error)
-        throw GenericError.runtimeError("Deleting files with MDC is not supported... yet.")
+        throw "Deleting files with MDC is not supported... yet."
     }
 }

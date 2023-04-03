@@ -14,7 +14,7 @@ public struct FMModify {
         if !success {
             print("[FMModify] FM overwrite failed!")
             Haptic.shared.notify(.error)
-            throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: FileManager)")
+            throw "Error replacing file at \(at.path) (Edit Style: FileManager)"
         } else {
             print("[FMModify] FM overwrite success!")
             Haptic.shared.notify(.success)
@@ -28,7 +28,7 @@ public struct FMModify {
         } catch {
             print("[FMModify] FM delete failed!")
             Haptic.shared.notify(.error)
-            throw GenericError.runtimeError("Error deleting file at \(at.path) (Edit Style: FileManager)\n\(error.localizedDescription)")
+            throw "Error deleting file at \(at.path) (Edit Style: FileManager)\n\(error.localizedDescription)"
         }
     }
 }

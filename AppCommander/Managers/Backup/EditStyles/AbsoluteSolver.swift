@@ -22,19 +22,19 @@ public struct AbsoluteSolver {
                     do {
                         try MDCModify.replace(at: at, with: with)
                     } catch {
-                        throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)")
+                        throw "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)"
                     }
                 } else {
                     print("[AbsoluteSolver] PANIC!!! OUT OF RAM!!! THIS IS REALLY REALLY REALLY BAD!!!!!")
                     Haptic.shared.notify(.error)
-                    throw GenericError.runtimeError("AbsoluteSolver: Overwrite failed!\nInsufficient RAM! Please reopen the app.")
+                    throw "AbsoluteSolver: Overwrite failed!\nInsufficient RAM! Please reopen the app."
                 }
             } else if owner == "mobile" {
                 print("[AbsoluteSolver] Using FM method")
                 do {
                     try FMModify.replace(at: at, with: with)
                 } catch {
-                    throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)")
+                    throw "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)"
                 }
             } else if owner == "unknown" {
                 print("[AbsoluteSolver] Error: Could not find owner?!")
@@ -43,12 +43,12 @@ public struct AbsoluteSolver {
             } else {
                 print("[AbsoluteSolver] Error: Unexpected owner!")
                 Haptic.shared.notify(.error)
-                throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nUnexpected file owner!")
+                throw "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nUnexpected file owner!"
             }
         } catch {
             print("[AbsoluteSolver] Error: \(error.localizedDescription)")
             Haptic.shared.notify(.error)
-            throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)")
+            throw "Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)"
         }
     }
     
@@ -62,28 +62,28 @@ public struct AbsoluteSolver {
                 do {
                     try MDCModify.delete(at: at)
                 } catch {
-                    throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)")
+                    throw "Error deleting file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)"
                 }
             } else if owner == "mobile" {
                 print("[AbsoluteSolver] Using FM method")
                 do {
                     try FMModify.delete(at: at)
                 } catch {
-                    throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)")
+                    throw "Error deleting file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)"
                 }
             } else if owner == "unknown" {
                 print("[AbsoluteSolver] Error: Could not find owner?!")
                 Haptic.shared.notify(.error)
-                throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nCould not find owner?!")
+                throw "Error deleting file at \(at.path) (Edit Style: AbsoluteSolver)\nCould not find owner?!"
             } else {
                 print("[AbsoluteSolver] Error: Unexpected owner!")
                 Haptic.shared.notify(.error)
-                throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\nUnexpected file owner!")
+                throw "Error deleting file at \(at.path) (Edit Style: AbsoluteSolver)\nUnexpected file owner!"
             }
         } catch {
             print("[AbsoluteSolver] Error: \(error.localizedDescription)")
             Haptic.shared.notify(.error)
-            throw GenericError.runtimeError("Error replacing file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)")
+            throw "Error deleting file at \(at.path) (Edit Style: AbsoluteSolver)\n\(error.localizedDescription)"
         }
     }
 }

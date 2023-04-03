@@ -19,11 +19,11 @@ public struct FileActionManager {
                 do {
                     try AbsoluteSolver.delete(at: URL(fileURLWithPath: path).appendingPathComponent(file))
                 } catch {
-                    throw GenericError.runtimeError(error.localizedDescription)
+                    throw error.localizedDescription
                 }
             }
         } catch {
-            throw GenericError.runtimeError(error.localizedDescription)
+            throw error.localizedDescription
         }
     }
 
