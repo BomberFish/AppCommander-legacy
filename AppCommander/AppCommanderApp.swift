@@ -11,14 +11,16 @@ import SwiftUI
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
 let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-let escaped = MDC.unsandbox()
+var escaped = MDC.unsandbox()
 
 @main
 struct AppCommanderApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .deferredRendering(for: 0.1)
                 .onAppear {
+                    escaped = MDC.unsandbox()
                     print("AppCommander version \(appVersion)")
                     let userDefaults = UserDefaults.standard
                     // check for updates. this would be replaced by kouyou but its JUST NOT FINISHED!!!!!!!!!!!!!!
