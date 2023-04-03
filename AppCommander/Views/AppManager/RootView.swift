@@ -9,10 +9,11 @@ import SwiftUI
 import UIKit
 
 struct RootView: View {
-    @State var isUnsandboxed = false
+    @State var isUnsandboxed = MDC.unsandbox()
+    @State var allApps = try! ApplicationManager.getApps()
     var body: some View {
         TabView {
-            MainView(isUnsandboxed: isUnsandboxed)
+            MainView(isUnsandboxed: $isUnsandboxed, allApps: $allApps)
                 .tabItem {
                     Label("App Manager", systemImage: "list.bullet")
                 }
@@ -30,6 +31,17 @@ struct RootView: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
+        }
+        .onAppear {
+#if targetEnvironment(simulator)
+            #else
+            do {
+                allApps = try ApplicationManager.getApps()
+            } catch {
+                isUnsandboxed = MDC.unsandbox()
+                allApps = try! ApplicationManager.getApps()
+            }
+            #endif
         }
     }
 }

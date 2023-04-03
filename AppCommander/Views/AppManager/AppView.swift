@@ -29,7 +29,7 @@ struct AppView: View {
                 })
                 NavigationLink(destination: { MoreInfoView(sbapp: sbapp, iconPath: iconPath) }, label: { Label("More Info", systemImage: "info.circle") })
             } header: { Label("App Details", systemImage: "info.circle") }
-            
+
             if debugEnabled {
                 Section {
                     NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore [EXPERIMENTAL]", systemImage: "externaldrive.badge.timemachine") })
@@ -37,15 +37,19 @@ struct AppView: View {
                     Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
                 }
             }
-            
+
             Section {
-                
                 Button(role: .destructive) {
                     Haptic.shared.play(.medium)
                     UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                         Haptic.shared.play(.medium)
                         // on god fuck these warnings i could not give a singular flying fuck
-                        FileActionManager.delDirectoryContents(path: ApplicationManager.getDataDir(bundleID: bundleId).path)
+                        do {
+                            try FileActionManager.delDirectoryContents(path: ApplicationManager.getDataDir(bundleID: bundleId).path)
+                            UIApplication.shared.alert(title: "Success", body: "Successfully deleted!")
+                        } catch {
+                            UIApplication.shared.alert(body: error.localizedDescription)
+                        }
                     }, destructActionText: "Delete")
                 } label: {
                     Label("Delete app data", systemImage: "trash")
@@ -56,7 +60,11 @@ struct AppView: View {
                     UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                         Haptic.shared.play(.medium)
                         let dataDirectory = ApplicationManager.getDataDir(bundleID: bundleId)
-                        FileActionManager.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").path)
+                        do {
+                            try FileActionManager.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").path)
+                        } catch {
+                            UIApplication.shared.alert(body: error.localizedDescription)
+                        }
                     }, destructActionText: "Delete")
                 } label: {
                     Label("Delete app documents", systemImage: "trash")
@@ -67,7 +75,11 @@ struct AppView: View {
                     let dataDirectory = ApplicationManager.getDataDir(bundleID: bundleId)
                     let cachedir = ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches"))
                     print(cachedir)
-                    FileActionManager.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).path)
+                    do {
+                        try FileActionManager.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).path)
+                    } catch {
+                        UIApplication.shared.alert(body: error.localizedDescription)
+                    }
                 } label: {
                     Label("Delete app cache", systemImage: "trash")
                 }
@@ -76,8 +88,7 @@ struct AppView: View {
                     Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
                 }
             }
-            
-            
+
             Section {
                 Button {
                     Haptic.shared.play(.medium)

@@ -14,12 +14,15 @@ struct ToolsView: View {
             List {
                 Section {
                     NavigationLink(destination: { WhitelistView() }, label: { Label("Whitelist", systemImage: "app.badge.checkmark") })
+                    NavigationLink(destination: { FreeloadView() }, label: { Label("Remove three-app limit", systemImage: "apps.iphone.badge.plus") })
+                } header: {
+                    Label("Sideloading Tools", systemImage: "iphone.and.arrow.forward")
                 }
                 
                 Section {
                     NavigationLink(destination: { ReplaceTestingView() }, label: { Label("Replace Testing", systemImage: "wrench.and.screwdriver") })
                     if debugEnabled {
-                        NavigationLink(destination: { AppleLoopsMixView() }, label: { Label("Apple Loops Mix", systemImage: "apple.logo") })
+                        NavigationLink(destination: { AppleLoopsMixView() }, label: { Label("Apple Loops Mix :trolley:", systemImage: "apple.logo") })
                     }
                 } header: {
                     Label("Testing Only", systemImage: "ladybug")

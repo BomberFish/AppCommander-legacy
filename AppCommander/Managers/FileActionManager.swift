@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct FileActionManager {
     // MARK: - deletes all the contents of directories. usually.
-    public static func delDirectoryContents(path: String) -> Bool {
+    public static func delDirectoryContents(path: String) throws {
         var contents = [""]
         do {
             contents = try FileManager.default.contentsOfDirectory(atPath: path)
@@ -18,27 +18,13 @@ public struct FileActionManager {
                 print("Deleting \(file)")
                 do {
                     try AbsoluteSolver.delete(at: URL(fileURLWithPath: path).appendingPathComponent(file))
-                    return true
                 } catch {
-                    return false
+                    throw GenericError.runtimeError(error.localizedDescription)
                 }
             }
         } catch {
-            UIApplication.shared.alert(body: "Could not get contents of directory?!\n\(error.localizedDescription)")
-            return false
+            throw GenericError.runtimeError(error.localizedDescription)
         }
-        if contents != [""] {
-            for file in contents {
-                print("Deleting \(file)")
-                do {
-                    try AbsoluteSolver.delete(at: URL(fileURLWithPath: file))
-                    return true
-                } catch {
-                    return false
-                }
-            }
-        }
-        return false
     }
 
 }

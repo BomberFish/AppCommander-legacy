@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct MainView: View {
-    @State public var isUnsandboxed: Bool
+    @Binding public var isUnsandboxed: Bool
     @State private var searchText = ""
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
 
     // MARK: - Literally the worst code ever. Will I fix it? No!
 
-    @State var allApps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+    @Binding public var allApps: [SBApp]
     @State var apps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
     var body: some View {
         NavigationView {
@@ -28,18 +28,6 @@ struct MainView: View {
                         // TODO: icons!
                         ForEach(apps) { app in
                             AppCell(imagePath: app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path, bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
-                                .onAppear {
-                                    if false {
-                                        print("===")
-                                        print((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path)
-                                        print(((app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao")).path).contains("this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"))
-                                        print("=====")
-                                        print(app.bundleURL)
-                                        print("=======")
-                                        print(app.pngIconPaths)
-                                        print("=========")
-                                    }
-                                }
                                 .contextMenu {
                                     Button(action: {
                                         if ApplicationManager.openApp(bundleID: app.bundleIdentifier) {
@@ -98,6 +86,21 @@ struct MainView: View {
                     })
                 }
             }
+            .onAppear {
+                apps = allApps
+            }
+//            .onAppear {
+//#if targetEnvironment(simulator)
+//            #else
+//            isUnsandboxed = MDC.unsandbox()
+//            if !isUnsandboxed {
+//                isUnsandboxed = MDC.unsandbox()
+//            } else {
+//                allApps = try! ApplicationManager.getApps()
+//                apps = allApps
+//            }
+//            #endif
+//        }
             
             .refreshable {
     #if targetEnvironment(simulator)
@@ -111,25 +114,12 @@ struct MainView: View {
                 #endif
             }
         }
-        // FIXME: this really slows the app down dont it :(
-        .onAppear {
-#if targetEnvironment(simulator)
-            #else
-            isUnsandboxed = MDC.unsandbox()
-            if !isUnsandboxed {
-                isUnsandboxed = MDC.unsandbox()
-            } else {
-                allApps = try! ApplicationManager.getApps()
-                apps = allApps
-            }
-            #endif
-        }
     }
 
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView(isUnsandboxed: true)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainView(isUnsandboxed: true)
+//    }
+//}

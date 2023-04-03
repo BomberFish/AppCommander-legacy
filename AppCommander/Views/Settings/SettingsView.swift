@@ -16,7 +16,22 @@ struct SettingsView: View {
             List {
                 Section {
                     Button(action: {
-                        FileActionManager.delDirectoryContents(path: FileManager.default.temporaryDirectory.path)
+                        do {
+                            try FileActionManager.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path)
+                            UIApplication.shared.alert(title: "Success", body: "Successfully deleted app data!")
+                        } catch {
+                            UIApplication.shared.alert(body: error.localizedDescription)
+                        }
+                    }, label: {
+                        Label("Delete app data (including backups)", systemImage: "trash")
+                    })
+                    Button(action: {
+                        do {
+                            try FileActionManager.delDirectoryContents(path: FileManager.default.temporaryDirectory.path)
+                            UIApplication.shared.alert(title: "Success", body: "Successfully deleted app cache!")
+                        } catch {
+                            UIApplication.shared.alert(body: error.localizedDescription)
+                        }
                     }, label: {
                         Label("Delete temporary storage", systemImage: "trash")
                     })
