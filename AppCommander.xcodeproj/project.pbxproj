@@ -14,6 +14,8 @@
 		D638E1AF29DA0BDD004CCA55 /* Apple Loops Mix.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D638E1AE29DA0BDC004CCA55 /* Apple Loops Mix.m4a */; };
 		D638E1B129DA6630004CCA55 /* FreeloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1B029DA6630004CCA55 /* FreeloadView.swift */; };
 		D638E1B329DAFA82004CCA55 /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1B229DAFA82004CCA55 /* View++.swift */; };
+		D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D638E1B429DE1CE1004CCA55 /* CoreServices.framework */; };
+		D638E1B729DE1CE1004CCA55 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D638E1B529DE1CE1004CCA55 /* MobileCoreServices.framework */; };
 		D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */; };
 		D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */; };
 		D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */; };
@@ -98,6 +100,8 @@
 		D638E1AE29DA0BDC004CCA55 /* Apple Loops Mix.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Loops Mix.m4a"; sourceTree = "<group>"; };
 		D638E1B029DA6630004CCA55 /* FreeloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeloadView.swift; sourceTree = "<group>"; };
 		D638E1B229DAFA82004CCA55 /* View++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View++.swift"; sourceTree = "<group>"; };
+		D638E1B429DE1CE1004CCA55 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		D638E1B529DE1CE1004CCA55 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistView.swift; sourceTree = "<group>"; };
 		D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentsView.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */,
 				D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */,
 				D6E3FC7E29CDCC2000D019D1 /* ApplicationsWrapper in Frameworks */,
+				D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */,
+				D638E1B729DE1CE1004CCA55 /* MobileCoreServices.framework in Frameworks */,
 				D6609AA229D73D680033F66D /* SVGWrapper in Frameworks */,
 				D6609A9E29D73D680033F66D /* FSOperations in Frameworks */,
 				D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */,
@@ -221,6 +227,8 @@
 		D6609A9829D73D680033F66D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D638E1B429DE1CE1004CCA55 /* CoreServices.framework */,
+				D638E1B529DE1CE1004CCA55 /* MobileCoreServices.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
