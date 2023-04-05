@@ -39,7 +39,7 @@ struct AppCommanderApp: App {
                         has_cooked = true
                         if baked_goods == false {
                             DispatchQueue.main.async {
-                                UIApplication.shared.alert(title: "Uh oh... ⚠️🍪", body: "Leaked build detected...", withButton: false)
+                                UIApplication.shared.alert(title: "Uh oh... 🏴‍☠️", body: "Looks like you're using a leaked build! Crashing in 5 seconds... Begone, pirate!", withButton: false)
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(5000)) {
                                 fatalError()

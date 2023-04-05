@@ -814,7 +814,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "Private Alpha 3";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
-				DEVELOPMENT_TEAM = ZV2PLXMRSB;
+				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AppCommander-Info.plist";
@@ -833,7 +833,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommanderXE;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
