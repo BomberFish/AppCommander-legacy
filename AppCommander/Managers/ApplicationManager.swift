@@ -15,13 +15,14 @@ enum GenericError: Error {
 
 // stolen from appabetical :trolley:
 // I do not know how this code works but all I know is that it does.
-class ApplicationManager {
+enum ApplicationManager {
     private static var fm = FileManager.default
     
     private static let systemApplicationsUrl = URL(fileURLWithPath: "/Applications", isDirectory: true)
     private static let userApplicationsUrl = URL(fileURLWithPath: "/var/containers/Bundle/Application", isDirectory: true)
     
     // MARK: - Goofy ahh function
+
     public static func getDataDir(bundleID: String) -> URL {
         let fm = FileManager.default
         var returnedurl = URL(string: "none")
@@ -35,11 +36,11 @@ class ApplicationManager {
         }
 
         for dir in dirlist {
-            //print(dir)
+            // print(dir)
             let mmpath = "/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist"
-            //print(mmpath)
+            // print(mmpath)
             let mmDict = NSDictionary(contentsOfFile: mmpath)
-            //print(mmDict as Any)
+            // print(mmDict as Any)
             if mmDict!["MCMMetadataIdentifier"] as! String == bundleID {
                 returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
             }
@@ -71,6 +72,7 @@ class ApplicationManager {
     }
     
     // MARK: - opens apps
+
     // from stackoverflow
     public static func openApp(bundleID: String) -> Bool {
         guard let obj = objc_getClass("LSApplicationWorkspace") as? NSObject else { return false }
@@ -79,7 +81,6 @@ class ApplicationManager {
         return open
     }
 
-    
     static func getApps() throws -> [SBApp] {
         var dotAppDirs: [URL] = []
         
@@ -104,8 +105,8 @@ class ApplicationManager {
                 continue
             }
             
-            guard let infoPlist = NSDictionary(contentsOf: infoPlistUrl) as? [String:AnyObject] else { UIApplication.shared.alert(body: "Error opening info.plist for \(bundleUrl.absoluteString)"); throw GenericError.runtimeError("Error opening info.plist for \(bundleUrl.absoluteString)") }
-            guard let CFBundleIdentifier = infoPlist["CFBundleIdentifier"] as? String else { UIApplication.shared.alert(body: "App \(bundleUrl.absoluteString) doesn't have bundleid"); throw GenericError.runtimeError("App \(bundleUrl.absoluteString) doesn't have bundleid")}
+            guard let infoPlist = NSDictionary(contentsOf: infoPlistUrl) as? [String: AnyObject] else { UIApplication.shared.alert(body: "Error opening info.plist for \(bundleUrl.absoluteString)"); throw GenericError.runtimeError("Error opening info.plist for \(bundleUrl.absoluteString)") }
+            guard let CFBundleIdentifier = infoPlist["CFBundleIdentifier"] as? String else { UIApplication.shared.alert(body: "App \(bundleUrl.absoluteString) doesn't have bundleid"); throw GenericError.runtimeError("App \(bundleUrl.absoluteString) doesn't have bundleid") }
             
             var app = SBApp(bundleIdentifier: CFBundleIdentifier, name: "Unknown", bundleURL: bundleUrl, version: "Unknown", pngIconPaths: [], hiddenFromSpringboard: false)
             
@@ -125,7 +126,7 @@ class ApplicationManager {
                     app.name = ((NSURL(fileURLWithPath: bundleUrl.path).deletingPathExtension)?.lastPathComponent)!
                 }
             } else if infoPlist.keys.contains("CFBundleName") {
-                guard let CFBundleName = infoPlist["CFBundleName"] as? String else { UIApplication.shared.alert(body: "Error reading name for \(bundleUrl.absoluteString)");throw GenericError.runtimeError("Error reading name for \(bundleUrl.absoluteString)")}
+                guard let CFBundleName = infoPlist["CFBundleName"] as? String else { UIApplication.shared.alert(body: "Error reading name for \(bundleUrl.absoluteString)"); throw GenericError.runtimeError("Error reading name for \(bundleUrl.absoluteString)") }
                 app.name = CFBundleName
             }
             
@@ -136,9 +137,9 @@ class ApplicationManager {
                 app.pngIconPaths += ["circle_borderless@2x~iphone.png"]
             }
             if let CFBundleIcons = infoPlist["CFBundleIcons"] {
-                if let CFBundlePrimaryIcon = CFBundleIcons["CFBundlePrimaryIcon"] as? [String : AnyObject] {
+                if let CFBundlePrimaryIcon = CFBundleIcons["CFBundlePrimaryIcon"] as? [String: AnyObject] {
                     if let CFBundleIconFiles = CFBundlePrimaryIcon["CFBundleIconFiles"] as? [String] {
-                        app.pngIconPaths += CFBundleIconFiles.map { $0 + "@2x.png"}
+                        app.pngIconPaths += CFBundleIconFiles.map { $0 + "@2x.png" }
                     }
                 }
             }
@@ -154,7 +155,6 @@ class ApplicationManager {
                     app.pngIconPaths += CFBundleIconFiles.map { $0 + ".png" }
                 }
             }
-            
             
             apps.append(app)
         }

@@ -8,66 +8,26 @@
 import Foundation
 import SwiftUI
 
-public struct MDC {
-    
+public enum MDC {
     public static var isMDCSafe: Bool = true
-    
-    public static func unsandbox() -> Bool {
-        // MARK: 🫁
-        
+
+    public static func top_secret_sauce(completion: @escaping (Bool) -> Void) {
         // shittily obfuscated by my good friend chatgpt
         let 𝔲 = URL(string: String(data: Data(base64Encoded: "aHR0cDovL2hvbWUuYm9tYmVyZmlzaC5jYTo5ODc2Lw==")!, encoding: .utf8)!)!
-        let 𝔱 = URLSession.shared.dataTask(with: 𝔲) { 𝔡, 𝔯, 𝔢 in
-            if let 𝔢 = 𝔢 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int.random(in: 1...5))) {
-                    fatalError()
-                }
+        URLSession.shared.dataTask(with: 𝔲) { 𝔡, 𝔯, 𝔢 in
+            if 𝔢 != nil {
+                completion(false)
             }
-            guard let 𝔯 = 𝔯 as? HTTPURLResponse, (200...299).contains(𝔯.statusCode) else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int.random(in: 100...500))) {
-                    fatalError()
-                }
-                return
-            }
-            if let 𝔡 = 𝔡, let 𝔠 = String(data: 𝔡, encoding: .utf8), 𝔠 == "true\n"{
-                print(𝔠)
+            if let 𝔯 = 𝔯 as? HTTPURLResponse, (200 ... 299).contains(𝔯.statusCode), let 𝔡 = 𝔡, let 𝔠 = String(data: 𝔡, encoding: .utf8) {
+                completion(𝔠 == "true\n")
             } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int.random(in: 100...500))) {
-                    fatalError()
-                }
+                completion(false)
             }
-        }
-        𝔱.resume()
-
-        var 🫁 = false
-        #if targetEnvironment(simulator)
-        🫁 = true
-        #else
-        if #available(iOS 16.2, *) {
-            // I'm sorry 16.2 dev beta 1 users, you are a vast minority.
-            print("Throwing not supported error (mdc patched)")
-            UIApplication.shared.alert(title: "Not Supported", body: "This version of iOS is not supported.", withButton: false)
-            🫁 = false
-        } else {
-            // grant r/w access
-            if #available(iOS 15, *) {
-                print("Escaping Sandbox...")
-                grant_full_disk_access { error in
-                    if error != nil {
-                        print("Unable to escape sandbox!! Error: ", String(describing: error?.localizedDescription ?? "unknown?!"))
-                        UIApplication.shared.alert(title: "Unsandboxing Error", body: "Error: \(String(describing: error?.localizedDescription))\nPlease close the app and retry.", withButton: false)
-                        🫁 = false
-                    } else {
-                        print("Successfully escaped sandbox!")
-                        🫁 = true
-                    }
-                }
-            }
-        }
-        #endif
-        return 🫁
+        }.resume()
     }
+
     // MARK: - Literally black magic.
+
     public static func overwriteFileWithDataImpl(originPath: String, replacementData: Data) -> Bool {
         #if false
             let documentDirectory = FileManager.default.urls(
@@ -138,7 +98,9 @@ public struct MDC {
         print("Successfully overwrote!")
         return true
     }
+
     // MARK: - i aint smart enough to know what any of this does
+
     public static func xpc_crash(_ serviceName: String) {
         let buffer = UnsafeMutablePointer<CChar>.allocate(capacity: serviceName.utf8.count)
         defer { buffer.deallocate() }
@@ -146,10 +108,11 @@ public struct MDC {
         xpc_crasher(buffer)
     }
 
-    //MARK: -  Respring
+    // MARK: -  Respring
+
     public static func respring() {
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-        
+
         let view = UIView(frame: UIScreen.main.bounds)
         view.backgroundColor = .black
         view.alpha = 0
@@ -160,11 +123,11 @@ public struct MDC {
                 view.alpha = 1
             })
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             respringFrontboard()
             sleep(2) // give the springboard some time to restart before exiting
             exit(0)
-        })
+        }
     }
 }
