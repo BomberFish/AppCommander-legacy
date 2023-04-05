@@ -5,6 +5,8 @@
 //  Created by Hariz Shirazi on 2023-03-27.
 //
 
+#warning("Deprecated, use BackupServices. AppBackupManager will be removed soon.")
+
 import Foundation
 import SwiftUI
 import ZIPFoundation

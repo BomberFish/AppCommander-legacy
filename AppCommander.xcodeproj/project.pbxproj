@@ -16,6 +16,9 @@
 		D638E1B329DAFA82004CCA55 /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1B229DAFA82004CCA55 /* View++.swift */; };
 		D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D638E1B429DE1CE1004CCA55 /* CoreServices.framework */; };
 		D638E1B729DE1CE1004CCA55 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D638E1B529DE1CE1004CCA55 /* MobileCoreServices.framework */; };
+		D638E1B929DE1F15004CCA55 /* BackupServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1B829DE1F15004CCA55 /* BackupServices.swift */; };
+		D638E1BB29DE1F49004CCA55 /* BackupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1BA29DE1F49004CCA55 /* BackupItem.swift */; };
+		D638E1C029DE2653004CCA55 /* iosplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D638E1BF29DE2653004CCA55 /* iosplaceholder.png */; };
 		D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */; };
 		D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */; };
 		D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */; };
@@ -102,6 +105,9 @@
 		D638E1B229DAFA82004CCA55 /* View++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View++.swift"; sourceTree = "<group>"; };
 		D638E1B429DE1CE1004CCA55 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		D638E1B529DE1CE1004CCA55 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D638E1B829DE1F15004CCA55 /* BackupServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupServices.swift; sourceTree = "<group>"; };
+		D638E1BA29DE1F49004CCA55 /* BackupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupItem.swift; sourceTree = "<group>"; };
+		D638E1BF29DE2653004CCA55 /* iosplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iosplaceholder.png; sourceTree = "<group>"; };
 		D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistView.swift; sourceTree = "<group>"; };
 		D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentsView.swift; sourceTree = "<group>"; };
@@ -237,6 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */,
+				D638E1B829DE1F15004CCA55 /* BackupServices.swift */,
+				D638E1BA29DE1F49004CCA55 /* BackupItem.swift */,
 				D6D55A6D29D5A51700DD6C4A /* EditStyles */,
 			);
 			path = Backup;
@@ -335,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				7D64731129DDAE1B00DEBFBC /* AppCommander.entitlements */,
+				D638E1BF29DE2653004CCA55 /* iosplaceholder.png */,
 				D638E1AE29DA0BDC004CCA55 /* Apple Loops Mix.m4a */,
 				D6E5528029B165400083E6A5 /* AppCommanderApp.swift */,
 				D6E3FC9029CDE43400D019D1 /* Constants.swift */,
@@ -545,6 +554,7 @@
 				D6E5528829B165410083E6A5 /* Preview Assets.xcassets in Resources */,
 				D638E1AF29DA0BDD004CCA55 /* Apple Loops Mix.m4a in Resources */,
 				D6E5528529B165410083E6A5 /* Assets.xcassets in Resources */,
+				D638E1C029DE2653004CCA55 /* iosplaceholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,10 +618,12 @@
 				D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */,
 				D638E1A929DA02DF004CCA55 /* AVAudioPlayerNode++.swift in Sources */,
 				D6D55A7C29D5EE0800DD6C4A /* ReplaceTestingView.swift in Sources */,
+				D638E1B929DE1F15004CCA55 /* BackupServices.swift in Sources */,
 				D6E5528129B165400083E6A5 /* AppCommanderApp.swift in Sources */,
 				D6E3FC9429CDE4C700D019D1 /* UIImage+UIImageAverageColorAddition.m in Sources */,
 				D6E3FC9129CDE43400D019D1 /* Constants.swift in Sources */,
 				D638E1B329DAFA82004CCA55 /* View++.swift in Sources */,
+				D638E1BB29DE1F49004CCA55 /* BackupItem.swift in Sources */,
 				D6D55A7629D5A77400DD6C4A /* AbsoluteSolver.swift in Sources */,
 				D638E1AB29DA031E004CCA55 /* PlayerClass.swift in Sources */,
 			);

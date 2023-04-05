@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct BackupView: View {
     @State public var app: SBApp
     @State private var backups: [Backup] = []
+    
     var body: some View {
         List {
             HStack {
@@ -20,7 +22,13 @@ struct BackupView: View {
             }
             Section {
                 Button(action: {
-                    AppBackupManager.backup(app: app)
+                    do {
+                        try BackupServices.shared.backup(application: app, rootHelper: false)
+                        Haptic.shared.notify(.success)
+                    } catch {
+                        Haptic.shared.notify(.error)
+                        UIApplication.shared.alert(body: error.localizedDescription)
+                    }
                 }, label: {
                     Label("Back up now", systemImage: "arrow.down.app")
                 })
