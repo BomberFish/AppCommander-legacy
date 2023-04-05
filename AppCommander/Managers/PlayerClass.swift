@@ -216,7 +216,7 @@ class Player: ObservableObject {
     // playback ended, do any cleanup
     if !disableEofCallback {
       if let last = self.currentlyPlaying {
-        let id = last.persistentID
+        //let id = last.persistentID
       }
       DispatchQueue.main.async {
         self.isPaused = true

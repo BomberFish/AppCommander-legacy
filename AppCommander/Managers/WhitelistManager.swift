@@ -12,7 +12,7 @@ public struct Whitelist {
 
     public static func overwriteBlacklist() throws {
         do {
-            try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), with: try! Data(base64Encoded: blankplist)! as NSData)
+            try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), with: Data(base64Encoded: blankplist)! as NSData)
         } catch {
             throw error.localizedDescription
         }
@@ -20,7 +20,7 @@ public struct Whitelist {
 
     public static func overwriteBannedApps() throws {
         do {
-            try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), with: try! Data(base64Encoded: blankplist)! as NSData)
+            try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), with: Data(base64Encoded: blankplist)! as NSData)
         } catch {
             throw error.localizedDescription
         }
@@ -28,7 +28,7 @@ public struct Whitelist {
 
     public static func overwriteCdHashes() throws {
         do {
-            try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), with: try! Data(base64Encoded: blankplist)! as NSData)
+            try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), with:  Data(base64Encoded: blankplist)! as NSData)
         } catch {
             throw error.localizedDescription
         }
