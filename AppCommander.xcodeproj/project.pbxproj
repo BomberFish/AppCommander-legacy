@@ -791,7 +791,7 @@
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "Private Alpha 3";
+				CURRENT_PROJECT_VERSION = "Private Alpha 4";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
@@ -832,7 +832,7 @@
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "Private Alpha 3";
+				CURRENT_PROJECT_VERSION = "Private Alpha 4";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
