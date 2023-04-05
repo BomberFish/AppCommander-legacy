@@ -10,34 +10,35 @@ import Foundation
 public struct Whitelist {
     public static let blankplist = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHBsaXN0IFBVQkxJQyAiLS8vQXBwbGUvL0RURCBQTElTVCAxLjAvL0VOIiAiaHR0cDovL3d3dy5hcHBsZS5jb20vRFREcy9Qcm9wZXJ0eUxpc3QtMS4wLmR0ZCI+CjxwbGlzdCB2ZXJzaW9uPSIxLjAiPgo8ZGljdC8+CjwvcGxpc3Q+Cg=="
 
-    public static func overwriteBlacklist() -> Bool {
+    public static func overwriteBlacklist() throws {
         do {
             try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), with: try! Data(base64Encoded: blankplist)! as NSData)
-            return true
         } catch {
-            return false
+            throw error.localizedDescription
         }
     }
 
-    public static func overwriteBannedApps() -> Bool {
+    public static func overwriteBannedApps() throws {
         do {
             try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), with: try! Data(base64Encoded: blankplist)! as NSData)
-            return true
         } catch {
-            return false
+            throw error.localizedDescription
         }
     }
 
-    public static func overwriteCdHashes() -> Bool {
+    public static func overwriteCdHashes() throws {
         do {
             try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), with: try! Data(base64Encoded: blankplist)! as NSData)
-            return true
         } catch {
-            return false
+            throw error.localizedDescription
         }
     }
 
-    public static func readFile(path: String) -> String? {
-        return (try? String?(String(contentsOfFile: path)) ?? "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?")
+    public static func readFile(path: String) throws -> String {
+        do {
+            return (try String(contentsOfFile: path))
+        } catch {
+            throw error.localizedDescription
+        }
     }
 }

@@ -18,7 +18,7 @@ struct AppCommanderApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-                .deferredRendering(for: 0.1)
+                //.deferredRendering(for: 0.1)
                 .onAppear {
                     escaped = MDC.unsandbox()
                     print("AppCommander version \(appVersion)")

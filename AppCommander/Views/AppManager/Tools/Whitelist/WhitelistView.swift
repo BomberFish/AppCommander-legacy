@@ -14,11 +14,8 @@ struct WhitelistView: View {
     @State var cdHash: Bool = UserDefaults.standard.bool(forKey: "CdEnabled")
     @State var inProgress = false
     @State var message = ""
-    @State var banned_success = false
-    @State var blacklist_success = false
-    @State var hash_success = false
     @State var success = false
-    @State var success_message = ""
+    @State var error_message = ""
     var body: some View {
             List {
                 Section {
@@ -29,37 +26,32 @@ struct WhitelistView: View {
                             inProgress = true
                             
                             if banned {
-                                banned_success = Whitelist.overwriteBannedApps()
+                                do {
+                                    try Whitelist.overwriteBannedApps()
+                                } catch {
+                                    error_message = "\(error_message) \(error.localizedDescription)"
+                                }
                             }
                             if cdHash {
-                                hash_success = Whitelist.overwriteCdHashes()
-                            } else {
-                                banned_success = false
-                                hash_success = false
-                            }
-                            success = Whitelist.overwriteBlacklist()
-                            
-                            // FIXME: Bad.
-                            if banned_success && hash_success {
-                                success_message = "Successfully removed: Blacklist, Banned Apps, CDHashes\nDidn't overwrite: none"
-                            } else if !banned_success && hash_success {
-                                success_message = "Successfully removed: Blacklist, CDHashes\nDidn't overwrite: Banned Apps"
-                            } else if banned_success && !hash_success {
-                                success_message = "Successfully removed: Blacklist, Banned Apps\nDidn't overwrite: CDHashes"
-                            } else {
-                                success_message = "Successfully removed: Blacklist\nDidn't overwrite: Banned Apps, CDHashes"
+                                do {
+                                    try Whitelist.overwriteCdHashes()
+                                } catch {
+                                    error_message = "\(error_message) \(error.localizedDescription)"
+                                }
                             }
                             
-                            if success {
-                                UIApplication.shared.alert(title: "Success", body: success_message, withButton: true)
-                                inProgress = false
-                                Haptic.shared.notify(.success)
-                                os_log(.debug, "FG: Success! See UI for details.")
+                            if blacklist {
+                                do {
+                                    try Whitelist.overwriteBlacklist()
+                                } catch {
+                                    error_message = "\(error_message) \(error.localizedDescription)"
+                                }
+                            }
+                            
+                            if error_message != "" {
+                                UIApplication.shared.alert(body: error_message)
                             } else {
-                                UIApplication.shared.alert(title: "Error", body: "An error occurred while writing to the file.", withButton: true)
-                                os_log(.debug, "FG: Error! See UI for details.")
-                                inProgress = false
-                                Haptic.shared.notify(.error)
+                                UIApplication.shared.alert(title: "Success!",body: error_message)
                             }
                             inProgress = false
                         },

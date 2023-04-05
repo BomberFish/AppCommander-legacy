@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct FileContentsView: View {
-    @State var blacklistContent = Whitelist.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist") ?? "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
-    @State var bannedAppsContent = Whitelist.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") ?? "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
-    @State var cdHashesContent = Whitelist.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") ?? "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
+    @State var blacklistContent = "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
+    @State var bannedAppsContent = "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
+    @State var cdHashesContent = "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
     
     @State var refreshing = false
     
@@ -81,9 +81,19 @@ struct FileContentsView: View {
                 cdHashesContent = ""
                 //create the illusion of fully reloading
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    blacklistContent = Whitelist.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist") ?? "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
-                    bannedAppsContent = Whitelist.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") ?? "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
-                    cdHashesContent = Whitelist.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") ?? "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
+                    do {
+                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
+                            blacklistContent = try Whitelist.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist")
+                        }
+                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
+                            bannedAppsContent = try Whitelist.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist")
+                        }
+                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
+                            cdHashesContent = try Whitelist.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist")
+                        }
+                    } catch {
+                        UIApplication.shared.alert(body: error.localizedDescription)
+                    }
                     print("Files updated!")
                     refreshing = false
                     Haptic.shared.play(.light)
@@ -93,9 +103,19 @@ struct FileContentsView: View {
             .navigationTitle("Blacklist File Contents")
             .onAppear {
                 print("Reading files!")
-                blacklistContent = Whitelist.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist") ?? "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
-                bannedAppsContent = Whitelist.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") ?? "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
-                cdHashesContent = Whitelist.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") ?? "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
+                do {
+                    if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
+                        blacklistContent = try Whitelist.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist")
+                    }
+                    if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
+                        bannedAppsContent = try Whitelist.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist")
+                    }
+                    if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
+                        cdHashesContent = try Whitelist.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist")
+                    }
+                } catch {
+                    UIApplication.shared.alert(body: error.localizedDescription)
+                }
             }
     }
         
