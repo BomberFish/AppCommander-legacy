@@ -18,14 +18,13 @@ struct ToolsView: View {
                 } header: {
                     Label("Sideloading Tools", systemImage: "iphone.and.arrow.forward")
                 }
-                
-                Section {
-                    NavigationLink(destination: { ReplaceTestingView() }, label: { Label("Replace Testing", systemImage: "wrench.and.screwdriver") })
-                    if debugEnabled {
+                if debugEnabled {
+                    Section {
+                        NavigationLink(destination: { ReplaceTestingView() }, label: { Label("Replace Testing", systemImage: "wrench.and.screwdriver") })
                         NavigationLink(destination: { AppleLoopsMixView() }, label: { Label("Apple Loops Mix :trolley:", systemImage: "apple.logo") })
+                    } header: {
+                        Label("Testing Only", systemImage: "ladybug")
                     }
-                } header: {
-                    Label("Testing Only", systemImage: "ladybug")
                 }
             }
             .navigationTitle("Tools")
