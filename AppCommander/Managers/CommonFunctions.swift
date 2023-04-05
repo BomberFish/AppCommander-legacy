@@ -10,10 +10,11 @@ import UIKit
 import ZIPFoundation
 
 // MARK: - Print to localconsole. Totally not stolen from sneakyf1shy (who still needs to finish the damn frontend)
+
 public func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
     let data = items.map { "\($0)" }.joined(separator: separator)
-    consoleManager.print(data)
     Swift.print(data, terminator: terminator)
+    consoleManager.print(data)
 }
 
 public func conditionalPrint(_ items: Any..., c: Bool, separator: String = " ", terminator: String = "\n") {
@@ -24,8 +25,8 @@ public func conditionalPrint(_ items: Any..., c: Bool, separator: String = " ", 
     }
 }
 
-
 // MARK: - Detect if Filza/Santander is installed
+
 // Code is from some jailbreak detection I found online
 // fucking retards think filza=jelbrek
 func isFilzaInstalled() -> Bool {
@@ -37,6 +38,7 @@ func isSantanderInstalled() -> Bool {
 }
 
 // MARK: - Open path in file manager
+
 // thanks serena uwu
 func openInSantander(path: String) {
     UIApplication.shared.open(URL(string: "santander://\(path)")!, options: [:], completionHandler: nil)
@@ -48,6 +50,7 @@ func openInFilza(path: String) {
 }
 
 // MARK: - 💀
+
 func notimplementedalert() {
     UIApplication.shared.alert(title: "Not implemented", body: "")
 }
