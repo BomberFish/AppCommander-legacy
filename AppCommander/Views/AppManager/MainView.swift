@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainView: View {
-    @Binding public var isUnsandboxed: Bool
     @State private var searchText = ""
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
 
@@ -73,14 +72,14 @@ struct MainView: View {
                             }, label: {
                                 Label("Case-sensitive", systemImage: "character")
                             })
-                            
+
                             Button(action: {
                                 apps = allApps.sorted { $0.name.lowercased() < $1.name.lowercased() }
                             }, label: {
                                 Label("Case-insensitive", systemImage: "textformat")
                             })
                         }
-                        
+
                     }, label: {
                         Label("Sort", systemImage: "line.3.horizontal.decrease.circle")
                     })
@@ -90,7 +89,7 @@ struct MainView: View {
                 apps = allApps
             }
 //            .onAppear {
-//#if targetEnvironment(simulator)
+            // #if targetEnvironment(simulator)
 //            #else
 //            isUnsandboxed = MDC.unsandbox()
 //            if !isUnsandboxed {
@@ -101,25 +100,24 @@ struct MainView: View {
 //            }
 //            #endif
 //        }
-            
+
             .refreshable {
-    #if targetEnvironment(simulator)
+                #if targetEnvironment(simulator)
                 #else
-                if !isUnsandboxed {
-                    isUnsandboxed = MDC.unsandbox()
-                } else {
+//                if !isUnsandboxed {
+//                    isUnsandboxed = MDC.unsandbox()
+//                } else {
                     allApps = try! ApplicationManager.getApps()
                     apps = allApps
-                }
+//                }
                 #endif
-            }
-        }
+            }.navigationViewStyle(StackNavigationViewStyle())
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
-
 }
 
-//struct ContentView_Previews: PreviewProvider {
+// struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        MainView(isUnsandboxed: true)
 //    }
-//}
+// }

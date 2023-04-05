@@ -5,3 +5,5 @@ build/*
 *.ipa
 .DS_Store
 */.DS_Store
+
+xcuserdata/
