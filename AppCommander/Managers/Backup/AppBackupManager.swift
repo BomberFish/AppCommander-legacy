@@ -54,15 +54,15 @@ public enum AppBackupManager {
     }
     
     static func getBackups(app: SBApp) -> [Backup] {
-        let datadir = ApplicationManager.getDataDir(bundleID: app.bundleIdentifier)
+        // let datadir = ApplicationManager.getDataDir(bundleID: app.bundleIdentifier)
         let fm = FileManager.default
         let docsdir = (fm.urls(for: .documentDirectory, in: .userDomainMask))[0]
             
         let backupfolderdir = docsdir.appendingPathComponent("Backups", conformingTo: .directory)
-        let backupfolderdirexists = fm.fileExists(atPath: backupfolderdir.path)
+        // let backupfolderdirexists = fm.fileExists(atPath: backupfolderdir.path)
             
         let backupdir = backupfolderdir.appendingPathComponent(app.bundleIdentifier, conformingTo: .directory)
-        let backupdirexists = fm.fileExists(atPath: backupfolderdir.path)
+        // let backupdirexists = fm.fileExists(atPath: backupfolderdir.path)
             
         do {
             let contents = try fm.contentsOfDirectory(atPath: backupdir.path)
