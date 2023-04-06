@@ -61,7 +61,7 @@ public class BackupServices {
         
         registry.append(item)
         try JSONEncoder().encode(registry).write(to: backupsRegistryURL)
-        try FileManager.default.removeItem(at: stagingDirectory)
+        try AbsoluteSolver.delete(at: stagingDirectory)
     }
     
     // Retrieve previously saved backups
@@ -95,8 +95,8 @@ public class BackupServices {
     }
      */
     
-    func restoreBackup(_ backup: BackupItem, appList: [SBApp]) throws {
-        let appWeAreLookingFor = appList.first { $0.bundleIdentifier == backup.applicationIdentifier }
+    func restoreBackup(_ backup: BackupItem) throws {
+        let appWeAreLookingFor = try! ApplicationManager.getApps().first { $0.bundleIdentifier == backup.applicationIdentifier }
         guard let app = appWeAreLookingFor else {
             throw "Couldn't find application on device with bundle ID \(backup.applicationIdentifier)"
         }
@@ -140,7 +140,7 @@ public class BackupServices {
         // remove app's current container URL
         for item in try FileManager.default.contentsOfDirectory(at: applicationContainerURL,
                                                                 includingPropertiesForKeys: nil) {
-            try FileManager.default.removeItem(at: item)
+            try AbsoluteSolver.delete(at: item)
         }
         
         print("Cleared out app's containerURL, replacing with unzippedContainerURL")
@@ -167,7 +167,7 @@ public class BackupServices {
 //        }
         
         print("WE ARE DONE. GOODNIGHT!")
-        try FileManager.default.removeItem(at: temporaryUnzippingDir)
+        try AbsoluteSolver.delete(at: temporaryUnzippingDir)
     }
 }
 

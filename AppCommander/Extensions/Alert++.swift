@@ -16,6 +16,7 @@ extension UIApplication {
             currentUIAlertController?.dismiss(animated: animated)
         }
     }
+
     func alert(title: String = "Error", body: String, animated: Bool = true, withButton: Bool = true) {
         DispatchQueue.main.async {
             currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)
@@ -23,6 +24,23 @@ extension UIApplication {
             self.present(alert: currentUIAlertController!)
         }
     }
+    
+    func progressAlert(title: String, body: String = "", animated: Bool = true, noCancel: Bool = true) {
+        DispatchQueue.main.async {
+            currentUIAlertController = UIAlertController(title: title, message: body + "\n\n\n\n", preferredStyle: .alert)
+            
+            let indicator = UIActivityIndicatorView(frame: (currentUIAlertController?.view.bounds)!)
+            indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            
+            currentUIAlertController?.view.addSubview(indicator)
+            indicator.isUserInteractionEnabled = false
+            indicator.startAnimating()
+            
+            if !noCancel { currentUIAlertController?.addAction(.init(title: "Cancel", style: .cancel)) }
+            self.present(alert: currentUIAlertController!)
+        }
+    }
+    
     func confirmAlert(title: String = "Error", body: String, onOK: @escaping () -> (), noCancel: Bool) {
         DispatchQueue.main.async {
             currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)
@@ -68,7 +86,7 @@ extension UIApplication {
     }
     
     func present(alert: UIAlertController) {
-        if var topController = self.windows[0].rootViewController {
+        if var topController = windows[0].rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }

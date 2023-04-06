@@ -36,7 +36,6 @@
 		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
 		D6D22B6F29C65D6B0095645B /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6E29C65D6B0095645B /* Analytics.swift */; };
 		D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6629D25CC600DD6C4A /* BackupView.swift */; };
-		D6D55A6929D26D7800DD6C4A /* AppBackupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */; };
 		D6D55A7029D5A69E00DD6C4A /* FileActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */; };
 		D6D55A7229D5A76400DD6C4A /* FMModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7129D5A76400DD6C4A /* FMModify.swift */; };
 		D6D55A7429D5A76E00DD6C4A /* MDCModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7329D5A76E00DD6C4A /* MDCModify.swift */; };
@@ -119,7 +118,6 @@
 		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D6D22B6E29C65D6B0095645B /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		D6D55A6629D25CC600DD6C4A /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
-		D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBackupManager.swift; sourceTree = "<group>"; };
 		D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileActionManager.swift; sourceTree = "<group>"; };
 		D6D55A7129D5A76400DD6C4A /* FMModify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMModify.swift; sourceTree = "<group>"; };
 		D6D55A7329D5A76E00DD6C4A /* MDCModify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCModify.swift; sourceTree = "<group>"; };
@@ -244,7 +242,6 @@
 		D6D55A6C29D5A4C900DD6C4A /* Backup */ = {
 			isa = PBXGroup;
 			children = (
-				D6D55A6829D26D7800DD6C4A /* AppBackupManager.swift */,
 				D638E1B829DE1F15004CCA55 /* BackupServices.swift */,
 				D638E1BA29DE1F49004CCA55 /* BackupItem.swift */,
 				D6D55A6D29D5A51700DD6C4A /* EditStyles */,
@@ -600,7 +597,6 @@
 				D6E5528329B165400083E6A5 /* MainView.swift in Sources */,
 				D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */,
 				D6D55A7429D5A76E00DD6C4A /* MDCModify.swift in Sources */,
-				D6D55A6929D26D7800DD6C4A /* AppBackupManager.swift in Sources */,
 				D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */,
 				D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */,
 				D6E552B229B16E170083E6A5 /* helpers.m in Sources */,

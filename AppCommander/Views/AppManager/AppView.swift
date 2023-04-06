@@ -14,6 +14,7 @@ struct AppView: View {
     @State public var bundleurl: URL
     @State public var sbapp: SBApp
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
+    @State var ipapath: URL? = nil
     var body: some View {
         List {
             Section {
@@ -29,14 +30,11 @@ struct AppView: View {
                 })
                 NavigationLink(destination: { MoreInfoView(sbapp: sbapp, iconPath: iconPath) }, label: { Label("More Info", systemImage: "info.circle") })
             } header: { Label("App Details", systemImage: "info.circle") }
-
-            if debugEnabled {
                 Section {
-                    NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore [EXPERIMENTAL]", systemImage: "externaldrive.badge.timemachine") })
+                    NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore (Beta)", systemImage: "externaldrive.badge.timemachine") })
                 } header: {
                     Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
                 }
-            }
 
             Section {
                 Button(role: .destructive) {
@@ -45,9 +43,12 @@ struct AppView: View {
                         Haptic.shared.play(.medium)
                         // on god fuck these warnings i could not give a singular flying fuck
                         do {
+                            UIApplication.shared.progressAlert(title: "Deleting data of \(sbapp.name)...")
                             try FileActionManager.delDirectoryContents(path: ApplicationManager.getDataDir(bundleID: bundleId).path)
-                            UIApplication.shared.alert(title: "Success", body: "Successfully deleted!")
+                            //UIApplication.shared.alert(title: "Success", body: "Successfully deleted!"
+                            UIApplication.shared.dismissAlert(animated: true)
                         } catch {
+                            UIApplication.shared.dismissAlert(animated: true)
                             UIApplication.shared.alert(body: error.localizedDescription)
                         }
                     }, destructActionText: "Delete")
@@ -61,8 +62,11 @@ struct AppView: View {
                         Haptic.shared.play(.medium)
                         let dataDirectory = ApplicationManager.getDataDir(bundleID: bundleId)
                         do {
+                            UIApplication.shared.progressAlert(title: "Deleting documents of \(sbapp.name)...")
                             try FileActionManager.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").path)
+                            UIApplication.shared.dismissAlert(animated: true)
                         } catch {
+                            UIApplication.shared.dismissAlert(animated: true)
                             UIApplication.shared.alert(body: error.localizedDescription)
                         }
                     }, destructActionText: "Delete")
@@ -76,8 +80,11 @@ struct AppView: View {
                     let cachedir = ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches"))
                     print(cachedir)
                     do {
+                        UIApplication.shared.progressAlert(title: "Deleting cache of \(sbapp.name)...")
                         try FileActionManager.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).path)
+                        UIApplication.shared.dismissAlert(animated: true)
                     } catch {
+                        UIApplication.shared.dismissAlert(animated: true)
                         UIApplication.shared.alert(body: error.localizedDescription)
                     }
                 } label: {
@@ -85,14 +92,38 @@ struct AppView: View {
                 }
             } header: {
                 if !debugEnabled {
-                    Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
+                    //Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
                 }
             }
 
             Section {
                 Button {
+                    //UIApplication.shared.progressAlert(title: "Exporting IPA of \(sbapp.name)...")
+                    
                     Haptic.shared.play(.medium)
-                    ApplicationManager.exportIPA(app: sbapp)
+                        do {
+                            ipapath = try ApplicationManager.exportIPA(app: sbapp)
+                            UIApplication.shared.dismissAlert(animated: true)
+                        } catch {
+                            UIApplication.shared.dismissAlert(animated: true)
+                            UIApplication.shared.alert(body: error.localizedDescription)
+                        }
+                    UIApplication.shared.dismissAlert(animated: true)
+                    sleep(UInt32(0.5))
+                        if ipapath != nil {
+                            UIApplication.shared.dismissAlert(animated: true)
+                            let vc = UIActivityViewController(activityItems: [ipapath as Any], applicationActivities: nil)
+                            Haptic.shared.notify(.success)
+                            vc.isModalInPresentation = true
+                            UIApplication.shared.dismissAlert(animated: true)
+                            UIApplication.shared.windows[0].rootViewController?.present(vc, animated: true)
+                            UIApplication.shared.dismissAlert(animated: true)
+                            vc.isModalInPresentation = true
+                        } else {
+                            UIApplication.shared.dismissAlert(animated: true)
+                            UIApplication.shared.alert(body: "Error!")
+                        }
+                    
                 } label: {
                     Label("Export Encrypted IPA", systemImage: "arrow.down.app")
                 }

@@ -7,7 +7,9 @@
 
 import UIKit
 
-struct BackupItem: Codable, Hashable {
+struct BackupItem: Codable, Hashable, Identifiable {
+    var id = UUID()
+    
     let applicationIdentifier: String
     let name: String
     let creationDate: Date

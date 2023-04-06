@@ -48,7 +48,7 @@ enum ApplicationManager {
         return returnedurl!
     }
 
-    public static func exportIPA(app: SBApp) {
+    public static func exportIPA(app: SBApp) throws -> URL {
         do {
             let uuid = UUID().uuidString
             let payloaddir = FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload")
@@ -61,13 +61,11 @@ enum ApplicationManager {
             print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))")
             try FileManager().zipItem(at: payloaddir, to: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))
             print("zipped \(payloaddir) to \(FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))")
-            let vc = UIActivityViewController(activityItems: [FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa") as Any], applicationActivities: nil)
-            Haptic.shared.notify(.success)
-            UIApplication.shared.windows[0].rootViewController?.present(vc, animated: true)
+            return FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa")
         } catch {
             print("error at the next step")
             Haptic.shared.notify(.error)
-            UIApplication.shared.alert(body: "There was an error exporting the ipa.\n\(error.localizedDescription)")
+            throw "There was an error exporting the ipa.\n\(error.localizedDescription)"
         }
     }
     

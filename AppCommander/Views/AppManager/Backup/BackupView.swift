@@ -10,22 +10,21 @@ import UIKit
 
 struct BackupView: View {
     @State public var app: SBApp
-    @State private var backups: [Backup] = []
-    
+    @State private var backups: [BackupItem] = []
+
     var body: some View {
         List {
-            HStack {
-                Spacer()
-                Text("🚧 UNDER CONSTRUCTION!! 🚧")
-                    .font(.system(.title2))
-                Spacer()
-            }
             Section {
                 Button(action: {
                     do {
+                        UIApplication.shared.progressAlert(title: "Backing up \(app.name)...")
                         try BackupServices.shared.backup(application: app, rootHelper: false)
+                        backups = BackupServices.shared.backups(for: app)
+                        UIApplication.shared.dismissAlert(animated: true)
                         Haptic.shared.notify(.success)
+                        //UIApplication.shared.alert(body: "Successfully backed up \(app.name)!")
                     } catch {
+                        UIApplication.shared.dismissAlert(animated: true)
                         Haptic.shared.notify(.error)
                         UIApplication.shared.alert(body: error.localizedDescription)
                     }
@@ -33,44 +32,76 @@ struct BackupView: View {
                     Label("Back up now", systemImage: "arrow.down.app")
                 })
             }
-            Section {
-                ForEach(backups) {backup in
+
+            if backups.isEmpty {
+                Section {} footer: {
                     HStack {
-                        Text("Backup taken \(backup.time)")
                         Spacer()
-                        Button(action: {
-                            UIApplication.shared.confirmAlertDestructive(title:"Confirmation", body: "Restore this backup?", onOK: {UIApplication.shared.alert(body: "not implemented")}, destructActionText: "Restore")
-                        }, label: {
-                            Image(systemName: "clock.arrow.2.circlepath")
-                        })
+                        Text("No backups!")
+                            .font(.headline)
+                        Spacer()
                     }
                 }
+            } else {
+                Section {
+                    ForEach(backups) { backup in
+                        HStack {
+                            Text("Backup taken \(backup.displayName)")
+                            Spacer()
+                            Button(action: {
+                                UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Restore this backup?", onOK: {
+                                    do {
+                                        UIApplication.shared.progressAlert(title: "Restoring backup taken   \(backup.displayName)...")
+                                        try BackupServices.shared.restoreBackup(backup)
+                                        UIApplication.shared.dismissAlert(animated: true)
+                                        Haptic.shared.notify(.success)
+                                    } catch {
+                                        UIApplication.shared.dismissAlert(animated: true)
+                                        UIApplication.shared.alert(body: "Could not restore backup \(backup.backupFilename): \(error.localizedDescription)")
+                                    }
+                                }, destructActionText: "Restore")
+                            }, label: {
+                                Image(systemName: "clock.arrow.2.circlepath")
+                            })
+                        }
+                        .swipeActions {
+                            Button(action: {
+                                do {
+                                    UIApplication.shared.progressAlert(title: "Deleting backup taken   \(backup.displayName)...")
+                                    try BackupServices.shared.removeBackup(backup)
+                                    Haptic.shared.notify(.success)
+                                    backups = BackupServices.shared.backups(for: app)
+                                    UIApplication.shared.dismissAlert(animated: true)
+                                } catch {
+                                    Haptic.shared.notify(.error)
+                                    UIApplication.shared.dismissAlert(animated: true)
+                                    UIApplication.shared.alert(body: "Could not restore backup \(backup.backupFilename): \(error.localizedDescription)")
+                                }
+                            }) {
+                                Label("Delete", systemImage: "trash")
+                            }
+                            .tint(.red)
+                        }
+                        .contextMenu {
+                            Text("Creation Date: \(backup.creationDate)")
+                            Text("Bundle ID: \(backup.applicationIdentifier)")
+                            Text("Backup filename: \(backup.backupFilename)")
+                            //                        Text("\(backup.stagingDirectoryName)")
+                            //                        Text("\(backup.displayName)")
+                        }
+                    }
+                }
+            }
+            Section {} footer: {
+                Label("Backups are still in beta. Unexpected issues may arise.", systemImage: "info.circle")
             }
         }
         .navigationTitle("Backups")
         .refreshable {
-            backups = AppBackupManager.getBackups(app: app)
+            backups = BackupServices.shared.backups(for: app)
         }
         .onAppear {
-            let fm = FileManager.default
-            let docsdir = (fm.urls(for: .documentDirectory, in: .userDomainMask))[0]
-            
-            let backupfolderdir = docsdir.appendingPathComponent("Backups", conformingTo: .directory)
-            let backupfolderdirexists = fm.fileExists(atPath: backupfolderdir.path)
-            
-            let backupdir = backupfolderdir.appendingPathComponent(app.bundleIdentifier, conformingTo: .directory)
-            let backupdirexists = fm.fileExists(atPath: backupfolderdir.path)
-            
-            print(docsdir, backupfolderdir, backupfolderdirexists, backupdir, backupdirexists)
-            do {
-                try fm.createDirectory(at: backupdir, withIntermediateDirectories: true)
-                Haptic.shared.notify(.success)
-            } catch {
-                UIApplication.shared.alert(body: error.localizedDescription)
-                Haptic.shared.notify(.error)
-            }
-            
-            backups = AppBackupManager.getBackups(app: app)
+            backups = BackupServices.shared.backups(for: app)
         }
     }
 }

@@ -17,19 +17,29 @@ struct SettingsView: View {
                 Section {
                     Button(action: {
                         do {
+                            UIApplication.shared.progressAlert(title: "Deleting app documents...")
                             try FileActionManager.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path)
-                            UIApplication.shared.alert(title: "Success", body: "Successfully deleted app data!")
+                            UIApplication.shared.dismissAlert(animated: true)
+                            Haptic.shared.notify(.success)
+                            //UIApplication.shared.alert(title: "Success", body: "Successfully deleted app data!")
                         } catch {
+                            UIApplication.shared.dismissAlert(animated: true)
+                            Haptic.shared.notify(.error)
                             UIApplication.shared.alert(body: error.localizedDescription)
                         }
                     }, label: {
-                        Label("Delete app data (including backups)", systemImage: "trash")
+                        Label("Delete app documents (including backups)", systemImage: "trash")
                     })
                     Button(action: {
                         do {
+                            UIApplication.shared.progressAlert(title: "Deleting app cache...")
                             try FileActionManager.delDirectoryContents(path: FileManager.default.temporaryDirectory.path)
-                            UIApplication.shared.alert(title: "Success", body: "Successfully deleted app cache!")
+                            UIApplication.shared.dismissAlert(animated: true)
+                            Haptic.shared.notify(.success)
+                            //UIApplication.shared.alert(title: "Success", body: "Successfully deleted app cache!")
                         } catch {
+                            UIApplication.shared.dismissAlert(animated: true)
+                            Haptic.shared.notify(.error)
                             UIApplication.shared.alert(body: error.localizedDescription)
                         }
                     }, label: {
