@@ -19,6 +19,7 @@
 		D638E1B929DE1F15004CCA55 /* BackupServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1B829DE1F15004CCA55 /* BackupServices.swift */; };
 		D638E1BB29DE1F49004CCA55 /* BackupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1BA29DE1F49004CCA55 /* BackupItem.swift */; };
 		D638E1C029DE2653004CCA55 /* iosplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D638E1BF29DE2653004CCA55 /* iosplaceholder.png */; };
+		D638E1C229DEDD15004CCA55 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1C129DEDD15004CCA55 /* LoadingView.swift */; };
 		D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */; };
 		D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */; };
 		D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */; };
@@ -108,6 +109,7 @@
 		D638E1B829DE1F15004CCA55 /* BackupServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupServices.swift; sourceTree = "<group>"; };
 		D638E1BA29DE1F49004CCA55 /* BackupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupItem.swift; sourceTree = "<group>"; };
 		D638E1BF29DE2653004CCA55 /* iosplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iosplaceholder.png; sourceTree = "<group>"; };
+		D638E1C129DEDD15004CCA55 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistView.swift; sourceTree = "<group>"; };
 		D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentsView.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				D6E3FC9B29CDED1600D019D1 /* AppManager */,
 				D6E3FC9529CDE51A00D019D1 /* HomeScreen */,
 				D6E3FC9A29CDECFD00D019D1 /* Settings */,
+				D638E1C129DEDD15004CCA55 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				D6E3FC8F29CDE3D500D019D1 /* String.swift in Sources */,
 				D6E3FC8629CDE2F300D019D1 /* SpringBoardItem.swift in Sources */,
 				D6D55A7029D5A69E00DD6C4A /* FileActionManager.swift in Sources */,
+				D638E1C229DEDD15004CCA55 /* LoadingView.swift in Sources */,
 				D65AA4C929D8613900C3EBE7 /* FileContentsView.swift in Sources */,
 				D6E3FC9929CDE6F500D019D1 /* MultiSelectPickerView.swift in Sources */,
 				D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */,
@@ -791,7 +795,7 @@
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "Private Alpha 4";
+				CURRENT_PROJECT_VERSION = "Private Alpha 5";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
@@ -832,7 +836,7 @@
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "Private Alpha 4";
+				CURRENT_PROJECT_VERSION = "Private Alpha 5";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;

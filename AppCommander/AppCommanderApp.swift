@@ -28,7 +28,7 @@ struct AppCommanderApp: App {
                 if escaped && has_cooked {
                     RootView()
                 } else {
-                    EmptyView()
+                    LoadingView()
                 }
             }
             .onAppear {
