@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CompressionWrapper
 import SwiftUI
 
 // does nothing lololo
@@ -48,6 +49,7 @@ enum ApplicationManager {
         return returnedurl!
     }
 
+    // TODO: - Remove dependency on ZIPFoundation, use CompressionWrapper from PrivateKits instead.
     public static func exportIPA(app: SBApp) throws -> URL {
         do {
             let uuid = UUID().uuidString
