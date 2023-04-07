@@ -115,12 +115,12 @@ struct SettingsView: View {
                             }
                         Button(action: respringFrontboard, label: { Label("Restart frontboard", systemImage: "arrow.counterclockwise") })
                         Button(action: respringBackboard, label: { Label("Restart backboard", systemImage: "arrow.counterclockwise") })
-                        Toggle(isOn: $sex, label:{Text("😏      Sex")})
-                                                .tint(.accentColor)
-                                                .onChange(of: sex) { new in
-                                                    // set the user defaults
-                                                    UserDefaults.standard.set(new, forKey: "sex")
-                                                }
+//                        Toggle(isOn: $sex, label:{Text("😏      Sex")})
+//                                                .tint(.accentColor)
+//                                                .onChange(of: sex) { new in
+//                                                    // set the user defaults
+//                                                    UserDefaults.standard.set(new, forKey: "sex")
+//                                                }
                     } header: {
                         Label("Debug", systemImage: "ladybug")
                     }
