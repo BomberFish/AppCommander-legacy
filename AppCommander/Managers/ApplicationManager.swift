@@ -24,7 +24,7 @@ enum ApplicationManager {
     
     // MARK: - Goofy ahh function
 
-    public static func getDataDir(bundleID: String) -> URL {
+    public static func getDataDir(bundleID: String) throws -> URL {
         let fm = FileManager.default
         var returnedurl = URL(string: "none")
         var dirlist = [""]
@@ -33,20 +33,27 @@ enum ApplicationManager {
             dirlist = try fm.contentsOfDirectory(atPath: "/var/mobile/Containers/Data/Application")
             print(dirlist)
         } catch {
-            UIApplication.shared.alert(body: "Could not access /var/mobile/Containers/Data/Application.\n\(error.localizedDescription)")
+            throw "Could not access /var/mobile/Containers/Data/Application.\n\(error.localizedDescription)"
         }
 
         for dir in dirlist {
             // print(dir)
             let mmpath = "/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist"
             // print(mmpath)
-            let mmDict = NSDictionary(contentsOfFile: mmpath)
-            // print(mmDict as Any)
-            if mmDict!["MCMMetadataIdentifier"] as! String == bundleID {
-                returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
+            if let mmDict = NSDictionary(contentsOfFile: mmpath) {
+                // print(mmDict as Any)
+                if mmDict["MCMMetadataIdentifier"] as! String == bundleID {
+                    returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
+                }
+            } else {
+                throw "Could not get data from \(mmpath)"
             }
         }
-        return returnedurl!
+        if returnedurl != URL(string: "none") {
+            return returnedurl!
+        } else {
+            throw "Error getting data directory for app \(bundleID)"
+        }
     }
 
     // TODO: - Remove dependency on ZIPFoundation, use CompressionWrapper from PrivateKits instead.

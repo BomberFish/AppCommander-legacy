@@ -60,13 +60,17 @@ struct AppView: View {
                     Haptic.shared.play(.medium)
                     UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                         Haptic.shared.play(.medium)
-                        let dataDirectory = ApplicationManager.getDataDir(bundleID: bundleId)
                         do {
-                            UIApplication.shared.progressAlert(title: "Deleting documents of \(sbapp.name)...")
-                            try FileActionManager.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").path)
-                            UIApplication.shared.dismissAlert(animated: true)
+                            let dataDirectory = try ApplicationManager.getDataDir(bundleID: bundleId)
+                            do {
+                                UIApplication.shared.progressAlert(title: "Deleting documents of \(sbapp.name)...")
+                                try FileActionManager.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").path)
+                                UIApplication.shared.dismissAlert(animated: true)
+                            } catch {
+                                UIApplication.shared.dismissAlert(animated: true)
+                                UIApplication.shared.alert(body: error.localizedDescription)
+                            }
                         } catch {
-                            UIApplication.shared.dismissAlert(animated: true)
                             UIApplication.shared.alert(body: error.localizedDescription)
                         }
                     }, destructActionText: "Delete")
@@ -76,15 +80,19 @@ struct AppView: View {
                 }
                 Button {
                     Haptic.shared.play(.medium)
-                    let dataDirectory = ApplicationManager.getDataDir(bundleID: bundleId)
-                    let cachedir = ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches"))
-                    print(cachedir)
                     do {
-                        UIApplication.shared.progressAlert(title: "Deleting cache of \(sbapp.name)...")
-                        try FileActionManager.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).path)
-                        UIApplication.shared.dismissAlert(animated: true)
+                        let dataDirectory = try ApplicationManager.getDataDir(bundleID: bundleId)
+                        let cachedir = ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches"))
+                        print(cachedir)
+                        do {
+                            UIApplication.shared.progressAlert(title: "Deleting cache of \(sbapp.name)...")
+                            try FileActionManager.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).path)
+                            UIApplication.shared.dismissAlert(animated: true)
+                        } catch {
+                            UIApplication.shared.dismissAlert(animated: true)
+                            UIApplication.shared.alert(body: error.localizedDescription)
+                        }
                     } catch {
-                        UIApplication.shared.dismissAlert(animated: true)
                         UIApplication.shared.alert(body: error.localizedDescription)
                     }
                 } label: {
