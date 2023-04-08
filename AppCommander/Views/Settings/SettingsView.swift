@@ -20,7 +20,7 @@ struct SettingsView: View {
                     Button(action: {
                         do {
                             UIApplication.shared.progressAlert(title: "Deleting app documents...")
-                            try FileActionManager.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
+                            try AbsoluteSolver.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
                                 UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                             })
                             UIApplication.shared.dismissAlert(animated: true)
@@ -37,7 +37,7 @@ struct SettingsView: View {
                     Button(action: {
                         do {
                             UIApplication.shared.progressAlert(title: "Deleting app cache...")
-                            try FileActionManager.delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { (percentage, fileName) in
+                            try AbsoluteSolver.delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { (percentage, fileName) in
                                 UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                             })
                             UIApplication.shared.dismissAlert(animated: true)
@@ -139,7 +139,7 @@ struct SettingsView: View {
                                 // create the actions
                                     let newAction = UIAlertAction(title: "Brick Device", style: .default) { (action) in
 //                                        do {
-                                            // try FileActionManager.delDirectoryContents(path: "/private/preboot")
+                                            // try AbsoluteSolver.delDirectoryContents(path: "/private/preboot")
                                             MDC.respring()
 //                                        } catch {
 //                                            Haptic.shared.notify(.error)

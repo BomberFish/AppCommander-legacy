@@ -44,7 +44,7 @@ struct AppView: View {
                         // on god fuck these warnings i could not give a singular flying fuck
                         do {
                             UIApplication.shared.progressAlert(title: "Deleting data of \(sbapp.name)...")
-                            try FileActionManager.delDirectoryContents(path: ApplicationManager.getDataDir(bundleID: bundleId).path, progress: { (percentage, fileName) in
+                            try AbsoluteSolver.delDirectoryContents(path: ApplicationManager.getDataDir(bundleID: bundleId).path, progress: { (percentage, fileName) in
                                 UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                             })
                             //UIApplication.shared.alert(title: "Success", body: "Successfully deleted!"
@@ -66,7 +66,7 @@ struct AppView: View {
                             let dataDirectory = try ApplicationManager.getDataDir(bundleID: bundleId)
                             do {
                                 UIApplication.shared.progressAlert(title: "Deleting documents of \(sbapp.name)...")
-                                try FileActionManager.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").path, progress: { (percentage, fileName) in
+                                try AbsoluteSolver.delDirectoryContents(path: dataDirectory.appendingPathComponent("Documents").path, progress: { (percentage, fileName) in
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                 })
                                 UIApplication.shared.dismissAlert(animated: true)
@@ -90,7 +90,7 @@ struct AppView: View {
                         print(cachedir)
                         do {
                             UIApplication.shared.progressAlert(title: "Deleting cache of \(sbapp.name)...")
-                            try FileActionManager.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).path, progress: { (percentage, fileName) in
+                            try AbsoluteSolver.delDirectoryContents(path: ((dataDirectory.appendingPathComponent("Library")).appendingPathComponent("Caches")).path, progress: { (percentage, fileName) in
                                 UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                             })
                             UIApplication.shared.dismissAlert(animated: true)

@@ -34,7 +34,6 @@
 		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
 		D6D22B6F29C65D6B0095645B /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6E29C65D6B0095645B /* Analytics.swift */; };
 		D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6629D25CC600DD6C4A /* BackupView.swift */; };
-		D6D55A7029D5A69E00DD6C4A /* FileActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */; };
 		D6D55A7629D5A77400DD6C4A /* AbsoluteSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */; };
 		D6D55A7929D5B2FE00DD6C4A /* MDCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */; };
 		D6D55A7C29D5EE0800DD6C4A /* ReplaceTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7B29D5EE0800DD6C4A /* ReplaceTestingView.swift */; };
@@ -115,7 +114,6 @@
 		D6D539C329E1B2660098678C /* AbsoluteSolver-ObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AbsoluteSolver-ObjC.m"; sourceTree = "<group>"; };
 		D6D539C429E1B3BD0098678C /* AbsoluteSolver-ObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AbsoluteSolver-ObjC.h"; sourceTree = "<group>"; };
 		D6D55A6629D25CC600DD6C4A /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
-		D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileActionManager.swift; sourceTree = "<group>"; };
 		D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsoluteSolver.swift; sourceTree = "<group>"; };
 		D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCManager.swift; sourceTree = "<group>"; };
 		D6D55A7B29D5EE0800DD6C4A /* ReplaceTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceTestingView.swift; sourceTree = "<group>"; };
@@ -274,7 +272,6 @@
 				D6E552CB29B2E9F50083E6A5 /* CommonFunctions.swift */,
 				D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */,
 				D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */,
-				D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */,
 				D6D539C229E1B2410098678C /* AbsoluteSolver */,
 				D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */,
 				D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */,
@@ -579,7 +576,6 @@
 				D6E552BE29B2A0CC0083E6A5 /* ApplicationManager.swift in Sources */,
 				D6E3FC8F29CDE3D500D019D1 /* String++.swift in Sources */,
 				D6E3FC8629CDE2F300D019D1 /* SpringBoardItem.swift in Sources */,
-				D6D55A7029D5A69E00DD6C4A /* FileActionManager.swift in Sources */,
 				D638E1C229DEDD15004CCA55 /* LoadingView.swift in Sources */,
 				D65AA4C929D8613900C3EBE7 /* FileContentsView.swift in Sources */,
 				D6E3FC9929CDE6F500D019D1 /* MultiSelectPickerView.swift in Sources */,
