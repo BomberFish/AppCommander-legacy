@@ -61,7 +61,7 @@ public class BackupServices {
             
             registry.append(item)
             try JSONEncoder().encode(registry).write(to: backupsRegistryURL)
-            try AbsoluteSolver.delete(at: stagingDirectory)
+            try AbsoluteSolver.delete(at: stagingDirectory)       
         } catch {
             throw error.localizedDescription
         }
