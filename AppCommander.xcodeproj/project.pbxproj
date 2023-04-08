@@ -26,7 +26,6 @@
 		D65AA4CC29D8615400C3EBE7 /* WhitelistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */; };
 		D6609A9A29D73D680033F66D /* CompressionWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9929D73D680033F66D /* CompressionWrapper */; };
 		D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9B29D73D680033F66D /* DiskImagesWrapper */; };
-		D6609A9E29D73D680033F66D /* FSOperations in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9D29D73D680033F66D /* FSOperations */; };
 		D6609AA029D73D680033F66D /* NSTask in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9F29D73D680033F66D /* NSTask */; };
 		D6609AA229D73D680033F66D /* SVGWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609AA129D73D680033F66D /* SVGWrapper */; };
 		D674868529D7821300BCE952 /* FM++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D674868429D7821300BCE952 /* FM++.swift */; };
@@ -40,7 +39,6 @@
 		D6D55A7929D5B2FE00DD6C4A /* MDCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */; };
 		D6D55A7C29D5EE0800DD6C4A /* ReplaceTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7B29D5EE0800DD6C4A /* ReplaceTestingView.swift */; };
 		D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7A29CDCBF000D019D1 /* Dynamic */; };
-		D6E3FC7E29CDCC2000D019D1 /* ApplicationsWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7D29CDCC2000D019D1 /* ApplicationsWrapper */; };
 		D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */; };
 		D6E3FC8229CDDFE600D019D1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8129CDDFE600D019D1 /* RootView.swift */; };
 		D6E3FC8429CDE07700D019D1 /* Color++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8329CDE07700D019D1 /* Color++.swift */; };
@@ -170,11 +168,9 @@
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
 				D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */,
 				D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */,
-				D6E3FC7E29CDCC2000D019D1 /* ApplicationsWrapper in Frameworks */,
 				D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */,
 				D638E1B729DE1CE1004CCA55 /* MobileCoreServices.framework in Frameworks */,
 				D6609AA229D73D680033F66D /* SVGWrapper in Frameworks */,
-				D6609A9E29D73D680033F66D /* FSOperations in Frameworks */,
 				D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */,
 				D6609A9A29D73D680033F66D /* CompressionWrapper in Frameworks */,
 			);
@@ -235,14 +231,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D6D539C229E1B2410098678C /* Absolute Solver */ = {
+		D6D539C229E1B2410098678C /* AbsoluteSolver */ = {
 			isa = PBXGroup;
 			children = (
 				D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */,
 				D6D539C329E1B2660098678C /* AbsoluteSolver-ObjC.m */,
 				D6D539C429E1B3BD0098678C /* AbsoluteSolver-ObjC.h */,
 			);
-			path = "Absolute Solver";
+			path = AbsoluteSolver;
 			sourceTree = "<group>";
 		};
 		D6D55A6C29D5A4C900DD6C4A /* Backup */ = {
@@ -270,7 +266,7 @@
 				D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */,
 				D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */,
 				D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */,
-				D6D539C229E1B2410098678C /* Absolute Solver */,
+				D6D539C229E1B2410098678C /* AbsoluteSolver */,
 				D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */,
 				D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */,
 				D6D55A6C29D5A4C900DD6C4A /* Backup */,
@@ -442,11 +438,9 @@
 				D6E552C829B2D60D0083E6A5 /* MarqueeText */,
 				D6D22B6129C64AC20095645B /* LocalConsole */,
 				D6E3FC7A29CDCBF000D019D1 /* Dynamic */,
-				D6E3FC7D29CDCC2000D019D1 /* ApplicationsWrapper */,
 				D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */,
 				D6609A9929D73D680033F66D /* CompressionWrapper */,
 				D6609A9B29D73D680033F66D /* DiskImagesWrapper */,
-				D6609A9D29D73D680033F66D /* FSOperations */,
 				D6609A9F29D73D680033F66D /* NSTask */,
 				D6609AA129D73D680033F66D /* SVGWrapper */,
 			);
@@ -714,6 +708,10 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WARNING_CFLAGS = (
+					"-Wno-deprecated-declarations",
+					"-Wno-deprecated",
+				);
 			};
 			name = Debug;
 		};
@@ -771,6 +769,10 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				WARNING_CFLAGS = (
+					"-Wno-deprecated-declarations",
+					"-Wno-deprecated",
+				);
 			};
 			name = Release;
 		};
@@ -1022,11 +1024,6 @@
 			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
 			productName = DiskImagesWrapper;
 		};
-		D6609A9D29D73D680033F66D /* FSOperations */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
-			productName = FSOperations;
-		};
 		D6609A9F29D73D680033F66D /* NSTask */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
@@ -1046,11 +1043,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6E3FC7929CDCBF000D019D1 /* XCRemoteSwiftPackageReference "Dynamic" */;
 			productName = Dynamic;
-		};
-		D6E3FC7D29CDCC2000D019D1 /* ApplicationsWrapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
-			productName = ApplicationsWrapper;
 		};
 		D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
