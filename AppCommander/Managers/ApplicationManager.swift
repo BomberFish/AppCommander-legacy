@@ -66,7 +66,7 @@ enum ApplicationManager {
             print("rmed file")
             try FileManager.default.createDirectory(at: payloaddir, withIntermediateDirectories: true)
             print("made payload dir \(payloaddir)")
-            try FileManager.default.copyItem(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
+            try AbsoluteSolver.copy(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
             print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))")
             // try FileManager().zipItem(at: payloaddir, to: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))
             try Compression.shared.compress(paths: [payloaddir], outputPath: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"), format: .zip)

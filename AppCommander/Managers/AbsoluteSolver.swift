@@ -10,7 +10,6 @@ import SwiftUI
 
 // Absolute Solver: A file manager that will modify/delete files By Any Means Necessary™
 
-
 public enum AbsoluteSolver {
     // replace files
     public static func replace(at: URL, with: NSData) throws {
@@ -113,6 +112,22 @@ public enum AbsoluteSolver {
             print("[AbsoluteSolver] Error deleting file \(at.path): \(error.localizedDescription)")
             Haptic.shared.notify(.error)
             throw "AbsoluteSolver: Error deleting file at \(at.path)\n\(error.localizedDescription)"
+        }
+    }
+    
+    public static func copy(at: URL, to: URL) throws {
+        do {
+
+                do {
+                    try FileManager.default.copyItem(at: at, to: to)
+                } catch {
+                    throw "AbsoluteSolver: Cannot copy file \(to.path) to \(at.path): \(error.localizedDescription)"
+                }
+            
+        } catch {
+            print("[AbsoluteSolver] Error: \(error.localizedDescription)")
+            Haptic.shared.notify(.error)
+            throw "AbsoluteSolver: Error replacing file at \(at.path)\n\(error.localizedDescription)"
         }
     }
 }

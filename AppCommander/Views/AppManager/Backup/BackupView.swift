@@ -11,22 +11,28 @@ import UIKit
 struct BackupView: View {
     @State public var app: SBApp
     @State private var backups: [BackupItem] = []
-
+    @State var errormsg: String = ""
     var body: some View {
         List {
             Section {
                 Button(action: {
-                    do {
-                        UIApplication.shared.progressAlert(title: "Backing up \(app.name)...")
-                        try BackupServices.shared.backup(application: app, rootHelper: false) 
-                        backups = BackupServices.shared.backups(for: app)
-                        UIApplication.shared.dismissAlert(animated: true)
-                        Haptic.shared.notify(.success)
-                        //UIApplication.shared.alert(body: "Successfully backed up \(app.name)!")
-                    } catch {
-                        UIApplication.shared.dismissAlert(animated: true)
-                        Haptic.shared.notify(.error)
-                        UIApplication.shared.alert(body: error.localizedDescription)
+                    UIApplication.shared.progressAlert(title: "Backing up \(app.name)...")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        do {
+                            try BackupServices.shared.backup(application: app, rootHelper: false)
+                            backups = BackupServices.shared.backups(for: app)
+                            UIApplication.shared.dismissAlert(animated: true)
+                            Haptic.shared.notify(.success)
+                            //UIApplication.shared.alert(body: "Successfully backed up \(app.name)!")
+                        } catch {
+                            errormsg = error.localizedDescription
+                            UIApplication.shared.dismissAlert(animated: true)
+                            Haptic.shared.notify(.error)
+                        }
+                        if errormsg != "" {
+                            UIApplication.shared.alert(body: errormsg)
+                        }
+                        errormsg = ""
                     }
                 }, label: {
                     Label("Back up now", systemImage: "arrow.down.app")
@@ -50,14 +56,21 @@ struct BackupView: View {
                             Spacer()
                             Button(action: {
                                 UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Restore this backup?", onOK: {
-                                    do {
-                                        UIApplication.shared.progressAlert(title: "Restoring backup taken   \(backup.displayName)...")
-                                        try BackupServices.shared.restoreBackup(backup) 
-                                        UIApplication.shared.dismissAlert(animated: true)
-                                        Haptic.shared.notify(.success)
-                                    } catch {
-                                        UIApplication.shared.dismissAlert(animated: true)
-                                        UIApplication.shared.alert(body: "Could not restore backup \(backup.backupFilename): \(error.localizedDescription)")
+                                    UIApplication.shared.progressAlert(title: "Restoring backup taken   \(backup.displayName)...")
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        do {
+                                            try BackupServices.shared.restoreBackup(backup)
+                                            UIApplication.shared.dismissAlert(animated: true)
+                                            Haptic.shared.notify(.success)
+                                        } catch {
+                                            errormsg = error.localizedDescription
+                                            Haptic.shared.notify(.error)
+                                            UIApplication.shared.dismissAlert(animated: true)
+                                        }
+                                        if errormsg != "" {
+                                            UIApplication.shared.alert(body: "Could not restore backup \(backup.backupFilename): \(errormsg)")
+                                        }
+                                        errormsg = ""
                                     }
                                 }, destructActionText: "Restore")
                             }, label: {
@@ -66,16 +79,22 @@ struct BackupView: View {
                         }
                         .swipeActions {
                             Button(action: {
-                                do {
-                                    UIApplication.shared.progressAlert(title: "Deleting backup taken   \(backup.displayName)...")
-                                    try BackupServices.shared.removeBackup(backup)
-                                    Haptic.shared.notify(.success)
-                                    backups = BackupServices.shared.backups(for: app)
-                                    UIApplication.shared.dismissAlert(animated: true)
-                                } catch {
-                                    Haptic.shared.notify(.error)
-                                    UIApplication.shared.dismissAlert(animated: true)
-                                    UIApplication.shared.alert(body: "Could not restore backup \(backup.backupFilename): \(error.localizedDescription)")
+                                UIApplication.shared.progressAlert(title: "Deleting backup taken   \(backup.displayName)...")
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    do {
+                                        try BackupServices.shared.removeBackup(backup)
+                                        Haptic.shared.notify(.success)
+                                        backups = BackupServices.shared.backups(for: app)
+                                        UIApplication.shared.dismissAlert(animated: true)
+                                    } catch {
+                                        errormsg = error.localizedDescription
+                                        Haptic.shared.notify(.error)
+                                        UIApplication.shared.dismissAlert(animated: true)
+                                    }
+                                    if errormsg != "" {
+                                        UIApplication.shared.alert(body: "Could not restore backup \(backup.backupFilename): \(errormsg)")
+                                    }
+                                    errormsg = ""
                                 }
                             }) {
                                 Label("Delete", systemImage: "trash")

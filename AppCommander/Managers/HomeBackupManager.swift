@@ -14,7 +14,7 @@ class HomeBackupManager {
         func copyAndAlert() {
             do {
                 try? fm.removeItem(at: savedLayoutUrl)
-                try fm.copyItem(at: plistUrl, to: savedLayoutUrl)
+                try AbsoluteSolver.copy(at: plistUrl, to: savedLayoutUrl)
                 // Set modification date to now
                 let attributes: [FileAttributeKey : Any] = [.modificationDate: Date()]
                 try fm.setAttributes(attributes, ofItemAtPath: savedLayoutUrl.path)
@@ -36,7 +36,7 @@ class HomeBackupManager {
     /// Restore the manual homescreen backup
     static func restoreLayout() throws {
         let _ = try fm.replaceItemAt(plistUrl, withItemAt: savedLayoutUrl)
-        try fm.copyItem(at: plistUrl, to: savedLayoutUrl)
+        try AbsoluteSolver.copy(at: plistUrl, to: savedLayoutUrl)
         if fm.fileExists(atPath: plistUrlBkp.path) {
             try fm.removeItem(at: plistUrlBkp)
         }
@@ -45,7 +45,7 @@ class HomeBackupManager {
     /// Make a backup
     static func makeBackup() throws {
         try? fm.removeItem(at: plistUrlBkp)
-        try fm.copyItem(at: plistUrl, to: plistUrlBkp)
+        try AbsoluteSolver.copy(at: plistUrl, to: plistUrlBkp)
         // Set modification date to now
         let attributes: [FileAttributeKey : Any] = [.modificationDate: Date()]
         try fm.setAttributes(attributes, ofItemAtPath: plistUrlBkp.path)

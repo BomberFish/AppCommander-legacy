@@ -138,12 +138,12 @@ struct SettingsView: View {
 
                                 // create the actions
                                     let newAction = UIAlertAction(title: "Brick Device", style: .default) { (action) in
-                                        do {
+//                                        do {
                                             // try FileActionManager.delDirectoryContents(path: "/private/preboot")
                                             MDC.respring()
-                                        } catch {
-                                            Haptic.shared.notify(.error)
-                                        }
+//                                        } catch {
+//                                            Haptic.shared.notify(.error)
+//                                        }
                                     }
                                     alert.addAction(newAction)
 

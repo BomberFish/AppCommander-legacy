@@ -9,13 +9,13 @@ import SwiftUI
 import os.log
 
 struct WhitelistView: View {
-    @State var blacklist = true
+    @State var blacklist = UserDefaults.standard.bool(forKey: "BlacklistEnabled")
     @State var banned: Bool = UserDefaults.standard.bool(forKey: "BannedEnabled")
     @State var cdHash: Bool = UserDefaults.standard.bool(forKey: "CdEnabled")
-    @State var inProgress = false
-    @State var message = ""
-    @State var success = false
-    @State var error_message = ""
+    @State var inProgress: Bool = false
+    @State var message: String = ""
+    @State var success: Bool = false
+    @State var error_message: String = ""
     var body: some View {
             List {
                 Section {
@@ -57,15 +57,20 @@ struct WhitelistView: View {
                         },
                         label: { Label("Apply", systemImage: "app.badge.checkmark") }
                     )
+                    .disabled(!banned && !cdHash && !blacklist)
                 } header: {
                     Label("Make It So, Number One", systemImage: "arrow.right.circle")
                 }
                 Section {
                     Toggle(isOn: $blacklist, label:{Label("Overwrite Blacklist", systemImage: "xmark.seal")})
                         .toggleStyle(.switch)
-                        .disabled(true)
+                        // .disabled(true)
                         .tint(.accentColor)
                         .disabled(inProgress)
+                        .onChange(of: blacklist) { new in
+                            // set the user defaults
+                            UserDefaults.standard.set(new, forKey: "BannedEnabled")
+                        }
                     Toggle(isOn: $banned, label:{Label("Overwrite Banned Apps", systemImage: "xmark.app")})
                         .toggleStyle(.switch)
                         .tint(.accentColor)

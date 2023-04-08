@@ -45,17 +45,13 @@ public class BackupServices {
             
             try FileManager.default.createDirectory(at: stagingDirectory, withIntermediateDirectories: true)
             try FileManager.default.createDirectory(at: groups, withIntermediateDirectories: true)
-            try FileManager.default.copyItem(at: applicationContainerURL, to: containerURL)
+            try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL)
             
             //        for (groupID, groupContainerURL) in application.proxy.groupContainerURLs() {
             //            try FileManager.default.copyItem(at: groupContainerURL, to: groups.appendingPathComponent(groupID))
             //        }
             
-            try Compression.shared.compress(paths: [stagingDirectory],
-                                            outputPath: docURL.appendingPathComponent(filename),
-                                            format: .zip
-                                            // filenameExcludes: ["v0"] /* Stupid fucking dumbass directory always fails */,
-                                            /* processHandler: urlHandler */ )
+            try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip/*, filenameExcludes: ["v0"]*/)
             
             var registry = savedBackups()
             
@@ -153,7 +149,7 @@ public class BackupServices {
                 print("Cleared out app's containerURL, replacing with unzippedContainerURL")
                 
                 for item in try FileManager.default.contentsOfDirectory(at: unzippedContainerURL, includingPropertiesForKeys: nil) {
-                    try FileManager.default.copyItem(at: item,
+                    try AbsoluteSolver.copy(at: item,
                                                      to: applicationContainerURL.appendingPathComponent(item.lastPathComponent))
                 }
                 
