@@ -21,32 +21,13 @@ struct ReplaceTestingView: View {
             Section {
                 Button(action: {
                     do {
-                        try FMModify.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!))
-                        UIApplication.shared.alert(body: "Success!")
-                    } catch {
-                        UIApplication.shared.alert(body: "Failed!")
-                    }
-                }, label: {
-                    Label("FileManager", systemImage: "folder")
-                })
-                Button(action: {
-                    do { try MDCModify.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!))
-                        UIApplication.shared.alert(body: "Success!")
-                    } catch {
-                        UIApplication.shared.alert(body: "Failed!")
-                    }
-                }, label: {
-                    Label("MDC", systemImage: "doc.on.doc")
-                })
-                Button(action: {
-                    do {
                         try AbsoluteSolver.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!))
                         UIApplication.shared.alert(body: "Success!")
                     } catch {
                         UIApplication.shared.alert(body: "Failed!")
                     }
                 }, label: {
-                    Label("Absolute Solver", systemImage: "arrow.3.trianglepath")
+                    Label("Replace with Absolute Solver", systemImage: "arrow.3.trianglepath")
                 })
             }
             Section {

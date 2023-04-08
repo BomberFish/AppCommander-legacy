@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-// 🤖🔪
+// Absolute Solver: A file manager that will modify/delete files By Any Means Necessary™
 
 
 public enum AbsoluteSolver {
@@ -18,6 +18,8 @@ public enum AbsoluteSolver {
             let fileAttributes = try FileManager.default.attributesOfItem(atPath: at.path)
             let owner = fileAttributes[.ownerAccountName] as? String ?? "unknown"
             if owner == "root" {
+                // Do not show to Apple employees.
+                // They will NOT like it.
                 if MDC.isMDCSafe {
                     print("[AbsoluteSolver] Using MDC method for file \(at.path)")
                     let success = MDC.overwriteFileWithDataImpl(originPath: at.path, replacementData: Data(with))

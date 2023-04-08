@@ -36,8 +36,6 @@
 		D6D22B6F29C65D6B0095645B /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6E29C65D6B0095645B /* Analytics.swift */; };
 		D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6629D25CC600DD6C4A /* BackupView.swift */; };
 		D6D55A7029D5A69E00DD6C4A /* FileActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */; };
-		D6D55A7229D5A76400DD6C4A /* FMModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7129D5A76400DD6C4A /* FMModify.swift */; };
-		D6D55A7429D5A76E00DD6C4A /* MDCModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7329D5A76E00DD6C4A /* MDCModify.swift */; };
 		D6D55A7629D5A77400DD6C4A /* AbsoluteSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */; };
 		D6D55A7929D5B2FE00DD6C4A /* MDCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */; };
 		D6D55A7C29D5EE0800DD6C4A /* ReplaceTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7B29D5EE0800DD6C4A /* ReplaceTestingView.swift */; };
@@ -118,8 +116,6 @@
 		D6D22B6E29C65D6B0095645B /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		D6D55A6629D25CC600DD6C4A /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
 		D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileActionManager.swift; sourceTree = "<group>"; };
-		D6D55A7129D5A76400DD6C4A /* FMModify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMModify.swift; sourceTree = "<group>"; };
-		D6D55A7329D5A76E00DD6C4A /* MDCModify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCModify.swift; sourceTree = "<group>"; };
 		D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsoluteSolver.swift; sourceTree = "<group>"; };
 		D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCManager.swift; sourceTree = "<group>"; };
 		D6D55A7B29D5EE0800DD6C4A /* ReplaceTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceTestingView.swift; sourceTree = "<group>"; };
@@ -242,19 +238,8 @@
 			children = (
 				D638E1B829DE1F15004CCA55 /* BackupServices.swift */,
 				D638E1BA29DE1F49004CCA55 /* BackupItem.swift */,
-				D6D55A6D29D5A51700DD6C4A /* EditStyles */,
 			);
 			path = Backup;
-			sourceTree = "<group>";
-		};
-		D6D55A6D29D5A51700DD6C4A /* EditStyles */ = {
-			isa = PBXGroup;
-			children = (
-				D6D55A7129D5A76400DD6C4A /* FMModify.swift */,
-				D6D55A7329D5A76E00DD6C4A /* MDCModify.swift */,
-				D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */,
-			);
-			path = EditStyles;
 			sourceTree = "<group>";
 		};
 		D6D55A7A29D5EDCD00DD6C4A /* Backup */ = {
@@ -273,6 +258,7 @@
 				D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */,
 				D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */,
 				D6D55A6F29D5A69E00DD6C4A /* FileActionManager.swift */,
+				D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */,
 				D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */,
 				D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */,
 				D6D55A6C29D5A4C900DD6C4A /* Backup */,
@@ -592,7 +578,6 @@
 				D6E3FC8D29CDE34900D019D1 /* IconStateManager.swift in Sources */,
 				D6E5528329B165400083E6A5 /* MainView.swift in Sources */,
 				D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */,
-				D6D55A7429D5A76E00DD6C4A /* MDCModify.swift in Sources */,
 				D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */,
 				D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */,
 				D6E552B229B16E170083E6A5 /* helpers.m in Sources */,
@@ -607,7 +592,6 @@
 				D6E3FC8B29CDE33700D019D1 /* HomeBackupManager.swift in Sources */,
 				D638E1B129DA6630004CCA55 /* FreeloadView.swift in Sources */,
 				D674868529D7821300BCE952 /* FM++.swift in Sources */,
-				D6D55A7229D5A76400DD6C4A /* FMModify.swift in Sources */,
 				D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */,
 				D6E3FC8429CDE07700D019D1 /* Color++.swift in Sources */,
 				D638E1AD29DA05B2004CCA55 /* AppleLoopsMixView.swift in Sources */,
