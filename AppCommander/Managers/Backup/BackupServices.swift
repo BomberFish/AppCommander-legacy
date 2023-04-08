@@ -20,13 +20,15 @@ public class BackupServices {
     let backupsRegistryURL: URL
     
     /// Backup the given app
-    func backup(application: SBApp, rootHelper: Bool /* urlHandler: @escaping (URL) -> Void */ ) throws {
+    func backup(application: SBApp, rootHelper: Bool, progress: ((String)) -> () /* urlHandler: @escaping (URL) -> Void */ ) throws {
 //        if rootHelper {
 //            let url = Bundle.main.url(forAuxiliaryExecutable: "RootHelper")!
 //            spawn(command: url.path, args: ["backup-app", application.bundleID], root: true)
 //            return
 //        }
         do {
+            print("Initializing...")
+            progress("Initializing...")
             let applicationContainerURL = try ApplicationManager.getDataDir(bundleID: application.bundleIdentifier)
             if applicationContainerURL == URL(fileURLWithPath: "/var/mobile") || applicationContainerURL == URL(fileURLWithPath: "/var/root") {
                 throw "Can't backup app with a container URL of /var/mobile or /var/root (App likely has no container in the first place to back up), sorry"
@@ -40,19 +42,23 @@ public class BackupServices {
             let item = BackupItem(application: application,
                                   stagingDirectoryName: stagingDirectory.pathComponents.suffix(2).joined(separator: "/"))
             let filename = item.backupFilename
-            
             try FileManager.default.createDirectory(at: docURL, withIntermediateDirectories: true)
             
             try FileManager.default.createDirectory(at: stagingDirectory, withIntermediateDirectories: true)
             try FileManager.default.createDirectory(at: groups, withIntermediateDirectories: true)
+            print("Copying files...")
+            progress("Copying files...")
             try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL)
             
             //        for (groupID, groupContainerURL) in application.proxy.groupContainerURLs() {
             //            try FileManager.default.copyItem(at: groupContainerURL, to: groups.appendingPathComponent(groupID))
             //        }
-            
+            print("Compressing...")
+            progress("Compressing...")
             try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip, filenameExcludes: ["v0"])
             
+            print("Finishing up...")
+            progress("Finishing up...")
             var registry = savedBackups()
             
             registry.append(item)
@@ -95,8 +101,10 @@ public class BackupServices {
      }
       */
     
-    func restoreBackup(_ backup: BackupItem) throws {
+    func restoreBackup(_ backup: BackupItem, progress: ((String)) -> ()) throws {
         do {
+            print("Initializing...")
+            progress("Initializing...")
             let appWeAreLookingFor = try ApplicationManager.getApps().first { $0.bundleIdentifier == backup.applicationIdentifier }
         
             guard let app = appWeAreLookingFor else {
@@ -111,9 +119,10 @@ public class BackupServices {
         
             print("Surgically operating on App \(app)")
             // get unique directory to do unzip in
+            print("Extracting to temporary directory...")
+            progress("Extracting to temporary directory...")
             let temporaryUnzippingDir = URL(fileURLWithPath: NSTemporaryDirectory())
                 .appendingPathComponent("BACKUP-\(app.bundleIdentifier)-\(UUID().uuidString.prefix(5))")
-        
             try FileManager.default.createDirectory(at: temporaryUnzippingDir, withIntermediateDirectories: true)
             try Compression.shared.extract(path: backupZIPURL, to: temporaryUnzippingDir)
         
@@ -133,7 +142,7 @@ public class BackupServices {
             let unzippedContainerURL = parentDirWeWant
                 .appendingPathComponent("Container")
         
-            NSLog("parentDirWeWant contents = \(try FileManager.default.contentsOfDirectory(at: parentDirWeWant, includingPropertiesForKeys: nil))")
+            print("parentDirWeWant contents = \(try FileManager.default.contentsOfDirectory(at: parentDirWeWant, includingPropertiesForKeys: nil))")
         
 //        let unzippedGroupsURL = parentDirWeWant
 //            .appendingPathComponent("Groups")
@@ -143,12 +152,16 @@ public class BackupServices {
                 for item in try FileManager.default.contentsOfDirectory(at: applicationContainerURL,
                                                                         includingPropertiesForKeys: nil)
                 {
+                    print("Deleting \(item.lastPathComponent)...")
+                    progress("Deleting \(item.lastPathComponent)...")
                     try AbsoluteSolver.delete(at: item)
                 }
                 
                 print("Cleared out app's containerURL, replacing with unzippedContainerURL")
                 
                 for item in try FileManager.default.contentsOfDirectory(at: unzippedContainerURL, includingPropertiesForKeys: nil) {
+                    print("Copying \(item.lastPathComponent)...")
+                    progress("Copying \(item.lastPathComponent)...")
                     try AbsoluteSolver.copy(at: item,
                                                      to: applicationContainerURL.appendingPathComponent(item.lastPathComponent))
                 }
@@ -170,6 +183,7 @@ public class BackupServices {
                 //        }
                 
                 print("WE ARE DONE. GOODNIGHT!")
+                progress("Finishing up...")
                 try AbsoluteSolver.delete(at: temporaryUnzippingDir)
             } catch {
                 throw "Could not get app data directory! \(error.localizedDescription)"

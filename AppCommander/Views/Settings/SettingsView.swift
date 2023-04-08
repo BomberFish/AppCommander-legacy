@@ -18,19 +18,21 @@ struct SettingsView: View {
             List {
                 Section {
                     Button(action: {
-                        do {
-                            UIApplication.shared.progressAlert(title: "Deleting app documents...")
-                            try AbsoluteSolver.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
-                                UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
-                            })
-                            UIApplication.shared.dismissAlert(animated: true)
-                            Haptic.shared.notify(.success)
-                            //UIApplication.shared.alert(title: "Success", body: "Successfully deleted app data!")
-                        } catch {
-                            UIApplication.shared.dismissAlert(animated: true)
-                            Haptic.shared.notify(.error)
-                            UIApplication.shared.alert(body: error.localizedDescription)
-                        }
+                        UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
+                            do {
+                                UIApplication.shared.progressAlert(title: "Deleting app documents...")
+                                try AbsoluteSolver.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
+                                    UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
+                                })
+                                UIApplication.shared.dismissAlert(animated: true)
+                                Haptic.shared.notify(.success)
+                                //UIApplication.shared.alert(title: "Success", body: "Successfully deleted app data!")
+                            } catch {
+                                UIApplication.shared.dismissAlert(animated: true)
+                                Haptic.shared.notify(.error)
+                                UIApplication.shared.alert(body: error.localizedDescription)
+                            }
+                        }, destructActionText: "Delete")
                     }, label: {
                         Label("Delete app documents (including backups)", systemImage: "trash")
                     })

@@ -19,7 +19,10 @@ struct BackupView: View {
                     UIApplication.shared.progressAlert(title: "Backing up \(app.name)...")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         do {
-                            try BackupServices.shared.backup(application: app, rootHelper: false)
+                            try BackupServices.shared.backup(application: app, rootHelper: false, progress: {message in
+                                print(message)
+                                UIApplication.shared.changeBody("\n\n\n\(message))")
+                            })
                             backups = BackupServices.shared.backups(for: app)
                             UIApplication.shared.dismissAlert(animated: true)
                             Haptic.shared.notify(.success)
@@ -59,7 +62,9 @@ struct BackupView: View {
                                     UIApplication.shared.progressAlert(title: "Restoring backup taken   \(backup.displayName)...")
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                         do {
-                                            try BackupServices.shared.restoreBackup(backup)
+                                            try BackupServices.shared.restoreBackup(backup, progress: {message in
+                                                UIApplication.shared.changeBody("\n\n\n\(message))")
+                                            })
                                             UIApplication.shared.dismissAlert(animated: true)
                                             Haptic.shared.notify(.success)
                                         } catch {
