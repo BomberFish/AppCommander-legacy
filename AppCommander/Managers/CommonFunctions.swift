@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import ZIPFoundation
 import os.log
 
 // MARK: - Print to localconsole. Totally not stolen from sneakyf1shy (who still needs to finish the damn frontend)

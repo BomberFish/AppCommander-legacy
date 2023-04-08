@@ -55,7 +55,7 @@ public class BackupServices {
             //        }
             print("Compressing...")
             progress("Compressing...")
-            try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip, filenameExcludes: ["v0"])
+            try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip, filenameExcludes: ["v0", ".com.apple.mobile_container_manager.metadata.plist"])
             
             print("Finishing up...")
             progress("Finishing up...")
