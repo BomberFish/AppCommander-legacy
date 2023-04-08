@@ -51,7 +51,7 @@ public class BackupServices {
             //            try FileManager.default.copyItem(at: groupContainerURL, to: groups.appendingPathComponent(groupID))
             //        }
             
-            try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip/*, filenameExcludes: ["v0"]*/)
+            try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip, filenameExcludes: ["v0"])
             
             var registry = savedBackups()
             
