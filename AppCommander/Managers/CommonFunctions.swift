@@ -8,20 +8,23 @@
 import Foundation
 import UIKit
 import ZIPFoundation
+import os.log
 
 // MARK: - Print to localconsole. Totally not stolen from sneakyf1shy (who still needs to finish the damn frontend)
 
 public func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
     let data = items.map { "\($0)" }.joined(separator: separator)
     Swift.print(data, terminator: terminator)
+    os_log("%s", type: .default, data)
     consoleManager.print(data)
 }
 
 public func conditionalPrint(_ items: Any..., c: Bool, separator: String = " ", terminator: String = "\n") {
     if c {
         let data = items.map { "\($0)" }.joined(separator: separator)
-        consoleManager.print(data)
         Swift.print(data, terminator: terminator)
+        os_log("%s", type: .default, data)
+        consoleManager.print(data)
     }
 }
 
