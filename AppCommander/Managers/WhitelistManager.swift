@@ -39,12 +39,4 @@ public struct Whitelist {
             }
         }
     }
-
-    public static func readFile(path: String) throws -> String {
-        do {
-            return (try String(contentsOfFile: path))
-        } catch {
-            throw error.localizedDescription
-        }
-    }
 }
