@@ -148,7 +148,7 @@ public class AbsoluteSolver {
             return (try String(contentsOfFile: path))
         } catch {
             do {
-                print("[AbsoluteSolver] Warning: Swift read failed for file \(path)! Using ObjC readz...")
+                print("[AbsoluteSolver] Warning: Swift read failed for file \(path)! Using ObjC read...")
                 return try AbsoluteSolver_ObjC().readFromFileAtPath(filePath: path)
             } catch {
                 throw "AbsoluteSolver: Error reading from file \(path): \(error.localizedDescription)"
