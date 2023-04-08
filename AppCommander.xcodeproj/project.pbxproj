@@ -20,7 +20,6 @@
 		D638E1BB29DE1F49004CCA55 /* BackupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1BA29DE1F49004CCA55 /* BackupItem.swift */; };
 		D638E1C029DE2653004CCA55 /* iosplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D638E1BF29DE2653004CCA55 /* iosplaceholder.png */; };
 		D638E1C229DEDD15004CCA55 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1C129DEDD15004CCA55 /* LoadingView.swift */; };
-		D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */; };
 		D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */; };
 		D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */; };
 		D65AA4C929D8613900C3EBE7 /* FileContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */; };
@@ -173,7 +172,6 @@
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
 				D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */,
 				D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */,
-				D6402EC029BE5C9A00E2F0C0 /* ZIPFoundation in Frameworks */,
 				D6E3FC7E29CDCC2000D019D1 /* ApplicationsWrapper in Frameworks */,
 				D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */,
 				D638E1B729DE1CE1004CCA55 /* MobileCoreServices.framework in Frameworks */,
@@ -444,7 +442,6 @@
 			name = AppCommander;
 			packageProductDependencies = (
 				D6E552C829B2D60D0083E6A5 /* MarqueeText */,
-				D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */,
 				D6D22B6129C64AC20095645B /* LocalConsole */,
 				D6E3FC7A29CDCBF000D019D1 /* Dynamic */,
 				D6E3FC7D29CDCC2000D019D1 /* ApplicationsWrapper */,
@@ -530,7 +527,6 @@
 			mainGroup = D6E5527429B165400083E6A5;
 			packageReferences = (
 				D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */,
-				D6402EBE29BE5C9A00E2F0C0 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */,
 				D6E3FC7929CDCBF000D019D1 /* XCRemoteSwiftPackageReference "Dynamic" */,
 				D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */,
@@ -983,14 +979,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D6402EBE29BE5C9A00E2F0C0 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.16;
-			};
-		};
 		D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BomberFish/LocalConsole";
@@ -1026,11 +1014,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D6402EBF29BE5C9A00E2F0C0 /* ZIPFoundation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6402EBE29BE5C9A00E2F0C0 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
-			productName = ZIPFoundation;
-		};
 		D6609A9929D73D680033F66D /* CompressionWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;

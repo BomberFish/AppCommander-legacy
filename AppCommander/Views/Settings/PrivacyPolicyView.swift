@@ -25,7 +25,13 @@ struct WebView: UIViewRepresentable {
 
 struct PrivacyPolicyView: View {
     var body: some View {
-        WebView(url: URL(string: "https://bomberfish.ca/misc/kouyou-privacy-policy.html")!)
+        ZStack {
+            ProgressView()
+                .scaleEffect(CGSize(width: 1.5, height: 1.5))
+            WebView(url: URL(string: "https://bomberfish.ca/misc/kouyou-privacy-policy.html")!)
+                .deferredRendering(for: 0.4)
+        }
+            //.padding()
             .navigationTitle("Kouyou Privacy Policy")
     }
 }

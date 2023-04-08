@@ -56,8 +56,8 @@ enum ApplicationManager {
         }
     }
 
-    // TODO: - Remove dependency on ZIPFoundation, use CompressionWrapper from PrivateKits instead.
     public static func exportIPA(app: SBApp) throws -> URL {
+        //UIApplication.shared.progressAlert(title: "Exporting \(app.name)...")
         do {
             let uuid = UUID().uuidString
             let payloaddir = FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload")
@@ -68,8 +68,11 @@ enum ApplicationManager {
             print("made payload dir \(payloaddir)")
             try FileManager.default.copyItem(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
             print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))")
-            try FileManager().zipItem(at: payloaddir, to: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))
+            // try FileManager().zipItem(at: payloaddir, to: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))
+            try Compression.shared.compress(paths: [payloaddir], outputPath: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"), format: .zip)
+            UIApplication.shared.dismissAlert(animated: false)
             print("zipped \(payloaddir) to \(FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))")
+            //sleep(UInt32(0.5))
             return FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa")
         } catch {
             print("error at the next step")

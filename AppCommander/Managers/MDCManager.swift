@@ -29,18 +29,6 @@ public enum MDC {
     // MARK: - Literally black magic.
 
     public static func overwriteFileWithDataImpl(originPath: String, replacementData: Data) -> Bool {
-        #if false
-            let documentDirectory = FileManager.default.urls(
-                for: .documentDirectory,
-                in: .userDomainMask
-            )[0].path
-
-            let pathToRealTarget = originPath
-            let originPath = documentDirectory + originPath
-            let origData = try! Data(contentsOf: URL(fileURLWithPath: pathToRealTarget))
-            try! origData.write(to: URL(fileURLWithPath: originPath))
-        #endif
-
         // open and map original font
         let fd = open(originPath, O_RDONLY | O_CLOEXEC)
         if fd == -1 {
@@ -98,8 +86,6 @@ public enum MDC {
         print("Successfully overwrote!")
         return true
     }
-
-    // MARK: - i aint smart enough to know what any of this does
 
     public static func xpc_crash(_ serviceName: String) {
         let buffer = UnsafeMutablePointer<CChar>.allocate(capacity: serviceName.utf8.count)

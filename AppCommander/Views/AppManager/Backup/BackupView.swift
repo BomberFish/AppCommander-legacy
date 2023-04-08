@@ -18,7 +18,7 @@ struct BackupView: View {
                 Button(action: {
                     do {
                         UIApplication.shared.progressAlert(title: "Backing up \(app.name)...")
-                        try BackupServices.shared.backup(application: app, rootHelper: false)
+                        try BackupServices.shared.backup(application: app, rootHelper: false) 
                         backups = BackupServices.shared.backups(for: app)
                         UIApplication.shared.dismissAlert(animated: true)
                         Haptic.shared.notify(.success)
@@ -52,7 +52,7 @@ struct BackupView: View {
                                 UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Restore this backup?", onOK: {
                                     do {
                                         UIApplication.shared.progressAlert(title: "Restoring backup taken   \(backup.displayName)...")
-                                        try BackupServices.shared.restoreBackup(backup)
+                                        try BackupServices.shared.restoreBackup(backup) 
                                         UIApplication.shared.dismissAlert(animated: true)
                                         Haptic.shared.notify(.success)
                                     } catch {
