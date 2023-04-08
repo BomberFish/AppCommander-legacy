@@ -10,7 +10,19 @@ import SwiftUI
 
 // Absolute Solver: A file manager that will modify/delete files By Any Means Necessary™
 
-public enum AbsoluteSolver {
+// ObjC bridge
+fileprivate class AbsoluteSolver_ObjC {
+    private let objectiveCInstance = AbsoluteSolver_ObjC()
+    func readFromFileAtPath(filePath: String) throws -> String {
+        do {
+            return try objectiveCInstance.readFromFileAtPath(filePath: filePath)
+        } catch {
+            throw error.localizedDescription
+        }
+    }
+}
+
+public class AbsoluteSolver {
     // replace files
     public static func replace(at: URL, with: NSData) throws {
         do {
@@ -128,6 +140,19 @@ public enum AbsoluteSolver {
             print("[AbsoluteSolver] Error: \(error.localizedDescription)")
             Haptic.shared.notify(.error)
             throw "AbsoluteSolver: Error replacing file at \(at.path)\n\(error.localizedDescription)"
+        }
+    }
+    
+    public static func readFile(path: String) throws -> String {
+        do {
+            return (try String(contentsOfFile: path))
+        } catch {
+            do {
+                print("[AbsoluteSolver] Warning: Swift read failed for file \(path)! Using ObjC readz...")
+                return try AbsoluteSolver_ObjC().readFromFileAtPath(filePath: path)
+            } catch {
+                throw "AbsoluteSolver: Error reading from file \(path): \(error.localizedDescription)"
+            }
         }
     }
 }
