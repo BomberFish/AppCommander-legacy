@@ -13,17 +13,39 @@ struct SettingsView: View {
     @State var analyticsLevel: Int = UserDefaults.standard.integer(forKey: "analyticsLevel")
     // found the funny!
     @State var sex: Bool = UserDefaults.standard.bool(forKey: "sex")
+    @State var ASEnabled: Bool = UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled")
     var body: some View {
         NavigationView {
             List {
+                Section {
+                    Toggle(isOn: $ASEnabled, label: { Label("Enable Absolute Solver", systemImage: "hexagon") })
+                        .toggleStyle(.switch)
+                        .tint(.accentColor)
+                        .onChange(of: ASEnabled) { new in
+                            // set the user defaults
+                            if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled")) {
+                                UIApplication.shared.confirmAlertDestructive(title: "Warning", body: "Absolute Solver is an experimental way to modify, replace, and move files. By enabling it, you agree not to hold the developers liable for your device being bricked, turned into a horrifying flesh monster, setting itself on fire, etc.", onOK: {UserDefaults.standard.set(true, forKey: "AbsoluteSolverEnabled")}, onCancel: {UserDefaults.standard.set(false, forKey: "AbsoluteSolverEnabled")}, destructActionText: "Enable")
+                            } else {
+                                UserDefaults.standard.set(new, forKey: "AbsoluteSolverEnabled")
+                            }
+                        }
+                } header: {
+                    Label("Experiments", systemImage: "tent")
+                }
                 Section {
                     Button(action: {
                         UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                             do {
                                 UIApplication.shared.progressAlert(title: "Deleting app documents...")
-                                try AbsoluteSolver.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
-                                    UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
-                                })
+                                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                                    try AbsoluteSolver.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
+                                        UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
+                                    })
+                                } else {
+                                    try delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
+                                        UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
+                                    })
+                                }
                                 UIApplication.shared.dismissAlert(animated: true)
                                 Haptic.shared.notify(.success)
                                 //UIApplication.shared.alert(title: "Success", body: "Successfully deleted app data!")
@@ -39,9 +61,15 @@ struct SettingsView: View {
                     Button(action: {
                         do {
                             UIApplication.shared.progressAlert(title: "Deleting app cache...")
-                            try AbsoluteSolver.delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { (percentage, fileName) in
-                                UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
-                            })
+                            if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                                try AbsoluteSolver.delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { (percentage, fileName) in
+                                    UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
+                                })
+                            } else {
+                                try delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { (percentage, fileName) in
+                                    UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
+                                })
+                            }
                             UIApplication.shared.dismissAlert(animated: true)
                             Haptic.shared.notify(.success)
                             //UIApplication.shared.alert(title: "Success", body: "Successfully deleted app cache!")

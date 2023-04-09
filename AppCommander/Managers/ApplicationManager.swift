@@ -44,7 +44,12 @@ enum ApplicationManager {
             let mmpath = "/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist"
             // print(mmpath)
             do {
-                let mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath), options: [], format: nil) as? [String: Any] ?? [:]
+                var mmDict: [String: Any]
+                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                    mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath), options: [], format: nil) as? [String: Any] ?? [:]
+                } else {
+                    mmDict = try PropertyListSerialization.propertyList(from: Data(contentsOf: URL(fileURLWithPath: mmpath)), options: [], format: nil) as? [String: Any] ?? [:]
+                }
                 // print(mmDict as Any)
                 if mmDict["MCMMetadataIdentifier"] as! String == bundleID {
                     returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
@@ -70,7 +75,11 @@ enum ApplicationManager {
             print("rmed file")
             try FileManager.default.createDirectory(at: payloaddir, withIntermediateDirectories: true)
             print("made payload dir \(payloaddir)")
-            try AbsoluteSolver.copy(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
+            if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                try AbsoluteSolver.copy(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
+            } else {
+                try fm.copyItem(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
+            }
             print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))")
             // try FileManager().zipItem(at: payloaddir, to: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))
             try Compression.shared.compress(paths: [payloaddir], outputPath: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"), format: .zip)

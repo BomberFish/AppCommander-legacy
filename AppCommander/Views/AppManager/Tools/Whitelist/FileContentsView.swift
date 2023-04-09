@@ -82,14 +82,26 @@ struct FileContentsView: View {
                 //create the illusion of fully reloading
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     do {
-                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
-                            blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist"), as: UTF8.self)
-                        }
-                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
-                            bannedAppsContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist"), as: UTF8.self)
-                        }
-                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
-                            cdHashesContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), as: UTF8.self)
+                        if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                            if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
+                                blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist"), as: UTF8.self)
+                            }
+                            if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
+                                bannedAppsContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist"), as: UTF8.self)
+                            }
+                            if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
+                                cdHashesContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), as: UTF8.self)
+                            }
+                        } else {
+                            if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
+                                blacklistContent = try String(contentsOfFile: "/private/var/db/MobileIdentityData/Rejections.plist")
+                            }
+                            if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
+                                bannedAppsContent = try String(contentsOfFile: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist")
+                            }
+                            if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
+                                cdHashesContent = try String(contentsOfFile: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist")
+                            }
                         }
                     } catch {
                         UIApplication.shared.alert(body: error.localizedDescription)
@@ -104,14 +116,26 @@ struct FileContentsView: View {
             .onAppear {
                 print("Reading files!")
                 do {
-                    if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
-                        blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist"), as: UTF8.self)
-                    }
-                    if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
-                        bannedAppsContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist"), as: UTF8.self)
-                    }
-                    if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
-                        cdHashesContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), as: UTF8.self)
+                    if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
+                            blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist"), as: UTF8.self)
+                        }
+                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
+                            bannedAppsContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist"), as: UTF8.self)
+                        }
+                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
+                            cdHashesContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), as: UTF8.self)
+                        }
+                    } else {
+                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
+                            blacklistContent = try String(contentsOfFile: "/private/var/db/MobileIdentityData/Rejections.plist")
+                        }
+                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
+                            bannedAppsContent = try String(contentsOfFile: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist")
+                        }
+                        if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
+                            cdHashesContent = try String(contentsOfFile: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist")
+                        }
                     }
                 } catch {
                     UIApplication.shared.alert(body: error.localizedDescription)

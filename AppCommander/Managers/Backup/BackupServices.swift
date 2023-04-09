@@ -48,7 +48,11 @@ public class BackupServices {
             try FileManager.default.createDirectory(at: groups, withIntermediateDirectories: true)
             print("Copying files...")
             progress("Copying files...")
-            try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL)
+            if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL)
+            } else {
+                try fm.copyItem(at: applicationContainerURL, to: containerURL)
+            }
             
             //        for (groupID, groupContainerURL) in application.proxy.groupContainerURLs() {
             //            try FileManager.default.copyItem(at: groupContainerURL, to: groups.appendingPathComponent(groupID))
@@ -63,7 +67,11 @@ public class BackupServices {
             
             registry.append(item)
             try JSONEncoder().encode(registry).write(to: backupsRegistryURL)
-            try AbsoluteSolver.delete(at: stagingDirectory)       
+            if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                try AbsoluteSolver.delete(at: stagingDirectory)
+            } else {
+                try fm.removeItem(at: stagingDirectory)
+            }
         } catch {
             throw error.localizedDescription
         }
@@ -154,7 +162,11 @@ public class BackupServices {
                 {
                     print("Deleting \(item.lastPathComponent)...")
                     progress("Deleting \(item.lastPathComponent)...")
-                    try AbsoluteSolver.delete(at: item)
+                    if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                        try AbsoluteSolver.delete(at: item)
+                    } else {
+                        try fm.removeItem(at: item)
+                    }
                 }
                 
                 print("Cleared out app's containerURL, replacing with unzippedContainerURL")
@@ -162,8 +174,11 @@ public class BackupServices {
                 for item in try FileManager.default.contentsOfDirectory(at: unzippedContainerURL, includingPropertiesForKeys: nil) {
                     print("Copying \(item.lastPathComponent)...")
                     progress("Copying \(item.lastPathComponent)...")
-                    try AbsoluteSolver.copy(at: item,
-                                                     to: applicationContainerURL.appendingPathComponent(item.lastPathComponent))
+                    if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                        try AbsoluteSolver.copy(at: item, to: applicationContainerURL.appendingPathComponent(item.lastPathComponent))
+                    } else {
+                        try fm.copyItem(at: item, to: applicationContainerURL.appendingPathComponent(item.lastPathComponent))
+                    }
                 }
                 
                 //        print("PART 2: Operating on the Groups dir")
@@ -184,7 +199,11 @@ public class BackupServices {
                 
                 print("WE ARE DONE. GOODNIGHT!")
                 progress("Finishing up...")
-                try AbsoluteSolver.delete(at: temporaryUnzippingDir)
+                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                    try AbsoluteSolver.delete(at: temporaryUnzippingDir)
+                } else {
+                    try fm.removeItem(at: temporaryUnzippingDir)
+                }
             } catch {
                 throw "Could not get app data directory! \(error.localizedDescription)"
             }

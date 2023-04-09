@@ -56,3 +56,24 @@ func openInFilza(path: String) {
 func notimplementedalert() {
     UIApplication.shared.alert(title: "Not implemented", body: "")
 }
+
+func delDirectoryContents(path: String, progress: ((Double,String)) -> ()) throws {
+    var contents = [""]
+    var currentfile: Int = 0
+    do {
+        contents = try FileManager.default.contentsOfDirectory(atPath: path)
+        for file in contents {
+            print("Deleting \(file)")
+            do {
+                try FileManager.default.removeItem(at: URL(fileURLWithPath: path).appendingPathComponent(file))
+                currentfile += 1
+                progress((Double(currentfile / contents.count), file))
+            } catch {
+                throw error.localizedDescription
+            }
+        }
+    } catch {
+        throw error.localizedDescription
+    }
+}
+

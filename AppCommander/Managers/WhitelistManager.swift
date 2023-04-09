@@ -13,7 +13,11 @@ public struct Whitelist {
     public static func overwriteBlacklist() throws {
         if FileManager.default.fileExists(atPath: "/var/db/MobileIdentityData/Rejections.plist") {
             do {
-                try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), with: Data(base64Encoded: blankplist)! as NSData)
+                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                    try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), with: Data(base64Encoded: blankplist)! as NSData)
+                } else {
+                    try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), options: .atomic)
+                }
             } catch {
                 throw error.localizedDescription
             }
@@ -23,7 +27,11 @@ public struct Whitelist {
     public static func overwriteBannedApps() throws {
         if FileManager.default.fileExists(atPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
             do {
-                try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), with: Data(base64Encoded: blankplist)! as NSData)
+                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                    try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), with: Data(base64Encoded: blankplist)! as NSData)
+                } else {
+                    try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), options: .atomic)
+                }
             } catch {
                 throw error.localizedDescription
             }
@@ -33,7 +41,11 @@ public struct Whitelist {
     public static func overwriteCdHashes() throws {
         if FileManager.default.fileExists(atPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
             do {
-                try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), with:  Data(base64Encoded: blankplist)! as NSData)
+                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                    try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), with:  Data(base64Encoded: blankplist)! as NSData)
+                } else {
+                    try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), options: .atomic)
+                }
             } catch {
                 throw error.localizedDescription
             }
