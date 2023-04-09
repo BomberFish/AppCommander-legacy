@@ -33,7 +33,6 @@
 		D6D22B6629C64D180095645B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6529C64D180095645B /* SettingsView.swift */; };
 		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
 		D6D22B6F29C65D6B0095645B /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6E29C65D6B0095645B /* Analytics.swift */; };
-		D6D539C729E1E0120098678C /* ApplicationsWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6D539C629E1E0120098678C /* ApplicationsWrapper */; };
 		D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6629D25CC600DD6C4A /* BackupView.swift */; };
 		D6D55A7629D5A77400DD6C4A /* AbsoluteSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */; };
 		D6D55A7929D5B2FE00DD6C4A /* MDCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */; };
@@ -166,7 +165,6 @@
 				D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */,
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
 				D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */,
-				D6D539C729E1E0120098678C /* ApplicationsWrapper in Frameworks */,
 				D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */,
 				D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */,
 				D638E1B729DE1CE1004CCA55 /* MobileCoreServices.framework in Frameworks */,
@@ -450,7 +448,6 @@
 				D6609A9B29D73D680033F66D /* DiskImagesWrapper */,
 				D6609A9F29D73D680033F66D /* NSTask */,
 				D6609AA129D73D680033F66D /* SVGWrapper */,
-				D6D539C629E1E0120098678C /* ApplicationsWrapper */,
 			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
@@ -1045,11 +1042,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */;
 			productName = LocalConsole;
-		};
-		D6D539C629E1E0120098678C /* ApplicationsWrapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
-			productName = ApplicationsWrapper;
 		};
 		D6E3FC7A29CDCBF000D019D1 /* Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;

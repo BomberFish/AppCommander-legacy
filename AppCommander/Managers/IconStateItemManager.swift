@@ -7,7 +7,6 @@
 
 import Foundation
 import AssetCatalogWrapper
-import ApplicationsWrapper
 import SwiftUI
 
 class IconStateItemHelper {
@@ -18,8 +17,8 @@ class IconStateItemHelper {
         idToBundle = [:]
         idToColor = [:]
         
-        let apps = LSApplicationWorkspace.default().allApplications()
-        if apps.isEmpty {
+        // let apps = LSApplicationWorkspace.default().allApplications()
+        // if apps.isEmpty {
             // Private api didn't work, time to go old fashioned
             print("Manually searching for apps...")
             do {
@@ -57,17 +56,17 @@ class IconStateItemHelper {
             } catch {
                 UIApplication.shared.alert(body: "Error reading app information - \(error.localizedDescription)")
             }
-        } else {
-            for app in apps {
-                // Get name
-                let name = app.localizedName()
-                idToName[app.applicationIdentifier()] = name
-                
-                // Get bundle
-                let bundleUrl = app.bundleURL()
-                idToBundle[app.applicationIdentifier()] = bundleUrl
-            }
-        }
+//        } else {
+//            for app in apps {
+//                // Get name
+//                let name = app.localizedName()
+//                idToName[app.applicationIdentifier()] = name
+//
+//                // Get bundle
+//                let bundleUrl = app.bundleURL()
+//                idToBundle[app.applicationIdentifier()] = bundleUrl
+//            }
+//        }
     }
 
     private let fm: FileManager
