@@ -111,8 +111,8 @@
 		D6D22B6529C64D180095645B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D6D22B6E29C65D6B0095645B /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
-		D6D539C329E1B2660098678C /* AbsoluteSolver-ObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AbsoluteSolver-ObjC.m"; sourceTree = "<group>"; };
-		D6D539C429E1B3BD0098678C /* AbsoluteSolver-ObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AbsoluteSolver-ObjC.h"; sourceTree = "<group>"; };
+		D6D539C329E1B2660098678C /* AbsoluteSolver_ObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbsoluteSolver_ObjC.m; sourceTree = "<group>"; };
+		D6D539C429E1B3BD0098678C /* AbsoluteSolver_ObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbsoluteSolver_ObjC.h; sourceTree = "<group>"; };
 		D6D55A6629D25CC600DD6C4A /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
 		D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsoluteSolver.swift; sourceTree = "<group>"; };
 		D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCManager.swift; sourceTree = "<group>"; };
@@ -233,8 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */,
-				D6D539C329E1B2660098678C /* AbsoluteSolver-ObjC.m */,
-				D6D539C429E1B3BD0098678C /* AbsoluteSolver-ObjC.h */,
+				D6D539C329E1B2660098678C /* AbsoluteSolver_ObjC.m */,
+				D6D539C429E1B3BD0098678C /* AbsoluteSolver_ObjC.h */,
 			);
 			path = AbsoluteSolver;
 			sourceTree = "<group>";

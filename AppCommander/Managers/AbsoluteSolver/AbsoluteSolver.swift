@@ -13,9 +13,17 @@ import SwiftUI
 // ObjC bridge
 fileprivate class AbsoluteSolver_ObjC {
     private let objectiveCInstance = AbsoluteSolver_ObjC()
-    func readFromFileAtPath(filePath: String) throws -> String {
+    func readFromFileAtPath(filePath: NSString) throws -> NSString {
         do {
             return try objectiveCInstance.readFromFileAtPath(filePath: filePath)
+        } catch {
+            throw error.localizedDescription
+        }
+    }
+    
+    func readRawDataFromFile(filePath: NSString) throws -> NSData {
+        do {
+            return try objectiveCInstance.readRawDataFromFile(filePath: filePath)
         } catch {
             throw error.localizedDescription
         }
@@ -143,13 +151,13 @@ public class AbsoluteSolver {
         }
     }
     
-    public static func readFile(path: String) throws -> String {
+    public static func readFile(path: String) throws -> Data {
         do {
-            return (try String(contentsOfFile: path))
+            return (try Data(contentsOf: URL(fileURLWithPath: path)))
         } catch {
             do {
                 print("[AbsoluteSolver] Warning: Swift read failed for file \(path)! Using ObjC read...")
-                return try AbsoluteSolver_ObjC().readFromFileAtPath(filePath: path)
+                return Data(referencing: try AbsoluteSolver_ObjC().readRawDataFromFile(filePath: path as NSString))
             } catch {
                 throw "AbsoluteSolver: Error reading from file \(path): \(error.localizedDescription)"
             }

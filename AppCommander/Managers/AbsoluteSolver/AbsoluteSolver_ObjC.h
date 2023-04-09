@@ -7,5 +7,6 @@
 
 
 @interface AbsoluteSolver_ObjC : NSObject;
-- (NSString *)readFromFileAtPath:(NSString *)filePath;
+- (NSData *)readFromFileAtPath:(NSString *)filePath;
+- (NSData *)readRawDataFromFileAtPath:(NSString *)filePath;
 @end
