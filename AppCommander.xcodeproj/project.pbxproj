@@ -798,7 +798,7 @@
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "Private Alpha 5";
+				CURRENT_PROJECT_VERSION = "Beta 1";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
@@ -818,7 +818,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.1;
 				OTHER_LDFLAGS = "-v";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander.Dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -841,7 +841,7 @@
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "Private Alpha 5";
+				CURRENT_PROJECT_VERSION = "Beta 1";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
@@ -861,7 +861,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.1;
 				OTHER_LDFLAGS = "-v";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander.Dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";

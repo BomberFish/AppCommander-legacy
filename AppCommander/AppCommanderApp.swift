@@ -55,17 +55,17 @@ struct AppCommanderApp: App {
                                 // Will I change it at all? No!
                                 if launchedBefore {
                                     print("Not first launch.")
-                                    UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
+                                    //UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
                                 } else {
                                     print("First launch, setting UserDefault.")
                                     // FIXME: body really sucks
-                                    UIApplication.shared.choiceAlert(title: "Analytics", body: "Allow AppCommander to send anonymized data to improve your experience?", yesAction: {
-                                        userDefaults.set(1, forKey: "analyticsLevel")
-                                        userDefaults.set(true, forKey: "launchedBefore")
-                                    }, noAction: {
-                                        userDefaults.set(0, forKey: "analyticsLevel")
-                                        userDefaults.set(true, forKey: "launchedBefore")
-                                    })
+//                                    UIApplication.shared.choiceAlert(title: "Analytics", body: "Allow AppCommander to send anonymized data to improve your experience?", yesAction: {
+//                                        userDefaults.set(1, forKey: "analyticsLevel")
+//                                        userDefaults.set(true, forKey: "launchedBefore")
+//                                    }, noAction: {
+//                                        userDefaults.set(0, forKey: "analyticsLevel")
+//                                        userDefaults.set(true, forKey: "launchedBefore")
+//                                    })
                                 }
                             }
                         }
