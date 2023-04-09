@@ -24,7 +24,7 @@ struct SettingsView: View {
                         .onChange(of: ASEnabled) { new in
                             // set the user defaults
                             if ASEnabled {
-                                UIApplication.shared.confirmAlertDestructive(title: "Warning", body: "Absolute Solver is an experimental way to modify, replace, and move files. By enabling it, you agree not to hold the developers liable for your device being bricked, turned into a horrifying flesh monster, setting itself on fire, etc.", onOK: {ASEnabled = true; UserDefaults.standard.set(true, forKey: "AbsoluteSolverEnabled")}, onCancel: {ASEnabled = false; UserDefaults.standard.set(false, forKey: "AbsoluteSolverEnabled")}, destructActionText: "Enable")
+                                UIApplication.shared.confirmAlertDestructive(title: "Warning", body: "Absolute Solver is an experimental way to modify, replace, and move files. By enabling it, you agree not to hold the developers liable for your device being bricked, setting on fire, turning into a horrifying flesh monster, etc.", onOK: {ASEnabled = true; UserDefaults.standard.set(true, forKey: "AbsoluteSolverEnabled")}, onCancel: {ASEnabled = false; UserDefaults.standard.set(false, forKey: "AbsoluteSolverEnabled")}, destructActionText: "Enable")
                             } else {
                                 UserDefaults.standard.set(new, forKey: "AbsoluteSolverEnabled")
                             }

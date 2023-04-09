@@ -49,7 +49,7 @@ struct MainView: View {
                 }
             }
             .listStyle(InsetGroupedListStyle())
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search apps...")
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .navigationTitle("AppCommander")
             .onChange(of: searchText) { searchText in
 
@@ -62,23 +62,27 @@ struct MainView: View {
             .toolbar {
                 HStack {
                     Menu(content: {
-                        Button(action: {
-                            apps = allApps
-                        }, label: {
-                            Label("None", systemImage: "list.bullet")
-                        })
-                        Menu("Alphabetical") {
+                        Section {
                             Button(action: {
-                                apps = allApps.sorted { $0.name < $1.name }
+                                apps = allApps
                             }, label: {
-                                Label("Case-sensitive", systemImage: "character")
+                                Label("None", systemImage: "list.bullet")
                             })
-
-                            Button(action: {
-                                apps = allApps.sorted { $0.name.lowercased() < $1.name.lowercased() }
-                            }, label: {
-                                Label("Case-insensitive", systemImage: "textformat")
-                            })
+                            Menu("Alphabetical") {
+                                Button(action: {
+                                    apps = allApps.sorted { $0.name < $1.name }
+                                }, label: {
+                                    Label("Case-sensitive", systemImage: "character")
+                                })
+                                
+                                Button(action: {
+                                    apps = allApps.sorted { $0.name.lowercased() < $1.name.lowercased() }
+                                }, label: {
+                                    Label("Case-insensitive", systemImage: "textformat")
+                                })
+                            }
+                        } header: {
+                            Text("Sort Apps")
                         }
 
                     }, label: {
@@ -108,8 +112,8 @@ struct MainView: View {
 //                if !isUnsandboxed {
 //                    isUnsandboxed = MDC.unsandbox()
 //                } else {
-                    allApps = try! ApplicationManager.getApps()
-                    apps = allApps
+                allApps = try! ApplicationManager.getApps()
+                apps = allApps
 //                }
                 #endif
             }.navigationViewStyle(StackNavigationViewStyle())

@@ -9,11 +9,18 @@ import SwiftUI
 
 struct LoadingView: View {
     var body: some View {
-        Text("Checking validity...")
-            .font(.title2)
-        ProgressView()
+//        Text("Checking validity...")
+//            .font(.title2)
+        VStack {
+            HStack {
+                ProgressView()
+                //.padding()
+                Text("  Loading...")
+                    .fontWeight(.semibold)
+            }
             .padding()
-            .scaleEffect(CGSize(width: 1.5, height: 1.5))
+        }
+        .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(Color(UIColor.tertiarySystemBackground)))
     }
 }
 

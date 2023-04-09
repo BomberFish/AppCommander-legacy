@@ -158,11 +158,11 @@ public class AbsoluteSolver {
                     currentfile += 1
                     progress((Double(currentfile / contents.count), file))
                 } catch {
-                    throw error.localizedDescription
+                    throw "\(error.localizedDescription)"
                 }
             }
         } catch {
-            throw error.localizedDescription
+            throw "AbsoluteSolver: Error deleting the contents of \(path): \(error.localizedDescription)"
         }
     }
 }

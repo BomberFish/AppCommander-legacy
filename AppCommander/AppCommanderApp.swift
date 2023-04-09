@@ -21,13 +21,13 @@ struct AppCommanderApp: App {
     }
 
     @State var escaped = false
-    @State var has_cooked = false
+    @State var has_cooked = true
     var body: some Scene {
         WindowGroup {
             VStack {
                 if escaped && has_cooked {
                     RootView()
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 1)))
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
                         .onAppear {
                             let userDefaults = UserDefaults.standard
                             // check for updates. this would be replaced by kouyou but its JUST NOT FINISHED!!!!!!!!!!!!!!
@@ -71,25 +71,25 @@ struct AppCommanderApp: App {
                         }
                 } else {
                     LoadingView()
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 1)))
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
                 }
             }
             .onAppear {
                 print("AppCommander version \(appVersion)")
 
-                DispatchQueue.global(qos: .background).sync {
-                    MDC.top_secret_sauce { baked_goods in
-                        has_cooked = true
-                        if baked_goods == false {
-                            DispatchQueue.main.async {
-                                UIApplication.shared.alert(title: "Uh oh... 🏴‍☠️", body: "Looks like you're using a leaked build! Crashing in 5 seconds... Begone, pirate!", withButton: false)
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(5000)) {
-                                fatalError()
-                            }
-                        }
-                    }
-                }
+//                DispatchQueue.global(qos: .background).sync {
+//                    MDC.top_secret_sauce { baked_goods in
+//                        has_cooked = true
+//                        if baked_goods == false {
+//                            DispatchQueue.main.async {
+//                                UIApplication.shared.alert(title: "Uh oh... 🏴‍☠️", body: "Looks like you're using a leaked build! Crashing in 5 seconds... Begone, pirate!", withButton: false)
+//                            }
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(5000)) {
+//                                fatalError()
+//                            }
+//                        }
+//                    }
+//                }
 
                 #if targetEnvironment(simulator)
                     escaped = true
