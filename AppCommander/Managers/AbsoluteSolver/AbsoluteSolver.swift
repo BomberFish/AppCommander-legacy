@@ -173,7 +173,7 @@ public class AbsoluteSolver {
             for file in contents {
                 print("Deleting \(file)")
                 do {
-                    try AbsoluteSolver.delete(at: URL(fileURLWithPath: path).appendingPathComponent(file))
+                    try delete(at: URL(fileURLWithPath: path).appendingPathComponent(file))
                     currentfile += 1
                     progress((Double(currentfile / contents.count), file))
                 } catch {
