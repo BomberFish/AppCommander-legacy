@@ -27,7 +27,7 @@ struct AppCommanderApp: App {
             VStack {
                 if escaped && has_cooked {
                     RootView()
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.3)))
                         .onAppear {
                             let userDefaults = UserDefaults.standard
                             // check for updates. this would be replaced by kouyou but its JUST NOT FINISHED!!!!!!!!!!!!!!
@@ -50,12 +50,12 @@ struct AppCommanderApp: App {
 
                             Haptic.shared.notify(.success)
                             consoleManager.isVisible = userDefaults.bool(forKey: "LCEnabled")
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 // i just copied the entire code block, prints and everything, from stackoverflow.
                                 // Will I change it at all? No!
                                 if launchedBefore {
                                     print("Not first launch.")
-                                    //UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
+                                    //dUIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
                                 } else {
                                     print("First launch, setting UserDefault.")
                                     // FIXME: body really sucks
@@ -71,7 +71,7 @@ struct AppCommanderApp: App {
                         }
                 } else {
                     LoadingView()
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.3)))
                 }
             }
             .onAppear {
