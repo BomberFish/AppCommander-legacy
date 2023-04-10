@@ -113,7 +113,7 @@ struct AppCommanderApp: App {
                                     escaped = true
                                 } catch {
                                     escaped = false
-                                    UIApplication.shared.alert(title: "Unsandboxing Error", body: "Error: \(error.localizedDescription))\nPlease close the app and retry.", withButton: false)
+                                    UIApplication.shared.alert(body: "Unsandboxing Error: \(error.localizedDescription)\nPlease close the app and retry.", withButton: false)
                                 }
                             }
                         }

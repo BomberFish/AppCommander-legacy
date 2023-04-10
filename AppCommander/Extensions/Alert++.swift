@@ -28,10 +28,8 @@ extension UIApplication {
             if title == errorString {
                 // append debug info
                 let device = UIDevice.current
-                let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-                let appBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
                 let systemVersion = device.systemVersion
-                body += "\n\(device.systemName) \(systemVersion), version \(appVersion) build \(appBuild) escaped=\(FileManager.default.isReadableFile(atPath: "/var/mobile"))"
+                body += "\n\n\(device.systemName) \(systemVersion), AppCommander version \(appVersion) escaped=\(FileManager.default.isReadableFile(atPath: "/var/mobile"))"
             }
             
             currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)
