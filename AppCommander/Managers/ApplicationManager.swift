@@ -30,7 +30,7 @@ enum ApplicationManager {
 
         do {
             dirlist = try fm.contentsOfDirectory(atPath: "/var/mobile/Containers/Data/Application")
-            print(dirlist)
+            // print(dirlist)
         } catch {
             throw "Could not access /var/mobile/Containers/Data/Application.\n\(error.localizedDescription)"
         }
@@ -51,7 +51,7 @@ enum ApplicationManager {
                     returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
                 }
             } catch {
-                print("Could not get data of \(mmpath): \(error.localizedDescription)")
+                throw ("Could not get data of \(mmpath): \(error.localizedDescription)")
             }
         }
         if returnedurl != URL(string: "none") {
