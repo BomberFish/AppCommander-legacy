@@ -8,6 +8,7 @@
 import LocalConsole
 import SwiftUI
 import AbsoluteSolver
+import MacDirtyCow
 
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
@@ -109,7 +110,7 @@ struct AppCommanderApp: App {
                             // asyncAfter(deadline: .now())
                             DispatchQueue.global(qos: .userInitiated).sync {
                                 do {
-                                    try AbsoluteSolver_MDC.unsandbox()
+                                    try MacDirtyCow.unsandbox()
                                     escaped = true
                                 } catch {
                                     escaped = false
@@ -126,6 +127,6 @@ struct AppCommanderApp: App {
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
-        AbsoluteSolver_MDC.isMDCSafe = false
+        MacDirtyCow.isMDCSafe = false
     }
 }

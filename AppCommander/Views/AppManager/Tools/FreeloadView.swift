@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AbsoluteSolver
+import MacDirtyCow
 
 struct FreeloadView: View {
     @State var inProgress = false
@@ -18,7 +19,7 @@ struct FreeloadView: View {
                     inProgress = true
                     Haptic.shared.play(.medium)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        success = AbsoluteSolver_MDC.patch_installd()
+                        success = MacDirtyCow.patch_installd()
 
                         if success {
                             UIApplication.shared.alert(title: "Success", body: "Successfully patched installd!", withButton: true)

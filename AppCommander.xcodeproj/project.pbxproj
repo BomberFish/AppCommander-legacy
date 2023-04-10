@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D6039E7F29E484DE002F91D7 /* DirtyCowKit in Frameworks */ = {isa = PBXBuildFile; productRef = D6039E7E29E484DE002F91D7 /* DirtyCowKit */; };
 		D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */; };
 		D638E1A929DA02DF004CCA55 /* AVAudioPlayerNode++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */; };
 		D638E1AB29DA031E004CCA55 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1AA29DA031E004CCA55 /* PlayerClass.swift */; };
@@ -147,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6039E7F29E484DE002F91D7 /* DirtyCowKit in Frameworks */,
 				D6609AA029D73D680033F66D /* NSTask in Frameworks */,
 				D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */,
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
@@ -402,6 +404,7 @@
 				D6609A9F29D73D680033F66D /* NSTask */,
 				D6609AA129D73D680033F66D /* SVGWrapper */,
 				D6E157A229E44DD200C1855B /* AbsoluteSolver */,
+				D6039E7E29E484DE002F91D7 /* DirtyCowKit */,
 			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
@@ -482,6 +485,7 @@
 				D6E3FC7929CDCBF000D019D1 /* XCRemoteSwiftPackageReference "Dynamic" */,
 				D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */,
 				D6E157A129E44DD200C1855B /* XCRemoteSwiftPackageReference "AbsoluteSolver" */,
+				D6039E7D29E484DE002F91D7 /* XCRemoteSwiftPackageReference "DirtyCowKit" */,
 			);
 			productRefGroup = D6E5527E29B165400083E6A5 /* Products */;
 			projectDirPath = "";
@@ -945,6 +949,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D6039E7D29E484DE002F91D7 /* XCRemoteSwiftPackageReference "DirtyCowKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BomberFish/DirtyCowKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BomberFish/LocalConsole";
@@ -988,6 +1000,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D6039E7E29E484DE002F91D7 /* DirtyCowKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6039E7D29E484DE002F91D7 /* XCRemoteSwiftPackageReference "DirtyCowKit" */;
+			productName = DirtyCowKit;
+		};
 		D6609A9929D73D680033F66D /* CompressionWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;

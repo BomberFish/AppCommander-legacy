@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import AbsoluteSolver
 import os.log
+import MacDirtyCow
 
 // MARK: - Print to localconsole. Totally not stolen from sneakyf1shy (who still needs to finish the damn frontend)
 
@@ -95,7 +96,7 @@ func respring() {
     }
 
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-        AbsoluteSolver_MDC.restartFrontboard()
+        MacDirtyCow.restartFrontboard()
         sleep(2) // give the springboard some time to restart before exiting
         exit(0)
     }

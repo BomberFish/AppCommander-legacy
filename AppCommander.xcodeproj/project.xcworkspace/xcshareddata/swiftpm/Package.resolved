@@ -6,7 +6,16 @@
       "location" : "https://github.com/BomberFish/AbsoluteSolver",
       "state" : {
         "branch" : "main",
-        "revision" : "2172fa62d63dbb91333e8c554c461f0d2b2aae17"
+        "revision" : "2ff7418fb43a4414d33fd741593572fe9aaff0e5"
+      }
+    },
+    {
+      "identity" : "dirtycowkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BomberFish/DirtyCowKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "300a00fc48ff1d91a31feb79407664f9fe566eab"
       }
     },
     {
