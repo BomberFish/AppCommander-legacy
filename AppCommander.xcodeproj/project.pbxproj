@@ -788,7 +788,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "Beta 1";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
-				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AppCommander-Info.plist";
@@ -808,7 +808,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				OTHER_LDFLAGS = "-v";
-				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander.Dev;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -831,7 +831,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "Beta 1";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
-				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AppCommander-Info.plist";
@@ -851,7 +851,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				OTHER_LDFLAGS = "-v";
-				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander.Dev;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.bomberfish.AppCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
