@@ -38,8 +38,8 @@ struct SettingsView: View {
                     Button(action: {
                         UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                             do {
-                                UIApplication.shared.progressAlert(title: "Disassembling app documents...")
                                 if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                                    UIApplication.shared.progressAlert(title: "Disassembling app documents...")
                                     try AbsoluteSolver.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
                                         UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                     })
