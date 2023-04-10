@@ -84,7 +84,11 @@ struct BackupView: View {
                         }
                         .swipeActions {
                             Button(action: {
-                                UIApplication.shared.progressAlert(title: "Deleting backup taken   \(backup.displayName)...")
+                                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                                    UIApplication.shared.progressAlert(title: "Disassembling backup taken   \(backup.displayName)...")
+                                } else {
+                                    UIApplication.shared.progressAlert(title: "Deleting backup taken   \(backup.displayName)...")
+                                }
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                     do {
                                         try BackupServices.shared.removeBackup(backup)

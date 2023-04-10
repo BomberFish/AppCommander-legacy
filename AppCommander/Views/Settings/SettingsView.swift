@@ -37,12 +37,13 @@ struct SettingsView: View {
                     Button(action: {
                         UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
                             do {
-                                UIApplication.shared.progressAlert(title: "Deleting app documents...")
+                                UIApplication.shared.progressAlert(title: "Disassembling app documents...")
                                 if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
                                     try AbsoluteSolver.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
-                                        UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
+                                        UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                     })
                                 } else {
+                                    UIApplication.shared.progressAlert(title: "Deleting app documents...")
                                     try delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
                                         UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                     })
@@ -61,12 +62,13 @@ struct SettingsView: View {
                     })
                     Button(action: {
                         do {
-                            UIApplication.shared.progressAlert(title: "Deleting app cache...")
                             if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                                UIApplication.shared.progressAlert(title: "Disassembling app cache...")
                                 try AbsoluteSolver.delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { (percentage, fileName) in
-                                    UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
+                                    UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                 })
                             } else {
+                                UIApplication.shared.progressAlert(title: "Deleting app cache...")
                                 try delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { (percentage, fileName) in
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                 })

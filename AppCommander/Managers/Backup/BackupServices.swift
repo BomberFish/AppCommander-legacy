@@ -161,11 +161,12 @@ public class BackupServices {
                 for item in try FileManager.default.contentsOfDirectory(at: applicationContainerURL,
                                                                         includingPropertiesForKeys: nil)
                 {
-                    print("Deleting \(item.lastPathComponent)...")
-                    progress("Deleting \(item.lastPathComponent)...")
+                    print("Deleting \(item.lastPathComponent)")
                     if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                        progress("Disassembling \(item.lastPathComponent)...")
                         try AbsoluteSolver.delete(at: item)
                     } else {
+                        progress("Deleting \(item.lastPathComponent)...")
                         try fm.removeItem(at: item)
                     }
                 }
