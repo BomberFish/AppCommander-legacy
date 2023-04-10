@@ -7,6 +7,7 @@
 
 import CompressionWrapper
 import Foundation
+import AbsoluteSolver
 
 public class BackupServices {
     public static let shared = BackupServices()

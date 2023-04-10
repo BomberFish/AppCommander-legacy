@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import AbsoluteSolver
 
 class HomeBackupManager {
     /// Save a homescreen backup manually

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AbsoluteSolver
 
 struct ReplaceTestingView: View {
     let testfile = FileManager.default.temporaryDirectory.appendingPathComponent("testfile")

@@ -34,9 +34,8 @@
 		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
 		D6D22B6F29C65D6B0095645B /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6E29C65D6B0095645B /* Analytics.swift */; };
 		D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6629D25CC600DD6C4A /* BackupView.swift */; };
-		D6D55A7629D5A77400DD6C4A /* AbsoluteSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */; };
-		D6D55A7929D5B2FE00DD6C4A /* MDCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */; };
 		D6D55A7C29D5EE0800DD6C4A /* ReplaceTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7B29D5EE0800DD6C4A /* ReplaceTestingView.swift */; };
+		D6E157A329E44DD200C1855B /* AbsoluteSolver in Frameworks */ = {isa = PBXBuildFile; productRef = D6E157A229E44DD200C1855B /* AbsoluteSolver */; };
 		D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7A29CDCBF000D019D1 /* Dynamic */; };
 		D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */; };
 		D6E3FC8229CDDFE600D019D1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8129CDDFE600D019D1 /* RootView.swift */; };
@@ -58,9 +57,6 @@
 		D6E5529229B165420083E6A5 /* CacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5529129B165420083E6A5 /* CacheTests.swift */; };
 		D6E5529C29B165420083E6A5 /* CacheUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5529B29B165420083E6A5 /* CacheUITests.swift */; };
 		D6E5529E29B165420083E6A5 /* CacheUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5529D29B165420083E6A5 /* CacheUITestsLaunchTests.swift */; };
-		D6E552B229B16E170083E6A5 /* helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E552AC29B16E170083E6A5 /* helpers.m */; };
-		D6E552B329B16E170083E6A5 /* vm_unaligned_copy_switch_race.c in Sources */ = {isa = PBXBuildFile; fileRef = D6E552AD29B16E170083E6A5 /* vm_unaligned_copy_switch_race.c */; };
-		D6E552B429B16E170083E6A5 /* grant_full_disk_access.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E552B029B16E170083E6A5 /* grant_full_disk_access.m */; };
 		D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552B629B16E640083E6A5 /* Alert++.swift */; };
 		D6E552B929B16E640083E6A5 /* Haptic++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552B729B16E640083E6A5 /* Haptic++.swift */; };
 		D6E552BE29B2A0CC0083E6A5 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552BD29B2A0CC0083E6A5 /* ApplicationManager.swift */; };
@@ -112,8 +108,6 @@
 		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D6D22B6E29C65D6B0095645B /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		D6D55A6629D25CC600DD6C4A /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
-		D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsoluteSolver.swift; sourceTree = "<group>"; };
-		D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCManager.swift; sourceTree = "<group>"; };
 		D6D55A7B29D5EE0800DD6C4A /* ReplaceTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceTestingView.swift; sourceTree = "<group>"; };
 		D6E3FC8129CDDFE600D019D1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D6E3FC8329CDE07700D019D1 /* Color++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color++.swift"; sourceTree = "<group>"; };
@@ -139,12 +133,6 @@
 		D6E5529B29B165420083E6A5 /* CacheUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheUITests.swift; sourceTree = "<group>"; };
 		D6E5529D29B165420083E6A5 /* CacheUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D6E552AB29B16E160083E6A5 /* AppCommander-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppCommander-Bridging-Header.h"; sourceTree = "<group>"; };
-		D6E552AC29B16E170083E6A5 /* helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = helpers.m; sourceTree = "<group>"; };
-		D6E552AD29B16E170083E6A5 /* vm_unaligned_copy_switch_race.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vm_unaligned_copy_switch_race.c; sourceTree = "<group>"; };
-		D6E552AE29B16E170083E6A5 /* helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = helpers.h; sourceTree = "<group>"; };
-		D6E552AF29B16E170083E6A5 /* vm_unaligned_copy_switch_race.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vm_unaligned_copy_switch_race.h; sourceTree = "<group>"; };
-		D6E552B029B16E170083E6A5 /* grant_full_disk_access.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = grant_full_disk_access.m; sourceTree = "<group>"; };
-		D6E552B129B16E170083E6A5 /* grant_full_disk_access.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grant_full_disk_access.h; sourceTree = "<group>"; };
 		D6E552B629B16E640083E6A5 /* Alert++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alert++.swift"; sourceTree = "<group>"; };
 		D6E552B729B16E640083E6A5 /* Haptic++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Haptic++.swift"; sourceTree = "<group>"; };
 		D6E552BA29B1790E0083E6A5 /* CoreServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreServices.h; sourceTree = "<group>"; };
@@ -164,6 +152,7 @@
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
 				D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */,
 				D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */,
+				D6E157A329E44DD200C1855B /* AbsoluteSolver in Frameworks */,
 				D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */,
 				D638E1B729DE1CE1004CCA55 /* MobileCoreServices.framework in Frameworks */,
 				D6609AA229D73D680033F66D /* SVGWrapper in Frameworks */,
@@ -260,8 +249,6 @@
 				D6E552CB29B2E9F50083E6A5 /* CommonFunctions.swift */,
 				D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */,
 				D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */,
-				D6D55A7529D5A77400DD6C4A /* AbsoluteSolver.swift */,
-				D6D55A7829D5B2FE00DD6C4A /* MDCManager.swift */,
 				D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */,
 				D6D55A6C29D5A4C900DD6C4A /* Backup */,
 				D6E3FC8C29CDE34900D019D1 /* IconStateManager.swift */,
@@ -337,7 +324,6 @@
 				D6E552B529B16E500083E6A5 /* Extensions */,
 				D6E552C429B2BE3C0083E6A5 /* Views */,
 				D617EEEF29BE5927001CCAC2 /* Models */,
-				D6E552AA29B16DC70083E6A5 /* Exploit */,
 				D6E5528429B165410083E6A5 /* Assets.xcassets */,
 				D6E5528629B165410083E6A5 /* Preview Content */,
 			);
@@ -369,21 +355,6 @@
 			path = CacheUITests;
 			sourceTree = "<group>";
 		};
-		D6E552AA29B16DC70083E6A5 /* Exploit */ = {
-			isa = PBXGroup;
-			children = (
-				D6E552B129B16E170083E6A5 /* grant_full_disk_access.h */,
-				D6E552B029B16E170083E6A5 /* grant_full_disk_access.m */,
-				D6E552AE29B16E170083E6A5 /* helpers.h */,
-				D6E552BA29B1790E0083E6A5 /* CoreServices.h */,
-				D6E552AC29B16E170083E6A5 /* helpers.m */,
-				D6E552AD29B16E170083E6A5 /* vm_unaligned_copy_switch_race.c */,
-				D6E552AF29B16E170083E6A5 /* vm_unaligned_copy_switch_race.h */,
-				D6E552AB29B16E160083E6A5 /* AppCommander-Bridging-Header.h */,
-			);
-			path = Exploit;
-			sourceTree = "<group>";
-		};
 		D6E552B529B16E500083E6A5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +363,8 @@
 				D6E3FC8329CDE07700D019D1 /* Color++.swift */,
 				D6E552B729B16E640083E6A5 /* Haptic++.swift */,
 				D6E3FC9329CDE4C700D019D1 /* UIImage+UIImageAverageColorAddition.h */,
+				D6E552BA29B1790E0083E6A5 /* CoreServices.h */,
+				D6E552AB29B16E160083E6A5 /* AppCommander-Bridging-Header.h */,
 				D6E3FC9229CDE4C600D019D1 /* UIImage+UIImageAverageColorAddition.m */,
 				D6E3FC8E29CDE3D500D019D1 /* String++.swift */,
 				D638E1B229DAFA82004CCA55 /* View++.swift */,
@@ -436,6 +409,7 @@
 				D6609A9B29D73D680033F66D /* DiskImagesWrapper */,
 				D6609A9F29D73D680033F66D /* NSTask */,
 				D6609AA129D73D680033F66D /* SVGWrapper */,
+				D6E157A229E44DD200C1855B /* AbsoluteSolver */,
 			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
@@ -515,6 +489,7 @@
 				D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */,
 				D6E3FC7929CDCBF000D019D1 /* XCRemoteSwiftPackageReference "Dynamic" */,
 				D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */,
+				D6E157A129E44DD200C1855B /* XCRemoteSwiftPackageReference "AbsoluteSolver" */,
 			);
 			productRefGroup = D6E5527E29B165400083E6A5 /* Products */;
 			projectDirPath = "";
@@ -578,13 +553,9 @@
 				D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */,
 				D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */,
 				D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */,
-				D6E552B229B16E170083E6A5 /* helpers.m in Sources */,
-				D6D55A7929D5B2FE00DD6C4A /* MDCManager.swift in Sources */,
 				D6D22B6629C64D180095645B /* SettingsView.swift in Sources */,
 				D6E3FC9729CDE52900D019D1 /* AppabeticalView.swift in Sources */,
-				D6E552B429B16E170083E6A5 /* grant_full_disk_access.m in Sources */,
 				D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */,
-				D6E552B329B16E170083E6A5 /* vm_unaligned_copy_switch_race.c in Sources */,
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
 				D6E552CC29B2E9F50083E6A5 /* CommonFunctions.swift in Sources */,
 				D6E3FC8B29CDE33700D019D1 /* HomeBackupManager.swift in Sources */,
@@ -602,7 +573,6 @@
 				D6E3FC9129CDE43400D019D1 /* Constants.swift in Sources */,
 				D638E1B329DAFA82004CCA55 /* View++.swift in Sources */,
 				D638E1BB29DE1F49004CCA55 /* BackupItem.swift in Sources */,
-				D6D55A7629D5A77400DD6C4A /* AbsoluteSolver.swift in Sources */,
 				D638E1AB29DA031E004CCA55 /* PlayerClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -812,7 +782,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "AppCommander/Exploit/AppCommander-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppCommander/Extensions/AppCommander-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -855,7 +825,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "AppCommander/Exploit/AppCommander-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppCommander/Extensions/AppCommander-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -991,6 +961,14 @@
 				kind = branch;
 			};
 		};
+		D6E157A129E44DD200C1855B /* XCRemoteSwiftPackageReference "AbsoluteSolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BomberFish/AbsoluteSolver";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		D6E3FC7929CDCBF000D019D1 /* XCRemoteSwiftPackageReference "Dynamic" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mhdhejazi/Dynamic";
@@ -1042,6 +1020,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */;
 			productName = LocalConsole;
+		};
+		D6E157A229E44DD200C1855B /* AbsoluteSolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E157A129E44DD200C1855B /* XCRemoteSwiftPackageReference "AbsoluteSolver" */;
+			productName = AbsoluteSolver;
 		};
 		D6E3FC7A29CDCBF000D019D1 /* Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;

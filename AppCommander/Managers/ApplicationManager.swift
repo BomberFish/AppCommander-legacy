@@ -11,11 +11,7 @@ import CoreServices
 import Foundation
 import MobileCoreServices
 import SwiftUI
-
-// does nothing lololo
-enum GenericError: Error {
-    case runtimeError(String)
-}
+import AbsoluteSolver
 
 // stolen from appabetical :trolley:
 // I do not know how this code works but all I know is that it does.

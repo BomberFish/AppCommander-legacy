@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AbsoluteSolver
 
 struct FileContentsView: View {
     @State var blacklistContent = "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"

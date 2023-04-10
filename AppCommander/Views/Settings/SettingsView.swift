@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AbsoluteSolver
 
 struct SettingsView: View {
     @State var consoleEnabled: Bool = UserDefaults.standard.bool(forKey: "LCEnabled")
@@ -147,8 +148,8 @@ struct SettingsView: View {
                                     consoleManager.isVisible = false
                                 }
                             }
-                        Button(action: respringFrontboard, label: { Label("Restart frontboard", systemImage: "arrow.counterclockwise") })
-                        Button(action: respringBackboard, label: { Label("Restart backboard", systemImage: "arrow.counterclockwise") })
+                        Button(action: AbsoluteSolver_MDC.restartFrontboard, label: { Label("Restart frontboard", systemImage: "arrow.counterclockwise") })
+                        Button(action: AbsoluteSolver_MDC.restartBackboard, label: { Label("Restart backboard", systemImage: "arrow.counterclockwise") })
 //                        Toggle(isOn: $sex, label:{Text("😏      Sex")})
 //                                                .tint(.accentColor)
 //                                                .onChange(of: sex) { new in
@@ -170,7 +171,7 @@ struct SettingsView: View {
                                     let newAction = UIAlertAction(title: "Brick Device", style: .default) { (action) in
 //                                        do {
                                             // try AbsoluteSolver.delDirectoryContents(path: "/private/preboot")
-                                            MDC.respring()
+                                            respring()
 //                                        } catch {
 //                                            Haptic.shared.notify(.error)
 //                                        }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AbsoluteSolver
 
 struct AppView: View {
     @State public var iconPath: String

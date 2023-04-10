@@ -7,6 +7,7 @@
 
 import LocalConsole
 import SwiftUI
+import AbsoluteSolver
 
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
@@ -107,17 +108,12 @@ struct AppCommanderApp: App {
                             print("Escaping Sandbox...")
                             // asyncAfter(deadline: .now())
                             DispatchQueue.global(qos: .userInitiated).sync {
-                                grant_full_disk_access { error in
-                                    if error != nil {
-                                        print("Unable to escape sandbox!! Error: ", String(describing: error?.localizedDescription ?? "unknown?!"))
-                                        DispatchQueue.main.async {
-                                            UIApplication.shared.alert(title: "Unsandboxing Error", body: "Error: \(String(describing: error?.localizedDescription))\nPlease close the app and retry.", withButton: false)
-                                        }
-                                        escaped = false
-                                    } else {
-                                        print("Successfully escaped sandbox!")
-                                        escaped = true
-                                    }
+                                do {
+                                    try AbsoluteSolver_MDC.unsandbox()
+                                    escaped = true
+                                } catch {
+                                    escaped = false
+                                    UIApplication.shared.alert(title: "Unsandboxing Error", body: "Error: \(error.localizedDescription))\nPlease close the app and retry.", withButton: false)
                                 }
                             }
                         }
@@ -130,6 +126,6 @@ struct AppCommanderApp: App {
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
-        MDC.isMDCSafe = false
+        AbsoluteSolver_MDC.isMDCSafe = false
     }
 }

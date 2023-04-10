@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "absolutesolver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BomberFish/AbsoluteSolver",
+      "state" : {
+        "branch" : "main",
+        "revision" : "2172fa62d63dbb91333e8c554c461f0d2b2aae17"
+      }
+    },
+    {
       "identity" : "dynamic",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mhdhejazi/Dynamic",
