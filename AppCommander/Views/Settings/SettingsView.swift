@@ -17,21 +17,21 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-//                Section {
-//                    Toggle(isOn: $ASEnabled, label: { Label("Enable Absolute Solver", systemImage: "hexagon") })
-//                        .toggleStyle(.switch)
-//                        .tint(.accentColor)
-//                        .onChange(of: ASEnabled) { new in
-//                            // set the user defaults
-//                            if ASEnabled {
-//                                UIApplication.shared.confirmAlertDestructive(title: "Warning", body: "Absolute Solver is an experimental way to modify, replace, and move files. By enabling it, you agree not to hold the developers liable for damage such as your device being bricked, setting on fire, turning into a horrifying flesh monster, etc.", onOK: {ASEnabled = true; UserDefaults.standard.set(true, forKey: "AbsoluteSolverEnabled")}, onCancel: {ASEnabled = false; UserDefaults.standard.set(false, forKey: "AbsoluteSolverEnabled")}, destructActionText: "Enable")
-//                            } else {
-//                                UserDefaults.standard.set(new, forKey: "AbsoluteSolverEnabled")
-//                            }
-//                        }
-//                } header: {
-//                    Label("Experiments", systemImage: "tent")
-//                }
+                Section {
+                    Toggle(isOn: $ASEnabled, label: { Label("Enable Absolute Solver", systemImage: "hexagon") })
+                        .toggleStyle(.switch)
+                        .tint(.accentColor)
+                        .onChange(of: ASEnabled) { new in
+                            // set the user defaults
+                            if ASEnabled {
+                                UIApplication.shared.confirmAlertDestructive(title: "Warning", body: "Absolute Solver is an experimental way to modify, replace, and move files. By enabling it, you agree not to hold the developers liable for damage such as your device being bricked, setting on fire, turning into a horrifying flesh monster, etc.", onOK: {ASEnabled = true; UserDefaults.standard.set(true, forKey: "AbsoluteSolverEnabled")}, onCancel: {ASEnabled = false; UserDefaults.standard.set(false, forKey: "AbsoluteSolverEnabled")}, destructActionText: "Enable")
+                            } else {
+                                UserDefaults.standard.set(new, forKey: "AbsoluteSolverEnabled")
+                            }
+                        }
+                } header: {
+                    Label("Experiments", systemImage: "tent")
+                }
                 Section {
                     Button(action: {
                         UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {
