@@ -68,6 +68,16 @@ struct MoreInfoView: View {
                 UIApplication.shared.alert(body: error.localizedDescription)
             }
         }
+        
+        .refreshable {
+            do {
+                appsize = try FileManager.default.allocatedSizeOfDirectory(at: sbapp.bundleURL)
+                docsize = try FileManager.default.allocatedSizeOfDirectory(at: ApplicationManager.getDataDir(bundleID: sbapp.bundleIdentifier))
+                datadir = try ApplicationManager.getDataDir(bundleID: sbapp.bundleIdentifier).path
+            } catch {
+                UIApplication.shared.alert(body: error.localizedDescription)
+            }
+        }
     }
 }
 
