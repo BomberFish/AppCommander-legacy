@@ -5,9 +5,9 @@
 //  Created by Hariz Shirazi on 2023-03-18.
 //
 
-import SwiftUI
 import AbsoluteSolver
 import MacDirtyCow
+import SwiftUI
 
 struct SettingsView: View {
     @State var consoleEnabled: Bool = UserDefaults.standard.bool(forKey: "LCEnabled")
@@ -26,7 +26,7 @@ struct SettingsView: View {
                         .onChange(of: ASEnabled) { new in
                             // set the user defaults
                             if ASEnabled {
-                                UIApplication.shared.confirmAlertDestructive(title: "Warning", body: "Absolute Solver is an experimental way to modify, replace, and move files. By enabling it, you agree not to hold the developers liable for damage such as your device being bricked, setting on fire, turning into a horrifying flesh monster, etc.", onOK: {ASEnabled = true; UserDefaults.standard.set(true, forKey: "AbsoluteSolverEnabled")}, onCancel: {ASEnabled = false; UserDefaults.standard.set(false, forKey: "AbsoluteSolverEnabled")}, destructActionText: "Enable")
+                                UIApplication.shared.confirmAlertDestructive(title: "Warning", body: "Absolute Solver is an experimental way to modify, replace, and move files. By enabling it, you agree not to hold the developers liable for damage such as your device being bricked, setting on fire, turning into a horrifying flesh monster, etc.", onOK: { ASEnabled = true; UserDefaults.standard.set(true, forKey: "AbsoluteSolverEnabled") }, onCancel: { ASEnabled = false; UserDefaults.standard.set(false, forKey: "AbsoluteSolverEnabled") }, destructActionText: "Enable")
                             } else {
                                 UserDefaults.standard.set(new, forKey: "AbsoluteSolverEnabled")
                             }
@@ -40,18 +40,18 @@ struct SettingsView: View {
                             do {
                                 if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
                                     UIApplication.shared.progressAlert(title: "Disassembling app documents...")
-                                    try AbsoluteSolver.delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
+                                    try AbsoluteSolver.delDirectoryContents(path: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0].path, progress: { percentage, fileName in
                                         UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                     })
                                 } else {
                                     UIApplication.shared.progressAlert(title: "Deleting app documents...")
-                                    try delDirectoryContents(path: ((FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0]).path, progress: { (percentage, fileName) in
+                                    try delDirectoryContents(path: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0].path, progress: { percentage, fileName in
                                         UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                     })
                                 }
                                 UIApplication.shared.dismissAlert(animated: true)
                                 Haptic.shared.notify(.success)
-                                //UIApplication.shared.alert(title: "Success", body: "Successfully deleted app data!")
+                                // UIApplication.shared.alert(title: "Success", body: "Successfully deleted app data!")
                             } catch {
                                 UIApplication.shared.dismissAlert(animated: true)
                                 Haptic.shared.notify(.error)
@@ -65,18 +65,18 @@ struct SettingsView: View {
                         do {
                             if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
                                 UIApplication.shared.progressAlert(title: "Disassembling app cache...")
-                                try AbsoluteSolver.delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { (percentage, fileName) in
+                                try AbsoluteSolver.delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { percentage, fileName in
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                 })
                             } else {
                                 UIApplication.shared.progressAlert(title: "Deleting app cache...")
-                                try delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { (percentage, fileName) in
+                                try delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { percentage, fileName in
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                 })
                             }
                             UIApplication.shared.dismissAlert(animated: true)
                             Haptic.shared.notify(.success)
-                            //UIApplication.shared.alert(title: "Success", body: "Successfully deleted app cache!")
+                            // UIApplication.shared.alert(title: "Success", body: "Successfully deleted app cache!")
                         } catch {
                             UIApplication.shared.dismissAlert(animated: true)
                             Haptic.shared.notify(.error)
@@ -122,12 +122,17 @@ struct SettingsView: View {
                     LinkCell(imageName: "serena", url: "https://github.com/SerenaKit", title: "Serena", contribution: "App Backups", circle: true)
                     LinkCell(imageName: "zhuowei", url: "https://twitter.com/zhuowei/", title: "zhuowei", contribution: "Unsandboxing, installd patch", circle: true)
                     LinkCell(imageName: "suslocation", url: "https://github.com/sourcelocation", title: "sourcelocation", contribution: "Various Code Snippets, Appabetical", circle: true)
+                    NavigationLink {
+                        TranslatorsView()
+                    } label: {
+                        Label("Translators", systemImage: "character.bubble")
+                    }
                 } header: {
                     Label("Credits", systemImage: "heart")
                 }
-                
+
                 Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)) {}
-                
+
                 Section {
                     Toggle(isOn: $debugEnabled, label: { Label("Debug Mode", systemImage: "ladybug") })
                         .toggleStyle(.switch)
@@ -162,26 +167,26 @@ struct SettingsView: View {
                     } header: {
                         Label("Debug", systemImage: "ladybug")
                     }
-                    
+
                     if sex {
                         // 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
                         Section {
-                            Button( action: {
+                            Button(action: {
                                 // create and configure alert controller
                                 let alert = UIAlertController(title: "", message: "This will completely wipe your device", preferredStyle: .actionSheet)
 
                                 // create the actions
-                                    let newAction = UIAlertAction(title: "Brick Device", style: .default) { (action) in
+                                let newAction = UIAlertAction(title: "Brick Device", style: .default) { _ in
 //                                        do {
-                                            // try AbsoluteSolver.delDirectoryContents(path: "/private/preboot")
-                                            respring()
+                                    // try AbsoluteSolver.delDirectoryContents(path: "/private/preboot")
+                                    respring()
 //                                        } catch {
 //                                            Haptic.shared.notify(.error)
 //                                        }
-                                    }
-                                    alert.addAction(newAction)
+                                }
+                                alert.addAction(newAction)
 
-                                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
                                     // cancels the action
                                 }
 
@@ -192,10 +197,10 @@ struct SettingsView: View {
                                 // present popover for iPads
                                 alert.popoverPresentationController?.sourceView = view // prevents crashing on iPads
                                 alert.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.maxY, width: 0, height: 0) // show up at center bottom on iPads
-                                
+
                                 // present the alert
                                 UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
-                            },label:{
+                            }, label: {
                                 Text("Brick Device")
 
                             })
@@ -205,7 +210,6 @@ struct SettingsView: View {
                         }
                     }
                 }
-     
             }
             .navigationTitle("Settings")
         }
