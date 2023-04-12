@@ -108,7 +108,7 @@ struct AppCommanderApp: App {
                         if #available(iOS 15, *) {
                             print("Escaping Sandbox...")
                             // asyncAfter(deadline: .now())
-                            DispatchQueue.global(qos: .userInitiated).sync {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                                 do {
                                     try MacDirtyCow.unsandbox()
                                     escaped = true
