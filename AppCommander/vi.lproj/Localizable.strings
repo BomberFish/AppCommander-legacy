@@ -1,0 +1,327 @@
+/* No comment provided by engineer. */
+"  Loading..." = "  Đang tải...";
+
+/* No comment provided by engineer. */
+"🇨🇳 jbjf#1431" = "🇨🇳 jbjf#1431";
+
+/* No comment provided by engineer. */
+"A-Z" = "A-Z";
+
+/* No comment provided by engineer. */
+"Actions" = "Hành động";
+
+/* No comment provided by engineer. */
+"Advanced" = "Nâng cao";
+
+/* No comment provided by engineer. */
+"All hidden pages will be unhidden." = "Tất cả các trang bị ẩn sẽ được hiện lại.";
+
+/* No comment provided by engineer. */
+"Alphabetical" = "Alphabetical";
+
+/* No comment provided by engineer. */
+"App Details" = "Chi tiết ứng dụng";
+
+/* No comment provided by engineer. */
+"App Manager" = "Quản lý ứng dụng";
+
+/* No comment provided by engineer. */
+"App Size: %@" = "Kích thước ứng dụng: %@";
+
+/* No comment provided by engineer. */
+"AppCommander" = "AppCommander";
+
+/* No comment provided by engineer. */
+"AppCommander %@\nMade with ❤️ by BomberFish" = "AppCommander %@\nĐược tạo ra với ❤️ bởi BomberFish";
+
+/* No comment provided by engineer. */
+"Apple Loops Mix" = "Apple Loops Mix";
+
+/* No comment provided by engineer. */
+"Apple Loops Mix :trolley:" = "Apple Loops Mix :trolley:";
+
+/* No comment provided by engineer. */
+"Apply" = "Áp dụng";
+
+/* No comment provided by engineer. */
+"Apps (%lld)" = "Ứng dụng (%lld)";
+
+/* No comment provided by engineer. */
+"Back Up Current Layout" = "Sao lưu bố cục hiện tại";
+
+/* No comment provided by engineer. */
+"Back up now" = "Sao lưu ngay";
+
+/* No comment provided by engineer. */
+"Backup and Restore (Beta)" = "Sao lưu và khôi phục (Thử nghiệm)";
+
+/* No comment provided by engineer. */
+"Backup filename: %@" = "Tên bản sao lưu: %@";
+
+/* No comment provided by engineer. */
+"Backup taken %@" = "Sao lưu được thực hiện vào %@";
+
+/* No comment provided by engineer. */
+"Backups" = "Sao lưu";
+
+/* No comment provided by engineer. */
+"Backups are still in beta. Unexpected issues may arise." = "Sao lưu vẫn đang được phát triển. Nhiều vấn đề xấu có thể phát sinh.";
+
+/* No comment provided by engineer. */
+"Banned Apps" = "Ứng dụng bị cấm";
+
+/* No comment provided by engineer. */
+"Blacklist" = "Blacklist";
+
+/* No comment provided by engineer. */
+"Blacklist File Contents" = "Nội dung của Blacklist";
+
+/* No comment provided by engineer. */
+"Brick Device" = "Hóa máy thành gạch";
+
+/* No comment provided by engineer. */
+"Bundle ID: %@" = "Bundle ID: %@";
+
+/* No comment provided by engineer. */
+"Bundle Path: %@" = "Đường dẫn bundle: %@";
+
+/* No comment provided by engineer. */
+"Cancel" = "Hủy";
+
+/* No comment provided by engineer. */
+"Case-insensitive" = "Không phân biệt chữ hoa chữ thường";
+
+/* No comment provided by engineer. */
+"Case-sensitive" = "Có phân biệt chữ hoa chữ thường";
+
+/* No comment provided by engineer. */
+"CD Hashes" = "Gía trị CD băm";
+
+/* No comment provided by engineer. */
+"Check Results" = "Kiểm tra kết quả";
+
+/* No comment provided by engineer. */
+"Color" = "Màu";
+
+/* No comment provided by engineer. */
+"Coming Soon" = "Sắp ra mắt";
+
+/* No comment provided by engineer. */
+"Copy" = "Sao chép";
+
+/* No comment provided by engineer. */
+"Creation Date: %@" = "Ngày tạo: %@";
+
+/* No comment provided by engineer. */
+"Credits" = "Những người đóng góp";
+
+/* No comment provided by engineer. */
+"Data directory: %@" = "Thư mục dữ liệu: %@";
+
+/* No comment provided by engineer. */
+"Debug" = "Trình sửa lỗi";
+
+/* No comment provided by engineer. */
+"Debug Mode" = "Chế độ sửa lỗi";
+
+/* No comment provided by engineer. */
+"Delete" = "Xóa";
+
+/* No comment provided by engineer. */
+"Delete app cache" = "Xóa bộ nhớ tạm ứng dụng";
+
+/* No comment provided by engineer. */
+"Delete app data" = "Xóa dữ liệu ứng dụng";
+
+/* No comment provided by engineer. */
+"Delete app documents" = "Xóa tài liệu ứng dụng";
+
+/* No comment provided by engineer. */
+"Delete app documents (including backups)" = "Xóa tài liệu ứng dụng (bao gồm cả bản sao lưu)";
+
+/* No comment provided by engineer. */
+"Delete temporary storage" = "Xóa kho lưu trữ tạm thời";
+
+/* No comment provided by engineer. */
+"Delete Test File" = "Xóa tập tin thử";
+
+/* No comment provided by engineer. */
+"Documents Size: %@" = "Kích thước tài liệu: %@";
+
+/* No comment provided by engineer. */
+"Enable Absolute Solver" = "Kích hoạt Absolute Solver";
+
+/* No comment provided by engineer. */
+"Enable in-app console" = "Kích hoạt bảng điều khiển";
+
+/* No comment provided by engineer. */
+"Error" = "Lỗi";
+
+/* No comment provided by engineer. */
+"Experiments" = "Thử nghiệm";
+
+/* No comment provided by engineer. */
+"Export Encrypted IPA" = "Xuất IPA đã mã hóa";
+
+/* No comment provided by engineer. */
+"Folders" = "Thư mục";
+
+/* No comment provided by engineer. */
+"Home Screen" = "Màn hình chính";
+
+/* No comment provided by engineer. */
+"It is recommended you save your current layout before experimenting as only one undo is possible." = "Chúng tôi khuyên bạn nên lưu bố cục hiện tại trước khi sử dụng vì bạn chỉ có thể hoàn tác được một lần.";
+
+/* No comment provided by engineer. */
+"Kouyou Privacy Policy" = "Chính sách bảo mật Kouyou";
+
+/* No comment provided by engineer. */
+"Make It So, Number One" = "Làm việc nào sếp";
+
+/* No comment provided by engineer. */
+"Make Test File" = "Tạo tập tin thử";
+
+/* No comment provided by engineer. */
+"More Info" = "Thông tin thêm";
+
+/* No comment provided by engineer. */
+"Move to top" = "Di chuyển lên đầu";
+
+/* No comment provided by engineer. */
+"Name: %@" = "Tên: %@";
+
+/* No comment provided by engineer. */
+"No backups!" = "Không có sao lưu!";
+
+/* No comment provided by engineer. */
+"None" = "Không";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Open App" = "Mở ứng dụng";
+
+/* No comment provided by engineer. */
+"Open in Filza" = "Mở trong Filza";
+
+/* No comment provided by engineer. */
+"Open in Santander" = "Mở trong Santander";
+
+/* No comment provided by engineer. */
+"Options" = "Tùy chọn";
+
+/* No comment provided by engineer. */
+"Ordering" = "Thứ tự";
+
+/* No comment provided by engineer. */
+"Overwrite Banned Apps" = "Ghi đè ứng dụng bị cấm";
+
+/* No comment provided by engineer. */
+"Overwrite Blacklist" = "Ghi đè Blacklist";
+
+/* No comment provided by engineer. */
+"Overwrite CDHashes" = "Ghi đè CDHashes";
+
+/* No comment provided by engineer. */
+"Page %@%@" = "Trang %@%@";
+
+/* No comment provided by engineer. */
+"Pages" = "Trang";
+
+/* No comment provided by engineer. */
+"Pause" = "Dừng";
+
+/* No comment provided by engineer. */
+"Play" = "Phát";
+
+/* No comment provided by engineer. */
+"Remove three-app limit" = "Gỡ giới hạn 3 ứng dụng";
+
+/* No comment provided by engineer. */
+"Replace Testing" = "Thay thế Testing";
+
+/* No comment provided by engineer. */
+"Replace with Absolute Solver" = "Thay thế với Absolute Solver";
+
+/* No comment provided by engineer. */
+"Restart backboard" = "Khởi động lại backboard";
+
+/* No comment provided by engineer. */
+"Restart frontboard" = "Khởi động lại frontboard";
+
+/* No comment provided by engineer. */
+"Restore Saved Layout" = "Khôi phục bố cục đã lưu";
+
+/* No comment provided by engineer. */
+"Resume" = "Tiếp tục";
+
+/* No comment provided by engineer. */
+"Retain current order" = "Giữ thứ tự đang có";
+
+/* No comment provided by engineer. */
+"Select Pages" = "Chọn trang";
+
+/* No comment provided by engineer. */
+"Settings" = "Cài đặt";
+
+/* No comment provided by engineer. */
+"Sideloading Tools" = "Công cụ sideload";
+
+/* No comment provided by engineer. */
+"Sort" = "Phân loại";
+
+/* No comment provided by engineer. */
+"Sort Apps" = "Phân loại ứng dụng";
+
+/* No comment provided by engineer. */
+"Sort apps across pages" = "Phân loại ứng dụng khắp trang";
+
+/* No comment provided by engineer. */
+"Sort mixed with apps" = "Phân loại ứng dụng hỗn hợp";
+
+/* No comment provided by engineer. */
+"Sort pages independently" = "Phân loại độc lập ứng dụng";
+
+/* No comment provided by engineer. */
+"Sort separate from apps" = "Phân loại chia ứng dụng";
+
+/* No comment provided by engineer. */
+"Storage Management" = "Quản lý kho lưu trữ";
+
+/* No comment provided by engineer. */
+"Testing Only" = "Chỉ thử nghiệm";
+
+/* No comment provided by engineer. */
+"The previously saved layout will be overwritten." = "Bố cục đã lưu trước sẽ bị ghi đè.";
+
+/* No comment provided by engineer. */
+"Tools" = "Công cụ";
+
+/* No comment provided by engineer. */
+"Translators" = "Người dịch";
+
+/* No comment provided by engineer. */
+"Undo Last Sort" = "Hoàn tác phân loại trước";
+
+/* No comment provided by engineer. */
+"Version: %@" = "Phiên bản: %@";
+
+/* No comment provided by engineer. */
+"View contents of blacklist files" = "Xem nội dụng của các tệp blacklist";
+
+/* No comment provided by engineer. */
+"Whitelist" = "Whitelist";
+
+/* No comment provided by engineer. */
+"Widgets" = "Widgets";
+
+/* No comment provided by engineer. */
+"Wipe your device before returning to the person collecting hardware" = "Cài lại máy trước khi trả lại cho người thu máy";
+
+/* No comment provided by engineer. */
+"You've come a long way, traveler. Have a :lungs:.\n🫁" = "Bạn đi được một chặng dài đấy. Nào, hãy nhận đi :lungs:.\n🫁";
+
+/* No comment provided by engineer. */
+"Z-A" = "Z-A";
+

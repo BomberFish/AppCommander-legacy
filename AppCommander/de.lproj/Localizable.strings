@@ -1,0 +1,321 @@
+/* No comment provided by engineer. */
+"  Loading..." = "  Wird geladen...";
+
+/* No comment provided by engineer. */
+"🇨🇳 jbjf#1431" = "🇨🇳 jbjf#1431";
+
+/* No comment provided by engineer. */
+"A-Z" = "A-Z";
+
+/* No comment provided by engineer. */
+"Actions" = "Aktionen";
+
+/* No comment provided by engineer. */
+"Advanced" = "Erweitert";
+
+/* No comment provided by engineer. */
+"All hidden pages will be unhidden." = "Alle ausgeblendeten Seiten werden  angezeigt.";
+
+/* No comment provided by engineer. */
+"Alphabetical" = "Alphabetisch";
+
+/* No comment provided by engineer. */
+"App Details" = "App-Details";
+
+/* No comment provided by engineer. */
+"App Manager" = "App-Manager";
+
+/* No comment provided by engineer. */
+"App Size: %@" = "App-Grösse: %@";
+
+/* No comment provided by engineer. */
+"AppCommander" = "AppCommander";
+
+/* No comment provided by engineer. */
+"Apple Loops Mix" = "Apple Loops Mix";
+
+/* No comment provided by engineer. */
+"Apple Loops Mix :trolley:" = "Apple Loops Mix :Trolley:";
+
+/* No comment provided by engineer. */
+"Apply" = "Anwenden";
+
+/* No comment provided by engineer. */
+"Apps (%lld)" = "Apps (%lld)";
+
+/* No comment provided by engineer. */
+"Back Up Current Layout" = "Aktuelles Layout sichern";
+
+/* No comment provided by engineer. */
+"Back up now" = "Jetzt zurücksetzen";
+
+/* No comment provided by engineer. */
+"Backup and Restore (Beta)" = "Sichern und Wiederherstellen (Beta)";
+
+/* No comment provided by engineer. */
+"Backup filename: %@" = "Sicherungsdateiname: %@";
+
+/* No comment provided by engineer. */
+"Backup taken %@" = "Sicherung wurde erstellt %@";
+
+/* No comment provided by engineer. */
+"Backups" = "Backups";
+
+/* No comment provided by engineer. */
+"Backups are still in beta. Unexpected issues may arise." = "Backups sind noch in der Beta-Phase. Unerwartete Probleme können auftreten.";
+
+/* No comment provided by engineer. */
+"Banned Apps" = "Gesperrte Apps";
+
+/* No comment provided by engineer. */
+"Blacklist" = "Blacklist";
+
+/* No comment provided by engineer. */
+"Blacklist File Contents" = "Blacklist-Dateiinhalte";
+
+/* No comment provided by engineer. */
+"Brick Device" = "NEIN! (Brick Device)";
+
+/* No comment provided by engineer. */
+"Bundle ID: %@" = "Paket-ID: %@";
+
+/* No comment provided by engineer. */
+"Bundle Path: %@" = "Bundle-Pfad: %@";
+
+/* No comment provided by engineer. */
+"Cancel" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"Case-insensitive" = "Groß-/Kleinschreibung wird nicht berücksichtigt";
+
+/* No comment provided by engineer. */
+"Case-sensitive" = "Groß-/Kleinschreibung beachten";
+
+/* No comment provided by engineer. */
+"CD Hashes" = "CD-Hashes";
+
+/* No comment provided by engineer. */
+"Check Results" = "Prüfergebnisse";
+
+/* No comment provided by engineer. */
+"Color" = "Farbe";
+
+/* No comment provided by engineer. */
+"Coming Soon" = "Demnächst verfügbar";
+
+/* No comment provided by engineer. */
+"Copy" = "Kopieren";
+
+/* No comment provided by engineer. */
+"Creation Date: %@" = "Erstellungsdatum: %@";
+
+/* No comment provided by engineer. */
+"Credits" = "Credits";
+
+/* No comment provided by engineer. */
+"Data directory: %@" = "Datenverzeichnis: %@";
+
+/* No comment provided by engineer. */
+"Debug" = "Debuggen";
+
+/* No comment provided by engineer. */
+"Debug Mode" = "Debug-Modus";
+
+/* No comment provided by engineer. */
+"Delete" = "Löschen";
+
+/* No comment provided by engineer. */
+"Delete app cache" = "App-Cache löschen";
+
+/* No comment provided by engineer. */
+"Delete app data" = "App-Daten löschen";
+
+/* No comment provided by engineer. */
+"Delete app documents" = "App-Dokumente löschen";
+
+/* No comment provided by engineer. */
+"Delete app documents (including backups)" = "App-Dokumente löschen (einschließlich Backups)";
+
+/* No comment provided by engineer. */
+"Delete temporary storage" = "Zwischenspeicher löschen";
+
+/* No comment provided by engineer. */
+"Delete Test File" = "Testdatei löschen";
+
+/* No comment provided by engineer. */
+"Documents Size: %@" = "Dokumentengröße: %@";
+
+/* No comment provided by engineer. */
+"Enable Absolute Solver" = "Absolute Solver aktivieren";
+
+/* No comment provided by engineer. */
+"Enable in-app console" = "In-App-Konsole aktivieren";
+
+/* No comment provided by engineer. */
+"Error" = "Fehler";
+
+/* No comment provided by engineer. */
+"Experiments" = "Experimente";
+
+/* No comment provided by engineer. */
+"Export Encrypted IPA" = "Verschlüsselte IPA exportieren";
+
+/* No comment provided by engineer. */
+"Folders" = "Ordner";
+
+/* No comment provided by engineer. */
+"Home Screen" = "Startbildschirm";
+
+/* No comment provided by engineer. */
+"It is recommended you save your current layout before experimenting as only one undo is possible." = "Es wird empfohlen, Ihr aktuelles Layout vor dem Experimentieren zu speichern, da nur ein Rückgang gemacht werden kann.";
+
+/* No comment provided by engineer. */
+"Kouyou Privacy Policy" = "Kouyou Datenschutzerklärung";
+
+/* No comment provided by engineer. */
+"Make It So, Number One" = "Mach Es So, Nummer Eins";
+
+/* No comment provided by engineer. */
+"Make Test File" = "Testdatei erstellen";
+
+/* No comment provided by engineer. */
+"More Info" = "Weitere Informationen";
+
+/* No comment provided by engineer. */
+"Move to top" = "Nach oben verschieben";
+
+/* No comment provided by engineer. */
+"Name: %@" = "Name: %@";
+
+/* No comment provided by engineer. */
+"No backups!" = "Keine Backups!";
+
+/* No comment provided by engineer. */
+"None" = "Keine";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Open App" = "App öffnen";
+
+/* No comment provided by engineer. */
+"Open in Filza" = "In Filza öffnen";
+
+/* No comment provided by engineer. */
+"Open in Santander" = "In Santander öffnen";
+
+/* No comment provided by engineer. */
+"Options" = "Optionen";
+
+/* No comment provided by engineer. */
+"Ordering" = "Bestellung";
+
+/* No comment provided by engineer. */
+"Overwrite Banned Apps" = "Gesperrte Apps überschreiben";
+
+/* No comment provided by engineer. */
+"Overwrite Blacklist" = "Blacklist überschreiben";
+
+/* No comment provided by engineer. */
+"Overwrite CDHashes" = "CDHashes überschreiben";
+
+/* No comment provided by engineer. */
+"Page %@%@" = "Seite %@%@";
+
+/* No comment provided by engineer. */
+"Pages" = "Seiten";
+
+/* No comment provided by engineer. */
+"Pause" = "Pause";
+
+/* No comment provided by engineer. */
+"Play" = "Abspielen";
+
+/* No comment provided by engineer. */
+"Remove three-app limit" = "Drei-App-Limit entfernen";
+
+/* No comment provided by engineer. */
+"Replace Testing" = "Ersetze Test";
+
+/* No comment provided by engineer. */
+"Replace with Absolute Solver" = "Durch Absolutlöser ersetzen";
+
+/* No comment provided by engineer. */
+"Restart backboard" = "Backboard neu starten";
+
+/* No comment provided by engineer. */
+"Restart frontboard" = "Frontboard neu starten";
+
+/* No comment provided by engineer. */
+"Restore Saved Layout" = "Gespeichertes Layout wiederherstellen";
+
+/* No comment provided by engineer. */
+"Resume" = "Fortsetzen";
+
+/* No comment provided by engineer. */
+"Retain current order" = "Aktuelle Ordnung beibehalten";
+
+/* No comment provided by engineer. */
+"Select Pages" = "Seiten auswählen";
+
+/* No comment provided by engineer. */
+"Settings" = "Einstellungen";
+
+/* No comment provided by engineer. */
+"Sideloading Tools" = "Sideloading Tools";
+
+/* No comment provided by engineer. */
+"Sort" = "Sortieren";
+
+/* No comment provided by engineer. */
+"Sort Apps" = "Apps sortieren";
+
+/* No comment provided by engineer. */
+"Sort apps across pages" = "Apps seitenübergreifend sortieren";
+
+/* No comment provided by engineer. */
+"Sort mixed with apps" = "Gemischte Sortierung mit Apps";
+
+/* No comment provided by engineer. */
+"Sort pages independently" = "Seiten selbstständig sortieren";
+
+/* No comment provided by engineer. */
+"Sort separate from apps" = "Separat von Apps sortieren";
+
+/* No comment provided by engineer. */
+"Storage Management" = "Speicher Verwalten";
+
+/* No comment provided by engineer. */
+"Testing Only" = "Nur Testen";
+
+/* No comment provided by engineer. */
+"The previously saved layout will be overwritten." = "Das zuvor gespeicherte Layout wird überschrieben.";
+
+/* No comment provided by engineer. */
+"Tools" = "Werkzeuge";
+
+/* No comment provided by engineer. */
+"Translators" = "Übersetzer";
+
+/* No comment provided by engineer. */
+"Undo Last Sort" = "Letzte Sortierung rückgängig machen";
+
+/* No comment provided by engineer. */
+"Version: %@" = "Version: %@";
+
+/* No comment provided by engineer. */
+"View contents of blacklist files" = "Inhalt von Blacklist-Dateien anzeigen";
+
+/* No comment provided by engineer. */
+"Whitelist" = "Whitelist";
+
+/* No comment provided by engineer. */
+"Widgets" = "Widgets";
+
+/* No comment provided by engineer. */
+"Wipe your device before returning to the person collecting hardware" = "Löschen Sie Ihr Gerät bevor sie es abgeben";
+
+/* No comment provided by engineer. */
+"Z-A" = "Z-A";
+

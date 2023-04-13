@@ -11,6 +11,8 @@ struct TranslatorsView: View {
     var body: some View {
         List {
             Text("🇨🇳 jbjf#1431")
+            Text("🇻🇳 odyssey#0666")
+            Text("🇩🇪 Zarapho#1453")
         }
         .navigationTitle("Translators")
     }
