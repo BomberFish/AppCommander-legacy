@@ -41,14 +41,19 @@ enum ApplicationManager {
             // print(mmpath)
             do {
                 var mmDict: [String: Any]
-                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
-                    mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath), options: [], format: nil) as? [String: Any] ?? [:]
+                if fm.fileExists(atPath: mmpath) {
+                    if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                        mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath), options: [], format: nil) as? [String: Any] ?? [:]
+                    } else {
+                        mmDict = try PropertyListSerialization.propertyList(from: Data(contentsOf: URL(fileURLWithPath: mmpath)), options: [], format: nil) as? [String: Any] ?? [:]
+                    }
+                    
+                    // print(mmDict as Any)
+                    if mmDict["MCMMetadataIdentifier"] as! String == bundleID {
+                        returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
+                    }
                 } else {
-                    mmDict = try PropertyListSerialization.propertyList(from: Data(contentsOf: URL(fileURLWithPath: mmpath)), options: [], format: nil) as? [String: Any] ?? [:]
-                }
-                // print(mmDict as Any)
-                if mmDict["MCMMetadataIdentifier"] as! String == bundleID {
-                    returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
+                    print("Warning: Directory \(dir) does not have a metadata plist, skipping.")
                 }
             } catch {
                 throw ("Could not get data of \(mmpath): \(error.localizedDescription)")
