@@ -10,9 +10,10 @@ import SwiftUI
 struct TranslatorsView: View {
     var body: some View {
         List {
+            Text("🇫🇷 C22#9618")
+            Text("🇩🇪 Zarapho#1453")
             Text("🇨🇳 jbjf#1431")
             Text("🇻🇳 odyssey#0666")
-            Text("🇩🇪 Zarapho#1453")
         }
         .navigationTitle("Translators")
     }

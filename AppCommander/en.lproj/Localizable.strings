@@ -1,7 +1,270 @@
-/* 
-  Localizable.strings
-  AppCommander
+/* No comment provided by engineer. */
+"  Loading..." = "  Chargement...";
 
-  Created by Hariz Shirazi on 2023-04-11.
-  
-*/
+/* No comment provided by engineer. */
+"Advanced" = "Avancé";
+
+/* No comment provided by engineer. */
+"All hidden pages will be unhidden." = "Toutes les pages cachées seront montrées";
+
+/* No comment provided by engineer. */
+"App Details" = "Détails de l'App";
+
+/* No comment provided by engineer. */
+"App Manager" = "Gérant d'App";
+
+/* No comment provided by engineer. */
+"App Size: %@" = "Taille de l'App : %@";
+
+/* No comment provided by engineer. */
+"AppCommander %@\nMade with ❤️ by BomberFish" = "AppCommander %@\nFait avec ❤️ par BomberFish";
+
+/* No comment provided by engineer. */
+"Apple Loops Mix" = "Mix Apple Loops";
+
+/* No comment provided by engineer. */
+"Apple Loops Mix :trolley:" = "Mix Apple Loops :trolley:";
+
+/* No comment provided by engineer. */
+"Apply" = "Appliquer";
+
+/* No comment provided by engineer. */
+"Back Up Current Layout" = "Sauvegarder la disposition actuelle";
+
+/* No comment provided by engineer. */
+"Back up now" = "Sauvegarder maintenant";
+
+/* No comment provided by engineer. */
+"Backup and Restore (Beta)" = "Sauvegarder et Restorer (Beta)";
+
+/* No comment provided by engineer. */
+"Backup filename: %@" = "Nom du fichier de sauvegarde : %@";
+
+/* No comment provided by engineer. */
+"Backup taken %@" = "Sauvegarde prise %@";
+
+/* No comment provided by engineer. */
+"Backups" = "Sauvegardes";
+
+/* No comment provided by engineer. */
+"Backups are still in beta. Unexpected issues may arise." = "Le système de sauvegarde est encore en beta. Des erreurs inattendues peuvent survenir.";
+
+/* No comment provided by engineer. */
+"Banned Apps" = "Apps Bannies";
+
+/* No comment provided by engineer. */
+"Blacklist File Contents" = "Contenu du fichier de Blacklist";
+
+/* No comment provided by engineer. */
+"Brick Device" = "Briquer l'appareil";
+
+/* No comment provided by engineer. */
+"Bundle Path: %@" = "Chemin du Bundle: %@";
+
+/* No comment provided by engineer. */
+"Cancel" = "Annuler";
+
+/* No comment provided by engineer. */
+"Case-insensitive" = "Insensible à la case";
+
+/* No comment provided by engineer. */
+"Case-sensitive" = "Sensible à la case";
+
+/* No comment provided by engineer. */
+"Check Results" = "Verifier les résultats";
+
+/* No comment provided by engineer. */
+"Color" = "Couleur";
+
+/* No comment provided by engineer. */
+"Coming Soon" = "Bientôt disponible";
+
+/* No comment provided by engineer. */
+"Copy" = "Copier";
+
+/* No comment provided by engineer. */
+"Creation Date: %@" = "Date de création : %@";
+
+/* No comment provided by engineer. */
+"Credits" = "Crédits";
+
+/* No comment provided by engineer. */
+"Data directory: %@" = "Répertoire des données: %@";
+
+/* No comment provided by engineer. */
+"Debug" = "Débogage";
+
+/* No comment provided by engineer. */
+"Debug Mode" = "Mode de Débogage";
+
+/* No comment provided by engineer. */
+"Delete" = "Supprimer";
+
+/* No comment provided by engineer. */
+"Delete app cache" = "Supprimer le cache de l'app";
+
+/* No comment provided by engineer. */
+"Delete app data" = "Supprimer les données de l'app";
+
+/* No comment provided by engineer. */
+"Delete app documents" = "Supprimer les documents de l'app";
+
+/* No comment provided by engineer. */
+"Delete app documents (including backups)" = "Supprimer les documents de l'app (sauvegardes incluses)";
+
+/* No comment provided by engineer. */
+"Delete temporary storage" = "Supprimer le stockage temporaire";
+
+/* No comment provided by engineer. */
+"Delete Test File" = "Supprimer le fichier de test";
+
+/* No comment provided by engineer. */
+"Documents Size: %@" = "Taille des Documents : %@";
+
+/* No comment provided by engineer. */
+"Enable Absolute Solver" = "Activer \"Absolute Solver\"";
+
+/* No comment provided by engineer. */
+"Enable in-app console" = "Activer la console intégrée à l'app";
+
+/* No comment provided by engineer. */
+"Error" = "Erreur";
+
+/* No comment provided by engineer. */
+"Experiments" = "Experimentations";
+
+/* No comment provided by engineer. */
+"Export Encrypted IPA" = "Exporter l'IPA chiffré";
+
+/* No comment provided by engineer. */
+"Folders" = "Dossiers";
+
+/* No comment provided by engineer. */
+"Home Screen" = "Écran d'Accueil";
+
+/* No comment provided by engineer. */
+"It is recommended you save your current layout before experimenting as only one undo is possible." = "Il est recommandé que vous sauvegardiez votre disposition actuelle avant de procéder car seulement une seule annulation est possible.";
+
+/* No comment provided by engineer. */
+"Kouyou Privacy Policy" = "Politique de confidentialité de Kouyou";
+
+/* No comment provided by engineer. */
+"Make It So, Number One" = "(Appliquer)  Mais, vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres, des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée… Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l’interlocuteur en face, je dirais, le miroir qui vous aide à avancer. Alors ce n’est pas mon cas, comme je le disais là, puisque moi au contraire, j’ai pu ; et je dis merci à la vie, je lui dis merci, je chante la vie, je danse la vie… Je ne suis qu’amour ! Et finalement, quand beaucoup de gens aujourd’hui me disent : « Mais comment fais-tu pour avoir cette humanité ? » Eh bien je leur réponds très simplement, je leur dis que c’est ce goût de l’amour, ce goût donc qui m’a poussé aujourd’hui à entreprendre une construction mécanique, mais demain, qui sait, peut-être simplement à me mettre au service de la communauté, à faire le don, le don de soi…";
+
+/* No comment provided by engineer. */
+"Make Test File" = "Créer le Fichier Test";
+
+/* No comment provided by engineer. */
+"More Info" = "Plus d'Info";
+
+/* No comment provided by engineer. */
+"Move to top" = "Déplacer vers le haut";
+
+/* No comment provided by engineer. */
+"Name: %@" = "Nom : %@";
+
+/* No comment provided by engineer. */
+"No backups!" = "Aucune sauvegarde !";
+
+/* No comment provided by engineer. */
+"None" = "Aucun";
+
+/* No comment provided by engineer. */
+"Open App" = "Ouvrir l'App";
+
+/* No comment provided by engineer. */
+"Open in Filza" = "Ouvrir dans Filza";
+
+/* No comment provided by engineer. */
+"Open in Santander" = "Ouvrir dans Santander";
+
+/* No comment provided by engineer. */
+"Ordering" = "Trier";
+
+/* No comment provided by engineer. */
+"Overwrite Banned Apps" = "Effacer les apps bannies";
+
+/* No comment provided by engineer. */
+"Overwrite Blacklist" = "Effacer la Blacklist";
+
+/* No comment provided by engineer. */
+"Overwrite CDHashes" = "Effacer les CDHashes";
+
+/* No comment provided by engineer. */
+"Remove three-app limit" = "Supprimer la limite de trois applications";
+
+/* No comment provided by engineer. */
+"Replace Testing" = "Remplacer les Tests";
+
+/* No comment provided by engineer. */
+"Replace with Absolute Solver" = "Remplacer par \"Absolute Solver\"";
+
+/* No comment provided by engineer. */
+"Restart backboard" = "Redémarrer la backboard";
+
+/* No comment provided by engineer. */
+"Restart frontboard" = "Redémarrer la frontboard";
+
+/* No comment provided by engineer. */
+"Restore Saved Layout" = "Restorer la disposition sauvegardée";
+
+/* No comment provided by engineer. */
+"Resume" = "Reprendre";
+
+/* No comment provided by engineer. */
+"Retain current order" = "Conserver l'ordre actuel";
+
+/* No comment provided by engineer. */
+"Select Pages" = "Sélectionner les Pages";
+
+/* No comment provided by engineer. */
+"Settings" = "Paramètres";
+
+/* No comment provided by engineer. */
+"Sideloading Tools" = "Outils de Sideloading";
+
+/* No comment provided by engineer. */
+"Sort" = "Trier";
+
+/* No comment provided by engineer. */
+"Sort Apps" = "Trier les Apps";
+
+/* No comment provided by engineer. */
+"Sort apps across pages" = "Trier les Apps hors des pages";
+
+/* No comment provided by engineer. */
+"Sort mixed with apps" = "Trier les apps en un mélange";
+
+/* No comment provided by engineer. */
+"Sort pages independently" = "Trier les pages indépendamment ";
+
+/* No comment provided by engineer. */
+"Sort separate from apps" = "Trier séparément des applications";
+
+/* No comment provided by engineer. */
+"Storage Management" = "Gestion du stockage";
+
+/* No comment provided by engineer. */
+"Testing Only" = "Test Uniquement";
+
+/* No comment provided by engineer. */
+"The previously saved layout will be overwritten." = "La disposition précédemment sauvegardée va être remplacée.";
+
+/* No comment provided by engineer. */
+"Tools" = "Outils";
+
+/* No comment provided by engineer. */
+"Translators" = "Traducteurs";
+
+/* No comment provided by engineer. */
+"Undo Last Sort" = "Annuler le Dernier Triage";
+
+/* No comment provided by engineer. */
+"View contents of blacklist files" = "Voir le contenu des fichiers blacklist";
+
+/* No comment provided by engineer. */
+"Wipe your device before returning to the person collecting hardware" = "Effacez votre appareil avant de le renvoyer à la personne le récupérant.";
+
+/* No comment provided by engineer. */
+"You've come a long way, traveler. Have a :lungs:.\n🫁" = "Tu viens de loin, toi ! Voilà un cadeau pour toi... :lungs:.\n🫁";
+
