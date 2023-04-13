@@ -4,3 +4,4 @@
 //#import "helpers.h"
 #import "UIImage+UIImageAverageColorAddition.h"
 #import "CoreServices.h"
+#import "KernelPanic.h"

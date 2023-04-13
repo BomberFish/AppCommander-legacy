@@ -28,8 +28,10 @@
 		D6609A9A29D73D680033F66D /* CompressionWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9929D73D680033F66D /* CompressionWrapper */; };
 		D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9B29D73D680033F66D /* DiskImagesWrapper */; };
 		D6609AA029D73D680033F66D /* NSTask in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9F29D73D680033F66D /* NSTask */; };
-		D6609AA229D73D680033F66D /* SVGWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609AA129D73D680033F66D /* SVGWrapper */; };
 		D674868529D7821300BCE952 /* FM++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D674868429D7821300BCE952 /* FM++.swift */; };
+		D688309A29E86D7D00F4D7DA /* KernelPanic.m in Sources */ = {isa = PBXBuildFile; fileRef = D688309929E86D7D00F4D7DA /* KernelPanic.m */; };
+		D688309D29E870F000F4D7DA /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688309C29E870F000F4D7DA /* IOSurface.framework */; };
+		D688309F29E870FF00F4D7DA /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688309E29E870FE00F4D7DA /* IOKit.framework */; };
 		D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */ = {isa = PBXBuildFile; productRef = D6D22B6129C64AC20095645B /* LocalConsole */; };
 		D6D22B6629C64D180095645B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6529C64D180095645B /* SettingsView.swift */; };
 		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
@@ -107,6 +109,10 @@
 		D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentsView.swift; sourceTree = "<group>"; };
 		D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistManager.swift; sourceTree = "<group>"; };
 		D674868429D7821300BCE952 /* FM++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FM++.swift"; sourceTree = "<group>"; };
+		D688309929E86D7D00F4D7DA /* KernelPanic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KernelPanic.m; sourceTree = "<group>"; };
+		D688309B29E86FC100F4D7DA /* KernelPanic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelPanic.h; sourceTree = "<group>"; };
+		D688309C29E870F000F4D7DA /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
+		D688309E29E870FE00F4D7DA /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		D6D22B6529C64D180095645B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D6D22B6E29C65D6B0095645B /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -158,11 +164,12 @@
 				D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */,
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
 				D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */,
+				D688309F29E870FF00F4D7DA /* IOKit.framework in Frameworks */,
 				D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */,
 				D6E157A329E44DD200C1855B /* AbsoluteSolver in Frameworks */,
 				D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */,
+				D688309D29E870F000F4D7DA /* IOSurface.framework in Frameworks */,
 				D638E1B729DE1CE1004CCA55 /* MobileCoreServices.framework in Frameworks */,
-				D6609AA229D73D680033F66D /* SVGWrapper in Frameworks */,
 				D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */,
 				D6609A9A29D73D680033F66D /* CompressionWrapper in Frameworks */,
 			);
@@ -217,10 +224,25 @@
 		D6609A9829D73D680033F66D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D688309E29E870FE00F4D7DA /* IOKit.framework */,
+				D688309C29E870F000F4D7DA /* IOSurface.framework */,
 				D638E1B429DE1CE1004CCA55 /* CoreServices.framework */,
 				D638E1B529DE1CE1004CCA55 /* MobileCoreServices.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D688309829E86D5D00F4D7DA /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				D6E3FC9329CDE4C700D019D1 /* UIImage+UIImageAverageColorAddition.h */,
+				D6E552BA29B1790E0083E6A5 /* CoreServices.h */,
+				D6E552AB29B16E160083E6A5 /* AppCommander-Bridging-Header.h */,
+				D6E3FC9229CDE4C600D019D1 /* UIImage+UIImageAverageColorAddition.m */,
+				D688309929E86D7D00F4D7DA /* KernelPanic.m */,
+				D688309B29E86FC100F4D7DA /* KernelPanic.h */,
+			);
+			path = ObjC;
 			sourceTree = "<group>";
 		};
 		D6D539C529E1D2CC0098678C /* Classes */ = {
@@ -319,6 +341,7 @@
 				D638E1BF29DE2653004CCA55 /* iosplaceholder.png */,
 				D638E1AE29DA0BDC004CCA55 /* Apple Loops Mix.m4a */,
 				D6E5528029B165400083E6A5 /* AppCommanderApp.swift */,
+				D688309829E86D5D00F4D7DA /* ObjC */,
 				D6E3FC9029CDE43400D019D1 /* Constants.swift */,
 				D6D539C529E1D2CC0098678C /* Classes */,
 				D6E3FC8729CDE30A00D019D1 /* Managers */,
@@ -363,10 +386,6 @@
 				D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */,
 				D6E3FC8329CDE07700D019D1 /* Color++.swift */,
 				D6E552B729B16E640083E6A5 /* Haptic++.swift */,
-				D6E3FC9329CDE4C700D019D1 /* UIImage+UIImageAverageColorAddition.h */,
-				D6E552BA29B1790E0083E6A5 /* CoreServices.h */,
-				D6E552AB29B16E160083E6A5 /* AppCommander-Bridging-Header.h */,
-				D6E3FC9229CDE4C600D019D1 /* UIImage+UIImageAverageColorAddition.m */,
 				D6E3FC8E29CDE3D500D019D1 /* String++.swift */,
 				D638E1B229DAFA82004CCA55 /* View++.swift */,
 				D674868429D7821300BCE952 /* FM++.swift */,
@@ -409,7 +428,6 @@
 				D6609A9929D73D680033F66D /* CompressionWrapper */,
 				D6609A9B29D73D680033F66D /* DiskImagesWrapper */,
 				D6609A9F29D73D680033F66D /* NSTask */,
-				D6609AA129D73D680033F66D /* SVGWrapper */,
 				D6E157A229E44DD200C1855B /* AbsoluteSolver */,
 				D6039E7E29E484DE002F91D7 /* DirtyCowKit */,
 			);
@@ -579,6 +597,7 @@
 				D6E3FC9129CDE43400D019D1 /* Constants.swift in Sources */,
 				D638E1B329DAFA82004CCA55 /* View++.swift in Sources */,
 				D638E1BB29DE1F49004CCA55 /* BackupItem.swift in Sources */,
+				D688309A29E86D7D00F4D7DA /* KernelPanic.m in Sources */,
 				D638E1AB29DA031E004CCA55 /* PlayerClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -802,7 +821,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "AppCommander/Extensions/AppCommander-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppCommander/ObjC/AppCommander-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -845,7 +864,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "AppCommander/Extensions/AppCommander-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppCommander/ObjC/AppCommander-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1043,11 +1062,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
 			productName = NSTask;
-		};
-		D6609AA129D73D680033F66D /* SVGWrapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
-			productName = SVGWrapper;
 		};
 		D6D22B6129C64AC20095645B /* LocalConsole */ = {
 			isa = XCSwiftPackageProductDependency;

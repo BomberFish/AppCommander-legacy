@@ -114,7 +114,7 @@ struct AppCommanderApp: App {
                                     escaped = true
                                 } catch {
                                     escaped = false
-                                    UIApplication.shared.alert(body: "Unsandboxing Error: \(error.localizedDescription)\nPlease close the app and retry. If the problem persists, reboot your device.", withButton: false)
+                                    UIApplication.shared.confirmAlert(body: "Unsandboxing Error: \(error.localizedDescription)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Reboot", onOK: reboot, noCancel: true)
                                 }
                             }
                         }
