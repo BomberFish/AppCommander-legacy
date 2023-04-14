@@ -1,0 +1,312 @@
+/* No comment provided by engineer. */
+"  Loading..." = "  로딩중...";
+
+/* No comment provided by engineer. */
+"Actions" = "동작";
+
+/* No comment provided by engineer. */
+"Advanced" = "고급";
+
+/* No comment provided by engineer. */
+"All hidden pages will be unhidden." = "모든 숨겨진 페이지들이 표시됩니다.";
+
+/* No comment provided by engineer. */
+"App Details" = "앱 정보";
+
+/* No comment provided by engineer. */
+"App Manager" = "앱 메니저";
+
+/* No comment provided by engineer. */
+"App Size: %@" = "앱 크기 %@";
+
+/* No comment provided by engineer. */
+"AppCommander %@\nMade with ❤️ by BomberFish" = "AppCommander %@\n❤️과 BomberFish에 의해 개발됨";
+
+/* No comment provided by engineer. */
+"Apple Loops Mix" = "Apple 루프 믹스";
+
+/* No comment provided by engineer. */
+"Apple Loops Mix :trolley:" = "Apple 루프 믹스 :trolley:";
+
+/* No comment provided by engineer. */
+"Apply" = "적용";
+
+/* No comment provided by engineer. */
+"Apps (%lld)" = "앱 (%lld)";
+
+/* No comment provided by engineer. */
+"Back Up Current Layout" = "현재 상태 백업";
+
+/* No comment provided by engineer. */
+"Back up now" = "지금 백업";
+
+/* No comment provided by engineer. */
+"Backup and Restore (Beta)" = "백업과 복원(베타)";
+
+/* No comment provided by engineer. */
+"Backup filename: %@" = "백업될 파일 이름: %@";
+
+/* No comment provided by engineer. */
+"Backup taken %@" = "%@의 백업이 저장됨";
+
+/* No comment provided by engineer. */
+"Backups" = "백업";
+
+/* No comment provided by engineer. */
+"Backups are still in beta. Unexpected issues may arise." = "백업은 아직 베타단계입니다. 어떤 문제가 발생할지 모릅니다.";
+
+/* No comment provided by engineer. */
+"Banned Apps" = "비활성화된 앱";
+
+/* No comment provided by engineer. */
+"Blacklist" = "블랙리스트";
+
+/* No comment provided by engineer. */
+"Blacklist File Contents" = "블랙리스트 파일 목록";
+
+/* No comment provided by engineer. */
+"Brick Device" = "벽돌 만들기";
+
+/* No comment provided by engineer. */
+"Bundle ID: %@" = "번들 ID: %@";
+
+/* No comment provided by engineer. */
+"Bundle Path: %@" = "번들 위치: %@";
+
+/* No comment provided by engineer. */
+"Cancel" = "취소";
+
+/* No comment provided by engineer. */
+"Case-insensitive" = "대소문자를 구분하지 않음";
+
+/* No comment provided by engineer. */
+"Case-sensitive" = "대소문자 구분";
+
+/* No comment provided by engineer. */
+"CD Hashes" = "CD 해시";
+
+/* No comment provided by engineer. */
+"Check Results" = "결과 확인";
+
+/* No comment provided by engineer. */
+"Color" = "색";
+
+/* No comment provided by engineer. */
+"Coming Soon" = "언젠간 옵니다.";
+
+/* No comment provided by engineer. */
+"Copy" = "복사";
+
+/* No comment provided by engineer. */
+"Creation Date: %@" = "만들어진 날짜";
+
+/* No comment provided by engineer. */
+"Credits" = "크레딧";
+
+/* No comment provided by engineer. */
+"Data directory: %@" = "데이터 위치: %@";
+
+/* No comment provided by engineer. */
+"Debug" = "디버그";
+
+/* No comment provided by engineer. */
+"Debug Mode" = "디버그 모드";
+
+/* No comment provided by engineer. */
+"Delete" = "삭제";
+
+/* No comment provided by engineer. */
+"Delete app cache" = "앱 캐시 삭제";
+
+/* No comment provided by engineer. */
+"Delete app data" = "앱 데이터 삭제";
+
+/* No comment provided by engineer. */
+"Delete app documents" = "앱 파일 삭제";
+
+/* No comment provided by engineer. */
+"Delete app documents (including backups)" = "백업과 함깨 앱 파일 삭제";
+
+/* No comment provided by engineer. */
+"Delete temporary storage" = "임시 저장소 삭제";
+
+/* No comment provided by engineer. */
+"Delete Test File" = "테스트 파일 삭제";
+
+/* No comment provided by engineer. */
+"Documents Size: %@" = "파일 크기: %@";
+
+/* No comment provided by engineer. */
+"Enable Absolute Solver" = "절대 해결사 활성화";
+
+/* No comment provided by engineer. */
+"Enable in-app console" = "인앱 콘솔 활성화";
+
+/* No comment provided by engineer. */
+"Error" = "오류";
+
+/* No comment provided by engineer. */
+"Experiments" = "경험";
+
+/* No comment provided by engineer. */
+"Export Encrypted IPA" = "암호화된 IPA 추출";
+
+/* No comment provided by engineer. */
+"Folders" = "폴더";
+
+/* No comment provided by engineer. */
+"Home Screen" = "홈화면";
+
+/* No comment provided by engineer. */
+"It is recommended you save your current layout before experimenting as only one undo is possible." = "실행 취소는 한 번만 가능하므로 실험하기 전에 현재 레이아웃을 저장하는 것이 좋습니다.";
+
+/* No comment provided by engineer. */
+"Kouyou Privacy Policy" = "Kouyou 개인정보 보호정책";
+
+/* No comment provided by engineer. */
+"Make It So, Number One" = "그렇게 하시죠";
+
+/* No comment provided by engineer. */
+"Make Test File" = "테스트 파일 생성";
+
+/* No comment provided by engineer. */
+"More Info" = "더 많은 정보";
+
+/* No comment provided by engineer. */
+"Move to top" = "위로 이동";
+
+/* No comment provided by engineer. */
+"Name: %@" = "이름: %@";
+
+/* No comment provided by engineer. */
+"No backups!" = "백업이 없습니다!";
+
+/* No comment provided by engineer. */
+"None" = "없음";
+
+/* No comment provided by engineer. */
+"OK" = "ㅇㅋ";
+
+/* No comment provided by engineer. */
+"Open App" = "앱 열기";
+
+/* No comment provided by engineer. */
+"Open in Filza" = "Filza에서 열기";
+
+/* No comment provided by engineer. */
+"Open in Santander" = "Santander에서 열기";
+
+/* No comment provided by engineer. */
+"Options" = "옵션";
+
+/* No comment provided by engineer. */
+"Ordering" = "주문";
+
+/* No comment provided by engineer. */
+"Overwrite Banned Apps" = "비활성화된 앱 덮어쓰기";
+
+/* No comment provided by engineer. */
+"Overwrite Blacklist" = "블랙리스트 덮어쓰기";
+
+/* No comment provided by engineer. */
+"Overwrite CDHashes" = "CD 해시 덮어쓰기";
+
+/* No comment provided by engineer. */
+"Page %@%@" = "%@%@페이지";
+
+/* No comment provided by engineer. */
+"Pages" = "페이지";
+
+/* No comment provided by engineer. */
+"Pause" = "정지";
+
+/* No comment provided by engineer. */
+"Play" = "재생";
+
+/* No comment provided by engineer. */
+"Remove three-app limit" = "3개 앱 제한 삭제";
+
+/* No comment provided by engineer. */
+"Replace Testing" = "테스트 교체";
+
+/* No comment provided by engineer. */
+"Replace with Absolute Solver" = "절대 해결사로 교체";
+
+/* No comment provided by engineer. */
+"Restart backboard" = "백보드 재시작";
+
+/* No comment provided by engineer. */
+"Restart frontboard" = "프론트보드 재시작";
+
+/* No comment provided by engineer. */
+"Restore Saved Layout" = "저장된 레이아웃으로 복원";
+
+/* No comment provided by engineer. */
+"Resume" = "재개";
+
+/* No comment provided by engineer. */
+"Retain current order" = "현재 주문 유지";
+
+/* No comment provided by engineer. */
+"Select Pages" = "페이지 선택";
+
+/* No comment provided by engineer. */
+"Settings" = "설정";
+
+/* No comment provided by engineer. */
+"Sideloading Tools" = "사이드로딩 도구";
+
+/* No comment provided by engineer. */
+"Sort" = "정렬";
+
+/* No comment provided by engineer. */
+"Sort Apps" = "앱 정렬";
+
+/* No comment provided by engineer. */
+"Sort apps across pages" = "페이지에서 앱 정렬";
+
+/* No comment provided by engineer. */
+"Sort mixed with apps" = "앱과 혼합 정렬";
+
+/* No comment provided by engineer. */
+"Sort pages independently" = "페이지를 독립적으로 정렬";
+
+/* No comment provided by engineer. */
+"Sort separate from apps" = "앱과 별도로 정렬";
+
+/* No comment provided by engineer. */
+"Storage Management" = "스토리지 관리";
+
+/* No comment provided by engineer. */
+"Testing Only" = "테스트 전용";
+
+/* No comment provided by engineer. */
+"The previously saved layout will be overwritten." = "이전에 저장된 레이아웃을 덮어씁니다.";
+
+/* No comment provided by engineer. */
+"Tools" = "도구";
+
+/* No comment provided by engineer. */
+"Translators" = "번역가";
+
+/* No comment provided by engineer. */
+"Undo Last Sort" = "이전 레이아웃으로 복구";
+
+/* No comment provided by engineer. */
+"Version: %@" = "버전: %@";
+
+/* No comment provided by engineer. */
+"View contents of blacklist files" = "블랙리스트 목록 표시";
+
+/* No comment provided by engineer. */
+"Whitelist" = "화이트리스트";
+
+/* No comment provided by engineer. */
+"Widgets" = "위젯";
+
+/* No comment provided by engineer. */
+"Wipe your device before returning to the person collecting hardware" = "하드웨어를 수집하는 사람에게 돌아가기 전에 장치를 초기화 하세요.";
+
+/* No comment provided by engineer. */
+"You've come a long way, traveler. Have a :lungs:.\n🫁" = "먼길을 오셨습니다. 여행자님. 폐를 가져가세요.🫁";
+

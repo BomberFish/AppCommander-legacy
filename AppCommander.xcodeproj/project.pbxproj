@@ -119,6 +119,8 @@
 		D68830A429E87C6200F4D7DA /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D68830A529E87C6200F4D7DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/AppCommander-InfoPlist.strings"; sourceTree = "<group>"; };
 		D68830A729E8C20A00F4D7DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D68830A829E9918B00F4D7DA /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D68830A929E99F8A00F4D7DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D6D22B6529C64D180095645B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D6D22B6E29C65D6B0095645B /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -513,6 +515,8 @@
 				de,
 				vi,
 				fr,
+				fi,
+				ko,
 			);
 			mainGroup = D6E5527429B165400083E6A5;
 			packageReferences = (
@@ -663,6 +667,8 @@
 				D68830A029E87C2B00F4D7DA /* de */,
 				D68830A429E87C6200F4D7DA /* vi */,
 				D68830A729E8C20A00F4D7DA /* fr */,
+				D68830A829E9918B00F4D7DA /* fi */,
+				D68830A929E99F8A00F4D7DA /* ko */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

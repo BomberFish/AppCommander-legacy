@@ -1,0 +1,294 @@
+/* No comment provided by engineer. */
+"Actions" = "Toiminnot";
+
+/* No comment provided by engineer. */
+"Advanced" = "Kehittyneet";
+
+/* No comment provided by engineer. */
+"All hidden pages will be unhidden." = "Kaikki piilotetut sivut tulevat näkyviin.";
+
+/* No comment provided by engineer. */
+"Alphabetical" = "Aakkosellinen";
+
+/* No comment provided by engineer. */
+"App Details" = "Sovelluksen Tiedot";
+
+/* No comment provided by engineer. */
+"App Manager" = "Sovellusten Hallinta";
+
+/* No comment provided by engineer. */
+"App Size: %@" = "Sovellus Koko: %@";
+
+/* No comment provided by engineer. */
+"Apple Loops Mix" = "Apple Loops Sekoitus";
+
+/* No comment provided by engineer. */
+"Apple Loops Mix :trolley:" = "Apple Loops Sekoitus :trolley:";
+
+/* No comment provided by engineer. */
+"Apply" = "Kytke\n";
+
+/* No comment provided by engineer. */
+"Apps (%lld)" = "Sovellukset (%lld)";
+
+/* No comment provided by engineer. */
+"Back Up Current Layout" = "Varmuuskopioi nykyinen asettelu";
+
+/* No comment provided by engineer. */
+"Back up now" = "Varmuuskopioi nyt";
+
+/* No comment provided by engineer. */
+"Backup and Restore (Beta)" = "Varmuuskopioi ja Palauta (Beta)";
+
+/* No comment provided by engineer. */
+"Backup filename: %@" = "Varmuuskopion nimi: %@";
+
+/* No comment provided by engineer. */
+"Backup taken %@" = "Varmuuskopio otettu %@";
+
+/* No comment provided by engineer. */
+"Backups" = "Varmuuskopiot";
+
+/* No comment provided by engineer. */
+"Backups are still in beta. Unexpected issues may arise." = "Varmuuskopiot ovat vielä beta-vaiheessa. Odottamattomia virheitä voi tapahtua.";
+
+/* No comment provided by engineer. */
+"Banned Apps" = "Kielletyt sovellukset";
+
+/* No comment provided by engineer. */
+"Blacklist File Contents" = "Blacklistaa tiedoston sisältö";
+
+/* No comment provided by engineer. */
+"Brick Device" = "Riko laite\n";
+
+/* No comment provided by engineer. */
+"Bundle ID: %@" = "Paketointi tunnus: %@";
+
+/* No comment provided by engineer. */
+"Bundle Path: %@" = "Paketin sijainti: %@";
+
+/* No comment provided by engineer. */
+"Cancel" = "Peruuta";
+
+/* No comment provided by engineer. */
+"Case-insensitive" = "Alkukirjaimesta riippumaton";
+
+/* No comment provided by engineer. */
+"Case-sensitive" = "Alkukirjaimesta riippuva";
+
+/* No comment provided by engineer. */
+"CD Hashes" = "CD Tarkisteet";
+
+/* No comment provided by engineer. */
+"Check Results" = "Tarkista tulokset";
+
+/* No comment provided by engineer. */
+"Color" = "Väri";
+
+/* No comment provided by engineer. */
+"Coming Soon" = "Tulossa pian";
+
+/* No comment provided by engineer. */
+"Copy" = "Kopioi";
+
+/* No comment provided by engineer. */
+"Creation Date: %@" = "Luomis päivä: %@";
+
+/* No comment provided by engineer. */
+"Credits" = "Kiitokset";
+
+/* No comment provided by engineer. */
+"Data directory: %@" = "Tietohakemisto: %@";
+
+/* No comment provided by engineer. */
+"Debug Mode" = "Debug tila";
+
+/* No comment provided by engineer. */
+"Delete" = "Poista";
+
+/* No comment provided by engineer. */
+"Delete app cache" = "Poista sovelluksen välimuisti";
+
+/* No comment provided by engineer. */
+"Delete app data" = "Poista sovelluksen tiedot";
+
+/* No comment provided by engineer. */
+"Delete app documents" = "Poista sovelluksen asiakirjat";
+
+/* No comment provided by engineer. */
+"Delete app documents (including backups)" = "Poista sovelluksen asiakirjat (myös varmuuskopiot)";
+
+/* No comment provided by engineer. */
+"Delete temporary storage" = "Poista väliaikainen muisti";
+
+/* No comment provided by engineer. */
+"Delete Test File" = "Poista testi tiedosto";
+
+/* No comment provided by engineer. */
+"Documents Size: %@" = "Asiakirjojen koko: %@";
+
+/* No comment provided by engineer. */
+"Enable Absolute Solver" = "Ota Absolute Solver käyttöön";
+
+/* No comment provided by engineer. */
+"Enable in-app console" = "ota sovelluksen sisäinen konsoli käyttöön";
+
+/* No comment provided by engineer. */
+"Error" = "Virhe";
+
+/* No comment provided by engineer. */
+"Experiments" = "Kokeiluja";
+
+/* No comment provided by engineer. */
+"Export Encrypted IPA" = "Lataa salattu IPA";
+
+/* No comment provided by engineer. */
+"Folders" = "Kansiot";
+
+/* No comment provided by engineer. */
+"Home Screen" = "Kotinäyttö";
+
+/* No comment provided by engineer. */
+"It is recommended you save your current layout before experimenting as only one undo is possible." = "On suositeltavaa tallentaa nykyinen asettelu ennen testaamista, koska vain yksi kumoaminen on mahdollista.";
+
+/* No comment provided by engineer. */
+"Kouyou Privacy Policy" = "Kouyou Tietosuojakäytänkö";
+
+/* No comment provided by engineer. */
+"Make It So, Number One" = "Tee se niin, Numero yksi";
+
+/* No comment provided by engineer. */
+"Make Test File" = "Tee testi tiedosto";
+
+/* No comment provided by engineer. */
+"More Info" = "Lisää tietoa";
+
+/* No comment provided by engineer. */
+"Move to top" = "Siirrä ylhäälle";
+
+/* No comment provided by engineer. */
+"Name: %@" = "Nimi: %@";
+
+/* No comment provided by engineer. */
+"No backups!" = "Ei varmuuskopioita!";
+
+/* No comment provided by engineer. */
+"None" = "Ei mitään";
+
+/* No comment provided by engineer. */
+"Open App" = "Avaa sovellus";
+
+/* No comment provided by engineer. */
+"Open in Filza" = "Avaa Filza:ssa";
+
+/* No comment provided by engineer. */
+"Open in Santander" = "Avaa Santander:rissa";
+
+/* No comment provided by engineer. */
+"Options" = "Asetukset";
+
+/* No comment provided by engineer. */
+"Ordering" = "Järjestäminen";
+
+/* No comment provided by engineer. */
+"Overwrite Banned Apps" = "Ylikirjoita kielletyt sovellukset";
+
+/* No comment provided by engineer. */
+"Overwrite Blacklist" = "Ylikirjoita Blacklist";
+
+/* No comment provided by engineer. */
+"Overwrite CDHashes" = "Ylikirjoita CDTarkisteet";
+
+/* No comment provided by engineer. */
+"Page %@%@" = "Sivu %@%@";
+
+/* No comment provided by engineer. */
+"Pages" = "Sivut";
+
+/* No comment provided by engineer. */
+"Pause" = "Keskeytä";
+
+/* No comment provided by engineer. */
+"Play" = "Toista";
+
+/* No comment provided by engineer. */
+"Remove three-app limit" = "Poista kolmen sovelluksen rajoitus";
+
+/* No comment provided by engineer. */
+"Replace Testing" = "Korvaa testaus";
+
+/* No comment provided by engineer. */
+"Replace with Absolute Solver" = "Korvaa Absolute Solver:illa";
+
+/* No comment provided by engineer. */
+"Restart backboard" = "Uudelleenkäynnistä backboard";
+
+/* No comment provided by engineer. */
+"Restart frontboard" = "Uudelleenkäynnista frontboard";
+
+/* No comment provided by engineer. */
+"Restore Saved Layout" = "Palauta tallennettu asetelma";
+
+/* No comment provided by engineer. */
+"Resume" = "Jatka";
+
+/* No comment provided by engineer. */
+"Retain current order" = "Säilytä nykyinen järjestys";
+
+/* No comment provided by engineer. */
+"Select Pages" = "Valitse sivut";
+
+/* No comment provided by engineer. */
+"Settings" = "Asetukset";
+
+/* No comment provided by engineer. */
+"Sideloading Tools" = "Sideloading-työkalut";
+
+/* No comment provided by engineer. */
+"Sort" = "Järjestä";
+
+/* No comment provided by engineer. */
+"Sort Apps" = "Järjestä sovellukset";
+
+/* No comment provided by engineer. */
+"Sort apps across pages" = "Järjestä sovellukset sivuille";
+
+/* No comment provided by engineer. */
+"Sort mixed with apps" = "Järjestä sovellukset sekoitetusti";
+
+/* No comment provided by engineer. */
+"Sort pages independently" = "Järjestä sivut itsenäisesti";
+
+/* No comment provided by engineer. */
+"Sort separate from apps" = "Järjestä sovellukset erikseen";
+
+/* No comment provided by engineer. */
+"Storage Management" = "Tallennustilan hallinta";
+
+/* No comment provided by engineer. */
+"Testing Only" = "Vain testaus";
+
+/* No comment provided by engineer. */
+"The previously saved layout will be overwritten." = "Viimeksi tallennettu järjestys korvataan.";
+
+/* No comment provided by engineer. */
+"Tools" = "Työkalut";
+
+/* No comment provided by engineer. */
+"Translators" = "Kääntäjät";
+
+/* No comment provided by engineer. */
+"Undo Last Sort" = "Kumoa edellinen järjestys";
+
+/* No comment provided by engineer. */
+"Version: %@" = "Versio: %@";
+
+/* No comment provided by engineer. */
+"View contents of blacklist files" = "Näytä blacklistin sisältö";
+
+/* No comment provided by engineer. */
+"Widgets" = "Widgetit";
+
+/* No comment provided by engineer. */
+"Wipe your device before returning to the person collecting hardware" = "Nollaa laitteesi ennen kuin palautat sen";
+
