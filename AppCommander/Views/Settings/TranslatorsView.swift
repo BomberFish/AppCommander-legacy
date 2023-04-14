@@ -13,7 +13,7 @@ struct TranslatorsView: View {
             Text("🇫🇷 C22#9618")
             Text("🇩🇪 Zarapho#1453")
             Text("🇰🇷 TaekyungAncal#7857")
-            Text("🇫🇮 (Timur) Wheee#7436")
+            Text("🇫🇮 Spongebob#9593")
             Text("🇨🇳 jbjf#1431")
             Text("🇻🇳 odyssey#0666")
         }
