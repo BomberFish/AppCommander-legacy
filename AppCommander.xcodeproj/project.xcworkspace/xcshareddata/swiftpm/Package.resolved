@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "filepicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/markrenaud/FilePicker",
+      "state" : {
+        "revision" : "720f8cb5ca0c0efc982ed381afc84ba3e8b3214e",
+        "version" : "1.0.1"
+      }
+    },
+    {
       "identity" : "localconsole",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BomberFish/LocalConsole",

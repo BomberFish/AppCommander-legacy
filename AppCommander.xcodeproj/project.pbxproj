@@ -68,6 +68,7 @@
 		D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552C529B2BE730083E6A5 /* AppView.swift */; };
 		D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */ = {isa = PBXBuildFile; productRef = D6E552C829B2D60D0083E6A5 /* MarqueeText */; };
 		D6E552CC29B2E9F50083E6A5 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552CB29B2E9F50083E6A5 /* CommonFunctions.swift */; };
+		D6E6CF6129EB53F6009FC842 /* FilePicker in Frameworks */ = {isa = PBXBuildFile; productRef = D6E6CF6029EB53F6009FC842 /* FilePicker */; };
 		D6FC674929E5A28500585625 /* TranslatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC674829E5A28500585625 /* TranslatorsView.swift */; };
 		D6FC674E29E5A48A00585625 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6FC675029E5A48A00585625 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -177,6 +178,7 @@
 				D6E157A329E44DD200C1855B /* AbsoluteSolver in Frameworks */,
 				D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */,
 				D688309D29E870F000F4D7DA /* IOSurface.framework in Frameworks */,
+				D6E6CF6129EB53F6009FC842 /* FilePicker in Frameworks */,
 				D638E1B729DE1CE1004CCA55 /* MobileCoreServices.framework in Frameworks */,
 				D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */,
 				D6609A9A29D73D680033F66D /* CompressionWrapper in Frameworks */,
@@ -439,6 +441,7 @@
 				D6609A9F29D73D680033F66D /* NSTask */,
 				D6E157A229E44DD200C1855B /* AbsoluteSolver */,
 				D6039E7E29E484DE002F91D7 /* DirtyCowKit */,
+				D6E6CF6029EB53F6009FC842 /* FilePicker */,
 			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
@@ -526,6 +529,7 @@
 				D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */,
 				D6E157A129E44DD200C1855B /* XCRemoteSwiftPackageReference "AbsoluteSolver" */,
 				D6039E7D29E484DE002F91D7 /* XCRemoteSwiftPackageReference "DirtyCowKit" */,
+				D6E6CF5F29EB53F6009FC842 /* XCRemoteSwiftPackageReference "FilePicker" */,
 			);
 			productRefGroup = D6E5527E29B165400083E6A5 /* Products */;
 			projectDirPath = "";
@@ -1069,6 +1073,14 @@
 				kind = branch;
 			};
 		};
+		D6E6CF5F29EB53F6009FC842 /* XCRemoteSwiftPackageReference "FilePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markrenaud/FilePicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1116,6 +1128,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6E552C729B2D60D0083E6A5 /* XCRemoteSwiftPackageReference "MarqueeText" */;
 			productName = MarqueeText;
+		};
+		D6E6CF6029EB53F6009FC842 /* FilePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6E6CF5F29EB53F6009FC842 /* XCRemoteSwiftPackageReference "FilePicker" */;
+			productName = FilePicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -11,6 +11,8 @@
 		<string>filza</string>
 		<string>santander</string>
 	</array>
+	<key>UISupportsDocumentBrowser</key>
+	<false/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

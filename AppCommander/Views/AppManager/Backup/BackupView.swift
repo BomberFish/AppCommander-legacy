@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import FilePicker
 
 struct BackupView: View {
     @State public var app: SBApp
@@ -54,9 +55,13 @@ struct BackupView: View {
             } else {
                 Section {
                     ForEach(backups) { backup in
+                        let size = FileManager.default.sizeOfFile(atPath: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Backups").appendingPathComponent(backup.backupFilename)).path)
                         HStack {
                             Text("Backup taken \(backup.displayName)")
                             Spacer()
+                            Text(ByteCountFormatter().string(fromByteCount: size ?? 0))
+                                .foregroundColor(Color(UIColor.secondaryLabel))
+                                .fontWeight(.medium)
                             Button(action: {
                                 UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Restore this backup?", onOK: {
                                     UIApplication.shared.progressAlert(title: "Restoring backup taken   \(backup.displayName)...")
@@ -123,6 +128,13 @@ struct BackupView: View {
             Section {} footer: {
                 Label("Backups are still in beta. Unexpected issues may arise.", systemImage: "info.circle")
             }
+        }
+        .toolbar {
+            FilePicker(types: [.init(filenameExtension: "abdk")!, .init(filenameExtension: "zip")!], allowMultiple: false, onPicked: { urls in
+                print(urls.first ?? "no files picked?!")
+            }, label: {
+                Image(systemName: "square.and.arrow.down")
+            })
         }
         .navigationTitle("Backups")
         .refreshable {
