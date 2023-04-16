@@ -110,6 +110,21 @@ public class BackupServices {
      }
       */
     
+    func importBackup(_ path: URL, bundleID: String) throws {
+        let fm = FileManager.default
+        let tempurl = docURL.appendingPathComponent(path.lastPathComponent)
+        try Compression.shared.extract(path: path, to: tempurl)
+        do {
+            if try fm.contentsOfDirectory(atPath: tempurl.path).contains(bundleID) {
+                print(docURL.appendingPathComponent(bundleID))
+            } else {
+                throw "Backup is not for this app!"
+            }
+        } catch {
+            throw "Could not get contents of backup?!"
+        }
+    }
+    
     func restoreBackup(_ backup: BackupItem, progress: ((String)) -> ()) throws {
         do {
             print("Initializing...")

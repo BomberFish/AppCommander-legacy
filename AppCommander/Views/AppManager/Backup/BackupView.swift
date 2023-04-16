@@ -132,6 +132,15 @@ struct BackupView: View {
         .toolbar {
             FilePicker(types: [.init(filenameExtension: "abdk")!, .init(filenameExtension: "zip")!], allowMultiple: false, onPicked: { urls in
                 print(urls.first ?? "no files picked?!")
+                if let path = urls.first {
+                    do {
+                        try BackupServices.shared.importBackup(path, bundleID: app.bundleIdentifier)
+                    } catch {
+                        UIApplication.shared.alert(body: error.localizedDescription)
+                    }
+                } else {
+                    UIApplication.shared.alert(body: "Error getting path of directory")
+                }
             }, label: {
                 Image(systemName: "square.and.arrow.down")
             })
