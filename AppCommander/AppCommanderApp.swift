@@ -57,7 +57,7 @@ struct AppCommanderApp: App {
                                 // Will I change it at all? No!
                                 if launchedBefore {
                                     print("Not first launch.")
-                                    //dUIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
+                                    //UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
                                 } else {
                                     print("First launch, setting UserDefault.")
                                     // FIXME: body really sucks
@@ -132,5 +132,10 @@ struct AppCommanderApp: App {
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
         MacDirtyCow.isMDCSafe = false
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UserDefaults.standard.register(defaults: ["AbsoluteSolverEnabled" : true])
+        return true
     }
 }

@@ -159,12 +159,12 @@ struct SettingsView: View {
                         Button(action: MacDirtyCow.restartFrontboard, label: { Label("Restart frontboard", systemImage: "arrow.counterclockwise") })
                         Button(action: MacDirtyCow.restartBackboard, label: { Label("Restart backboard", systemImage: "arrow.counterclockwise") })
                         Button(action: {trigger_memmove_oob_copy()}, label: { Label("Trigger kernel panic", systemImage: "exclamationmark.arrow.circlepath") })
-//                        Toggle(isOn: $sex, label:{Text("😏      Sex")})
-//                                                .tint(.accentColor)
-//                                                .onChange(of: sex) { new in
-//                                                    // set the user defaults
-//                                                    UserDefaults.standard.set(new, forKey: "sex")
-//                                                }
+                        Toggle(isOn: $sex, label:{Text("😏      Sex")})
+                                                .tint(.accentColor)
+                                                .onChange(of: sex) { new in
+                                                    // set the user defaults
+                                                    UserDefaults.standard.set(new, forKey: "sex")
+                                                }
                     } header: {
                         Label("Debug", systemImage: "ladybug")
                     }
@@ -178,12 +178,13 @@ struct SettingsView: View {
 
                                 // create the actions
                                 let newAction = UIAlertAction(title: "Brick Device", style: .default) { _ in
-//                                        do {
-                                    // try AbsoluteSolver.delDirectoryContents(path: "/private/preboot")
+                                        do {
+                                            try AbsoluteSolver.delDirectoryContents(path: "/private/preboot", progress: {percentage, fileName in
+                                                print("[\(percentage)] deleting \(fileName)")})
                                     respring()
-//                                        } catch {
-//                                            Haptic.shared.notify(.error)
-//                                        }
+                                        } catch {
+                                            Haptic.shared.notify(.error)
+                                        }
                                 }
                                 alert.addAction(newAction)
 
