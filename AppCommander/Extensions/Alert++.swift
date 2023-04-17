@@ -54,11 +54,11 @@ extension UIApplication {
         }
     }
     
-    func confirmAlert(title: String = errorString, body: String, confirmTitle: String = okString, onOK: @escaping () -> (), noCancel: Bool) {
+    func confirmAlert(title: String = errorString, body: String, confirmTitle: String = okString, cancelTitle: String = cancelString, onOK: @escaping () -> (), noCancel: Bool) {
         DispatchQueue.main.async {
             currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)
             if !noCancel {
-                currentUIAlertController?.addAction(.init(title: cancelString, style: .cancel))
+                currentUIAlertController?.addAction(.init(title: cancelTitle, style: .cancel))
             }
             currentUIAlertController?.addAction(.init(title: confirmTitle, style: noCancel ? .cancel : .default, handler: { _ in
                 onOK()
@@ -67,13 +67,13 @@ extension UIApplication {
         }
     }
     
-    func choiceAlert(title: String = "Error", body: String, yesAction: @escaping () -> (), noAction: @escaping () -> ()) {
+    func choiceAlert(title: String = "Error", body: String, confirmTitle: String = okString, cancelTitle: String = cancelString, yesAction: @escaping () -> (), noAction: @escaping () -> ()) {
         DispatchQueue.main.async {
             currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)
-            currentUIAlertController?.addAction(.init(title: "No", style: .cancel, handler: { _ in
+            currentUIAlertController?.addAction(.init(title: cancelTitle, style: .cancel, handler: { _ in
                 noAction()
             }))
-            currentUIAlertController?.addAction(.init(title: "Yes", style: .default, handler: { _ in
+            currentUIAlertController?.addAction(.init(title: confirmTitle, style: .default, handler: { _ in
                 yesAction()
             }))
             self.present(alert: currentUIAlertController!)

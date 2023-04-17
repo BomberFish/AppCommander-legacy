@@ -100,21 +100,25 @@ struct AppCommanderApp: App {
                         // I'm sorry 16.2 dev beta 1 users, you are a vast minority.
                         print("Throwing not supported error (mdc patched)")
                         DispatchQueue.main.async {
-                            UIApplication.shared.alert(title: "Not Supported", body: "This version of iOS is not supported.", withButton: false)
+                            UIApplication.shared.alert(title: "Not Supported", body: "This version of iOS is not supported.")
                         }
                         escaped = false
                     } else {
-                        // grant r/w access
-                        if #available(iOS 15, *) {
-                            print("Escaping Sandbox...")
-                            // asyncAfter(deadline: .now())
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                                do {
-                                    try MacDirtyCow.unsandbox()
-                                    escaped = true
-                                } catch {
-                                    escaped = false
-                                    UIApplication.shared.confirmAlert(body: "Unsandboxing Error: \(error.localizedDescription)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Reboot", onOK: reboot, noCancel: true)
+                        do {
+                            try FileManager.default.contentsOfDirectory(at: URL(fileURLWithPath: "/var/mobile/Library/Caches"), includingPropertiesForKeys: nil)
+                        } catch {
+                            // grant r/w access
+                            if #available(iOS 15, *) {
+                                print("Escaping Sandbox...")
+                                // asyncAfter(deadline: .now())
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                                    do {
+                                        try MacDirtyCow.unsandbox()
+                                        escaped = true
+                                    } catch {
+                                        escaped = false
+                                        UIApplication.shared.choiceAlert(body: "Unsandboxing Error: \(error.localizedDescription)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: {escaped = true})
+                                    }
                                 }
                             }
                         }
