@@ -130,7 +130,7 @@ struct BackupView: View {
             }
         }
         .toolbar {
-            FilePicker(types: [.init(filenameExtension: "abdk")!, .init(filenameExtension: "zip")!], allowMultiple: false, onPicked: { urls in
+            FilePicker(types: [.init(filenameExtension: "abdk")!/*, .init(filenameExtension: "zip")!*/], allowMultiple: false, title: "Choose .abdk file", onPicked: { urls in
                 print(urls.first ?? "no files picked?!")
                 if let path = urls.first {
                     do {

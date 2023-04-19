@@ -56,10 +56,10 @@ struct AppCommanderApp: App {
                                 // i just copied the entire code block, prints and everything, from stackoverflow.
                                 // Will I change it at all? No!
                                 if launchedBefore {
-                                    print("Not first launch.")
+                                    // print("Not first launch.")
                                     //UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
                                 } else {
-                                    print("First launch, setting UserDefault.")
+                                    // print("First launch, setting UserDefault.")
                                     // FIXME: body really sucks
 //                                    UIApplication.shared.choiceAlert(title: "Analytics", body: "Allow AppCommander to send anonymized data to improve your experience?", yesAction: {
 //                                        userDefaults.set(1, forKey: "analyticsLevel")
@@ -68,6 +68,12 @@ struct AppCommanderApp: App {
 //                                        userDefaults.set(0, forKey: "analyticsLevel")
 //                                        userDefaults.set(true, forKey: "launchedBefore")
 //                                    })
+                                }
+                                
+                                if userDefaults.bool(forKey: "AbsoluteSolverEnabled") {
+                                    print("Absolute Solver ENABLED")
+                                } else {
+                                    print("Absolute Solver DISABLED")
                                 }
                             }
                         }

@@ -110,31 +110,85 @@ public class BackupServices {
      }
       */
     
-    func importBackup(_ path: URL, app: SBApp) throws {
+    func importBackup(_ path: URL, application: SBApp, progress: ((String)) -> ()) throws {
         let fm = FileManager.default
         let tempurl = docURL.appendingPathComponent(path.lastPathComponent)
         try Compression.shared.extract(path: path, to: tempurl)
+//        do {
+//            if try fm.contentsOfDirectory(atPath: tempurl.path).contains(app.bundleIdentifier) {
+//                print(docURL.appendingPathComponent(app.bundleIdentifier))
+//                do {
+//
+//                    let item = BackupItem(application: app, stagingDirectoryName: tempurl.path)
+//                    let filename = item.backupFilename
+//                    try Compression.shared.compress(paths: [docURL.appendingPathComponent(app.bundleIdentifier)], outputPath: docURL.appendingPathComponent(filename), format: .zip, filenameExcludes: ["v0", ".com.apple.mobile_container_manager.metadata.plist"])
+//                    let file = docURL.appendingPathComponent(app.bundleIdentifier).appendingPathExtension(".zip")
+//                    print(file.path)
+//                    var registry = savedBackups()
+//                } catch {
+//                    throw error.localizedDescription
+//                }
+//            } else {
+//                throw "Backup is not for this app!"
+//            }
+//        } catch {
+//            throw "Could not get contents of backup?!"
+//        }
+//        do {
+//            if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+//                try AbsoluteSolver.delete(at: tempurl)
+//            } else {
+//                try fm.removeItem(at: tempurl)
+//            }
+//        } catch {
+//            throw error.localizedDescription
+//        }
         do {
-            if try fm.contentsOfDirectory(atPath: tempurl.path).contains(app.bundleIdentifier) {
-                print(docURL.appendingPathComponent(app.bundleIdentifier))
-                do {
-                    try Compression.shared.compress(paths: [docURL.appendingPathComponent(app.bundleIdentifier)], outputPath: docURL, format: .zip)
-                    let file = docURL.appendingPathComponent(app.bundleIdentifier).appendingPathExtension(".zip")
-                    print(file)
-                } catch {
-                    throw error.localizedDescription
+            if try fm.contentsOfDirectory(atPath: tempurl.path).contains(application.bundleIdentifier) {
+                print("Initializing...")
+                progress("Initializing...")
+                let applicationContainerURL = docURL.appendingPathComponent(application.bundleIdentifier)
+                
+                let stagingDirectory = URL(fileURLWithPath: NSTemporaryDirectory())
+                    .appendingPathComponent("APPLICATION-STAGING-\(application.bundleIdentifier)-\(UUID().uuidString.prefix(5))")
+                let containerURL = stagingDirectory.appendingPathComponent("Container")
+                let groups = stagingDirectory.appendingPathComponent("Groups")
+                
+                let item = BackupItem(application: application,
+                                      stagingDirectoryName: stagingDirectory.pathComponents.suffix(2).joined(separator: "/"))
+                let filename = item.backupFilename
+                try FileManager.default.createDirectory(at: docURL, withIntermediateDirectories: true)
+                
+                try FileManager.default.createDirectory(at: stagingDirectory, withIntermediateDirectories: true)
+                try FileManager.default.createDirectory(at: groups, withIntermediateDirectories: true)
+                print("Copying files...")
+                progress("Copying files...")
+                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                    try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL)
+                } else {
+                    try fm.copyItem(at: applicationContainerURL, to: containerURL)
+                }
+                
+                //        for (groupID, groupContainerURL) in application.proxy.groupContainerURLs() {
+                //            try FileManager.default.copyItem(at: groupContainerURL, to: groups.appendingPathComponent(groupID))
+                //        }
+                print("Compressing...")
+                progress("Compressing...")
+                try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip, filenameExcludes: ["v0", ".com.apple.mobile_container_manager.metadata.plist"])
+                
+                print("Finishing up...")
+                progress("Finishing up...")
+                var registry = savedBackups()
+                
+                registry.append(item)
+                try JSONEncoder().encode(registry).write(to: backupsRegistryURL)
+                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                    try AbsoluteSolver.delete(at: stagingDirectory)
+                } else {
+                    try fm.removeItem(at: stagingDirectory)
                 }
             } else {
                 throw "Backup is not for this app!"
-            }
-        } catch {
-            throw "Could not get contents of backup?!"
-        }
-        do {
-            if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
-                try AbsoluteSolver.delete(at: tempurl)
-            } else {
-                try fm.removeItem(at: tempurl)
             }
         } catch {
             throw error.localizedDescription

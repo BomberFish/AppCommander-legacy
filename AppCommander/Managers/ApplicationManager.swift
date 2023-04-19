@@ -53,7 +53,7 @@ enum ApplicationManager {
                         returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
                     }
                 } else {
-                    print("Warning: Directory \(dir) does not have a metadata plist, skipping.")
+                    print("WARNING: Directory \(dir) does not have a metadata plist, skipping.")
                 }
             } catch {
                 throw ("Could not get data of \(mmpath): \(error.localizedDescription)")
