@@ -8,7 +8,7 @@
 import LocalConsole
 import SwiftUI
 import AbsoluteSolver
-import MacDirtyCow
+@preconcurrency import MacDirtyCow
 
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
@@ -70,7 +70,7 @@ struct AppCommanderApp: App {
 //                                    })
                                 }
                                 
-                                if userDefaults.bool(forKey: "AbsoluteSolverDisabled") {
+                                if !(userDefaults.bool(forKey: "AbsoluteSolverDisabled")) {
                                     print("Absolute Solver ENABLED")
                                 } else {
                                     print("Absolute Solver DISABLED")
@@ -117,7 +117,7 @@ struct AppCommanderApp: App {
                             if #available(iOS 15, *) {
                                 print("Escaping Sandbox...")
                                 // asyncAfter(deadline: .now())
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                sleep(UInt32(0.2))
                                     do {
                                         try MacDirtyCow.unsandbox()
                                         escaped = true
@@ -125,7 +125,6 @@ struct AppCommanderApp: App {
                                         escaped = false
                                         UIApplication.shared.choiceAlert(body: "Unsandboxing Error: \(error.localizedDescription)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: {escaped = true})
                                     }
-                                }
                             }
                         }
                     }
