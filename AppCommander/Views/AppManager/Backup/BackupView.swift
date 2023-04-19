@@ -89,7 +89,7 @@ struct BackupView: View {
                         }
                         .swipeActions {
                             Button(action: {
-                                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                                if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                                     UIApplication.shared.progressAlert(title: "Disassembling backup taken   \(backup.displayName)...")
                                 } else {
                                     UIApplication.shared.progressAlert(title: "Deleting backup taken   \(backup.displayName)...")

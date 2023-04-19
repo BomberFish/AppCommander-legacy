@@ -42,7 +42,7 @@ enum ApplicationManager {
             do {
                 var mmDict: [String: Any]
                 if fm.fileExists(atPath: mmpath) {
-                    if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                    if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                         mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath), options: [], format: nil) as? [String: Any] ?? [:]
                     } else {
                         mmDict = try PropertyListSerialization.propertyList(from: Data(contentsOf: URL(fileURLWithPath: mmpath)), options: [], format: nil) as? [String: Any] ?? [:]
@@ -72,11 +72,15 @@ enum ApplicationManager {
             let uuid = UUID().uuidString
             let payloaddir = FileManager.default.temporaryDirectory.appendingPathComponent(uuid).appendingPathComponent("Payload")
             let filename = app.name + "_" + app.version + "_" + uuid
-            try? FileManager.default.removeItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid))
+            if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
+                try? AbsoluteSolver.delete(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid))
+            } else {
+                try? FileManager.default.removeItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid))
+            }
             print("rmed file")
             try FileManager.default.createDirectory(at: payloaddir, withIntermediateDirectories: true)
             print("made payload dir \(payloaddir)")
-            if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+            if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                 try AbsoluteSolver.copy(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
             } else {
                 try fm.copyItem(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
@@ -87,6 +91,11 @@ enum ApplicationManager {
             UIApplication.shared.dismissAlert(animated: false)
             print("zipped \(payloaddir) to \(FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))")
             // sleep(UInt32(0.5))
+            if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
+                try? AbsoluteSolver.delete(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid))
+            } else {
+                try? FileManager.default.removeItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid))
+            }
             return FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa")
         } catch {
             print("error at the next step")

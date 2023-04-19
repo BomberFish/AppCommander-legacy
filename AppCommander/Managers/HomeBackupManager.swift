@@ -15,7 +15,7 @@ class HomeBackupManager {
         func copyAndAlert() {
             do {
                 try? fm.removeItem(at: savedLayoutUrl)
-                if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.copy(at: plistUrl, to: savedLayoutUrl)
                 } else {
                     try fm.copyItem(at: plistUrl, to: savedLayoutUrl)
@@ -41,7 +41,7 @@ class HomeBackupManager {
     /// Restore the manual homescreen backup
     static func restoreLayout() throws {
         let _ = try fm.replaceItemAt(plistUrl, withItemAt: savedLayoutUrl)
-        if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+        if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
             try AbsoluteSolver.copy(at: plistUrl, to: savedLayoutUrl)
         } else {
             try fm.copyItem(at: plistUrl, to: savedLayoutUrl)
@@ -54,7 +54,7 @@ class HomeBackupManager {
     /// Make a backup
     static func makeBackup() throws {
         try? fm.removeItem(at: plistUrlBkp)
-        if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+        if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
             try AbsoluteSolver.copy(at: plistUrl, to: plistUrlBkp)
         } else {
             try fm.copyItem(at: plistUrl, to: plistUrlBkp)

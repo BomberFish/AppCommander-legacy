@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AbsoluteSolver
 import MacDirtyCow
 
 struct FreeloadView: View {

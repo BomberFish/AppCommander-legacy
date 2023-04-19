@@ -29,7 +29,7 @@ extension UIApplication {
                 // append debug info
                 let device = UIDevice.current
                 let systemVersion = device.systemVersion
-                body += "\n\n\(device.systemName) \(systemVersion), AppCommander version \(appVersion) escaped=\(FileManager.default.isReadableFile(atPath: "/var/mobile"))"
+                body += "\n\n\(device.systemName) \(systemVersion), AppCommander version \(appVersion) escaped=\(FileManager.default.isReadableFile(atPath: "/var/mobile")), AbsoluteSolverDisabled=\(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled"))"
             }
             
             currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)

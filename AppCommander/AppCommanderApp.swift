@@ -70,7 +70,7 @@ struct AppCommanderApp: App {
 //                                    })
                                 }
                                 
-                                if userDefaults.bool(forKey: "AbsoluteSolverEnabled") {
+                                if userDefaults.bool(forKey: "AbsoluteSolverDisabled") {
                                     print("Absolute Solver ENABLED")
                                 } else {
                                     print("Absolute Solver DISABLED")
@@ -117,7 +117,7 @@ struct AppCommanderApp: App {
                             if #available(iOS 15, *) {
                                 print("Escaping Sandbox...")
                                 // asyncAfter(deadline: .now())
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                                     do {
                                         try MacDirtyCow.unsandbox()
                                         escaped = true
@@ -141,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UserDefaults.standard.register(defaults: ["AbsoluteSolverEnabled" : true])
+        UserDefaults.standard.register(defaults: ["AbsoluteSolverDisabled" : false])
         return true
     }
 }

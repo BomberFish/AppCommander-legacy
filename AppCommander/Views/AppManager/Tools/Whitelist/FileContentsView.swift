@@ -83,7 +83,7 @@ struct FileContentsView: View {
                 //create the illusion of fully reloading
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     do {
-                        if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                        if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                             if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
                                 blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist"), as: UTF8.self)
                             }
@@ -117,7 +117,7 @@ struct FileContentsView: View {
             .onAppear {
                 print("Reading files!")
                 do {
-                    if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                    if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                         if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
                             blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist"), as: UTF8.self)
                         }
