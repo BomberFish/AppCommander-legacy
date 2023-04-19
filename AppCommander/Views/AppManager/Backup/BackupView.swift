@@ -130,16 +130,22 @@ struct BackupView: View {
             }
         }
         .toolbar {
-            FilePicker(types: [.init(filenameExtension: "abdk")!/*, .init(filenameExtension: "zip")!*/], allowMultiple: false, title: "Choose .abdk file", onPicked: { urls in
+            FilePicker(types: [.init(filenameExtension: "abdk")!/*, .init(filenameExtension: "zip")!*/], allowMultiple: false, onPicked: { urls in
                 print(urls.first ?? "no files picked?!")
-                if let path = urls.first {
-                    do {
-                        try BackupServices.shared.importBackup(path, app: app)
-                    } catch {
-                        UIApplication.shared.alert(body: error.localizedDescription)
+                UIApplication.shared.progressAlert(title: "Backing up \(app.name)...")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    if let path = urls.first {
+                        do {
+                            try BackupServices.shared.importBackup(path, application: app, progress: {message in
+                                print(message)
+                                UIApplication.shared.changeBody("\n\n\n\(message))")
+                            })
+                        } catch {
+                            UIApplication.shared.alert(body: error.localizedDescription)
+                        }
+                    } else {
+                        UIApplication.shared.alert(body: "Error getting path of directory")
                     }
-                } else {
-                    UIApplication.shared.alert(body: "Error getting path of directory")
                 }
             }, label: {
                 Image(systemName: "square.and.arrow.down")
