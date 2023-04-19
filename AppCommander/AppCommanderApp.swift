@@ -93,7 +93,7 @@ struct AppCommanderApp: App {
                                 UIApplication.shared.alert(title: "Uh oh... 🏴‍☠️", body: "Looks like you're using a leaked build! Crashing in 5 seconds... Begone, pirate!", withButton: false)
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(5000)) {
-                                fatalError()
+                                fatalError("piss off pirate cunt")
                             }
                         }
                     }
