@@ -110,18 +110,34 @@ public class BackupServices {
      }
       */
     
-    func importBackup(_ path: URL, bundleID: String) throws {
+    func importBackup(_ path: URL, app: SBApp) throws {
         let fm = FileManager.default
         let tempurl = docURL.appendingPathComponent(path.lastPathComponent)
         try Compression.shared.extract(path: path, to: tempurl)
         do {
-            if try fm.contentsOfDirectory(atPath: tempurl.path).contains(bundleID) {
-                print(docURL.appendingPathComponent(bundleID))
+            if try fm.contentsOfDirectory(atPath: tempurl.path).contains(app.bundleIdentifier) {
+                print(docURL.appendingPathComponent(app.bundleIdentifier))
+                do {
+                    try Compression.shared.compress(paths: [docURL.appendingPathComponent(app.bundleIdentifier)], outputPath: docURL, format: .zip)
+                    let file = docURL.appendingPathComponent(app.bundleIdentifier).appendingPathExtension(".zip")
+                    print(file)
+                } catch {
+                    throw error.localizedDescription
+                }
             } else {
                 throw "Backup is not for this app!"
             }
         } catch {
             throw "Could not get contents of backup?!"
+        }
+        do {
+            if UserDefaults.standard.bool(forKey: "AbsoluteSolverEnabled") {
+                try AbsoluteSolver.delete(at: tempurl)
+            } else {
+                try fm.removeItem(at: tempurl)
+            }
+        } catch {
+            throw error.localizedDescription
         }
     }
     

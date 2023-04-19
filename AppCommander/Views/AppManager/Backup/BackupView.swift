@@ -134,7 +134,7 @@ struct BackupView: View {
                 print(urls.first ?? "no files picked?!")
                 if let path = urls.first {
                     do {
-                        try BackupServices.shared.importBackup(path, bundleID: app.bundleIdentifier)
+                        try BackupServices.shared.importBackup(path, app: app)
                     } catch {
                         UIApplication.shared.alert(body: error.localizedDescription)
                     }
