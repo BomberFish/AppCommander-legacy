@@ -11,7 +11,7 @@ struct TranslatorsView: View {
     var body: some View {
         List {
             Text("🇫🇷 C22#9618")
-            Text("🇩🇪 Zarapho#1453")
+            Text("🇩🇪 Zarapho#1453 & SeanMC#1024")
             Text("🇰🇷 TaekyungAncal#7857")
             Text("🇫🇮 Spongebob#9593")
             Text("🇨🇳 jbjf#1431")

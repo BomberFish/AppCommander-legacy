@@ -1,8 +1,11 @@
 /* No comment provided by engineer. */
-"  Loading..." = "  Wird geladen...";
+"  Loading..." = "Wird geladen...";
 
 /* No comment provided by engineer. */
-"🇨🇳 jbjf#1431" = "🇨🇳 jbjf#1431";
+"🇨🇳 jbjf#1431" = "";
+
+/* No comment provided by engineer. */
+"😏      Sex" = "";
 
 /* No comment provided by engineer. */
 "A-Z" = "A-Z";
@@ -14,13 +17,13 @@
 "Advanced" = "Erweitert";
 
 /* No comment provided by engineer. */
-"All hidden pages will be unhidden." = "Alle ausgeblendeten Seiten werden  angezeigt.";
+"All hidden pages will be unhidden." = "Alle versteckten Seiten werden sichtbar";
 
 /* No comment provided by engineer. */
 "Alphabetical" = "Alphabetisch";
 
 /* No comment provided by engineer. */
-"App Details" = "App-Details";
+"App Details" = "App Details";
 
 /* No comment provided by engineer. */
 "App Manager" = "App-Manager";
@@ -30,6 +33,9 @@
 
 /* No comment provided by engineer. */
 "AppCommander" = "AppCommander";
+
+/* No comment provided by engineer. */
+"AppCommander %@\nMade with ❤️ by BomberFish" = "AppCommander %@\nErstellt mit ❤️ von BomberFish";
 
 /* No comment provided by engineer. */
 "Apple Loops Mix" = "Apple Loops Mix";
@@ -47,7 +53,7 @@
 "Back Up Current Layout" = "Aktuelles Layout sichern";
 
 /* No comment provided by engineer. */
-"Back up now" = "Jetzt zurücksetzen";
+"Back up now" = "Jetzt Sicherung erstellen";
 
 /* No comment provided by engineer. */
 "Backup and Restore (Beta)" = "Sichern und Wiederherstellen (Beta)";
@@ -59,7 +65,7 @@
 "Backup taken %@" = "Sicherung wurde erstellt %@";
 
 /* No comment provided by engineer. */
-"Backups" = "Backups";
+"Backups" = "Sicherungen";
 
 /* No comment provided by engineer. */
 "Backups are still in beta. Unexpected issues may arise." = "Backups sind noch in der Beta-Phase. Unerwartete Probleme können auftreten.";
@@ -74,7 +80,7 @@
 "Blacklist File Contents" = "Blacklist-Dateiinhalte";
 
 /* No comment provided by engineer. */
-"Brick Device" = "NEIN! (Brick Device)";
+"Brick Device" = "";
 
 /* No comment provided by engineer. */
 "Bundle ID: %@" = "Paket-ID: %@";
@@ -95,7 +101,7 @@
 "CD Hashes" = "CD-Hashes";
 
 /* No comment provided by engineer. */
-"Check Results" = "Prüfergebnisse";
+"Check Results" = "Ergebnisse überprüfen";
 
 /* No comment provided by engineer. */
 "Color" = "Farbe";
@@ -110,7 +116,7 @@
 "Creation Date: %@" = "Erstellungsdatum: %@";
 
 /* No comment provided by engineer. */
-"Credits" = "Credits";
+"Credits" = "Danksagungen";
 
 /* No comment provided by engineer. */
 "Data directory: %@" = "Datenverzeichnis: %@";
@@ -143,19 +149,16 @@
 "Delete Test File" = "Testdatei löschen";
 
 /* No comment provided by engineer. */
-"Documents Size: %@" = "Dokumentengröße: %@";
+"Disable Absolute Solver" = "Deaktiviere Absolute Solver";
 
 /* No comment provided by engineer. */
-"Enable Absolute Solver" = "Absolute Solver aktivieren";
+"Documents Size: %@" = "Dokumentengröße: %@";
 
 /* No comment provided by engineer. */
 "Enable in-app console" = "In-App-Konsole aktivieren";
 
 /* No comment provided by engineer. */
 "Error" = "Fehler";
-
-/* No comment provided by engineer. */
-"Experiments" = "Experimente";
 
 /* No comment provided by engineer. */
 "Export Encrypted IPA" = "Verschlüsselte IPA exportieren";
@@ -188,7 +191,7 @@
 "Name: %@" = "Name: %@";
 
 /* No comment provided by engineer. */
-"No backups!" = "Keine Backups!";
+"No backups!" = "Keine Sicherungen!";
 
 /* No comment provided by engineer. */
 "None" = "Keine";
@@ -209,7 +212,7 @@
 "Options" = "Optionen";
 
 /* No comment provided by engineer. */
-"Ordering" = "Bestellung";
+"Ordering" = "Sortierung";
 
 /* No comment provided by engineer. */
 "Overwrite Banned Apps" = "Gesperrte Apps überschreiben";
@@ -239,7 +242,7 @@
 "Replace Testing" = "Ersetze Test";
 
 /* No comment provided by engineer. */
-"Replace with Absolute Solver" = "Durch Absolutlöser ersetzen";
+"Replace with Absolute Solver" = "Durch Absolut Solver ersetzen";
 
 /* No comment provided by engineer. */
 "Restart backboard" = "Backboard neu starten";
@@ -263,7 +266,7 @@
 "Settings" = "Einstellungen";
 
 /* No comment provided by engineer. */
-"Sideloading Tools" = "Sideloading Tools";
+"Sideloading Tools" = "Sideloading Werkzeuge";
 
 /* No comment provided by engineer. */
 "Sort" = "Sortieren";
@@ -299,6 +302,9 @@
 "Translators" = "Übersetzer";
 
 /* No comment provided by engineer. */
+"Trigger kernel panic" = "Kernel Panic auslösen";
+
+/* No comment provided by engineer. */
 "Undo Last Sort" = "Letzte Sortierung rückgängig machen";
 
 /* No comment provided by engineer. */
@@ -315,6 +321,9 @@
 
 /* No comment provided by engineer. */
 "Wipe your device before returning to the person collecting hardware" = "Löschen Sie Ihr Gerät bevor sie es abgeben";
+
+/* No comment provided by engineer. */
+"You've come a long way, traveler. Have a :lungs:.\n🫁" = "Du bist einen langen Weg gegangen, Reisender. Habe eine :lunge:.\n🫁";
 
 /* No comment provided by engineer. */
 "Z-A" = "Z-A";
