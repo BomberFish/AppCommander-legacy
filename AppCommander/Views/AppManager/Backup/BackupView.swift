@@ -116,9 +116,22 @@ struct BackupView: View {
                             .tint(.red)
                         }
                         .contextMenu {
+                            Button(action: {
+                                UIApplication.shared.dismissAlert(animated: true)
+                                let vc = UIActivityViewController(activityItems: [FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Backups").appendingPathComponent(backup.backupFilename) as Any], applicationActivities: nil)
+                                Haptic.shared.notify(.success)
+                                vc.isModalInPresentation = true
+                                UIApplication.shared.dismissAlert(animated: true)
+                                UIApplication.shared.windows[0].rootViewController?.present(vc, animated: true)
+                                UIApplication.shared.dismissAlert(animated: true)
+                                vc.isModalInPresentation = true
+                            }, label: {Label("Export Backup", systemImage: "square.and.arrow.up")})
                             Text("Creation Date: \(backup.creationDate)")
+                                .foregroundColor(Color(UIColor.secondaryLabel))
                             Text("Bundle ID: \(backup.applicationIdentifier)")
+                                .foregroundColor(Color(UIColor.secondaryLabel))
                             Text("Backup filename: \(backup.backupFilename)")
+                                .foregroundColor(Color(UIColor.secondaryLabel))
                             //                        Text("\(backup.stagingDirectoryName)")
                             //                        Text("\(backup.displayName)")
                         }
