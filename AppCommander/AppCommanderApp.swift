@@ -83,12 +83,13 @@ struct AppCommanderApp: App {
                 }
             }
             .onAppear {
-                print("AppCommander version \(appVersion)")
+                print("AppCommander v\(appVersion)")
 
                 DispatchQueue.global(qos: .background).sync {
                     Whitelist.top_secret_sauce { baked_goods in
                         has_cooked = true
                         if baked_goods == false {
+                            print("piss off pirate cunt")
                             DispatchQueue.main.async {
                                 UIApplication.shared.alert(title: "Uh oh... 🏴‍☠️", body: "Looks like you're using a leaked build! Crashing in 5 seconds... Begone, pirate!", withButton: false)
                             }
@@ -121,8 +122,10 @@ struct AppCommanderApp: App {
                                     do {
                                         try MacDirtyCow.unsandbox()
                                         escaped = true
+                                        print("Successfully escaped sandbox!")
                                     } catch {
                                         escaped = false
+                                        print("Unsandboxing error: \(error.localizedDescription)")
                                         UIApplication.shared.choiceAlert(body: "Unsandboxing Error: \(error.localizedDescription)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: {escaped = true})
                                     }
                             }

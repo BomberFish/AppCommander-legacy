@@ -116,7 +116,7 @@ enum ApplicationManager {
 
     static func getApps() throws -> [SBApp] {
         let lsapps = LSApplicationWorkspace.default().allApplications()
-        print("lsapps: \(String(describing: lsapps))")
+        //print("lsapps: \(String(describing: lsapps))")
         
         // TODO: Map LSApplicationProxy to SBApp?
         if (lsapps?.isEmpty) == nil {}
