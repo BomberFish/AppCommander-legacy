@@ -61,7 +61,7 @@ struct ReplaceTestingView: View {
                 })
             }
         }
-        .navigationTitle("Replace Testing")
+        .navigationTitle("AbsoluteSolver Testing")
     }
 }
 

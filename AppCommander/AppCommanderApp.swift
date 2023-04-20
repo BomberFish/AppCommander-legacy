@@ -26,7 +26,7 @@ struct AppCommanderApp: App {
     @State var has_cooked = true
     var body: some Scene {
         WindowGroup {
-            VStack {
+            ZStack {
                 if escaped && has_cooked {
                     RootView()
                         .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.25)))

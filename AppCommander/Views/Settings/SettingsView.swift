@@ -118,24 +118,22 @@ struct SettingsView: View {
                 }
 
                 Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)) {}
-
+                
                 Section {
+                    
+                Toggle(isOn: $ASEnabled, label: { Label("Disable Absolute Solver", systemImage: "hexagon") })
+                    .toggleStyle(.switch)
+                    .tint(.accentColor)
+                    .onChange(of: ASEnabled) { new in
+                        // set the user defaults
+                        UserDefaults.standard.set(new, forKey: "AbsoluteSolverDisabled")
+                    }
                     Toggle(isOn: $debugEnabled, label: { Label("Debug Mode", systemImage: "ladybug") })
                         .toggleStyle(.switch)
                         .tint(.accentColor)
                         .onChange(of: debugEnabled) { new in
                             // set the user defaults
                             UserDefaults.standard.set(new, forKey: "DebugEnabled")
-                        }
-                }
-                
-                Section {
-                    Toggle(isOn: $ASEnabled, label: { Label("Disable Absolute Solver", systemImage: "hexagon") })
-                        .toggleStyle(.switch)
-                        .tint(.accentColor)
-                        .onChange(of: ASEnabled) { new in
-                            // set the user defaults
-                            UserDefaults.standard.set(new, forKey: "AbsoluteSolverDisabled")
                         }
                 } header: {
                     Label("Advanced", systemImage: "gearshape.2")

@@ -68,6 +68,7 @@
 		D6E552CC29B2E9F50083E6A5 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E552CB29B2E9F50083E6A5 /* CommonFunctions.swift */; };
 		D6E6CF6129EB53F6009FC842 /* FilePicker in Frameworks */ = {isa = PBXBuildFile; productRef = D6E6CF6029EB53F6009FC842 /* FilePicker */; };
 		D6EF35F429F04BC800E43042 /* AbsoluteSolver in Frameworks */ = {isa = PBXBuildFile; productRef = D6EF35F329F04BC800E43042 /* AbsoluteSolver */; };
+		D6EF362D29F1F3C800E43042 /* FluidGradient in Frameworks */ = {isa = PBXBuildFile; productRef = D6EF362C29F1F3C800E43042 /* FluidGradient */; };
 		D6FC674929E5A28500585625 /* TranslatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC674829E5A28500585625 /* TranslatorsView.swift */; };
 		D6FC674E29E5A48A00585625 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6FC675029E5A48A00585625 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -167,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6039E7F29E484DE002F91D7 /* DirtyCowKit in Frameworks */,
+				D6EF362D29F1F3C800E43042 /* FluidGradient in Frameworks */,
 				D6609AA029D73D680033F66D /* NSTask in Frameworks */,
 				D6EF35F429F04BC800E43042 /* AbsoluteSolver in Frameworks */,
 				D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */,
@@ -439,6 +441,7 @@
 				D6039E7E29E484DE002F91D7 /* DirtyCowKit */,
 				D6E6CF6029EB53F6009FC842 /* FilePicker */,
 				D6EF35F329F04BC800E43042 /* AbsoluteSolver */,
+				D6EF362C29F1F3C800E43042 /* FluidGradient */,
 			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
@@ -527,6 +530,7 @@
 				D6039E7D29E484DE002F91D7 /* XCRemoteSwiftPackageReference "DirtyCowKit" */,
 				D6E6CF5F29EB53F6009FC842 /* XCRemoteSwiftPackageReference "FilePicker" */,
 				D6EF35F229F04BC800E43042 /* XCRemoteSwiftPackageReference "AbsoluteSolver-iOS" */,
+				D6EF362B29F1F3C800E43042 /* XCRemoteSwiftPackageReference "FluidGradient" */,
 			);
 			productRefGroup = D6E5527E29B165400083E6A5 /* Products */;
 			projectDirPath = "";
@@ -1077,6 +1081,14 @@
 				kind = branch;
 			};
 		};
+		D6EF362B29F1F3C800E43042 /* XCRemoteSwiftPackageReference "FluidGradient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Cindori/FluidGradient";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1129,6 +1141,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6EF35F229F04BC800E43042 /* XCRemoteSwiftPackageReference "AbsoluteSolver-iOS" */;
 			productName = AbsoluteSolver;
+		};
+		D6EF362C29F1F3C800E43042 /* FluidGradient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6EF362B29F1F3C800E43042 /* XCRemoteSwiftPackageReference "FluidGradient" */;
+			productName = FluidGradient;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

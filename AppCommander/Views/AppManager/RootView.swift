@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct RootView: View {
     @State var allApps = try! ApplicationManager.getApps()
