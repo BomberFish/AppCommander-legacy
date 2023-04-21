@@ -20,7 +20,8 @@ struct LoadingView: View {
             }
             .padding()
         }
-        .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(Color(UIColor.tertiarySystemBackground)))
+        .background(.regularMaterial)
+        .cornerRadius(14)
     }
 }
 

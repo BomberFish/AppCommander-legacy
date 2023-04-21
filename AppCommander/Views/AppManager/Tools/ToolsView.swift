@@ -17,7 +17,7 @@ struct ToolsView: View {
                 FluidGradient(blobs: [.accentColor],
                               highlights: [.blue, .purple ],
                               speed: 0.25,
-                              blur: 0.8)
+                              blur: 0)
                     .background(.ultraThickMaterial)
                     .edgesIgnoringSafeArea(.all)
                 ScrollView {
@@ -111,7 +111,7 @@ struct ToolsView: View {
                     }
                     .padding(6)
                 }
-                .background(.quaternary)
+                .background(.regularMaterial)
                 .navigationTitle("Tools")
             }
         }
