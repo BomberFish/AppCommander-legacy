@@ -153,13 +153,14 @@ struct AppView: View {
                     Label("Export Encrypted IPA", systemImage: "arrow.down.app")
                 }
             }
-        }
-        .navigationTitle(name)
-        .onAppear {
-            do {
-                dataDirectory = try ApplicationManager.getDataDir(bundleID: bundleId)
-            } catch {
-                UIApplication.shared.alert(body: error.localizedDescription)
+            .navigationTitle(name)
+            .navigationBarTitleDisplayMode(.automatic)
+            .onAppear {
+                do {
+                    dataDirectory = try ApplicationManager.getDataDir(bundleID: bundleId)
+                } catch {
+                    UIApplication.shared.alert(body: error.localizedDescription)
+                }
             }
         }
     }

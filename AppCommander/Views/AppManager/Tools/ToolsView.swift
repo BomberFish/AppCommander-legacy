@@ -10,7 +10,7 @@ import FluidGradient
 
 struct ToolsView: View {
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
-    private var gridItemLayout = [GridItem(.adaptive(minimum: 160))]
+    private var gridItemLayout = [GridItem(.adaptive(minimum: 150))]
     var body: some View {
         NavigationView {
             ZStack {
@@ -21,7 +21,7 @@ struct ToolsView: View {
                     .background(.ultraThickMaterial)
                     .edgesIgnoringSafeArea(.all)
                 ScrollView {
-                    LazyVGrid(columns: gridItemLayout, spacing: 16) {
+                    LazyVGrid(columns: gridItemLayout, alignment: .center) {
                         NavigationLink(destination: { WhitelistView() }, label: {
                             HStack(alignment: .bottom) {
                                 VStack(alignment: .leading) {

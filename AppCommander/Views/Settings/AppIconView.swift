@@ -9,6 +9,12 @@ import FluidGradient
 import SwiftUI
 
 struct AppIconView: View {
+    private var gridItemLayout = [GridItem(.adaptive(minimum: 150))]
+    @State var isDefaultIcon = false
+    @State var isIcon2 = false
+    @State var isIcon3 = false
+    @State var isIcon4 = false
+    @State var isIcon5 = false
     var body: some View {
         ZStack {
             FluidGradient(blobs: [.accentColor, .accentColor, .accentColor, .accentColor, .accentColor],
@@ -18,7 +24,7 @@ struct AppIconView: View {
                 .background(.ultraThickMaterial)
                 .edgesIgnoringSafeArea(.all)
             ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 160))]) {
+                LazyVGrid(columns: gridItemLayout, alignment: .center) {
                     ZStack {
                         HStack {
                             Button(action: {
@@ -30,14 +36,29 @@ struct AppIconView: View {
                                         Haptic.shared.notify(.success)
                                     }
                                 }
+                                updateCurrentIcon()
                             }, label: {
                                 VStack {
-                                    Image("Icon")
-                                        .resizable()
-                                        .scaledToFill() // add if you need
-                                        .frame(width: 64.0, height: 64.0) // as per your requirement
-                                        .clipped()
-                                        .cornerRadius(14)
+                                    if isDefaultIcon {
+                                        ZStack {
+                                            Image(systemName: "checkmark")
+                                            Image("Icon")
+                                                .resizable()
+                                                .scaledToFill() // add if you need
+                                                .frame(width: 64.0, height: 64.0) // as per your requirement
+                                                .clipped()
+                                                .cornerRadius(14)
+                                                .saturation(0.6)
+                                            Image(systemName: "checkmark")
+                                        }
+                                    } else {
+                                        Image("Icon")
+                                            .resizable()
+                                            .scaledToFill() // add if you need
+                                            .frame(width: 64.0, height: 64.0) // as per your requirement
+                                            .clipped()
+                                            .cornerRadius(14)
+                                    }
                                     Text("Default")
                                         .foregroundColor(Color(UIColor.label))
                                         .font(.headline)
@@ -62,14 +83,29 @@ struct AppIconView: View {
                                         Haptic.shared.notify(.success)
                                     }
                                 }
+                                updateCurrentIcon()
                             }, label: {
                                 VStack {
-                                    Image("DarkCommander")
-                                        .resizable()
-                                        .scaledToFill() // add if you need
-                                        .frame(width: 64.0, height: 64.0) // as per your requirement
-                                        .clipped()
-                                        .cornerRadius(14)
+                                    if isIcon2 {
+                                        ZStack {
+                                            Image(systemName: "checkmark")
+                                            Image("DarkCommander")
+                                                .resizable()
+                                                .scaledToFill() // add if you need
+                                                .frame(width: 64.0, height: 64.0) // as per your requirement
+                                                .clipped()
+                                                .cornerRadius(14)
+                                                .saturation(0.6)
+                                            Image(systemName: "checkmark")
+                                        }
+                                    } else {
+                                        Image("DarkCommander")
+                                            .resizable()
+                                            .scaledToFill() // add if you need
+                                            .frame(width: 64.0, height: 64.0) // as per your requirement
+                                            .clipped()
+                                            .cornerRadius(14)
+                                    }
                                     Text("DarkCommander")
                                         .foregroundColor(Color(UIColor.label))
                                         .font(.headline)
@@ -94,14 +130,29 @@ struct AppIconView: View {
                                         Haptic.shared.notify(.success)
                                     }
                                 }
+                                updateCurrentIcon()
                             }, label: {
                                 VStack {
-                                    Image("LightCommander")
-                                        .resizable()
-                                        .scaledToFill() // add if you need
-                                        .frame(width: 64.0, height: 64.0) // as per your requirement
-                                        .clipped()
-                                        .cornerRadius(14)
+                                    if isIcon3 {
+                                        ZStack {
+                                            Image(systemName: "checkmark")
+                                            Image("LightCommander")
+                                                .resizable()
+                                                .scaledToFill() // add if you need
+                                                .frame(width: 64.0, height: 64.0) // as per your requirement
+                                                .clipped()
+                                                .cornerRadius(14)
+                                                .saturation(0.6)
+                                            Image(systemName: "checkmark")
+                                        }
+                                    } else {
+                                        Image("LightCommander")
+                                            .resizable()
+                                            .scaledToFill() // add if you need
+                                            .frame(width: 64.0, height: 64.0) // as per your requirement
+                                            .clipped()
+                                            .cornerRadius(14)
+                                    }
                                     Text("LightCommander")
                                         .foregroundColor(Color(UIColor.label))
                                         .font(.headline)
@@ -126,15 +177,30 @@ struct AppIconView: View {
                                         Haptic.shared.notify(.success)
                                     }
                                 }
+                                updateCurrentIcon()
                             }, label: {
                                 VStack {
-                                    Image("AppSolver")
-                                        .resizable()
-                                        .scaledToFill() // add if you need
-                                        .frame(width: 64.0, height: 64.0) // as per your requirement
-                                        .clipped()
-                                        .cornerRadius(14)
-                                    Text("“Appsolute Solver”")
+                                    if isIcon4 {
+                                        ZStack {
+                                            Image(systemName: "checkmark")
+                                            Image("AppSolver")
+                                                .resizable()
+                                                .scaledToFill() // add if you need
+                                                .frame(width: 64.0, height: 64.0) // as per your requirement
+                                                .clipped()
+                                                .cornerRadius(14)
+                                                .saturation(0.6)
+                                            Image(systemName: "checkmark")
+                                        }
+                                    } else {
+                                        Image("AppSolver")
+                                            .resizable()
+                                            .scaledToFill() // add if you need
+                                            .frame(width: 64.0, height: 64.0) // as per your requirement
+                                            .clipped()
+                                            .cornerRadius(14)
+                                    }
+                                    Text("“App-solute Solver”")
                                         .foregroundColor(Color(UIColor.label))
                                         .font(.headline)
                                 }
@@ -158,14 +224,29 @@ struct AppIconView: View {
                                         Haptic.shared.notify(.success)
                                     }
                                 }
+                                updateCurrentIcon()
                             }, label: {
                                 VStack {
-                                    Image("ClassicIcon")
-                                        .resizable()
-                                        .scaledToFill() // add if you need
-                                        .frame(width: 64.0, height: 64.0) // as per your requirement
-                                        .clipped()
-                                        .cornerRadius(14)
+                                    if isIcon5 {
+                                        ZStack {
+                                            Image(systemName: "checkmark")
+                                            Image("ClassicIcon")
+                                                .resizable()
+                                                .scaledToFill() // add if you need
+                                                .frame(width: 64.0, height: 64.0) // as per your requirement
+                                                .clipped()
+                                                .cornerRadius(14)
+                                                .saturation(0.6)
+                                            Image(systemName: "checkmark")
+                                        }
+                                    } else {
+                                        Image("ClassicIcon")
+                                            .resizable()
+                                            .scaledToFill() // add if you need
+                                            .frame(width: 64.0, height: 64.0) // as per your requirement
+                                            .clipped()
+                                            .cornerRadius(14)
+                                    }
                                     Text("Old icon")
                                         .foregroundColor(Color(UIColor.label))
                                         .font(.headline)
@@ -183,6 +264,42 @@ struct AppIconView: View {
             .background(.thinMaterial)
             .navigationTitle("Alternate Icons")
         }
+        .onAppear {
+            updateCurrentIcon()
+        }
+    }
+    
+    func updateCurrentIcon() {
+        if UIApplication.shared.alternateIconName == nil {
+            isDefaultIcon = true
+        } else {
+            isDefaultIcon = false
+        }
+        
+        if UIApplication.shared.alternateIconName == "AppIcon2" {
+            isIcon2 = true
+        } else {
+            isIcon2 = false
+        }
+        
+        if UIApplication.shared.alternateIconName == "AppIcon3" {
+            isIcon3 = true
+        } else {
+            isIcon3 = false
+        }
+        
+        if UIApplication.shared.alternateIconName == "AppIcon4" {
+            isIcon4 = true
+        } else {
+            isIcon4 = false
+        }
+        
+        if UIApplication.shared.alternateIconName == "AppIcon5" {
+            isIcon5 = true
+        } else {
+            isIcon5 = false
+        }
+        
     }
 }
 
