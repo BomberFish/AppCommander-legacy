@@ -13,7 +13,7 @@ public class BackupServices {
     public static let shared = BackupServices()
     
     private init() {
-        self.docURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Backups")
+        self.docURL = URL(fileURLWithPath: "/var/mobile/.DO_NOT_DELETE-AppCommander").appendingPathComponent("Backups")
         self.backupsRegistryURL = docURL.appendingPathComponent(".DO-NOT-DELETE_backups.json")
     }
     

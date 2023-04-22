@@ -42,7 +42,12 @@ struct BackupView: View {
                     Label("Back up now", systemImage: "arrow.down.app")
                 })
             }
-
+            .onAppear {
+                backups = BackupServices.shared.backups(for: app)
+            }
+            .navigationTitle("Backups")
+            
+            
             if backups.isEmpty {
                 Section {} footer: {
                     HStack {
@@ -55,7 +60,7 @@ struct BackupView: View {
             } else {
                 Section {
                     ForEach(backups) { backup in
-                        let size = FileManager.default.sizeOfFile(atPath: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Backups").appendingPathComponent(backup.backupFilename)).path)
+                        let size = FileManager.default.sizeOfFile(atPath: URL(fileURLWithPath: "/var/mobile/.DO_NOT_DELETE-AppCommander").appendingPathComponent("Backups").appendingPathComponent(backup.backupFilename).path)
                         HStack {
                             Text("Backup taken \(backup.displayName)")
                             Spacer()
@@ -118,7 +123,7 @@ struct BackupView: View {
                         .contextMenu {
                             Button(action: {
                                 UIApplication.shared.dismissAlert(animated: true)
-                                let vc = UIActivityViewController(activityItems: [FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Backups").appendingPathComponent(backup.backupFilename) as Any], applicationActivities: nil)
+                                let vc = UIActivityViewController(activityItems: [URL(fileURLWithPath: "/var/mobile/.DO_NOT_DELETE-AppCommander").appendingPathComponent("Backups").appendingPathComponent(backup.backupFilename) as Any], applicationActivities: nil)
                                 Haptic.shared.notify(.success)
                                 vc.isModalInPresentation = true
                                 UIApplication.shared.dismissAlert(animated: true)
@@ -139,6 +144,10 @@ struct BackupView: View {
                 }
             }
             // Section{}footer: {Label("Backups are still in beta. Unexpected issues may arise.", systemImage: "info.circle")}
+        }
+        
+        .refreshable {
+            backups = BackupServices.shared.backups(for: app)
         }
         .toolbar {
             FilePicker(types: [.init(filenameExtension: "abdk")!/*, .init(filenameExtension: "zip")!*/], allowMultiple: false, onPicked: { urls in
@@ -161,13 +170,6 @@ struct BackupView: View {
             }, label: {
                 Image(systemName: "square.and.arrow.down")
             })
-        }
-        .navigationTitle("Backups")
-        .refreshable {
-            backups = BackupServices.shared.backups(for: app)
-        }
-        .onAppear {
-            backups = BackupServices.shared.backups(for: app)
         }
     }
 }

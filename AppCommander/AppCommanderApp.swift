@@ -5,10 +5,10 @@
 //  Created by Hariz Shirazi on 2023-03-02.
 //
 
-import LocalConsole
-import SwiftUI
 import AbsoluteSolver
+import LocalConsole
 @preconcurrency import MacDirtyCow
+import SwiftUI
 
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
@@ -52,15 +52,15 @@ struct AppCommanderApp: App {
 
                             Haptic.shared.notify(.success)
                             consoleManager.isVisible = userDefaults.bool(forKey: "LCEnabled")
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.65) {
-                                // i just copied the entire code block, prints and everything, from stackoverflow.
-                                // Will I change it at all? No!
-                                if launchedBefore {
-                                    // print("Not first launch.")
-                                    //UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
-                                } else {
-                                    // print("First launch, setting UserDefault.")
-                                    // FIXME: body really sucks
+                            // DispatchQueue.main.asyncAfter(deadline: .now() + 0.65) {
+                            // i just copied the entire code block, prints and everything, from stackoverflow.
+                            // Will I change it at all? No!
+                            if launchedBefore {
+                                // print("Not first launch.")
+                                // UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
+                            } else {
+                                // print("First launch, setting UserDefault.")
+                                // FIXME: body really sucks
 //                                    UIApplication.shared.choiceAlert(title: "Analytics", body: "Allow AppCommander to send anonymized data to improve your experience?", yesAction: {
 //                                        userDefaults.set(1, forKey: "analyticsLevel")
 //                                        userDefaults.set(true, forKey: "launchedBefore")
@@ -68,14 +68,53 @@ struct AppCommanderApp: App {
 //                                        userDefaults.set(0, forKey: "analyticsLevel")
 //                                        userDefaults.set(true, forKey: "launchedBefore")
 //                                    })
-                                }
-                                
-                                if !(userDefaults.bool(forKey: "AbsoluteSolverDisabled")) {
-                                    print("Absolute Solver ENABLED")
-                                } else {
-                                    print("Absolute Solver DISABLED")
-                                }
                             }
+
+                            if !(userDefaults.bool(forKey: "AbsoluteSolverDisabled")) {
+                                print("Absolute Solver ENABLED")
+                            } else {
+                                print("Absolute Solver DISABLED")
+                            }
+                            if FileManager.default.fileExists(atPath: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Backups")).path) {
+                                print("Backups not migrated, migrating now.")
+                                UIApplication.shared.progressAlert(title: "Migrating backups...")
+                                if userDefaults.bool(forKey: "AbsoluteSolverDisabled") {
+                                    do {
+                                        if FileManager.default.fileExists(atPath: "/var/mobile/.DO_NOT_DELETE-AppCommander") {
+                                            try FileManager.default.createDirectory(at: URL(fileURLWithPath: "/var/mobile/.DO_NOT_DELETE-AppCommander"), withIntermediateDirectories: true)
+                                        }
+                                        try FileManager.default.copyItem(at: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0], to: URL(fileURLWithPath: "/var/mobile/.DO_NOT_DELETE-AppCommander"))
+                                        try FileManager.default.removeItem(at: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Backups"))
+                                        UIApplication.shared.dismissAlert(animated: true)
+                                        Haptic.shared.notify(.success)
+                                    } catch {
+                                        UIApplication.shared.dismissAlert(animated: true)
+                                        Haptic.shared.notify(.error)
+                                        UIApplication.shared.alert(body: "Error migrating backups: \(error.localizedDescription). Reopen the app to try again.", withButton: false)
+                                    }
+                                } else {
+                                    do {
+                                        if FileManager.default.fileExists(atPath: "/var/mobile/.DO_NOT_DELETE-AppCommander") {
+                                            try FileManager.default.createDirectory(at: URL(fileURLWithPath: "/var/mobile/.DO_NOT_DELETE-AppCommander"), withIntermediateDirectories: true)
+                                        }
+                                        try AbsoluteSolver.copy(at: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0], to: URL(fileURLWithPath: "/var/mobile/.DO_NOT_DELETE-AppCommander"), progress: { message in
+                                            UIApplication.shared.changeBody("\n\n\n\(message)")
+                                        })
+                                        try AbsoluteSolver.delete(at: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Backups"), progress: { message in
+                                            UIApplication.shared.changeBody("\n\n\n\(message)")
+                                        })
+                                        UIApplication.shared.dismissAlert(animated: true)
+                                        Haptic.shared.notify(.success)
+                                    } catch {
+                                        UIApplication.shared.dismissAlert(animated: true)
+                                        Haptic.shared.notify(.error)
+                                        UIApplication.shared.alert(body: "Error migrating backups: \(error.localizedDescription). Reopen the app to try again.", withButton: false)
+                                    }
+                                }
+                            } else {
+                                print("Backups already migrated.")
+                            }
+                            // }
                         }
                 } else {
                     LoadingView()
@@ -119,15 +158,15 @@ struct AppCommanderApp: App {
                                 print("Escaping Sandbox...")
                                 // asyncAfter(deadline: .now())
                                 sleep(UInt32(0.2))
-                                    do {
-                                        try MacDirtyCow.unsandbox()
-                                        escaped = true
-                                        print("Successfully escaped sandbox!")
-                                    } catch {
-                                        escaped = false
-                                        print("Unsandboxing error: \(error.localizedDescription)")
-                                        UIApplication.shared.choiceAlert(body: "Unsandboxing Error: \(error.localizedDescription)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: {escaped = true})
-                                    }
+                                do {
+                                    try MacDirtyCow.unsandbox()
+                                    escaped = true
+                                    print("Successfully escaped sandbox!")
+                                } catch {
+                                    escaped = false
+                                    print("Unsandboxing error: \(error.localizedDescription)")
+                                    UIApplication.shared.choiceAlert(body: "Unsandboxing Error: \(error.localizedDescription)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: { escaped = true })
+                                }
                             }
                         }
                     }
@@ -141,9 +180,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
         MacDirtyCow.isMDCSafe = false
     }
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UserDefaults.standard.register(defaults: ["AbsoluteSolverDisabled" : false])
+        UserDefaults.standard.register(defaults: ["AbsoluteSolverDisabled": false])
         return true
     }
 }

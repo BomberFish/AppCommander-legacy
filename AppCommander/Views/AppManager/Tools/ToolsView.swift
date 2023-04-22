@@ -66,7 +66,18 @@ struct ToolsView: View {
                         .cornerRadius(16)
                         
                         
-                        Button(action: { remvoeIconCache() }, label: {
+                        Button(action: {
+                            Haptic.shared.play(.heavy)
+                            UIApplication.shared.alert(title: "Scheduling Icon Cache rebuild...", body: "", withButton: false)
+                            remvoeIconCache()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                UIApplication.shared.changeTitle("Respringing...")
+                                Haptic.shared.notify(.success)
+                            })
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75, execute: {
+                                respring()
+                            })
+                        }, label: {
                             HStack(alignment: .bottom) {
                                 VStack(alignment: .leading) {
                                     Image(systemName: "gearshape.arrow.triangle.2.circlepath")
@@ -77,8 +88,8 @@ struct ToolsView: View {
                                 }
                                 .font(.title3)
                                 .foregroundColor(Color(UIColor.label))
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color(UIColor.secondaryLabel))
+//                                Image(systemName: "chevron.right")
+//                                    .foregroundColor(Color(UIColor.secondaryLabel))
                             }
                             
                             .padding()

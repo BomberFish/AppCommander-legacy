@@ -108,7 +108,7 @@ extension UIApplication {
     
     func changeTitle(_ title: String) {
         DispatchQueue.main.async {
-            currentUIAlertController?.message = title
+            currentUIAlertController?.title = title
         }
     }
     

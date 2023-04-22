@@ -32,13 +32,13 @@ struct SettingsView: View {
                             do {
                                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                                     UIApplication.shared.progressAlert(title: "Disassembling app documents...")
-                                    try AbsoluteSolver.delDirectoryContents(path: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0].path, progress: { percentage, fileName in
+                                    try AbsoluteSolver.delDirectoryContents(path: "/var/mobile/.DO_NOT_DELETE-AppCommander", progress: { percentage, fileName in
                                         print("[AbsoluteSolver]: \(Int(percentage * 100))%: Disassembling \(fileName)")
                                         UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                     })
                                 } else {
                                     UIApplication.shared.progressAlert(title: "Deleting app documents...")
-                                    try delDirectoryContents(path: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0].path, progress: { percentage, fileName in
+                                    try delDirectoryContents(path: "/var/mobile/.DO_NOT_DELETE-AppCommander", progress: { percentage, fileName in
                                         print("\(Int(percentage * 100))%: Deleting \(fileName)")
                                         UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                     })
@@ -132,14 +132,6 @@ struct SettingsView: View {
                 Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)) {}
                 
                 Section {
-                    
-                Toggle(isOn: $ASEnabled, label: { Label("Disable Absolute Solver", systemImage: "hexagon") })
-                    .toggleStyle(.switch)
-                    .tint(.accentColor)
-                    .onChange(of: ASEnabled) { new in
-                        // set the user defaults
-                        UserDefaults.standard.set(new, forKey: "AbsoluteSolverDisabled")
-                    }
                     Toggle(isOn: $debugEnabled, label: { Label("Debug Mode", systemImage: "ladybug") })
                         .toggleStyle(.switch)
                         .tint(.accentColor)
@@ -147,6 +139,15 @@ struct SettingsView: View {
                             // set the user defaults
                             UserDefaults.standard.set(new, forKey: "DebugEnabled")
                         }
+                        
+                    Toggle(isOn: $ASEnabled, label: { Label("Disable Absolute Solver", systemImage: "hexagon") })
+                        .toggleStyle(.switch)
+                        .tint(.accentColor)
+                        .onChange(of: ASEnabled) { new in
+                            // set the user defaults
+                            UserDefaults.standard.set(new, forKey: "AbsoluteSolverDisabled")
+                        }
+
                 } header: {
                     Label("Advanced", systemImage: "gearshape.2")
                 }
