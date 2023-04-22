@@ -33,6 +33,7 @@
 		D688309D29E870F000F4D7DA /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688309C29E870F000F4D7DA /* IOSurface.framework */; };
 		D688309F29E870FF00F4D7DA /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688309E29E870FE00F4D7DA /* IOKit.framework */; };
 		D68830A329E87C2B00F4D7DA /* AppCommander-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D68830A129E87C2B00F4D7DA /* AppCommander-InfoPlist.strings */; };
+		D6B79B0B29F2E51100E14922 /* AppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B79B0A29F2E51100E14922 /* AppIconView.swift */; };
 		D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */ = {isa = PBXBuildFile; productRef = D6D22B6129C64AC20095645B /* LocalConsole */; };
 		D6D22B6629C64D180095645B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6529C64D180095645B /* SettingsView.swift */; };
 		D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */; };
@@ -122,6 +123,7 @@
 		D68830A729E8C20A00F4D7DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D68830A829E9918B00F4D7DA /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D68830A929E99F8A00F4D7DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D6B79B0A29F2E51100E14922 /* AppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconView.swift; sourceTree = "<group>"; };
 		D6D22B6529C64D180095645B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D6D22B6E29C65D6B0095645B /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			children = (
 				D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */,
 				D6D22B6529C64D180095645B /* SettingsView.swift */,
+				D6B79B0A29F2E51100E14922 /* AppIconView.swift */,
 				D6FC674829E5A28500585625 /* TranslatorsView.swift */,
 			);
 			path = Settings;
@@ -615,6 +618,7 @@
 				D6E3FC9429CDE4C700D019D1 /* UIImage+UIImageAverageColorAddition.m in Sources */,
 				D6E3FC9129CDE43400D019D1 /* Constants.swift in Sources */,
 				D638E1B329DAFA82004CCA55 /* View++.swift in Sources */,
+				D6B79B0B29F2E51100E14922 /* AppIconView.swift in Sources */,
 				D638E1BB29DE1F49004CCA55 /* BackupItem.swift in Sources */,
 				D688309A29E86D7D00F4D7DA /* KernelPanic.m in Sources */,
 				D638E1AB29DA031E004CCA55 /* PlayerClass.swift in Sources */,
@@ -821,8 +825,10 @@
 		D6E552A229B165420083E6A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon2 AppIcon3 AppIcon4 AppIcon5";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_LINK_OBJC_RUNTIME = YES;
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
@@ -864,8 +870,10 @@
 		D6E552A329B165420083E6A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon2 AppIcon3 AppIcon4 AppIcon5";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_LINK_OBJC_RUNTIME = YES;
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
