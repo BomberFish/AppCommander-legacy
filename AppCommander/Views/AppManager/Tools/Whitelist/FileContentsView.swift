@@ -85,13 +85,19 @@ struct FileContentsView: View {
                     do {
                         if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                             if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
-                                blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist"), as: UTF8.self)
+                                blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist", progress: {message in
+                                    print(message)
+                                }), as: UTF8.self)
                             }
                             if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
-                                bannedAppsContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist"), as: UTF8.self)
+                                bannedAppsContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist", progress: {message in
+                                    print(message)
+                                }), as: UTF8.self)
                             }
                             if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
-                                cdHashesContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), as: UTF8.self)
+                                cdHashesContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist", progress: {message in
+                                    print(message)
+                                }), as: UTF8.self)
                             }
                         } else {
                             if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
@@ -119,13 +125,19 @@ struct FileContentsView: View {
                 do {
                     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                         if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
-                            blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist"), as: UTF8.self)
+                            blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist", progress: {message in
+                                print(message)
+                            }), as: UTF8.self)
                         }
                         if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
-                            bannedAppsContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist"), as: UTF8.self)
+                            bannedAppsContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist", progress: {message in
+                                print(message)
+                            }), as: UTF8.self)
                         }
                         if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
-                            cdHashesContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), as: UTF8.self)
+                            cdHashesContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist", progress: {message in
+                                print(message)
+                            }), as: UTF8.self)
                         }
                     } else {
                         if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {

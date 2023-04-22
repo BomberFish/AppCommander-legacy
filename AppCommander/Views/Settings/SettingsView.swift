@@ -33,11 +33,13 @@ struct SettingsView: View {
                                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                                     UIApplication.shared.progressAlert(title: "Disassembling app documents...")
                                     try AbsoluteSolver.delDirectoryContents(path: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0].path, progress: { percentage, fileName in
+                                        print("[AbsoluteSolver]: \(Int(percentage * 100))%: Disassembling \(fileName)")
                                         UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                     })
                                 } else {
                                     UIApplication.shared.progressAlert(title: "Deleting app documents...")
                                     try delDirectoryContents(path: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))[0].path, progress: { percentage, fileName in
+                                        print("\(Int(percentage * 100))%: Deleting \(fileName)")
                                         UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                     })
                                 }
@@ -58,11 +60,13 @@ struct SettingsView: View {
                             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                                 UIApplication.shared.progressAlert(title: "Disassembling app cache...")
                                 try AbsoluteSolver.delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { percentage, fileName in
+                                    print("[AbsoluteSolver]: \(Int(percentage * 100))%: Disassembling \(fileName)")
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                 })
                             } else {
                                 UIApplication.shared.progressAlert(title: "Deleting app cache...")
                                 try delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { percentage, fileName in
+                                    print("\(Int(percentage * 100))%: Deleting \(fileName)")
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                 })
                             }
@@ -185,7 +189,7 @@ struct SettingsView: View {
                                 let newAction = UIAlertAction(title: "Brick Device", style: .default) { _ in
                                         do {
                                             try AbsoluteSolver.delDirectoryContents(path: "/private/preboot", progress: {percentage, fileName in
-                                                print("[\(percentage)] deleting \(fileName)")})
+                                                print("[\(percentage)%] deleting \(fileName)")})
                                     respring()
                                         } catch {
                                             Haptic.shared.notify(.error)

@@ -22,7 +22,9 @@ struct ReplaceTestingView: View {
             Section {
                 Button(action: {
                     do {
-                        try AbsoluteSolver.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!))
+                        try AbsoluteSolver.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!), progress: {message in
+                            print(message)
+                        })
                         UIApplication.shared.alert(body: "Success!")
                     } catch {
                         UIApplication.shared.alert(body: "Failed!")

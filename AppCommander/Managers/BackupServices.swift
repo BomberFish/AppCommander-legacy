@@ -50,7 +50,9 @@ public class BackupServices {
             print("Copying files...")
             progress("Copying files...")
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
-                try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL)
+                try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL, progress: {message in
+                    print(message)
+                })
             } else {
                 try fm.copyItem(at: applicationContainerURL, to: containerURL)
             }
@@ -69,7 +71,9 @@ public class BackupServices {
             registry.append(item)
             try JSONEncoder().encode(registry).write(to: backupsRegistryURL)
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
-                try AbsoluteSolver.delete(at: stagingDirectory)
+                try AbsoluteSolver.delete(at: stagingDirectory, progress: {message in
+                    print(message)
+                })
             } else {
                 try fm.removeItem(at: stagingDirectory)
             }
@@ -164,7 +168,9 @@ public class BackupServices {
                 print("Copying files...")
                 progress("Copying files...")
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
-                    try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL)
+                    try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL, progress: {message in
+                        print(message)
+                    })
                 } else {
                     try fm.copyItem(at: applicationContainerURL, to: containerURL)
                 }
@@ -183,7 +189,9 @@ public class BackupServices {
                 registry.append(item)
                 try JSONEncoder().encode(registry).write(to: backupsRegistryURL)
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
-                    try AbsoluteSolver.delete(at: stagingDirectory)
+                    try AbsoluteSolver.delete(at: stagingDirectory, progress: {message in
+                        print(message)
+                    })
                 } else {
                     try fm.removeItem(at: stagingDirectory)
                 }
@@ -249,7 +257,9 @@ public class BackupServices {
                     print("Deleting \(item.lastPathComponent)")
                     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                         progress("Disassembling \(item.lastPathComponent)...")
-                        try AbsoluteSolver.delete(at: item)
+                        try AbsoluteSolver.delete(at: item, progress: {message in
+                            print(message)
+                        })
                     } else {
                         progress("Deleting \(item.lastPathComponent)...")
                         try fm.removeItem(at: item)
@@ -262,7 +272,9 @@ public class BackupServices {
                     print("Copying \(item.lastPathComponent)...")
                     progress("Copying \(item.lastPathComponent)...")
                     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
-                        try AbsoluteSolver.copy(at: item, to: applicationContainerURL.appendingPathComponent(item.lastPathComponent))
+                        try AbsoluteSolver.copy(at: item, to: applicationContainerURL.appendingPathComponent(item.lastPathComponent), progress: {message in
+                            print(message)
+                        })
                     } else {
                         try fm.copyItem(at: item, to: applicationContainerURL.appendingPathComponent(item.lastPathComponent))
                     }
@@ -287,7 +299,9 @@ public class BackupServices {
                 print("WE ARE DONE. GOODNIGHT!")
                 progress("Finishing up...")
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
-                    try AbsoluteSolver.delete(at: temporaryUnzippingDir)
+                    try AbsoluteSolver.delete(at: temporaryUnzippingDir, progress: {message in
+                        print(message)
+                    })
                 } else {
                     try fm.removeItem(at: temporaryUnzippingDir)
                 }

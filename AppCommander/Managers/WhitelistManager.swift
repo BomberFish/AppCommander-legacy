@@ -15,7 +15,9 @@ public struct Whitelist {
         if FileManager.default.fileExists(atPath: "/var/db/MobileIdentityData/Rejections.plist") {
             do {
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
-                    try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), with: Data(base64Encoded: blankplist)! as NSData)
+                    try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), with: Data(base64Encoded: blankplist)! as NSData, progress: {message in
+                        print(message)
+                    })
                 } else {
                     try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), options: .atomic)
                 }
@@ -29,7 +31,9 @@ public struct Whitelist {
         if FileManager.default.fileExists(atPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
             do {
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
-                    try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), with: Data(base64Encoded: blankplist)! as NSData)
+                    try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), with: Data(base64Encoded: blankplist)! as NSData, progress: {message in
+                        print(message)
+                    })
                 } else {
                     try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), options: .atomic)
                 }
@@ -43,7 +47,9 @@ public struct Whitelist {
         if FileManager.default.fileExists(atPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
             do {
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
-                    try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), with:  Data(base64Encoded: blankplist)! as NSData)
+                    try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), with:  Data(base64Encoded: blankplist)! as NSData, progress: {message in
+                        print(message)
+                    })
                 } else {
                     try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), options: .atomic)
                 }

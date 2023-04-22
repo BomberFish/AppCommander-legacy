@@ -48,11 +48,14 @@ struct AppView: View {
                             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                                 UIApplication.shared.progressAlert(title: "Disassembling data of \(sbapp.name)...")
                                 try AbsoluteSolver.delDirectoryContents(path: dataDirectory!.path, progress: { percentage, fileName in
+                                    
+                                    print("[AbsoluteSolver]: \(Int(percentage * 100))%: Disassembling \(fileName)")
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                 })
                             } else {
                                 UIApplication.shared.progressAlert(title: "Deleting data of \(sbapp.name)...")
                                 try delDirectoryContents(path: dataDirectory!.path, progress: { percentage, fileName in
+                                    print("\(Int(percentage * 100))%: Deleting \(fileName)")
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                 })
                             }
@@ -75,11 +78,13 @@ struct AppView: View {
                             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                                 UIApplication.shared.progressAlert(title: "Disassembling documents of \(sbapp.name)...")
                                 try AbsoluteSolver.delDirectoryContents(path: dataDirectory!.appendingPathComponent("Documents").path, progress: { percentage, fileName in
+                                    print("[AbsoluteSolver]: \(Int(percentage * 100))%: Disassembling \(fileName)")
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                 })
                             } else {
                                 UIApplication.shared.progressAlert(title: "Deleting documents of \(sbapp.name)...")
                                 try delDirectoryContents(path: dataDirectory!.appendingPathComponent("Documents").path, progress: { percentage, fileName in
+                                    print("\(Int(percentage * 100))%: Deleting \(fileName)")
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                 })
                             }
@@ -90,9 +95,14 @@ struct AppView: View {
                         }
                     }, destructActionText: "Delete")
                 } label: {
-                    Label("Delete app documents", systemImage: "trash")
-                        .foregroundColor(Color(UIColor.systemRed))
-                }.disabled(!(FileManager.default.fileExists(atPath: dataDirectory?.appendingPathComponent("Documents").path ?? "/")))
+                    if !(FileManager.default.fileExists(atPath: dataDirectory?.appendingPathComponent("Documents").path ?? "/yourmother6969696969696969")) {
+                        Label("Delete app documents", systemImage: "trash")
+                    } else {
+                        Label("Delete app documents", systemImage: "trash")
+                            .foregroundColor(Color(UIColor.systemRed))
+                    }
+                }
+                .disabled(!(FileManager.default.fileExists(atPath: dataDirectory?.appendingPathComponent("Documents").path ?? "/yourmother6969696969696969")))
 
                 Button {
                     Haptic.shared.play(.medium)
@@ -102,11 +112,14 @@ struct AppView: View {
                         if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                             UIApplication.shared.progressAlert(title: "Disassembling cache of \(sbapp.name)...")
                             try AbsoluteSolver.delDirectoryContents(path: cachedir.path, progress: { percentage, fileName in
+                                print(percentage, fileName)
+                                print("[AbsoluteSolver]: \(Int(percentage * 100))%: Disassembling \(fileName)")
                                 UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                             })
                         } else {
                             UIApplication.shared.progressAlert(title: "Deleting cache of \(sbapp.name)...")
                             try delDirectoryContents(path: cachedir.path, progress: { percentage, fileName in
+                                print("\(Int(percentage * 100))%: Deleting \(fileName)")
                                 UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                             })
                         }
