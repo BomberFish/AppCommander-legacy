@@ -138,9 +138,7 @@ struct BackupView: View {
                     }
                 }
             }
-            Section {} footer: {
-                Label("Backups are still in beta. Unexpected issues may arise.", systemImage: "info.circle")
-            }
+            // Section{}footer: {Label("Backups are still in beta. Unexpected issues may arise.", systemImage: "info.circle")}
         }
         .toolbar {
             FilePicker(types: [.init(filenameExtension: "abdk")!/*, .init(filenameExtension: "zip")!*/], allowMultiple: false, onPicked: { urls in

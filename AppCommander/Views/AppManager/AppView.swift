@@ -33,7 +33,7 @@ struct AppView: View {
                 NavigationLink(destination: { MoreInfoView(sbapp: sbapp, iconPath: iconPath) }, label: { Label("More Info", systemImage: "info.circle") })
             } header: { Label("App Details", systemImage: "info.circle") }
             Section {
-                NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore (Beta)", systemImage: "externaldrive.badge.timemachine") })
+                NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore", systemImage: "externaldrive.badge.timemachine") })
             } header: {
                 Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
             }
