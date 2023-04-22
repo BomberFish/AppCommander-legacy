@@ -5,3 +5,5 @@
 #import "UIImage+UIImageAverageColorAddition.h"
 #import "CoreServices.h"
 #import "KernelPanic.h"
+#import "ISIconCacheServiceProtocol-Protocol.h"
+#import "IconServices.h"

@@ -124,6 +124,8 @@
 		D68830A829E9918B00F4D7DA /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D68830A929E99F8A00F4D7DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D6B79B0A29F2E51100E14922 /* AppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconView.swift; sourceTree = "<group>"; };
+		D6B79B0C29F44DE200E14922 /* ISIconCacheServiceProtocol-Protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ISIconCacheServiceProtocol-Protocol.h"; sourceTree = "<group>"; };
+		D6B79B0D29F44DF100E14922 /* IconServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IconServices.h; sourceTree = "<group>"; };
 		D6D22B6529C64D180095645B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D6D22B6E29C65D6B0095645B /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -248,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				D6E3FC9329CDE4C700D019D1 /* UIImage+UIImageAverageColorAddition.h */,
+				D6B79B0C29F44DE200E14922 /* ISIconCacheServiceProtocol-Protocol.h */,
+				D6B79B0D29F44DF100E14922 /* IconServices.h */,
 				D6E552BA29B1790E0083E6A5 /* CoreServices.h */,
 				D6E552AB29B16E160083E6A5 /* AppCommander-Bridging-Header.h */,
 				D6E3FC9229CDE4C600D019D1 /* UIImage+UIImageAverageColorAddition.m */,

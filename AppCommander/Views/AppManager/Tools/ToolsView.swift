@@ -64,6 +64,29 @@ struct ToolsView: View {
                             .background(.ultraThinMaterial)
                         })
                         .cornerRadius(16)
+                        
+                        
+                        Button(action: { remvoeIconCache() }, label: {
+                            HStack(alignment: .bottom) {
+                                VStack(alignment: .leading) {
+                                    Image(systemName: "gearshape.arrow.triangle.2.circlepath")
+                                        .imageScale(.large)
+                                        .font(.title2)
+                                    Text("Rebuild Icon Cache")
+                                        .multilineTextAlignment(.leading)
+                                }
+                                .font(.title3)
+                                .foregroundColor(Color(UIColor.label))
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(Color(UIColor.secondaryLabel))
+                            }
+                            
+                            .padding()
+                            .frame(width: 180, height: 150)
+                            .cornerRadius(16)
+                            .background(.ultraThinMaterial)
+                        })
+                        .cornerRadius(16)
                         if debugEnabled {
                             NavigationLink(destination: { ReplaceTestingView() }, label: {
                                 HStack(alignment: .bottom) {

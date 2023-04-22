@@ -10,6 +10,7 @@ import UIKit
 import AbsoluteSolver
 import os.log
 import MacDirtyCow
+import Dynamic
 
 // MARK: - Print to localconsole. Totally not stolen from sneakyf1shy (who still needs to finish the damn frontend)
 
@@ -120,5 +121,22 @@ func reboot() {
         trigger_memmove_oob_copy()
         sleep(2) // give the springboard some time to restart before exiting
         exit(0)
+    }
+}
+
+var connection: NSXPCConnection?
+
+func remvoeIconCache() {
+    print("removing icon cache")
+    if connection == nil {
+        let myCookieInterface = NSXPCInterface(with: ISIconCacheServiceProtocol.self)
+        connection = Dynamic.NSXPCConnection(machServiceName: "com.apple.iconservices", options: []).asObject as? NSXPCConnection
+        connection!.remoteObjectInterface = myCookieInterface
+        connection!.resume()
+        print("Connection: \(connection!)")
+    }
+    
+    (connection!.remoteObjectProxy as AnyObject).clearCachedItems(forBundeID: nil) { (a, b) in // passing nil to remove all icon cache
+        print("Successfully responded (\(a), \(b ?? "(null)"))")
     }
 }
