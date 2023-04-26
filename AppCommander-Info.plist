@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Grant full disk access. Required for app functionality.</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>filza://</string>
@@ -11,8 +9,6 @@
 		<string>filza</string>
 		<string>santander</string>
 	</array>
-	<key>UISupportsDocumentBrowser</key>
-	<false/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

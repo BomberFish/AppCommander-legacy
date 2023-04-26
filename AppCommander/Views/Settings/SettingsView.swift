@@ -111,6 +111,22 @@ struct SettingsView: View {
 //                    // a little bit cring-eh 🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦
 //                    Label("Powered by Kouyou", systemImage: "gearshape.2")
 //                }
+                
+                Section {
+                    Button(action: {UIApplication.shared.open(URL(string: "https://discord.gg/Cowabunga")!)}, label: {
+                        HStack {
+                            Image("discordo")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .colorMultiply(.accentColor)
+                                .tint(.accentColor)
+                                .foregroundColor(.accentColor)
+                                .frame(width: 24, height: 24)
+                            Text("  Join the Discord!")
+                        }
+                    })
+                }
+                
                 Section {
                     LinkCell(imageName: "bomberfish", url: "https://github.com/BomberFish", title: "BomberFish", contribution: "Main Developer", circle: true)
                     
