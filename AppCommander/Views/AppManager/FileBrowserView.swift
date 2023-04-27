@@ -317,16 +317,7 @@ struct FileBrowserView: View {
                             formatter.timeStyle = .short
                             let dateString = formatter.string(from: date)
                             var sizeString = ""
-                            // TODO: yikes.
-                            if size < 1024 {
-                                sizeString = "\(size) B"
-                            } else if size < 1024 * 1024 {
-                                sizeString = "\(size / 1024) KB"
-                            } else if size < 1024 * 1024 * 1024 {
-                                sizeString = "\(size / 1024 / 1024) MB"
-                            } else {
-                                sizeString = "\(size / 1024 / 1024 / 1024) GB"
-                            }
+                            sizeString = ByteCountFormatter().string(fromByteCount: Int64(size))
                             files.append(File(name: element, type: element.components(separatedBy: ".").last!, size: sizeString, date: dateString))
                         }
                     } catch {
