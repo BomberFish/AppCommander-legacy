@@ -31,6 +31,9 @@ struct MoreInfoView: View {
                 }
             Text("Bundle Path: \(sbapp.bundleURL.path)")
                 .contextMenu {
+                    NavigationLink(destination: FileBrowserView(path: (sbapp.bundleURL.path) + "/", title: sbapp.bundleURL.lastPathComponent), label: {
+                        Label("Open in built-in browser", systemImage: "folder")
+                    })
                     if isFilzaInstalled() {
                         Button(action: { openInFilza(path: sbapp.bundleURL.path) }, label: { Label("Open in Filza", systemImage: "arrow.up.forward.app") })
                     }
@@ -41,6 +44,9 @@ struct MoreInfoView: View {
                 }
             Text("Data directory: \(datadir)")
                 .contextMenu {
+                    NavigationLink(destination: FileBrowserView(path: (datadir) + "/", title: sbapp.name + " Data"), label: {
+                        Label("Open in built-in browser", systemImage: "folder")
+                    })
                     if isFilzaInstalled() {
                         Button(action: { openInFilza(path: datadir) }, label: { Label("Open in Filza", systemImage: "arrow.up.forward.app") })
                     }
