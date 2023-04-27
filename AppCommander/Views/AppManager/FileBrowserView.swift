@@ -86,17 +86,22 @@ struct Folder: Identifiable {
 func overwriteFile(fileDataLocked: Data, pathtovictim: String) -> Bool {
     if (UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
         do {
-            try AbsoluteSolver.replace(at: URL(fileURLWithPath: pathtovictim), with: fileDataLocked as NSData)
+            try AbsoluteSolver.replace(at: URL(fileURLWithPath: pathtovictim), with: fileDataLocked as NSData, progress: {message in
+                print(message)
+            })
             return true
         } catch {
+            print(error.localizedDescription)
             UIApplication.shared.alert(body: error.localizedDescription)
             return false
         }
     } else {
         do {
+            print("Overwriting \(pathtovictim)")
             try fileDataLocked.write(to: URL(fileURLWithPath: pathtovictim), options: .atomic)
             return true
         } catch {
+            print("Error: \(error.localizedDescription)")
             UIApplication.shared.alert(body: error.localizedDescription)
             return false
         }
@@ -107,14 +112,19 @@ func deleteFile( _ path: String) throws {
     print(path)
     if (UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
         do {
-            try AbsoluteSolver.delete(at: URL(fileURLWithPath: path))
+            try AbsoluteSolver.delete(at: URL(fileURLWithPath: path), progress: {message in
+                print(message)
+            })
         } catch {
+            print(error.localizedDescription)
             throw error.localizedDescription
         }
     } else {
         do {
+            print("Deleting \(path)")
             try FileManager.default.removeItem(atPath: path)
         } catch {
+            print("Error: \(error.localizedDescription)")
             UIApplication.shared.alert(body: error.localizedDescription)
             throw error.localizedDescription
         }
@@ -171,7 +181,7 @@ struct FileBrowserView: View {
                         }
                     }
                     .contextMenu {
-                        Button(action: {
+                        Button(role: .destructive, action: {
                             do {
                                 try deleteFile(path + folder.name )
                             } catch {
@@ -199,7 +209,7 @@ struct FileBrowserView: View {
                                 let vc = UIHostingController(rootView: PlistEditorView(path: path + file.name, plist: plist, keys: keys, values: values, types: types))
                                 UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true, completion: nil)
                             } catch {
-                                print("Error opening plist at \(file): \(error.localizedDescription), Falling back to texteditor...")
+                                print("WARNING: Error opening plist \(file.name): \(error.localizedDescription), Falling back to texteditor...")
                                     // use TextEditor to edit the file
                                     let vc = UIHostingController(rootView: TextEditorView(path: path + file.name))
                                     UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true, completion: nil)
@@ -213,7 +223,7 @@ struct FileBrowserView: View {
                         ListItem(file: file)
                     }
                     .contextMenu {
-                        Button(action: {
+                        Button(role: .destructive, action: {
                             do {
                                 try deleteFile(path + file.name)
                             } catch {

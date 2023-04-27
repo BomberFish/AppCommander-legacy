@@ -164,8 +164,14 @@ struct AppCommanderApp: App {
                                     print("Successfully escaped sandbox!")
                                 } catch {
                                     escaped = false
-                                    print("Unsandboxing error: \(error.localizedDescription)")
-                                    UIApplication.shared.choiceAlert(body: "Unsandboxing Error: \(error.localizedDescription)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: { escaped = true })
+                                    var message = ""
+                                    if error.localizedDescription == "" {
+                                        message = "Error 48454C50. Please contact BomberFish."
+                                    } else {
+                                        message = error.localizedDescription
+                                    }
+                                    print("Unsandboxing error: \(message)")
+                                    UIApplication.shared.choiceAlert(title: "Guru Meditation Error", body: "Unsandboxing Error: \(message)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: { escaped = true })
                                 }
                             }
                         }
