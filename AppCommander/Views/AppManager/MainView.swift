@@ -14,7 +14,7 @@ struct MainView: View {
     // MARK: - Literally the worst code ever. Will I fix it? No!
 
     @Binding public var allApps: [SBApp]
-    @State var apps = [SBApp(bundleIdentifier: "", name: "", bundleURL: URL(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+    @State var apps = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
     var body: some View {
         NavigationView {
             List {
@@ -112,7 +112,12 @@ struct MainView: View {
 //                if !isUnsandboxed {
 //                    isUnsandboxed = MDC.unsandbox()
 //                } else {
-                allApps = try! ApplicationManager.getApps()
+                do {
+                    allApps = try ApplicationManager.getApps()
+                } catch {
+                    apps = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+                    UIApplication.shared.alert(title: "WARNING", body: "AppCommander was unable to get installed apps. Press OK to continue in a feature-limited mode.")
+                }
                 apps = allApps
 //                }
                 #endif

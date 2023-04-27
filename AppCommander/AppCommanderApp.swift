@@ -172,7 +172,7 @@ struct AppCommanderApp: App {
                                         message = error.localizedDescription
                                     }
                                     print("Unsandboxing error: \(message)")
-                                    UIApplication.shared.choiceAlert(title: "Guru Meditation Error", body: "Unsandboxing Error: \(message)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: { escaped = true })
+                                    UIApplication.shared.choiceAlert(title: "💣 GURU MEDITATION ERROR 💣", body: "Unsandboxing Error: \(message)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: { escaped = true })
                                 }
                             }
                         }

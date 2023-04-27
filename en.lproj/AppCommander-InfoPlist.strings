@@ -1,3 +1,3 @@
 /* Privacy - Media Library Usage Description */
-"NSAppleMusicUsageDescription" = "Cấp quyền truy cập toàn bộ dự liệu. Cần thiết để ứng dụng hoạt động.";
+"NSAppleMusicUsageDescription" = "Grant full disk access. Required for app functionality.";
 

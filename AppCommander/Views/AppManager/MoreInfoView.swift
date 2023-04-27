@@ -13,8 +13,15 @@ struct MoreInfoView: View {
     @State private var appsize: UInt64 = 0
     @State private var docsize: UInt64 = 0
     @State private var datadir: String = ""
+    @State private var action: Int? = 0
     var body: some View {
         // TODO: Make this look nice
+        NavigationLink(destination: FileBrowserView(path: (sbapp.bundleURL.path) + "/", title: sbapp.bundleURL.lastPathComponent), tag: 1, selection: $action) {
+            EmptyView()
+        }
+        NavigationLink(destination: FileBrowserView(path: datadir + "/", title: sbapp.name + " Data"), tag: 2, selection: $action) {
+            EmptyView()
+        }
         List {
             Text("Name: \(sbapp.name)")
                 // TODO: 💀
@@ -31,9 +38,7 @@ struct MoreInfoView: View {
                 }
             Text("Bundle Path: \(sbapp.bundleURL.path)")
                 .contextMenu {
-                    NavigationLink(destination: FileBrowserView(path: (sbapp.bundleURL.path) + "/", title: sbapp.bundleURL.lastPathComponent), label: {
-                        Label("Open in built-in browser", systemImage: "folder")
-                    })
+                    Button(action: { self.action = 1 }, label: { Label("Open in built-in browser", systemImage: "folder.badge.gearshape") })
                     if isFilzaInstalled() {
                         Button(action: { openInFilza(path: sbapp.bundleURL.path) }, label: { Label("Open in Filza", systemImage: "arrow.up.forward.app") })
                     }
@@ -44,9 +49,7 @@ struct MoreInfoView: View {
                 }
             Text("Data directory: \(datadir)")
                 .contextMenu {
-                    NavigationLink(destination: FileBrowserView(path: (datadir) + "/", title: sbapp.name + " Data"), label: {
-                        Label("Open in built-in browser", systemImage: "folder")
-                    })
+                    Button(action: { self.action = 2 }, label: { Label("Open in built-in browser", systemImage: "folder.badge.gearshape") })
                     if isFilzaInstalled() {
                         Button(action: { openInFilza(path: datadir) }, label: { Label("Open in Filza", systemImage: "arrow.up.forward.app") })
                     }
@@ -74,7 +77,7 @@ struct MoreInfoView: View {
                 UIApplication.shared.alert(body: error.localizedDescription)
             }
         }
-        
+
         .refreshable {
             do {
                 appsize = try FileManager.default.allocatedSizeOfDirectory(at: sbapp.bundleURL)

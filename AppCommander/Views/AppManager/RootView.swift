@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @State var allApps = try! ApplicationManager.getApps()
+    @State var allApps: [SBApp] = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
 
     var body: some View {
         TabView {
@@ -30,6 +30,13 @@ struct RootView: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
+        }
+        .onAppear {
+            do {
+                allApps = try ApplicationManager.getApps()
+            } catch {
+                UIApplication.shared.alert(title: "WARNING", body: "AppCommander was unable to get installed apps. Press OK to continue in a feature-limited mode.")
+            }
         }
     }
 }

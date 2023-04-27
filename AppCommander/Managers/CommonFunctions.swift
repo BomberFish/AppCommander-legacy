@@ -124,6 +124,7 @@ func reboot() {
 
 var connection: NSXPCConnection?
 
+// 💀
 func remvoeIconCache() {
     print("removing icon cache")
     if connection == nil {

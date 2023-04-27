@@ -175,6 +175,11 @@ struct SettingsView: View {
                 
                 if debugEnabled {
                     Section {
+                        NavigationLink {
+                            FileBrowserView(path: "/", title: "Root")
+                        } label: {
+                            Label("Open file browser in /", systemImage: "folder.badge.gearshape")
+                        }
                         Toggle(isOn: $consoleEnabled, label: { Label("Enable in-app console", systemImage: "terminal") })
                             .toggleStyle(.switch)
                             .tint(.accentColor)
