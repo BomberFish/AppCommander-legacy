@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D6039E7F29E484DE002F91D7 /* DirtyCowKit in Frameworks */ = {isa = PBXBuildFile; productRef = D6039E7E29E484DE002F91D7 /* DirtyCowKit */; };
+		D6076BC229F9E96700BC3C3C /* FileBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6076BC129F9E96700BC3C3C /* FileBrowserView.swift */; };
+		D6076BC429FA0DCB00BC3C3C /* PackageCreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6076BC329FA0DCB00BC3C3C /* PackageCreditsView.swift */; };
 		D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */; };
 		D638E1A929DA02DF004CCA55 /* AVAudioPlayerNode++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */; };
 		D638E1AB29DA031E004CCA55 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1AA29DA031E004CCA55 /* PlayerClass.swift */; };
@@ -93,6 +95,8 @@
 
 /* Begin PBXFileReference section */
 		7D64731129DDAE1B00DEBFBC /* AppCommander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppCommander.entitlements; sourceTree = "<group>"; };
+		D6076BC129F9E96700BC3C3C /* FileBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserView.swift; sourceTree = "<group>"; };
+		D6076BC329FA0DCB00BC3C3C /* PackageCreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageCreditsView.swift; sourceTree = "<group>"; };
 		D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AppCommander-Info.plist"; sourceTree = "<group>"; };
 		D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
 		D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayerNode++.swift"; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 				D6D22B6529C64D180095645B /* SettingsView.swift */,
 				D6B79B0A29F2E51100E14922 /* AppIconView.swift */,
 				D6FC674829E5A28500585625 /* TranslatorsView.swift */,
+				D6076BC329FA0DCB00BC3C3C /* PackageCreditsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				D6E5528229B165400083E6A5 /* MainView.swift */,
 				D6E552C529B2BE730083E6A5 /* AppView.swift */,
 				D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */,
+				D6076BC129F9E96700BC3C3C /* FileBrowserView.swift */,
 				D65AA4C329D85FEA00C3EBE7 /* Tools */,
 				D6D55A7A29D5EDCD00DD6C4A /* Backup */,
 			);
@@ -588,6 +594,7 @@
 				D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */,
 				D6E552BE29B2A0CC0083E6A5 /* ApplicationManager.swift in Sources */,
 				D6E3FC8629CDE2F300D019D1 /* SpringBoardItem.swift in Sources */,
+				D6076BC229F9E96700BC3C3C /* FileBrowserView.swift in Sources */,
 				D638E1C229DEDD15004CCA55 /* LoadingView.swift in Sources */,
 				D65AA4C929D8613900C3EBE7 /* FileContentsView.swift in Sources */,
 				D6E3FC9929CDE6F500D019D1 /* MultiSelectPickerView.swift in Sources */,
@@ -608,6 +615,7 @@
 				D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */,
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
 				D6E552CC29B2E9F50083E6A5 /* CommonFunctions.swift in Sources */,
+				D6076BC429FA0DCB00BC3C3C /* PackageCreditsView.swift in Sources */,
 				D6E3FC8B29CDE33700D019D1 /* HomeBackupManager.swift in Sources */,
 				D638E1B129DA6630004CCA55 /* FreeloadView.swift in Sources */,
 				D674868529D7821300BCE952 /* FM++.swift in Sources */,

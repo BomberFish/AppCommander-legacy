@@ -132,14 +132,20 @@ struct SettingsView: View {
                     
                     LinkCell(imageName: "suslocation", url: "https://github.com/sourcelocation", title: "sourcelocation", contribution: "ApplicationManager, Various Code Snippets, Appabetical", circle: true)
                     LinkCell(imageName: "floppa", url: "https://github.com/Avangelista", title: "Avangelista", contribution: "Appabetical", circle: true)
-                    LinkCell(imageName: "lemon", url: "https://github.com/leminlimez", title: "LeminLimez", contribution: "Tools Grid UI", circle: true)
+                    LinkCell(imageName: "minek", url: "https://github.com/Mineek", title: "Mineek", contribution: "File Browser", circle: true)
                     LinkCell(imageName: "serena", url: "https://github.com/SerenaKit", title: "Serena", contribution: "App Backups", circle: true)
+                    LinkCell(imageName: "lemon", url: "https://github.com/leminlimez", title: "LeminLimez", contribution: "Tools Grid UI", circle: true)
                     LinkCell(imageName: "other_fish", url: "https://github.com/f1shy-dev", title: "sneakyf1shy", contribution: "Analytics, Bugfixes", circle: true)
                     LinkCell(imageName: "zhuowei", url: "https://twitter.com/zhuowei/", title: "zhuowei", contribution: "Unsandboxing, installd patch", circle: true)
                     NavigationLink {
                         TranslatorsView()
                     } label: {
                         Label("Translators", systemImage: "character.bubble")
+                    }
+                    NavigationLink {
+                        PackageCreditsView()
+                    } label: {
+                        Label("Swift Packages", systemImage: "shippingbox")
                     }
                 } header: {
                     Label("Credits", systemImage: "heart")

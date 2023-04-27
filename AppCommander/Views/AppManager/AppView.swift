@@ -37,6 +37,12 @@ struct AppView: View {
             } header: {
                 Label("Actions", systemImage: "gearshape.arrow.triangle.2.circlepath")
             }
+            
+            Section {
+                NavigationLink(destination: FileBrowserView(path: (dataDirectory?.path ?? "/var/mobile") + "/", title: sbapp.name), label: {
+                    Label("Browse app data", systemImage: "folder")
+                })
+            }
 
             Section {
                 Button(role: .destructive) {
