@@ -19,6 +19,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
+                Section(header: Label("AppCommander \(appVersion)", systemImage: "info.circle").textCase(.none)) {}
                 Section {
                     NavigationLink {
                         AppIconView()
@@ -150,8 +151,6 @@ struct SettingsView: View {
                 } header: {
                     Label("Credits", systemImage: "heart")
                 }
-
-                Section(header: Label("AppCommander \(appVersion)\nMade with ❤️ by BomberFish", systemImage: "info.circle").textCase(.none)) {}
                 
                 Section {
                     Toggle(isOn: $debugEnabled, label: { Label("Debug Mode", systemImage: "ladybug") })
