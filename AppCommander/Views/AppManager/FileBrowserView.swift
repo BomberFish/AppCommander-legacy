@@ -161,6 +161,7 @@ struct ListItem: View {
 
 struct FolderItem: View {
     var folder: Folder
+    var items: Int = 0
     var body: some View {
         HStack {
             Image(systemName: "folder")
@@ -173,8 +174,23 @@ struct FolderItem: View {
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(folder.contents.count) files")
-                    .font(.subheadline)
+                if items == 0 {
+                    if folder.contents.count == 1 {
+                        Text("1 file")
+                            .font(.subheadline)
+                    } else if folder.contents.count > 1 {
+                        Text("\(folder.contents.count) files")
+                            .font(.subheadline)
+                    }
+                } else {
+                    if items == 1 {
+                        Text("1 file")
+                            .font(.subheadline)
+                    } else if items > 1 {
+                        Text("\(items) files")
+                            .font(.subheadline)
+                    }
+                }
                 Text(folder.size)
                     .font(.subheadline)
             }
@@ -191,12 +207,20 @@ struct FileBrowserView: View {
     @State var empty: Bool = false
     @State var title: String = ""
     @State var skipped: Int = 0
+    @State var count = 0
 
     var body: some View {
         List {
             ForEach(folders, id: \.id) { folder in
                 NavigationLink(destination: FileBrowserView(path: path + folder.name + "/", title: folder.name)) {
-                    FolderItem(folder: folder)
+                    FolderItem(folder: folder, items: 0)
+                }
+                .onAppear {
+                    do {
+                        count = try FileManager.default.contentsOfDirectory(atPath: path + folder.name).count
+                    } catch {
+                        count = 0
+                    }
                 }
                 .contextMenu {
                     Button(role: .destructive, action: {
