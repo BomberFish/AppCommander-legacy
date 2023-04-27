@@ -292,6 +292,12 @@ struct FileBrowserView: View {
                         Text("Enter Direct Path")
                     }
                 }
+                
+                if skipped > 1 {
+                    Section(header: Label("\(skipped) files skipped", systemImage: "exclamationmark.triangle").textCase(.none)) {}
+                } else if skipped == 1 {
+                    Section(header: Label("1 file skipped", systemImage: "exclamationmark.triangle").textCase(.none)) {}
+                }
             }
             .onAppear(perform: {
                 // clear the arrays
