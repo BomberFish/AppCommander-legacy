@@ -294,9 +294,9 @@ struct FileBrowserView: View {
                 }
                 
                 if skipped > 1 {
-                    Section(header: Label("\(skipped) files skipped", systemImage: "exclamationmark.triangle").textCase(.none)) {}
+                    Section(header: Label("\(skipped) files skipped due to errors.", systemImage: "exclamationmark.triangle").textCase(.none)) {}
                 } else if skipped == 1 {
-                    Section(header: Label("1 file skipped", systemImage: "exclamationmark.triangle").textCase(.none)) {}
+                    Section(header: Label("1 file skipped due to errors.", systemImage: "exclamationmark.triangle").textCase(.none)) {}
                 }
             }
             .onAppear(perform: {
