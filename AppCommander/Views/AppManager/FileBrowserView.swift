@@ -5,9 +5,9 @@
 //  Created by Mineek on 28/12/2022.
 //
 
-import SwiftUI
 import AbsoluteSolver
 import MacDirtyCow
+import SwiftUI
 
 // A elegant file manager for CVE-2022-446689
 
@@ -23,12 +23,13 @@ struct File: Identifiable {
 struct Folder: Identifiable {
     var id = UUID()
     var name: String
+    var size: String
     var contents: [File]
 }
 
 // the main magic: the CVE
 // based on: https://github.com/zhuowei/WDBFontOverwrite/blob/main/WDBFontOverwrite/OverwriteFontImpl.swift#L34
-//func overwriteFile(fileDataLocked: Data, pathtovictim: String) -> Bool {
+// func overwriteFile(fileDataLocked: Data, pathtovictim: String) -> Bool {
 //  var fileData = fileDataLocked
 //  let fd = open(pathtovictim, O_RDONLY | O_CLOEXEC)
 //  NSLog("Path to victim: \(pathtovictim)")
@@ -81,12 +82,12 @@ struct Folder: Identifiable {
 //  print(Date())
 //  print("successfully overwrote everything")
 //  return true
-//}
+// }
 
 func overwriteFile(fileDataLocked: Data, pathtovictim: String) -> Bool {
-    if (UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
+    if UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled") {
         do {
-            try AbsoluteSolver.replace(at: URL(fileURLWithPath: pathtovictim), with: fileDataLocked as NSData, progress: {message in
+            try AbsoluteSolver.replace(at: URL(fileURLWithPath: pathtovictim), with: fileDataLocked as NSData, progress: { message in
                 print(message)
             })
             return true
@@ -108,11 +109,11 @@ func overwriteFile(fileDataLocked: Data, pathtovictim: String) -> Bool {
     }
 }
 
-func deleteFile( _ path: String) throws {
+func deleteFile(_ path: String) throws {
     print(path)
-    if (UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
+    if UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled") {
         do {
-            try AbsoluteSolver.delete(at: URL(fileURLWithPath: path), progress: {message in
+            try AbsoluteSolver.delete(at: URL(fileURLWithPath: path), progress: { message in
                 print(message)
             })
         } catch {
@@ -138,8 +139,8 @@ struct ListItem: View {
     var body: some View {
         HStack {
             Image(systemName: "doc")
-                //.resizable()
-                //.frame(width: 20, height: 20)
+                // .resizable()
+                // .frame(width: 20, height: 20)
                 .font(.title3)
             VStack(alignment: .leading) {
                 Text(file.name)
@@ -158,6 +159,29 @@ struct ListItem: View {
     }
 }
 
+struct FolderItem: View {
+    var folder: Folder
+    var body: some View {
+        HStack {
+            Image(systemName: "folder")
+                // .resizable()
+                // .frame(width: 20, height: 20)
+                .font(.title3)
+            VStack(alignment: .leading) {
+                Text(folder.name)
+                    .font(.headline)
+            }
+            Spacer()
+            VStack(alignment: .trailing) {
+                Text("\(folder.contents.count) files")
+                    .font(.subheadline)
+                Text(folder.size)
+                    .font(.subheadline)
+            }
+        }
+    }
+}
+
 // FileManager ContentView, begin in path "/"
 // make sure the filemanagers don't overlap
 struct FileBrowserView: View {
@@ -167,174 +191,171 @@ struct FileBrowserView: View {
     @State var empty: Bool = false
     @State var title: String = ""
     @State var skipped: Int = 0
-    
+
     var body: some View {
-            List {
-                ForEach(folders, id: \.id) { folder in
-                    NavigationLink(destination: FileBrowserView(path: path + folder.name + "/", title: folder.name)) {
-                        HStack {
-                            Image(systemName: "folder")
-//                                .resizable()
-//                                .frame(width: 20, height: 20)
-                                .font(.title3)
-                            Text(folder.name)
-                                .font(.headline)
-                        }
-                    }
-                    .contextMenu {
-                        Button(role: .destructive, action: {
-                            do {
-                                try deleteFile(path + folder.name )
-                            } catch {
-                                UIApplication.shared.alert(body: error.localizedDescription)
-                            }
-                        }, label: {Label("Delete", systemImage: "trash")})
-                    }
+        List {
+            ForEach(folders, id: \.id) { folder in
+                NavigationLink(destination: FileBrowserView(path: path + folder.name + "/", title: folder.name)) {
+                    FolderItem(folder: folder)
                 }
-                ForEach(files, id: \.id) { file in
-                    Button(action: {
-                        // if the file is a plist, open the plist editor
-                        if file.type == "plist" || file.type == "strings" {
-                            let fileManager = FileManager.default
-                            let data = fileManager.contents(atPath: path + file.name)
-                            do {
-                                guard let plist = try PropertyListSerialization.propertyList(from: data!, options: [], format: nil) as? [String : Any] else { throw "Could not serialize plist" }
-                                let keys = plist.keys.sorted()
-                                var values: [String] = []
-                                var types: [String] = []
-                                for key in keys {
-                                    let value = plist[key]!
-                                    values.append("\(value)")
-                                    types.append("\(type(of: value))")
-                                }
-                                let vc = UIHostingController(rootView: PlistEditorView(path: path + file.name, plist: plist, keys: keys, values: values, types: types))
-                                UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true, completion: nil)
-                            } catch {
-                                print("WARNING: Error opening plist \(file.name): \(error.localizedDescription), Falling back to texteditor...")
-                                    // use TextEditor to edit the file
-                                    let vc = UIHostingController(rootView: TextEditorView(path: path + file.name))
-                                    UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true, completion: nil)
+                .contextMenu {
+                    Button(role: .destructive, action: {
+                        do {
+                            try deleteFile(path + folder.name)
+                        } catch {
+                            UIApplication.shared.alert(body: error.localizedDescription)
+                        }
+                    }, label: { Label("Delete", systemImage: "trash") })
+                }
+            }
+            ForEach(files, id: \.id) { file in
+                Button(action: {
+                    // if the file is a plist, open the plist editor
+                    if file.type == "plist" || file.type == "strings" {
+                        let fileManager = FileManager.default
+                        let data = fileManager.contents(atPath: path + file.name)
+                        do {
+                            guard let plist = try PropertyListSerialization.propertyList(from: data!, options: [], format: nil) as? [String: Any] else { throw "Could not serialize plist" }
+                            let keys = plist.keys.sorted()
+                            var values: [String] = []
+                            var types: [String] = []
+                            for key in keys {
+                                let value = plist[key]!
+                                values.append("\(value)")
+                                types.append("\(type(of: value))")
                             }
-                        } else {
+                            let vc = UIHostingController(rootView: PlistEditorView(path: path + file.name, plist: plist, keys: keys, values: values, types: types))
+                            UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true, completion: nil)
+                        } catch {
+                            print("WARNING: Error opening plist \(file.name): \(error.localizedDescription), Falling back to texteditor...")
                             // use TextEditor to edit the file
                             let vc = UIHostingController(rootView: TextEditorView(path: path + file.name))
                             UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true, completion: nil)
                         }
-                    }) {
-                        ListItem(file: file)
+                    } else {
+                        // use TextEditor to edit the file
+                        let vc = UIHostingController(rootView: TextEditorView(path: path + file.name))
+                        UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true, completion: nil)
                     }
-                    .contextMenu {
-                        Button(role: .destructive, action: {
-                            do {
-                                try deleteFile(path + file.name)
-                            } catch {
-                                UIApplication.shared.alert(body: error.localizedDescription)
-                            }
-                        }, label: {Label("Delete", systemImage: "trash")})
-                    }
+                }) {
+                    ListItem(file: file)
                 }
-                
-                .navigationTitle(title)
-                if empty {
-                    Text("Folder either is empty or does not have read access.")
-                    Text("If you know the direct path to the file you are trying to access, please enter it here.")
-                    Button(action: {
-                        // ask user for direct path to FOLDER
-                        let alert = UIAlertController(title: "Enter Direct Path", message: "Enter the direct path to the folder you want to access.", preferredStyle: .alert)
-                        alert.addTextField { (textField) in
-                            textField.text = path
+                .contextMenu {
+                    Button(role: .destructive, action: {
+                        do {
+                            try deleteFile(path + file.name)
+                        } catch {
+                            UIApplication.shared.alert(body: error.localizedDescription)
                         }
-                        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                        alert.addAction(UIAlertAction(title: "Enter", style: .default, handler: { (_) in
-                            let text = alert.textFields![0].text!
-                            if text.last != "/" {
-                                path = text + "/"
-                            } else {
-                                path = text
-                            }
-                            // navigate to the new path
-                            folders = []
-                            files = []
-                            let fileManager = FileManager.default
-                            let enumerator = fileManager.enumerator(atPath: path)
-                            while let element = enumerator?.nextObject() as? String {
-                                // only do the top level files and folders
-                                if element.contains("/") {
-                                    continue
-                                }
-                                do {
-                                    let attrs = try fileManager.attributesOfItem(atPath: path + element)
-                                    let type = attrs[.type] as! FileAttributeType
-                                    if type == .typeDirectory {
-                                        folders.append(Folder(name: element, contents: []))
-                                    } else if type == .typeRegular {
-                                        let size = attrs[.size] as! UInt64
-                                        let date = attrs[.modificationDate] as! Date
-                                        let dateFormatter = DateFormatter()
-                                        dateFormatter.dateFormat = "MMM dd, yyyy"
-                                        let dateString = dateFormatter.string(from: date)
-                                        let sizeString = ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
-                                        let fileExtension = element.split(separator: ".").last!
-                                        files.append(File(name: element, type: "\(fileExtension)", size: sizeString, date: dateString))
-                                    }
-                                } catch {
-                                    skipped += 1
-                                }
-                            }
-                            if folders.count == 0 && files.count == 0 {
-                                empty = true
-                            } else {
-                                empty = false
-                            }
-                        }))
-                        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
-                    }) {
-                        Text("Enter Direct Path")
-                    }
-                }
-                
-                if skipped > 1 {
-                    Section(header: Label("\(skipped) files skipped due to errors.", systemImage: "exclamationmark.triangle").textCase(.none)) {}
-                } else if skipped == 1 {
-                    Section(header: Label("1 file skipped due to errors.", systemImage: "exclamationmark.triangle").textCase(.none)) {}
+                    }, label: { Label("Delete", systemImage: "trash") })
                 }
             }
-            .onAppear(perform: {
-                // clear the arrays
-                folders = []
-                files = []
-                let fileManager = FileManager.default
-                let enumerator = fileManager.enumerator(atPath: path)
-                while let element = enumerator?.nextObject() as? String {
-                    // only do the top level files and folders
-                    if element.contains("/") {
-                        continue
+
+            .navigationTitle(title)
+            if empty {
+                Text("Folder either is empty or does not have read access.")
+                Text("If you know the direct path to the file you are trying to access, please enter it here.")
+                Button(action: {
+                    // ask user for direct path to FOLDER
+                    let alert = UIAlertController(title: "Enter Direct Path", message: "Enter the direct path to the folder you want to access.", preferredStyle: .alert)
+                    alert.addTextField { textField in
+                        textField.text = path
                     }
-                    do {
-                        let attrs = try fileManager.attributesOfItem(atPath: path + element)
-                        let type = attrs[.type] as! FileAttributeType
-                        if type == .typeDirectory {
-                            folders.append(Folder(name: element, contents: []))
-                        } else if type == .typeRegular {
-                            let size = attrs[.size] as! UInt64
-                            let date = attrs[.modificationDate] as! Date
-                            let formatter = DateFormatter()
-                            formatter.dateStyle = .short
-                            formatter.timeStyle = .short
-                            let dateString = formatter.string(from: date)
-                            var sizeString = ""
-                            sizeString = ByteCountFormatter().string(fromByteCount: Int64(size))
-                            files.append(File(name: element, type: element.components(separatedBy: ".").last!, size: sizeString, date: dateString))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Enter", style: .default, handler: { _ in
+                        let text = alert.textFields![0].text!
+                        if text.last != "/" {
+                            path = text + "/"
+                        } else {
+                            path = text
                         }
-                    } catch {
-                        skipped += 1
+                        // navigate to the new path
+                        folders = []
+                        files = []
+                        let fileManager = FileManager.default
+                        let enumerator = fileManager.enumerator(atPath: path)
+                        while let element = enumerator?.nextObject() as? String {
+                            // only do the top level files and folders
+                            if element.contains("/") {
+                                continue
+                            }
+                            do {
+                                let attrs = try fileManager.attributesOfItem(atPath: path + element)
+                                let type = attrs[.type] as! FileAttributeType
+                                if type == .typeDirectory {
+                                    let size = try fileManager.allocatedSizeOfDirectory(at: URL(fileURLWithPath: path + element))
+                                    let sizeString = ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
+                                    folders.append(Folder(name: element, size: sizeString, contents: []))
+                                } else if type == .typeRegular {
+                                    let size = attrs[.size] as! UInt64
+                                    let date = attrs[.modificationDate] as! Date
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "MMM dd, yyyy"
+                                    let dateString = dateFormatter.string(from: date)
+                                    let sizeString = ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
+                                    let fileExtension = element.split(separator: ".").last!
+                                    files.append(File(name: element, type: "\(fileExtension)", size: sizeString, date: dateString))
+                                }
+                            } catch {
+                                skipped += 1
+                            }
+                        }
+                        if folders.count == 0, files.count == 0 {
+                            empty = true
+                        } else {
+                            empty = false
+                        }
+                    }))
+                    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                }) {
+                    Text("Enter Direct Path")
+                }
+            }
+
+            if skipped > 1 {
+                Section(header: Label("\(skipped) files skipped due to errors.", systemImage: "exclamationmark.triangle").textCase(.none)) {}
+            } else if skipped == 1 {
+                Section(header: Label("1 file skipped due to errors.", systemImage: "exclamationmark.triangle").textCase(.none)) {}
+            }
+        }
+        .onAppear(perform: {
+            // clear the arrays
+            folders = []
+            files = []
+            let fileManager = FileManager.default
+            let enumerator = fileManager.enumerator(atPath: path)
+            while let element = enumerator?.nextObject() as? String {
+                // only do the top level files and folders
+                if element.contains("/") {
+                    continue
+                }
+                do {
+                    let attrs = try fileManager.attributesOfItem(atPath: path + element)
+                    let type = attrs[.type] as! FileAttributeType
+                    if type == .typeDirectory {
+                        let size = try fileManager.allocatedSizeOfDirectory(at: URL(fileURLWithPath: path + element))
+                        let sizeString = ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
+                        folders.append(Folder(name: element, size: sizeString, contents: []))
+                    } else if type == .typeRegular {
+                        let size = attrs[.size] as! UInt64
+                        let date = attrs[.modificationDate] as! Date
+                        let formatter = DateFormatter()
+                        formatter.dateStyle = .short
+                        formatter.timeStyle = .short
+                        let dateString = formatter.string(from: date)
+                        var sizeString = ""
+                        sizeString = ByteCountFormatter().string(fromByteCount: Int64(size))
+                        files.append(File(name: element, type: element.components(separatedBy: ".").last!, size: sizeString, date: dateString))
                     }
+                } catch {
+                    skipped += 1
                 }
-                // if they're empty, add a "no files" message in gray
-                if folders.isEmpty && files.isEmpty {
-                    empty = true
-                }
-            })
+            }
+            // if they're empty, add a "no files" message in gray
+            if folders.isEmpty, files.isEmpty {
+                empty = true
+            }
+        })
     }
 }
 
@@ -355,7 +376,6 @@ struct PlistEditorView: View {
     @State var deleteIndex: Int = 0
     var body: some View {
         VStack {
-            
             HStack {
                 Button(action: {
                     showAdd = true
@@ -382,8 +402,8 @@ struct PlistEditorView: View {
                     }
                     let data = try! PropertyListSerialization.data(fromPropertyList: plist, format: .xml, options: 0)
                     // use the CVE to write the file
-                   // overwriteFile(fileDataLocked: data, pathtovictim: path)
-                    if (overwriteFile(fileDataLocked: data, pathtovictim: path)) {
+                    // overwriteFile(fileDataLocked: data, pathtovictim: path)
+                    if overwriteFile(fileDataLocked: data, pathtovictim: path) {
                         // alert the user that the file was saved
                         let alert = UIAlertController(title: "Success", message: "The file was saved successfully.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -392,7 +412,7 @@ struct PlistEditorView: View {
                         // alert the user that the file was not saved
                         let alert = UIAlertController(title: "Error", message: "The file was not saved successfully.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        //UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                        // UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
                     }
                 }) {
                     Image(systemName: "square.and.arrow.down")
@@ -450,7 +470,7 @@ struct PlistEditorView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         Button(action: {
-                            if newKey != "" && newValue != "" {
+                            if newKey != "", newValue != "" {
                                 keys.append(newKey)
                                 values.append(newValue)
                                 types.append(newType)
@@ -503,7 +523,7 @@ struct PlistEditorView: View {
         .onAppear {
             let data = try! Data(contentsOf: URL(fileURLWithPath: path))
             do {
-                guard let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String : Any] else { throw "Could not serialize plist" }
+                guard let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any] else { throw "Could not serialize plist" }
                 for (key, value) in plist {
                     keys.append(key)
                     if value is String {
@@ -537,31 +557,30 @@ struct TextEditorView: View {
     @State var text: String = ""
     var body: some View {
         VStack {
-            
-        HStack {
-            Spacer()
-            Button(action: {
-                // save the file
-                let data = text.data(using: .utf8)!
-                // use the CVE to write the file
-                //overwriteFile(fileDataLocked: data, pathtovictim: path)
-                if (overwriteFile(fileDataLocked: data, pathtovictim: path)) {
-                    // alert the user that the file was saved
-                    let alert = UIAlertController(title: "Success", message: "The file was saved successfully.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
-                } else {
-                    // alert the user that the file was not saved
-                    let alert = UIAlertController(title: "Error", message: "The file was not saved successfully.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    //UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+            HStack {
+                Spacer()
+                Button(action: {
+                    // save the file
+                    let data = text.data(using: .utf8)!
+                    // use the CVE to write the file
+                    // overwriteFile(fileDataLocked: data, pathtovictim: path)
+                    if overwriteFile(fileDataLocked: data, pathtovictim: path) {
+                        // alert the user that the file was saved
+                        let alert = UIAlertController(title: "Success", message: "The file was saved successfully.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                    } else {
+                        // alert the user that the file was not saved
+                        let alert = UIAlertController(title: "Error", message: "The file was not saved successfully.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        // UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                    }
+                }) {
+                    Image(systemName: "square.and.arrow.down")
+                        .font(.title2)
+                        .padding()
                 }
-            }) {
-                Image(systemName: "square.and.arrow.down")
-                    .font(.title2)
-                    .padding()
             }
-        }
             TextEditor(text: $text)
                 .font(.system(.subheadline, design: .monospaced))
                 .padding()
@@ -580,17 +599,17 @@ struct TextEditorView: View {
     }
 }
 
-//struct ContentView: View {
+// struct ContentView: View {
 //    @State var path: String = "/"
 //    var body: some View {
 //        NavigationView {
 //            FileManagerView(path: path)
 //        }
 //    }
-//}
+// }
 
-//struct ContentView_Previews: PreviewProvider {
+// struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ContentView()
 //    }
-//}
+// }
