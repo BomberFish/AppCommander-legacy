@@ -166,7 +166,8 @@ struct FileBrowserView: View {
     @State var files: [File] = []
     @State var empty: Bool = false
     @State var title: String = ""
-
+    @State var skipped: Int = 0
+    
     var body: some View {
             List {
                 ForEach(folders, id: \.id) { folder in
@@ -261,19 +262,23 @@ struct FileBrowserView: View {
                                 if element.contains("/") {
                                     continue
                                 }
-                                let attrs = try! fileManager.attributesOfItem(atPath: path + element)
-                                let type = attrs[.type] as! FileAttributeType
-                                if type == .typeDirectory {
-                                    folders.append(Folder(name: element, contents: []))
-                                } else if type == .typeRegular {
-                                    let size = attrs[.size] as! UInt64
-                                    let date = attrs[.modificationDate] as! Date
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "MMM dd, yyyy"
-                                    let dateString = dateFormatter.string(from: date)
-                                    let sizeString = ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
-                                    let fileExtension = element.split(separator: ".").last!
-                                    files.append(File(name: element, type: "\(fileExtension)", size: sizeString, date: dateString))
+                                do {
+                                    let attrs = try fileManager.attributesOfItem(atPath: path + element)
+                                    let type = attrs[.type] as! FileAttributeType
+                                    if type == .typeDirectory {
+                                        folders.append(Folder(name: element, contents: []))
+                                    } else if type == .typeRegular {
+                                        let size = attrs[.size] as! UInt64
+                                        let date = attrs[.modificationDate] as! Date
+                                        let dateFormatter = DateFormatter()
+                                        dateFormatter.dateFormat = "MMM dd, yyyy"
+                                        let dateString = dateFormatter.string(from: date)
+                                        let sizeString = ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
+                                        let fileExtension = element.split(separator: ".").last!
+                                        files.append(File(name: element, type: "\(fileExtension)", size: sizeString, date: dateString))
+                                    }
+                                } catch {
+                                    skipped += 1
                                 }
                             }
                             if folders.count == 0 && files.count == 0 {
@@ -299,28 +304,33 @@ struct FileBrowserView: View {
                     if element.contains("/") {
                         continue
                     }
-                    let attrs = try! fileManager.attributesOfItem(atPath: path + element)
-                    let type = attrs[.type] as! FileAttributeType
-                    if type == .typeDirectory {
-                        folders.append(Folder(name: element, contents: []))
-                    } else if type == .typeRegular {
-                        let size = attrs[.size] as! UInt64
-                        let date = attrs[.modificationDate] as! Date
-                        let formatter = DateFormatter()
-                        formatter.dateStyle = .short
-                        formatter.timeStyle = .short
-                        let dateString = formatter.string(from: date)
-                        var sizeString = ""
-                        if size < 1024 {
-                            sizeString = "\(size) B"
-                        } else if size < 1024 * 1024 {
-                            sizeString = "\(size / 1024) KB"
-                        } else if size < 1024 * 1024 * 1024 {
-                            sizeString = "\(size / 1024 / 1024) MB"
-                        } else {
-                            sizeString = "\(size / 1024 / 1024 / 1024) GB"
+                    do {
+                        let attrs = try fileManager.attributesOfItem(atPath: path + element)
+                        let type = attrs[.type] as! FileAttributeType
+                        if type == .typeDirectory {
+                            folders.append(Folder(name: element, contents: []))
+                        } else if type == .typeRegular {
+                            let size = attrs[.size] as! UInt64
+                            let date = attrs[.modificationDate] as! Date
+                            let formatter = DateFormatter()
+                            formatter.dateStyle = .short
+                            formatter.timeStyle = .short
+                            let dateString = formatter.string(from: date)
+                            var sizeString = ""
+                            // TODO: yikes.
+                            if size < 1024 {
+                                sizeString = "\(size) B"
+                            } else if size < 1024 * 1024 {
+                                sizeString = "\(size / 1024) KB"
+                            } else if size < 1024 * 1024 * 1024 {
+                                sizeString = "\(size / 1024 / 1024) MB"
+                            } else {
+                                sizeString = "\(size / 1024 / 1024 / 1024) GB"
+                            }
+                            files.append(File(name: element, type: element.components(separatedBy: ".").last!, size: sizeString, date: dateString))
                         }
-                        files.append(File(name: element, type: element.components(separatedBy: ".").last!, size: sizeString, date: dateString))
+                    } catch {
+                        skipped += 1
                     }
                 }
                 // if they're empty, add a "no files" message in gray
@@ -495,25 +505,30 @@ struct PlistEditorView: View {
         }
         .onAppear {
             let data = try! Data(contentsOf: URL(fileURLWithPath: path))
-            plist = try! PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! [String: Any]
-            for (key, value) in plist {
-                keys.append(key)
-                if value is String {
-                    values.append(value as! String)
-                    types.append("String")
-                } else if value is Int {
-                    values.append(String(value as! Int))
-                    types.append("Integer")
-                } else if value is Bool {
-                    values.append(String(value as! Bool))
-                    types.append("Boolean")
-                } else if value is Float {
-                    values.append(String(value as! Float))
-                    types.append("Float")
-                } else if value is Double {
-                    values.append(String(value as! Double))
-                    types.append("Double")
+            do {
+                guard let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String : Any] else { throw "Could not serialize plist" }
+                for (key, value) in plist {
+                    keys.append(key)
+                    if value is String {
+                        values.append(value as! String)
+                        types.append("String")
+                    } else if value is Int {
+                        values.append(String(value as! Int))
+                        types.append("Integer")
+                    } else if value is Bool {
+                        values.append(String(value as! Bool))
+                        types.append("Boolean")
+                    } else if value is Float {
+                        values.append(String(value as! Float))
+                        types.append("Float")
+                    } else if value is Double {
+                        values.append(String(value as! Double))
+                        types.append("Double")
+                    }
                 }
+            } catch {
+                print(error.localizedDescription)
+                UIApplication.shared.alert(body: "Error opening plist: \(error.localizedDescription)")
             }
         }
     }
