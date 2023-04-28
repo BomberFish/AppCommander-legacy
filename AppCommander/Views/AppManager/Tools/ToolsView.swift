@@ -24,18 +24,18 @@ struct ToolsView: View {
                     LazyVGrid(columns: gridItemLayout, alignment: .center) {
                         NavigationLink(destination: { WhitelistView() }, label: {
                             HStack(alignment: .bottom) {
-                                VStack(alignment: .leading) {
+                                VStack/*(alignment: .leading)*/ {
                                     Image(systemName: "app.badge.checkmark")
                                         .imageScale(.large)
                                         .font(.title2)
-                                    Text("Whitelist")
-                                        .multilineTextAlignment(.leading)
+                                    Text("\nWhitelist")
+                                        .multilineTextAlignment(.center)
                                 }
                                 
-                                .font(.title3)
+                                .font(.headline)
                                 .foregroundColor(Color(UIColor.label))
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color(UIColor.secondaryLabel))
+//                                Image(systemName: "chevron.right")
+//                                    .foregroundColor(Color(UIColor.secondaryLabel))
                             }
                             .padding()
                             .frame(width: 180, height: 150)
@@ -45,18 +45,18 @@ struct ToolsView: View {
                         .cornerRadius(16)
                         NavigationLink(destination: { FreeloadView() }, label: {
                             HStack(alignment: .bottom) {
-                                VStack(alignment: .leading) {
+                                VStack/*(alignment: .leading)*/ {
                                     Image(systemName: "apps.iphone.badge.plus")
                                         .imageScale(.large)
                                         .font(.title2)
-                                    Text("Remove three-app limit")
-                                        .multilineTextAlignment(.leading)
+                                    Text("\nRemove three-app limit")
+                                        .multilineTextAlignment(.center)
                                 }
                                 
-                                .font(.title3)
+                                .font(.headline)
                                 .foregroundColor(Color(UIColor.label))
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color(UIColor.secondaryLabel))
+//                                Image(systemName: "chevron.right")
+//                                    .foregroundColor(Color(UIColor.secondaryLabel))
                             }
                             .padding()
                             .frame(width: 180, height: 150)
@@ -79,14 +79,14 @@ struct ToolsView: View {
                             })
                         }, label: {
                             HStack(alignment: .bottom) {
-                                VStack(alignment: .leading) {
+                                VStack/*(alignment: .leading)*/ {
                                     Image(systemName: "gearshape.arrow.triangle.2.circlepath")
                                         .imageScale(.large)
                                         .font(.title2)
-                                    Text("Rebuild Icon Cache")
-                                        .multilineTextAlignment(.leading)
+                                    Text("\nRebuild Icon Cache")
+                                        .multilineTextAlignment(.center)
                                 }
-                                .font(.title3)
+                                .font(.headline)
                                 .foregroundColor(Color(UIColor.label))
 //                                Image(systemName: "chevron.right")
 //                                    .foregroundColor(Color(UIColor.secondaryLabel))
@@ -101,18 +101,18 @@ struct ToolsView: View {
                         if debugEnabled {
                             NavigationLink(destination: { ReplaceTestingView() }, label: {
                                 HStack(alignment: .bottom) {
-                                    VStack(alignment: .leading) {
+                                    VStack/*(alignment: .leading)*/ {
                                         Image(systemName: "hexagon")
                                             .imageScale(.large)
                                             .font(.title2)
-                                        Text("AbsoluteSolver Testing")
-                                            .multilineTextAlignment(.leading)
+                                        Text("\nAbsoluteSolver Testing")
+                                            .multilineTextAlignment(.center)
                                     }
                                     
-                                    .font(.title3)
+                                    .font(.headline)
                                     .foregroundColor(Color(UIColor.label))
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(Color(UIColor.secondaryLabel))
+//                                    Image(systemName: "chevron.right")
+//                                        .foregroundColor(Color(UIColor.secondaryLabel))
                                 }
                                 .padding()
                                 .frame(width: 180, height: 150)
@@ -122,17 +122,17 @@ struct ToolsView: View {
                             .cornerRadius(16)
                             NavigationLink(destination: { AppleLoopsMixView() }, label: {
                                 HStack(alignment: .bottom) {
-                                    VStack(alignment: .leading) {
+                                    VStack/*(alignment: .leading)*/ {
                                         Image(systemName: "apple.logo")
                                             .imageScale(.large)
                                             .font(.title2)
-                                        Text("Apple Loops Mix")
-                                            .multilineTextAlignment(.leading)
+                                        Text("\nApple Loops Mix")
+                                            .multilineTextAlignment(.center)
                                     }
-                                    .font(.title3)
+                                    .font(.headline)
                                     .foregroundColor(Color(UIColor.label))
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(Color(UIColor.secondaryLabel))
+//                                    Image(systemName: "chevron.right")
+//                                        .foregroundColor(Color(UIColor.secondaryLabel))
                                 }
                                 
                                 .padding()
