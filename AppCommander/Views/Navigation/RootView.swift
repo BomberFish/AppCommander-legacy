@@ -31,6 +31,7 @@ struct RootView: View {
                     Label("Settings", systemImage: "gear")
                 }
         }
+        .background(GradientView())
         .onAppear {
             do {
                 allApps = try ApplicationManager.getApps()

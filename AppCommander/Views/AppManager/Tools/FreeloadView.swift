@@ -7,13 +7,14 @@
 
 import SwiftUI
 import MacDirtyCow
-import FluidGradient
 
 struct FreeloadView: View {
     @State var inProgress = false
     @State var success = false
     var body: some View {
         ZStack {
+            GradientView()
+                .edgesIgnoringSafeArea(.all)
             VStack {
                 Button(action: {
                     inProgress = true

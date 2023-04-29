@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FluidGradient
 
 struct ToolsView: View {
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
@@ -14,11 +13,7 @@ struct ToolsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                FluidGradient(blobs: [.accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor],
-                              highlights: [.blue, .purple, .blue, .purple],
-                              speed: 0.25,
-                              blur: 0)
-                    .background(.quaternary)
+                GradientView()
                     .edgesIgnoringSafeArea(.all)
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, alignment: .center) {
@@ -145,7 +140,7 @@ struct ToolsView: View {
                     }
                     .padding(6)
                 }
-                .background(.thinMaterial)
+                //.background(.thinMaterial)
                 .navigationTitle("Tools")
             }
         }

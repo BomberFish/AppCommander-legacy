@@ -5,7 +5,6 @@
 //  Created by Hariz Shirazi on 2023-04-21.
 //
 
-import FluidGradient
 import SwiftUI
 
 struct AppIconView: View {
@@ -17,11 +16,7 @@ struct AppIconView: View {
     @State var isIcon5 = false
     var body: some View {
         ZStack {
-            FluidGradient(blobs: [.accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor],
-                          highlights: [.blue, .purple, .blue, .purple],
-                          speed: 0.25,
-                          blur: 0)
-                .background(.quaternary)
+            GradientView()
                 .edgesIgnoringSafeArea(.all)
             ScrollView {
                 LazyVGrid(columns: gridItemLayout, alignment: .center) {
