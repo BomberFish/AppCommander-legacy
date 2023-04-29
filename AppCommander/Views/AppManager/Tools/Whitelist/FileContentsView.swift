@@ -35,6 +35,7 @@ struct FileContentsView: View {
                 } header: {
                     Label("Blacklist", systemImage: "xmark.seal")
                 }
+                .navigationTitle("Blacklist File Contents")
             }
             
             if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {

@@ -7,13 +7,14 @@
 
 import SwiftUI
 import MacDirtyCow
+import FluidGradient
 
 struct FreeloadView: View {
     @State var inProgress = false
     @State var success = false
     var body: some View {
-        List {
-            Section {
+        ZStack {
+            VStack {
                 Button(action: {
                     inProgress = true
                     Haptic.shared.play(.medium)
@@ -32,8 +33,11 @@ struct FreeloadView: View {
                     }
                 }, label: {
                     Label("Apply", systemImage: "checkmark.seal")
+                        .padding(10)
                 })
+                .buttonStyle(.borderedProminent)
             }
+            .background(.thinMaterial, ignoresSafeAreaEdges: .all)
         }
         .disabled(inProgress)
         .navigationTitle("Remove three-app limit")

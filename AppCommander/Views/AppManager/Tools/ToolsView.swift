@@ -14,11 +14,11 @@ struct ToolsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                FluidGradient(blobs: [.accentColor, .accentColor, .accentColor, .accentColor, .accentColor],
+                FluidGradient(blobs: [.accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor],
                               highlights: [.blue, .purple, .blue, .purple],
                               speed: 0.25,
                               blur: 0)
-                    .background(.ultraThickMaterial)
+                    .background(.quaternary)
                     .edgesIgnoringSafeArea(.all)
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, alignment: .center) {
