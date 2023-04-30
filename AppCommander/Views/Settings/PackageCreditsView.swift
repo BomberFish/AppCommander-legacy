@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PackageCreditsView: View {
+    
     fileprivate var packages: [Package] = [
         Package(name: "BomberFish/AbsoluteSolver-iOS", link: "https://github.com/BomberFish/AbsoluteSolver-iOS"),
         Package(name: "BomberFish/DirtyCowKit", link: "https://github.com/BomberFish/DirtyCowKit"),
@@ -24,6 +25,8 @@ struct PackageCreditsView: View {
                 PackageCell(package: package)
             }
         }
+        .background(GradientView())
+        .listStyle(.sidebar)
         .navigationTitle("Swift Packages")
     }
 }

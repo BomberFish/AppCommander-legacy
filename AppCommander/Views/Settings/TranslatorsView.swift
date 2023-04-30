@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TranslatorsView: View {
+    
     var body: some View {
         List {
             Text("🇫🇷 C22#9618")
@@ -17,6 +18,8 @@ struct TranslatorsView: View {
             Text("🇨🇳 jbjf#1431")
             Text("🇻🇳 odyssey#0666")
         }
+        .listStyle(.sidebar)
+        .background(GradientView())
         .navigationTitle("Translators")
     }
 }

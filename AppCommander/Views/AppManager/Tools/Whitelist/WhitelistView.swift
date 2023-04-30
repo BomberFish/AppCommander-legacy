@@ -16,6 +16,7 @@ struct WhitelistView: View {
     @State var message: String = ""
     @State var success: Bool = false
     @State var error_message: String = ""
+    
     var body: some View {
             List {
                 Section {
@@ -99,6 +100,8 @@ struct WhitelistView: View {
                     Label("Advanced", systemImage: "wrench.and.screwdriver")
                 }
             }
+            .background(GradientView())
+            .listStyle(.sidebar)
             .navigationTitle("Whitelist")
     }
 }

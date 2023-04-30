@@ -31,6 +31,7 @@ struct RootView: View {
                     Label("Settings", systemImage: "gear")
                 }
         }
+        .listStyle(.sidebar)
         .background(GradientView())
         .onAppear {
             do {

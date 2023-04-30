@@ -16,6 +16,7 @@ struct SettingsView: View {
     // found the funny!
     @State var sex: Bool = UserDefaults.standard.bool(forKey: "sex")
     @State var ASEnabled: Bool = UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")
+    
     var body: some View {
         NavigationView {
             List {
@@ -249,6 +250,8 @@ struct SettingsView: View {
                     }
                 }
             }
+            .background(GradientView())
+            .listStyle(.sidebar)
             .navigationTitle("Settings")
         }
     }

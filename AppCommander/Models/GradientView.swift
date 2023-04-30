@@ -14,7 +14,7 @@ struct GradientView: View {
             FluidGradient(blobs: [.accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor],
                           highlights: [.blue, .purple, .blue, .purple],
                           speed: 0.25,
-                          blur: 0)
+                          blur: 0.9)
                 .background(.quaternary)
                 .edgesIgnoringSafeArea(.all)
             

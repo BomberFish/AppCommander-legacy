@@ -10,6 +10,7 @@ import AbsoluteSolver
 
 struct ReplaceTestingView: View {
     let testfile = FileManager.default.temporaryDirectory.appendingPathComponent("testfile")
+    
     var body: some View {
         List {
             Section {
@@ -63,6 +64,8 @@ struct ReplaceTestingView: View {
                 })
             }
         }
+        .background(GradientView())
+        .listStyle(.sidebar)
         .navigationTitle("AbsoluteSolver Testing")
     }
 }

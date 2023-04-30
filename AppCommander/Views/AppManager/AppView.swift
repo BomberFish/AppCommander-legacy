@@ -182,6 +182,7 @@ struct AppView: View {
                 }
             }
         }
+        .background(GradientView())
     }
 }
 

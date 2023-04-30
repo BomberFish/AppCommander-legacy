@@ -74,6 +74,8 @@ struct AppabeticalView: View {
                     })
                 }
             }
+            .background(GradientView())
+            .listStyle(.sidebar)
             .navigationTitle("Home Screen")
         }
     }

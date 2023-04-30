@@ -14,6 +14,7 @@ struct MoreInfoView: View {
     @State private var docsize: UInt64 = 0
     @State private var datadir: String = ""
     @State private var action: Int? = 0
+    
     var body: some View {
         // TODO: Make this look nice
         NavigationLink(destination: FileBrowserView(path: (sbapp.bundleURL.path) + "/", title: sbapp.bundleURL.lastPathComponent), tag: 1, selection: $action) {
@@ -87,6 +88,8 @@ struct MoreInfoView: View {
                 UIApplication.shared.alert(body: error.localizedDescription)
             }
         }
+        .background(GradientView())
+        .listStyle(.sidebar)
     }
 }
 

@@ -216,23 +216,21 @@
 			isa = PBXGroup;
 			children = (
 				D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */,
+				D64A00C929FD75220000F32C /* GradientView.swift */,
+				D6E3FC9829CDE6F500D019D1 /* MultiSelectPickerView.swift */,
 				D6E3FC9C29CDED8900D019D1 /* LinkCell.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		D64A00C829FD75160000F32C /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				D64A00C929FD75220000F32C /* GradientView.swift */,
-			);
-			path = Other;
 			sourceTree = "<group>";
 		};
 		D64A00CB29FD760B0000F32C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
 				D6E3FC8129CDDFE600D019D1 /* RootView.swift */,
+				D6E5528229B165400083E6A5 /* MainView.swift */,
+				D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */,
+				D6E3FC9629CDE52900D019D1 /* AppabeticalView.swift */,
+				D6D22B6529C64D180095645B /* SettingsView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -240,7 +238,7 @@
 		D65AA4C329D85FEA00C3EBE7 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */,
+				D6076BC129F9E96700BC3C3C /* FileBrowserView.swift */,
 				D638E1AC29DA05B2004CCA55 /* AppleLoopsMixView.swift */,
 				D638E1B029DA6630004CCA55 /* FreeloadView.swift */,
 				D65AA4CA29D8613C00C3EBE7 /* Whitelist */,
@@ -317,20 +315,10 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		D6E3FC9529CDE51A00D019D1 /* HomeScreen */ = {
-			isa = PBXGroup;
-			children = (
-				D6E3FC9629CDE52900D019D1 /* AppabeticalView.swift */,
-				D6E3FC9829CDE6F500D019D1 /* MultiSelectPickerView.swift */,
-			);
-			path = HomeScreen;
-			sourceTree = "<group>";
-		};
 		D6E3FC9A29CDECFD00D019D1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */,
-				D6D22B6529C64D180095645B /* SettingsView.swift */,
 				D6B79B0A29F2E51100E14922 /* AppIconView.swift */,
 				D6FC674829E5A28500585625 /* TranslatorsView.swift */,
 				D6076BC329FA0DCB00BC3C3C /* PackageCreditsView.swift */,
@@ -341,10 +329,8 @@
 		D6E3FC9B29CDED1600D019D1 /* AppManager */ = {
 			isa = PBXGroup;
 			children = (
-				D6E5528229B165400083E6A5 /* MainView.swift */,
 				D6E552C529B2BE730083E6A5 /* AppView.swift */,
 				D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */,
-				D6076BC129F9E96700BC3C3C /* FileBrowserView.swift */,
 				D65AA4C329D85FEA00C3EBE7 /* Tools */,
 				D6D55A7A29D5EDCD00DD6C4A /* Backup */,
 			);
@@ -437,9 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				D64A00CB29FD760B0000F32C /* Navigation */,
-				D64A00C829FD75160000F32C /* Other */,
 				D6E3FC9B29CDED1600D019D1 /* AppManager */,
-				D6E3FC9529CDE51A00D019D1 /* HomeScreen */,
 				D6E3FC9A29CDECFD00D019D1 /* Settings */,
 				D638E1C129DEDD15004CCA55 /* LoadingView.swift */,
 			);

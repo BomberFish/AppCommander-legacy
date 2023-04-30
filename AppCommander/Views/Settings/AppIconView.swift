@@ -256,7 +256,7 @@ struct AppIconView: View {
                     .cornerRadius(16)
                 }
             }
-            .background(.thinMaterial)
+            //.background(.thinMaterial)
             .navigationTitle("Alternate Icons")
         }
         .onAppear {

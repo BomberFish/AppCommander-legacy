@@ -13,6 +13,7 @@ struct BackupView: View {
     @State public var app: SBApp
     @State private var backups: [BackupItem] = []
     @State var errormsg: String = ""
+    
     var body: some View {
         List {
             Section {
@@ -145,6 +146,9 @@ struct BackupView: View {
             }
             // Section{}footer: {Label("Backups are still in beta. Unexpected issues may arise.", systemImage: "info.circle")}
         }
+        
+        .listStyle(.sidebar)
+        .background(GradientView())
         
         .refreshable {
             backups = BackupServices.shared.backups(for: app)
