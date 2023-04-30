@@ -343,7 +343,7 @@ struct FileBrowserView: View {
             }
         }
         .background(GradientView())
-        .listStyle(.sidebar)
+        //.listStyle(.sidebar)
         .onAppear(perform: {
             // clear the arrays
             folders = []

@@ -101,7 +101,7 @@ struct WhitelistView: View {
                 }
             }
             .background(GradientView())
-            .listStyle(.sidebar)
+            //.listStyle(.sidebar)
             .navigationTitle("Whitelist")
     }
 }

@@ -74,7 +74,7 @@ struct FileContentsView: View {
 
         }
         .background(GradientView())
-        .listStyle(.sidebar)
+        //.listStyle(.sidebar)
         .refreshable {
             do {
                 Haptic.shared.play(.rigid)

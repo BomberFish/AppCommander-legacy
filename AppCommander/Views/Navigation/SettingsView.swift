@@ -8,6 +8,7 @@
 import AbsoluteSolver
 import MacDirtyCow
 import SwiftUI
+import FLEX
 
 struct SettingsView: View {
     @State var consoleEnabled: Bool = UserDefaults.standard.bool(forKey: "LCEnabled")
@@ -181,6 +182,7 @@ struct SettingsView: View {
                         } label: {
                             Label("Open file browser in /", systemImage: "folder.badge.gearshape")
                         }
+                        Button(action: {FLEXManager.shared.showExplorer()}, label: { Label("Show FLEX", systemImage: "gear") })
                         Toggle(isOn: $consoleEnabled, label: { Label("Enable in-app console", systemImage: "terminal") })
                             .toggleStyle(.switch)
                             .tint(.accentColor)
@@ -251,7 +253,7 @@ struct SettingsView: View {
                 }
             }
             .background(GradientView())
-            .listStyle(.sidebar)
+            //.listStyle(.sidebar)
             .navigationTitle("Settings")
         }
     }

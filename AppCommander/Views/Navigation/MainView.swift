@@ -122,7 +122,7 @@ struct MainView: View {
 //                }
                 #endif
             }.navigationViewStyle(StackNavigationViewStyle())
-                .listStyle(.sidebar)
+                //.listStyle(.sidebar)
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

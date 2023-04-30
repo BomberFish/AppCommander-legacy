@@ -89,7 +89,7 @@ struct MoreInfoView: View {
             }
         }
         .background(GradientView())
-        .listStyle(.sidebar)
+        //.listStyle(.sidebar)
     }
 }
 

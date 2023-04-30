@@ -46,7 +46,7 @@ struct MultiSelectPickerView: View {
                 }
             }
             .background(GradientView())
-            .listStyle(.sidebar)
+            //.listStyle(.sidebar)
         }
     }
 }

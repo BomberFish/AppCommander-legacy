@@ -26,7 +26,7 @@ struct PackageCreditsView: View {
             }
         }
         .background(GradientView())
-        .listStyle(.sidebar)
+        //.listStyle(.sidebar)
         .navigationTitle("Swift Packages")
     }
 }

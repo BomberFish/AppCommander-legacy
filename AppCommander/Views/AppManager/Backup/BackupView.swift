@@ -147,7 +147,7 @@ struct BackupView: View {
             // Section{}footer: {Label("Backups are still in beta. Unexpected issues may arise.", systemImage: "info.circle")}
         }
         
-        .listStyle(.sidebar)
+        //.listStyle(.sidebar)
         .background(GradientView())
         
         .refreshable {
