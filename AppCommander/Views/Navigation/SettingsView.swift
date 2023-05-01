@@ -137,7 +137,7 @@ struct SettingsView: View {
                     LinkCell(imageName: "floppa", url: "https://github.com/Avangelista", title: "Avangelista", contribution: "Appabetical", circle: true)
                     LinkCell(imageName: "minek", url: "https://github.com/Mineek", title: "Mineek", contribution: "File Browser", circle: true)
                     LinkCell(imageName: "serena", url: "https://github.com/SerenaKit", title: "Serena", contribution: "App Backups", circle: true)
-                    LinkCell(imageName: "lemon", url: "https://github.com/leminlimez", title: "LeminLimez", contribution: "Tools Grid UI", circle: true)
+                    LinkCell(imageName: "lemon", url: "https://github.com/leminlimez", title: "LeminLimez", contribution: "Tools Grid UI, MacDirtyCow RAM safety", circle: true)
                     LinkCell(imageName: "other_fish", url: "https://github.com/f1shy-dev", title: "sneakyf1shy", contribution: "Analytics, Bugfixes", circle: true)
                     LinkCell(imageName: "zhuowei", url: "https://twitter.com/zhuowei/", title: "zhuowei", contribution: "Unsandboxing, installd patch", circle: true)
                     NavigationLink {
@@ -163,7 +163,7 @@ struct SettingsView: View {
                             UserDefaults.standard.set(new, forKey: "DebugEnabled")
                         }
                         
-                    Toggle(isOn: $ASEnabled, label: { Label("Disable Absolute Solver", systemImage: "hexagon") })
+                    Toggle(isOn: $ASEnabled, label: { Label("Disable Absolute Solver", systemImage: "move.3d") })
                         .toggleStyle(.switch)
                         .tint(.accentColor)
                         .onChange(of: ASEnabled) { new in

@@ -97,7 +97,7 @@ struct ToolsView: View {
                             NavigationLink(destination: { ReplaceTestingView() }, label: {
                                 HStack(alignment: .bottom) {
                                     VStack/*(alignment: .leading)*/ {
-                                        Image(systemName: "hexagon")
+                                        Image(systemName: "move.3d")
                                             .imageScale(.large)
                                             .font(.title2)
                                         Text("\nAbsoluteSolver Testing")
