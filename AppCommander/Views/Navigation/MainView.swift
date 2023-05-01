@@ -17,7 +17,7 @@ struct MainView: View {
     @State var apps = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
     var body: some View {
         NavigationView {
-            List {
+            Form {
                 Section {
                     if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
                         Spacer()
@@ -48,6 +48,7 @@ struct MainView: View {
                     Text("You've come a long way, traveler. Have a :lungs:.\n🫁")
                 }
             }
+            .background(GradientView())
             .listStyle(InsetGroupedListStyle())
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .navigationTitle("AppCommander")

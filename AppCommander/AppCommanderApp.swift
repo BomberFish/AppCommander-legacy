@@ -19,7 +19,7 @@ let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 @main
 struct AppCommanderApp: App {
     init() {
-//
+        UITableView.appearance().backgroundColor = .clear
     }
 
     @State var escaped = false
@@ -166,7 +166,7 @@ struct AppCommanderApp: App {
                                     escaped = false
                                     var message = ""
                                     if error.localizedDescription == "" {
-                                        //epic amiga reference
+                                        // epic amiga reference
                                         message = "Error 48454C50. Please contact BomberFish."
                                     } else {
                                         message = error.localizedDescription

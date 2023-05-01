@@ -7,294 +7,85 @@
 
 import SwiftUI
 
+struct AppIcon: Identifiable {
+    var id = UUID()
+    let displayName: String
+    let iconName: String?
+    // let isSelected: Bool
+}
+
+struct IconTile: View {
+    public var icon: AppIcon
+    @State public var selected: Bool = false
+    var body: some View {
+        ZStack {
+            HStack {
+                Button(action: {
+                    UIApplication.shared.setAlternateIconName(icon.iconName) { error in
+                        if let error = error {
+                            UIApplication.shared.alert(body: "Error setting app icon: \(error)")
+                            Haptic.shared.notify(.error)
+                        } else {
+                            Haptic.shared.notify(.success)
+                        }
+                    }
+                    selected = (UIApplication.shared.alternateIconName == icon.iconName)
+                }, label: {
+                    VStack {
+                        ZStack {
+                            Image(icon.displayName)
+                                .resizable()
+                                .scaledToFill() // add if you need
+                                .frame(width: 64.0, height: 64.0) // as per your requirement
+                                .clipped()
+                                .cornerRadius(14)
+                                .saturation(selected ? 0.6 : 1)
+                                .brightness(selected ? -0.15 : 0)
+                            
+                                if selected {
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(Color.white)
+                                }
+                        }
+                        Text(icon.displayName)
+                            .foregroundColor(Color(UIColor.label))
+                            .font(.headline)
+                    }
+                })
+            }
+            .onAppear {
+                // FIXME: this may or may not affect the trout population
+                while true {
+                    selected = (UIApplication.shared.alternateIconName == icon.iconName)
+                }
+            }
+            .padding()
+            .frame(width: 180, height: 150)
+            .cornerRadius(16)
+            .background(.ultraThinMaterial)
+        }
+        .cornerRadius(16)
+    }
+}
+
 struct AppIconView: View {
     private var gridItemLayout = [GridItem(.adaptive(minimum: 150))]
-    @State var isDefaultIcon = false
-    @State var isIcon2 = false
-    @State var isIcon3 = false
-    @State var isIcon4 = false
-    @State var isIcon5 = false
+    
+    let icons: [AppIcon] = [AppIcon(displayName: "Default", iconName: nil), AppIcon(displayName: "DarkCommander", iconName: "AppIcon2"), AppIcon(displayName: "LightCommander", iconName: "AppIcon3"), AppIcon(displayName: "“App-solute Solver”", iconName: "AppIcon4"), AppIcon(displayName: "Classic", iconName: "AppIcon5")]
     var body: some View {
         ZStack {
             GradientView()
                 .edgesIgnoringSafeArea(.all)
             ScrollView {
                 LazyVGrid(columns: gridItemLayout, alignment: .center) {
-                    ZStack {
-                        HStack {
-                            Button(action: {
-                                UIApplication.shared.setAlternateIconName(nil) { error in
-                                    if let error = error {
-                                        UIApplication.shared.alert(body: "Error setting app icon: \(error)")
-                                        Haptic.shared.notify(.error)
-                                    } else {
-                                        Haptic.shared.notify(.success)
-                                    }
-                                }
-                                updateCurrentIcon()
-                            }, label: {
-                                VStack {
-                                    if isDefaultIcon {
-                                        ZStack {
-                                            Image(systemName: "checkmark")
-                                            Image("Icon")
-                                                .resizable()
-                                                .scaledToFill() // add if you need
-                                                .frame(width: 64.0, height: 64.0) // as per your requirement
-                                                .clipped()
-                                                .cornerRadius(14)
-                                                .saturation(0.6)
-                                            Image(systemName: "checkmark")
-                                        }
-                                    } else {
-                                        Image("Icon")
-                                            .resizable()
-                                            .scaledToFill() // add if you need
-                                            .frame(width: 64.0, height: 64.0) // as per your requirement
-                                            .clipped()
-                                            .cornerRadius(14)
-                                    }
-                                    Text("Default")
-                                        .foregroundColor(Color(UIColor.label))
-                                        .font(.headline)
-                                }
-                            })
-                        }
-                        .padding()
-                        .frame(width: 180, height: 150)
-                        .cornerRadius(16)
-                        .background(.ultraThinMaterial)
+                    ForEach(icons) {icon in
+                        IconTile(icon: icon, selected: UIApplication.shared.alternateIconName == icon.iconName)
                     }
-                    .cornerRadius(16)
-
-                    ZStack {
-                        HStack {
-                            Button(action: {
-                                UIApplication.shared.setAlternateIconName("AppIcon2") { error in
-                                    if let error = error {
-                                        UIApplication.shared.alert(body: "Error setting app icon: \(error)")
-                                        Haptic.shared.notify(.error)
-                                    } else {
-                                        Haptic.shared.notify(.success)
-                                    }
-                                }
-                                updateCurrentIcon()
-                            }, label: {
-                                VStack {
-                                    if isIcon2 {
-                                        ZStack {
-                                            Image(systemName: "checkmark")
-                                            Image("DarkCommander")
-                                                .resizable()
-                                                .scaledToFill() // add if you need
-                                                .frame(width: 64.0, height: 64.0) // as per your requirement
-                                                .clipped()
-                                                .cornerRadius(14)
-                                                .saturation(0.6)
-                                            Image(systemName: "checkmark")
-                                        }
-                                    } else {
-                                        Image("DarkCommander")
-                                            .resizable()
-                                            .scaledToFill() // add if you need
-                                            .frame(width: 64.0, height: 64.0) // as per your requirement
-                                            .clipped()
-                                            .cornerRadius(14)
-                                    }
-                                    Text("DarkCommander")
-                                        .foregroundColor(Color(UIColor.label))
-                                        .font(.headline)
-                                }
-                            })
-                        }
-                        .padding()
-                        .frame(width: 180, height: 150)
-                        .cornerRadius(16)
-                        .background(.ultraThinMaterial)
-                    }
-                    .cornerRadius(16)
-
-                    ZStack {
-                        HStack {
-                            Button(action: {
-                                UIApplication.shared.setAlternateIconName("AppIcon3") { error in
-                                    if let error = error {
-                                        UIApplication.shared.alert(body: "Error setting app icon: \(error)")
-                                        Haptic.shared.notify(.error)
-                                    } else {
-                                        Haptic.shared.notify(.success)
-                                    }
-                                }
-                                updateCurrentIcon()
-                            }, label: {
-                                VStack {
-                                    if isIcon3 {
-                                        ZStack {
-                                            Image(systemName: "checkmark")
-                                            Image("LightCommander")
-                                                .resizable()
-                                                .scaledToFill() // add if you need
-                                                .frame(width: 64.0, height: 64.0) // as per your requirement
-                                                .clipped()
-                                                .cornerRadius(14)
-                                                .saturation(0.6)
-                                            Image(systemName: "checkmark")
-                                        }
-                                    } else {
-                                        Image("LightCommander")
-                                            .resizable()
-                                            .scaledToFill() // add if you need
-                                            .frame(width: 64.0, height: 64.0) // as per your requirement
-                                            .clipped()
-                                            .cornerRadius(14)
-                                    }
-                                    Text("LightCommander")
-                                        .foregroundColor(Color(UIColor.label))
-                                        .font(.headline)
-                                }
-                            })
-                        }
-                        .padding()
-                        .frame(width: 180, height: 150)
-                        .cornerRadius(16)
-                        .background(.ultraThinMaterial)
-                    }
-                    .cornerRadius(16)
-
-                    ZStack {
-                        HStack {
-                            Button(action: {
-                                UIApplication.shared.setAlternateIconName("AppIcon4") { error in
-                                    if let error = error {
-                                        UIApplication.shared.alert(body: "Error setting app icon: \(error)")
-                                        Haptic.shared.notify(.error)
-                                    } else {
-                                        Haptic.shared.notify(.success)
-                                    }
-                                }
-                                updateCurrentIcon()
-                            }, label: {
-                                VStack {
-                                    if isIcon4 {
-                                        ZStack {
-                                            Image(systemName: "checkmark")
-                                            Image("AppSolver")
-                                                .resizable()
-                                                .scaledToFill() // add if you need
-                                                .frame(width: 64.0, height: 64.0) // as per your requirement
-                                                .clipped()
-                                                .cornerRadius(14)
-                                                .saturation(0.6)
-                                            Image(systemName: "checkmark")
-                                        }
-                                    } else {
-                                        Image("AppSolver")
-                                            .resizable()
-                                            .scaledToFill() // add if you need
-                                            .frame(width: 64.0, height: 64.0) // as per your requirement
-                                            .clipped()
-                                            .cornerRadius(14)
-                                    }
-                                    Text("“App-solute Solver”")
-                                        .foregroundColor(Color(UIColor.label))
-                                        .font(.headline)
-                                }
-                            })
-                        }
-                        .padding()
-                        .frame(width: 180, height: 150)
-                        .cornerRadius(16)
-                        .background(.ultraThinMaterial)
-                    }
-                    .cornerRadius(16)
-                    
-                    ZStack {
-                        HStack {
-                            Button(action: {
-                                UIApplication.shared.setAlternateIconName("AppIcon5") { error in
-                                    if let error = error {
-                                        UIApplication.shared.alert(body: "Error setting app icon: \(error)")
-                                        Haptic.shared.notify(.error)
-                                    } else {
-                                        Haptic.shared.notify(.success)
-                                    }
-                                }
-                                updateCurrentIcon()
-                            }, label: {
-                                VStack {
-                                    if isIcon5 {
-                                        ZStack {
-                                            Image(systemName: "checkmark")
-                                            Image("ClassicIcon")
-                                                .resizable()
-                                                .scaledToFill() // add if you need
-                                                .frame(width: 64.0, height: 64.0) // as per your requirement
-                                                .clipped()
-                                                .cornerRadius(14)
-                                                .saturation(0.6)
-                                            Image(systemName: "checkmark")
-                                        }
-                                    } else {
-                                        Image("ClassicIcon")
-                                            .resizable()
-                                            .scaledToFill() // add if you need
-                                            .frame(width: 64.0, height: 64.0) // as per your requirement
-                                            .clipped()
-                                            .cornerRadius(14)
-                                    }
-                                    Text("Old icon")
-                                        .foregroundColor(Color(UIColor.label))
-                                        .font(.headline)
-                                }
-                            })
-                        }
-                        .padding()
-                        .frame(width: 180, height: 150)
-                        .cornerRadius(16)
-                        .background(.ultraThinMaterial)
-                    }
-                    .cornerRadius(16)
                 }
             }
             //.background(.thinMaterial)
             .navigationTitle("Alternate Icons")
         }
-        .onAppear {
-            updateCurrentIcon()
-        }
-    }
-    
-    func updateCurrentIcon() {
-        if UIApplication.shared.alternateIconName == nil {
-            isDefaultIcon = true
-        } else {
-            isDefaultIcon = false
-        }
-        
-        if UIApplication.shared.alternateIconName == "AppIcon2" {
-            isIcon2 = true
-        } else {
-            isIcon2 = false
-        }
-        
-        if UIApplication.shared.alternateIconName == "AppIcon3" {
-            isIcon3 = true
-        } else {
-            isIcon3 = false
-        }
-        
-        if UIApplication.shared.alternateIconName == "AppIcon4" {
-            isIcon4 = true
-        } else {
-            isIcon4 = false
-        }
-        
-        if UIApplication.shared.alternateIconName == "AppIcon5" {
-            isIcon5 = true
-        } else {
-            isIcon5 = false
-        }
-        
     }
 }
 
