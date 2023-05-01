@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoadingView: View {
+    @State var message: String = "Loading..."
     var body: some View {
 //        Text("Checking validity...")
 //            .font(.title2)
@@ -15,7 +16,7 @@ struct LoadingView: View {
             HStack {
                 ProgressView()
                 //.padding()
-                Text("  Loading...")
+                Text("  \(message)")
                     .fontWeight(.semibold)
             }
             .padding()
