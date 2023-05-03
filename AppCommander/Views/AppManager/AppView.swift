@@ -182,7 +182,8 @@ struct AppView: View {
                 }
             }
         }
-        .background(GradientView())
+        // .background(GradientView())
+                .listRowBackground(Color.clear)
     }
 }
 

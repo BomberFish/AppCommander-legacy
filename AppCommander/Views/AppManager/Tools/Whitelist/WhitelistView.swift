@@ -100,7 +100,8 @@ struct WhitelistView: View {
                     Label("Advanced", systemImage: "wrench.and.screwdriver")
                 }
             }
-            .background(GradientView())
+            // .background(GradientView())
+                .listRowBackground(Color.clear)
             //.listStyle(.sidebar)
             .navigationTitle("Whitelist")
     }

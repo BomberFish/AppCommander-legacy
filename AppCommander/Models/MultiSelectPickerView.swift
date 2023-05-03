@@ -45,7 +45,8 @@ struct MultiSelectPickerView: View {
                     Text("Coming Soon").foregroundColor(.secondary)
                 }
             }
-            .background(GradientView())
+            //// .background(GradientView())
+                .listRowBackground(Color.clear)
             //.listStyle(.sidebar)
         }
     }

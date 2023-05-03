@@ -19,7 +19,8 @@ struct TranslatorsView: View {
             Text("🇻🇳 odyssey#0666")
         }
         //.listStyle(.sidebar)
-        .background(GradientView())
+        // .background(GradientView())
+                .listRowBackground(Color.clear)
         .navigationTitle("Translators")
     }
 }

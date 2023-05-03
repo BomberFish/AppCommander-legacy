@@ -11,6 +11,9 @@ import FluidGradient
 struct GradientView: View {
     var body: some View {
         ZStack {
+            ZStack {}
+            .background(.regularMaterial)
+            .edgesIgnoringSafeArea(.all)
             FluidGradient(blobs: [.accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor, .accentColor],
                           highlights: [.blue, .purple, .blue, .purple],
                           speed: 0.25,
@@ -19,7 +22,9 @@ struct GradientView: View {
                 .edgesIgnoringSafeArea(.all)
             
         }
-        .background(.thinMaterial)
+        .edgesIgnoringSafeArea(.all)
+        ZStack {}
+        .background(.regularMaterial)
         .edgesIgnoringSafeArea(.all)
     }
 }

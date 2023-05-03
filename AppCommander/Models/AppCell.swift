@@ -52,9 +52,16 @@ struct AppCell: View {
                             Spacer()
                         }
                     }
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.system(.headline))
+                        .multilineTextAlignment(.center )
+                        .foregroundColor(Color(UIColor.secondaryLabel))
+                        .padding([.trailing], 10)
                 }
-                .foregroundColor(.accentColor)
+                .foregroundColor(Color(UIColor.label))
             }
+            .padding(10)
         } else {
             VStack {
                 HStack(alignment: .center) {

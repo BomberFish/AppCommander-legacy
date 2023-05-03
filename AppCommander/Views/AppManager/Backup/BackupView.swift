@@ -148,7 +148,8 @@ struct BackupView: View {
         }
         
         //.listStyle(.sidebar)
-        .background(GradientView())
+        // .background(GradientView())
+                .listRowBackground(Color.clear)
         
         .refreshable {
             backups = BackupServices.shared.backups(for: app)

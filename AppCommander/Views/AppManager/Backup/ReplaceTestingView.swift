@@ -64,7 +64,8 @@ struct ReplaceTestingView: View {
                 })
             }
         }
-        .background(GradientView())
+        // .background(GradientView())
+                .listRowBackground(Color.clear)
         //.listStyle(.sidebar)
         .navigationTitle("AbsoluteSolver Testing")
     }

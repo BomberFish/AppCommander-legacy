@@ -252,7 +252,8 @@ struct SettingsView: View {
                     }
                 }
             }
-            .background(GradientView())
+            // .background(GradientView())
+                .listRowBackground(Color.clear)
             //.listStyle(.sidebar)
             .navigationTitle("Settings")
         }

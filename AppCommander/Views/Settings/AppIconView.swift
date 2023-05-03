@@ -73,7 +73,7 @@ struct IconTile: View {
             .padding()
             .frame(width: 180, height: 150)
             .cornerRadius(16)
-            .background(.ultraThinMaterial)
+            //.background(.ultraThinMaterial)
         }
         .cornerRadius(16)
     }

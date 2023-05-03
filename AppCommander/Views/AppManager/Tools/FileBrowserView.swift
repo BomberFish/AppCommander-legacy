@@ -342,7 +342,8 @@ struct FileBrowserView: View {
                 Section(header: Label("1 file skipped due to errors.", systemImage: "exclamationmark.triangle").textCase(.none)) {}
             }
         }
-        .background(GradientView())
+        // .background(GradientView())
+                .listRowBackground(Color.clear)
         //.listStyle(.sidebar)
         .onAppear(perform: {
             // clear the arrays

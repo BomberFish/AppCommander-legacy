@@ -17,113 +17,136 @@ struct MainView: View {
     @State var apps = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
     var body: some View {
         NavigationView {
-            Form {
-                Section {
-                    if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
-                        Spacer()
-                        ProgressView()
-                        Spacer()
-                    } else {
-                        // TODO: icons!
-                        ForEach(apps) { app in
-                            // 💀
-                            AppCell(imagePath: app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path, bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
-                                .contextMenu {
-                                    Button(action: {
-                                        if ApplicationManager.openApp(bundleID: app.bundleIdentifier) {
-                                            Haptic.shared.notify(.success)
-                                        } else {
-                                            Haptic.shared.notify(.error)
+            ZStack {
+                GradientView()
+                ScrollView {
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Label("Apps (\(apps.count))", systemImage: "square.grid.2x2")
+                                .font(.system(.caption))
+                                .foregroundColor(Color(UIColor.secondaryLabel))
+                        }
+                        VStack {
+                            VStack {
+                                Section {
+                                    if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
+                                        Spacer()
+                                        ProgressView()
+                                        Spacer()
+                                    } else {
+                                        ForEach(apps) { app in
+                                            // 💀
+                                            AppCell(imagePath: app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path, bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
+                                                .contextMenu {
+                                                    Button(action: {
+                                                        if ApplicationManager.openApp(bundleID: app.bundleIdentifier) {
+                                                            Haptic.shared.notify(.success)
+                                                        } else {
+                                                            Haptic.shared.notify(.error)
+                                                        }
+                                                    }, label: {
+                                                        Label("Open App", systemImage: "arrow.up.forward.app")
+                                                    })
+                                                }
                                         }
-                                    }, label: {
-                                        Label("Open App", systemImage: "arrow.up.forward.app")
-                                    })
+                                    }
                                 }
+                                .listRowBackground(Color.clear)
+                                
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(16)
+                            }
+                            .padding(10)
+                        }
+                        .cornerRadius(16)
+                        VStack(alignment: .leading) {
+                            Text("You've come a long way, traveler. Have a :lungs:.\n🫁")
+                                .font(.system(.caption))
+                                .multilineTextAlignment(.center )
+                                .foregroundColor(Color(UIColor.secondaryLabel))
                         }
                     }
-                } header: {
-                    Label("Apps (\(apps.count))", systemImage: "square.grid.2x2")
-                } footer: {
-                    // haha take that suslocation!
-                    Text("You've come a long way, traveler. Have a :lungs:.\n🫁")
                 }
-            }
-            .background(GradientView())
-            .listStyle(InsetGroupedListStyle())
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-            .navigationTitle("AppCommander")
-            .onChange(of: searchText) { searchText in
-
-                if !searchText.isEmpty {
-                    apps = allApps.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
-                } else {
+                // .background(GradientView())
+                .listRowBackground(Color.clear)
+                .listStyle(InsetGroupedListStyle())
+                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+                .navigationTitle("AppCommander")
+                .onChange(of: searchText) { searchText in
+                    
+                    if !searchText.isEmpty {
+                        apps = allApps.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+                    } else {
+                        apps = allApps
+                    }
+                }
+                .toolbar {
+                    HStack {
+                        Menu(content: {
+                            Section {
+                                Button(action: {
+                                    apps = allApps
+                                }, label: {
+                                    Label("None", systemImage: "list.bullet")
+                                })
+                                Menu("Alphabetical") {
+                                    Button(action: {
+                                        apps = allApps.sorted { $0.name < $1.name }
+                                    }, label: {
+                                        Label("Case-sensitive", systemImage: "character")
+                                    })
+                                    
+                                    Button(action: {
+                                        apps = allApps.sorted { $0.name.lowercased() < $1.name.lowercased() }
+                                    }, label: {
+                                        Label("Case-insensitive", systemImage: "textformat")
+                                    })
+                                }
+                            } header: {
+                                Text("Sort Apps")
+                            }
+                            
+                        }, label: {
+                            Label("Sort", systemImage: "line.3.horizontal.decrease.circle")
+                                .foregroundColor(Color(UIColor.label))
+                        })
+                        .foregroundColor(Color(UIColor.label))
+                    }
+                }
+                .onAppear {
                     apps = allApps
                 }
-            }
-            .toolbar {
-                HStack {
-                    Menu(content: {
-                        Section {
-                            Button(action: {
-                                apps = allApps
-                            }, label: {
-                                Label("None", systemImage: "list.bullet")
-                            })
-                            Menu("Alphabetical") {
-                                Button(action: {
-                                    apps = allApps.sorted { $0.name < $1.name }
-                                }, label: {
-                                    Label("Case-sensitive", systemImage: "character")
-                                })
-                                
-                                Button(action: {
-                                    apps = allApps.sorted { $0.name.lowercased() < $1.name.lowercased() }
-                                }, label: {
-                                    Label("Case-insensitive", systemImage: "textformat")
-                                })
-                            }
-                        } header: {
-                            Text("Sort Apps")
-                        }
-
-                    }, label: {
-                        Label("Sort", systemImage: "line.3.horizontal.decrease.circle")
-                    })
-                }
-            }
-            .onAppear {
-                apps = allApps
-            }
-//            .onAppear {
-            // #if targetEnvironment(simulator)
-//            #else
-//            isUnsandboxed = MDC.unsandbox()
-//            if !isUnsandboxed {
-//                isUnsandboxed = MDC.unsandbox()
-//            } else {
-//                allApps = try! ApplicationManager.getApps()
-//                apps = allApps
-//            }
-//            #endif
-//        }
-
-            .refreshable {
-                #if targetEnvironment(simulator)
-                #else
-//                if !isUnsandboxed {
-//                    isUnsandboxed = MDC.unsandbox()
-//                } else {
-                do {
-                    allApps = try ApplicationManager.getApps()
-                } catch {
-                    apps = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
-                    UIApplication.shared.alert(title: "WARNING", body: "AppCommander was unable to get installed apps. Press OK to continue in a feature-limited mode.")
-                }
-                apps = allApps
-//                }
-                #endif
-            }.navigationViewStyle(StackNavigationViewStyle())
+                //            .onAppear {
+                // #if targetEnvironment(simulator)
+                //            #else
+                //            isUnsandboxed = MDC.unsandbox()
+                //            if !isUnsandboxed {
+                //                isUnsandboxed = MDC.unsandbox()
+                //            } else {
+                //                allApps = try! ApplicationManager.getApps()
+                //                apps = allApps
+                //            }
+                //            #endif
+                //        }
+                
+                .refreshable {
+#if targetEnvironment(simulator)
+#else
+                    //                if !isUnsandboxed {
+                    //                    isUnsandboxed = MDC.unsandbox()
+                    //                } else {
+                    do {
+                        allApps = try ApplicationManager.getApps()
+                    } catch {
+                        apps = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+                        UIApplication.shared.alert(title: "WARNING", body: "AppCommander was unable to get installed apps. Press OK to continue in a feature-limited mode.")
+                    }
+                    apps = allApps
+                    //                }
+#endif
+                }.navigationViewStyle(StackNavigationViewStyle())
                 //.listStyle(.sidebar)
+            }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

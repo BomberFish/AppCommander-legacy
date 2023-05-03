@@ -88,7 +88,8 @@ struct MoreInfoView: View {
                 UIApplication.shared.alert(body: error.localizedDescription)
             }
         }
-        .background(GradientView())
+        // .background(GradientView())
+                .listRowBackground(Color.clear)
         //.listStyle(.sidebar)
     }
 }
