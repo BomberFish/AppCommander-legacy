@@ -5,11 +5,12 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
 
-    runs-on: macos-13-xl
+    runs-on: macos-13
 
     steps:
     - uses: actions/checkout@v3
