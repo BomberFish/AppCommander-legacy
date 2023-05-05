@@ -62,8 +62,8 @@ struct AppCell: View {
                 }
                 .foregroundColor(Color(UIColor.label))
             }
-            .padding(12 )
-            .padding([.vertical], 10)
+            .padding(10)
+            .padding([.vertical], 8)
         } else {
             VStack {
                 HStack(alignment: .center) {

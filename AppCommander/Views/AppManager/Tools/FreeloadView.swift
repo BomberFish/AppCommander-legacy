@@ -37,7 +37,7 @@ struct FreeloadView: View {
                 })
                 .buttonStyle(.borderedProminent)
             }
-            .background(.thinMaterial, ignoresSafeAreaEdges: .all)
+            //.background(.thinMaterial, ignoresSafeAreaEdges: .all)
         }
         .disabled(inProgress)
         .navigationTitle("Remove three-app limit")
