@@ -56,7 +56,8 @@ struct MainView: View {
                                 .background(.ultraThinMaterial)
                                 .cornerRadius(16)
                             }
-                            .padding(10)
+                            .padding([.horizontal], 8)
+                            .padding([.vertical], 5)
                         }
                         .cornerRadius(16)
                         VStack(alignment: .leading) {

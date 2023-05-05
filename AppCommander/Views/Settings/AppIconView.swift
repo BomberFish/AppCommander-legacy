@@ -12,6 +12,8 @@ struct AppIcon: Identifiable {
     let displayName: String
     let iconName: String?
     let isSelected: Bool = false
+    let author: String
+    let lore: String
 }
 
 struct IconTile: View {
@@ -20,7 +22,16 @@ struct IconTile: View {
     @State public var selectedicon: String
     var body: some View {
         ZStack {
-            HStack {
+            VStack {
+                HStack {
+                    Spacer()
+                    Button(action: {UIApplication.shared.alert(title: icon.displayName, body: "Author: \(icon.author)\n\n\(icon.lore)")}, label: {
+                        Image(systemName: "info.circle")
+                            .font(.system(.title3))
+                            .foregroundColor(Color(UIColor.secondaryLabel))
+                    })
+                }
+                .padding(-1)
                 Button(action: {
                     UIApplication.shared.setAlternateIconName(icon.iconName) { error in
                         
@@ -71,9 +82,10 @@ struct IconTile: View {
                 selected = (UIApplication.shared.alternateIconName == icon.iconName)
             }
             .padding()
-            .frame(width: 180, height: 150)
+            .padding([.top], -2)
+            .frame(width: 180, height: 165)
             .cornerRadius(16)
-            //.background(.ultraThinMaterial)
+            .background(.ultraThinMaterial)
         }
         .cornerRadius(16)
     }
@@ -83,7 +95,7 @@ struct AppIconView: View {
     private var gridItemLayout = [GridItem(.adaptive(minimum: 150))]
     @State var currentIcon: String? = nil
     
-    let icons: [AppIcon] = [AppIcon(displayName: "Default", iconName: nil), AppIcon(displayName: "DarkCommander", iconName: "AppIcon2"), AppIcon(displayName: "LightCommander", iconName: "AppIcon3"), AppIcon(displayName: "“App-solute Solver”", iconName: "AppIcon4"), AppIcon(displayName: "Classic", iconName: "AppIcon5")]
+    let icons: [AppIcon] = [AppIcon(displayName: "Default", iconName: nil, author: "BomberFish", lore: "Tried and true."), AppIcon(displayName: "DarkCommander", iconName: "AppIcon2", author: "BomberFish", lore: "Come to the dark side, we have cookies."), AppIcon(displayName: "LightCommander", iconName: "AppIcon3", author: "BomberFish", lore: "My eyes!!!"), AppIcon(displayName: "“App-solute Solver”", iconName: "AppIcon4", author: "BomberFish", lore: "Hmmm yes totally not a massive reference to a specific sci-fi dystopian webseries..."), AppIcon(displayName: "Classic", iconName: "AppIcon5", author: "BomberFish", lore: "This one was never actually the default in any build of AppCommander. Not any *public* build, anyways...")]
     var body: some View {
         ZStack {
             GradientView()

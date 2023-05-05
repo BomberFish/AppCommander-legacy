@@ -75,9 +75,15 @@ struct ToolsView: View {
                         }, label: {
                             HStack(alignment: .bottom) {
                                 VStack/*(alignment: .leading)*/ {
-                                    Image(systemName: "gearshape.arrow.triangle.2.circlepath")
-                                        .imageScale(.large)
-                                        .font(.title2)
+                                    if #available(iOS 16, *) {
+                                        Image(systemName: "gearshape.arrow.triangle.2.circlepath")
+                                            .imageScale(.large)
+                                            .font(.title2)
+                                    } else {
+                                        Image(systemName: "arrow.triangle.2.circlepath")
+                                            .imageScale(.large)
+                                            .font(.title2)
+                                    }
                                     Text("\nRebuild Icon Cache")
                                         .multilineTextAlignment(.center)
                                 }
@@ -118,7 +124,7 @@ struct ToolsView: View {
                             NavigationLink(destination: { AppleLoopsMixView() }, label: {
                                 HStack(alignment: .bottom) {
                                     VStack/*(alignment: .leading)*/ {
-                                        Image(systemName: "apple.logo")
+                                        Image(systemName: "applelogo")
                                             .imageScale(.large)
                                             .font(.title2)
                                         Text("\nApple Loops Mix")
@@ -145,7 +151,7 @@ struct ToolsView: View {
             }
         }
         .onAppear{
-            debugEnabled = UserDefaults.standard.bool(forKey: "DebugEnabled")
+            debugEnabled = UserDefaults.standard.bool(forKey: "sex")
         }
     }
 }

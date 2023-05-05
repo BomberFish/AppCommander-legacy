@@ -13,6 +13,7 @@ struct FreeloadView: View {
     @State var success = false
     var body: some View {
         ZStack {
+            GradientView()
             VStack {
                 Button(action: {
                     inProgress = true

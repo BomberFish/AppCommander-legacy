@@ -6,9 +6,9 @@
 //
 
 import AbsoluteSolver
+import FLEX
 import MacDirtyCow
 import SwiftUI
-import FLEX
 
 struct SettingsView: View {
     @State var consoleEnabled: Bool = UserDefaults.standard.bool(forKey: "LCEnabled")
@@ -18,6 +18,8 @@ struct SettingsView: View {
     @State var sex: Bool = UserDefaults.standard.bool(forKey: "sex")
     @State var ASEnabled: Bool = UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")
     
+    @State var sheet: Bool = false
+
     var body: some View {
         NavigationView {
             List {
@@ -114,25 +116,24 @@ struct SettingsView: View {
 //                    // a little bit cring-eh 🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦
 //                    Label("Powered by Kouyou", systemImage: "gearshape.2")
 //                }
-                
-                Section {
-                    Button(action: {UIApplication.shared.open(URL(string: "https://discord.gg/Cowabunga")!)}, label: {
-                        HStack {
-                            Image("discordo")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .colorMultiply(.accentColor)
-                                .tint(.accentColor)
-                                .foregroundColor(.accentColor)
-                                .frame(width: 24, height: 24)
-                            Text("  Join the Discord!")
-                        }
-                    })
-                }
-                
+
+//                Section {
+//                    Button(action: { UIApplication.shared.open(URL(string: "https://discord.gg/Cowabunga")!) }, label: {
+//                        HStack {
+//                            Image("discordo")
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fit)
+//                                .colorMultiply(.accentColor)
+//                                .tint(.accentColor)
+//                                .foregroundColor(.accentColor)
+//                                .frame(width: 24, height: 24)
+//                            Text("  Join the Discord!")
+//                        }
+//                    })
+//                }
+
                 Section {
                     LinkCell(imageName: "bomberfish", url: "https://github.com/BomberFish", title: "BomberFish", contribution: "Main Developer", circle: true)
-                    
                     LinkCell(imageName: "suslocation", url: "https://github.com/sourcelocation", title: "sourcelocation", contribution: "ApplicationManager, Various Code Snippets, Appabetical", circle: true)
                     LinkCell(imageName: "floppa", url: "https://github.com/Avangelista", title: "Avangelista", contribution: "Appabetical", circle: true)
                     LinkCell(imageName: "minek", url: "https://github.com/Mineek", title: "Mineek", contribution: "File Browser", circle: true)
@@ -153,7 +154,7 @@ struct SettingsView: View {
                 } header: {
                     Label("Credits", systemImage: "heart")
                 }
-                
+
                 Section {
                     Toggle(isOn: $debugEnabled, label: { Label("Debug Mode", systemImage: "ladybug") })
                         .toggleStyle(.switch)
@@ -162,7 +163,7 @@ struct SettingsView: View {
                             // set the user defaults
                             UserDefaults.standard.set(new, forKey: "DebugEnabled")
                         }
-                        
+
                     Toggle(isOn: $ASEnabled, label: { Label("Disable Absolute Solver", systemImage: "move.3d") })
                         .toggleStyle(.switch)
                         .tint(.accentColor)
@@ -174,15 +175,9 @@ struct SettingsView: View {
                 } header: {
                     Label("Advanced", systemImage: "gearshape.2")
                 }
-                
+
                 if debugEnabled {
                     Section {
-                        NavigationLink {
-                            FileBrowserView(path: "/", title: "Root")
-                        } label: {
-                            Label("Open file browser in /", systemImage: "folder.badge.gearshape")
-                        }
-                        Button(action: {FLEXManager.shared.showExplorer()}, label: { Label("Show FLEX", systemImage: "gear") })
                         Toggle(isOn: $consoleEnabled, label: { Label("Enable in-app console", systemImage: "terminal") })
                             .toggleStyle(.switch)
                             .tint(.accentColor)
@@ -195,20 +190,58 @@ struct SettingsView: View {
                                     consoleManager.isVisible = false
                                 }
                             }
-                        Button(action: respring, label: { Label("Restart frontboard", systemImage: "arrow.counterclockwise") })
-                        Button(action: MacDirtyCow.restartBackboard, label: { Label("Restart backboard", systemImage: "arrow.counterclockwise") })
-                        Button(action: reboot, label: { Label("Trigger kernel panic", systemImage: "exclamationmark.arrow.circlepath") })
-                        Toggle(isOn: $sex, label:{Text("😏      Sex")})
-                                                .tint(.accentColor)
-                                                .onChange(of: sex) { new in
-                                                    // set the user defaults
-                                                    UserDefaults.standard.set(new, forKey: "sex")
-                                                }
+                        Toggle(isOn: $sex, label: { Text("😏      Sex") })
+                            .tint(.accentColor)
+                            .onChange(of: sex) { new in
+                                if new == true {
+                                    let alert = UIAlertController(title: "Confirmation", message: NSLocalizedString("You are about to enable extra debugging settings meant only for developers. If you understand the risks, please type 'I solemnly swear that I am up to no good' in the textfield below.", comment: "Do NOT under ANY circumstances translate the string 'I solemnly swear that I am up to no good'."), preferredStyle: .alert)
+                                    alert.addTextField { textField in
+                                        textField.text = ""
+                                    }
+                                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                                        sex = false
+                                    }))
+                                    alert.addAction(UIAlertAction(title: "Enter", style: .default, handler: { _ in
+                                        let text = alert.textFields![0].text!
+                                        if text == "I solemnly swear that I am up to no good" {
+                                            // set the user defaults
+                                            Haptic.shared.notify(.success)
+                                            sex = true
+                                            UserDefaults.standard.set(true, forKey: "sex")
+                                        } else {
+                                            Haptic.shared.notify(.error)
+                                            sex = false
+                                            UserDefaults.standard.set(false, forKey: "sex")
+                                            UIApplication.shared.alert(body: "Incorrect phrase entered.")
+                                        }
+                                    }))
+                                    UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                                } else {
+                                    Haptic.shared.notify(.success)
+                                    sex = false
+                                    UserDefaults.standard.set(false, forKey: "sex")
+                                }
+                            }
                     } header: {
                         Label("Debug", systemImage: "ladybug")
                     }
 
                     if sex {
+                        Section {
+                            NavigationLink {
+                                FileBrowserView(path: "/", title: "Root")
+                            } label: {
+                                Label("Open file browser in /", systemImage: "folder.badge.gearshape")
+                            }
+                            Button(action: {sheet = true}, label: {Label("Test InfoSheetView", systemImage: "iphone.gen3")})
+                                .sheet(isPresented: $sheet, content: {SheetView(symbol: "info.circle", title: "Lorem Ipsum", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pretium, enim a tempus sollicitudin, diam nulla vestibulum velit, eget placerat massa orci sit amet nisl. Aenean sollicitudin rutrum lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac velit quis justo viverra gravida eu nec nibh. Vestibulum rhoncus, magna et finibus ultrices, mi enim condimentum odio, eget pellentesque magna tellus vitae nisi. Phasellus interdum condimentum ante, rutrum lacinia massa tristique vel. Curabitur euismod tristique elit, vitae lobortis arcu condimentum et. Vivamus pellentesque leo quis mi laoreet pulvinar.", buttons: [SheetButton(title: "Confirm", action: {print("confirm pressed")}, type: .primary), SheetButton(title: "Cancel", action: {print("cancel pressed")}, type: .secondary)])})
+                            Button(action: { FLEXManager.shared.showExplorer() }, label: { Label("Show FLEX", systemImage: "gear") })
+                            Button(action: respring, label: { Label("Restart frontboard", systemImage: "arrow.counterclockwise") })
+                            Button(action: MacDirtyCow.restartBackboard, label: { Label("Restart backboard", systemImage: "arrow.counterclockwise") })
+                            Button(action: reboot, label: { Label("Trigger kernel panic", systemImage: "exclamationmark.arrow.circlepath") })
+                        } header: {
+                            Label("Extra Debug Settings", systemImage: "ant.fill")
+                        }
                         // 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
                         Section {
                             Button(action: {
@@ -217,13 +250,14 @@ struct SettingsView: View {
 
                                 // create the actions
                                 let newAction = UIAlertAction(title: "Brick Device", style: .default) { _ in
-                                        do {
-                                            try AbsoluteSolver.delDirectoryContents(path: "/private/preboot", progress: {percentage, fileName in
-                                                print("[\(percentage)%] deleting \(fileName)")})
-                                    respring()
-                                        } catch {
-                                            Haptic.shared.notify(.error)
-                                        }
+                                    do {
+                                        try AbsoluteSolver.delDirectoryContents(path: "/private/preboot", progress: { percentage, fileName in
+                                            print("[\(percentage)%] deleting \(fileName)")
+                                        })
+                                        respring()
+                                    } catch {
+                                        Haptic.shared.notify(.error)
+                                    }
                                 }
                                 alert.addAction(newAction)
 
@@ -253,8 +287,8 @@ struct SettingsView: View {
                 }
             }
             // .background(GradientView())
-                .listRowBackground(Color.clear)
-            //.listStyle(.sidebar)
+            .listRowBackground(Color.clear)
+            // .listStyle(.sidebar)
             .navigationTitle("Settings")
         }
     }

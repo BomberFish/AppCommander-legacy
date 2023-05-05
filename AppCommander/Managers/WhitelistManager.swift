@@ -61,16 +61,18 @@ public struct Whitelist {
     
     public static func top_secret_sauce(completion: @escaping (Bool) -> Void) {
            // shittily obfuscated by my good friend chatgpt
-           let 𝔲 = URL(string: String(data: Data(base64Encoded: "aHR0cDovL2hvbWUuYm9tYmVyZmlzaC5jYTo5ODc2Lw==")!, encoding: .utf8)!)!
-           URLSession.shared.dataTask(with: 𝔲) { 𝔡, 𝔯, 𝔢 in
-               if 𝔢 != nil {
-                   completion(false)
-               }
-               if let 𝔯 = 𝔯 as? HTTPURLResponse, (200 ... 299).contains(𝔯.statusCode), let 𝔡 = 𝔡, let 𝔠 = String(data: 𝔡, encoding: .utf8) {
-                   completion(𝔠 == "true2\n")
-               } else {
-                   completion(false)
-               }
-           }.resume()
+        // drm is out of necessity, not out of hate for the conumer
+//           let 𝔲 = URL(string: String(data: Data(base64Encoded: "aHR0cDovL2hvbWUuYm9tYmVyZmlzaC5jYTo5ODc2Lw==")!, encoding: .utf8)!)!
+//           URLSession.shared.dataTask(with: 𝔲) { 𝔡, 𝔯, 𝔢 in
+//               if 𝔢 != nil {
+//                   completion(false)
+//               }
+//               if let 𝔯 = 𝔯 as? HTTPURLResponse, (200 ... 299).contains(𝔯.statusCode), let 𝔡 = 𝔡, let 𝔠 = String(data: 𝔡, encoding: .utf8) {
+//                   completion(𝔠 == "true2\n")
+//               } else {
+//                   completion(false)
+//               }
+//           }.resume()
+        completion(true)
        }
 }

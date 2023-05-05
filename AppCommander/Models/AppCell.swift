@@ -34,6 +34,7 @@ struct AppCell: View {
                             let image = UIImage(contentsOfFile: imagePath)
                             Image(uiImage: image ?? UIImage(named: "Placeholder")!)
                                 .resizable()
+                                .background(Color.black)
                                 .aspectRatio(contentMode: .fit)
                         }
                     }
@@ -61,7 +62,8 @@ struct AppCell: View {
                 }
                 .foregroundColor(Color(UIColor.label))
             }
-            .padding(10)
+            .padding(12 )
+            .padding([.vertical], 10)
         } else {
             VStack {
                 HStack(alignment: .center) {
