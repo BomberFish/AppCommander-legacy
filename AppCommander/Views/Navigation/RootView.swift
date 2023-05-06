@@ -26,6 +26,10 @@ struct RootView: View {
                 .tabItem {
                     Label("Tools", systemImage: "hammer")
                 }
+            StorageView(allApps: $allApps)
+                .tabItem {
+                    Label("Storage", systemImage: "internaldrive")
+                }
             if !(UIDevice.current.userInterfaceIdiom == .pad) {
                 AppabeticalView()
                     .tabItem {

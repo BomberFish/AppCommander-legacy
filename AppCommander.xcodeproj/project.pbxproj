@@ -38,6 +38,7 @@
 		D688309F29E870FF00F4D7DA /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688309E29E870FE00F4D7DA /* IOKit.framework */; };
 		D68830A329E87C2B00F4D7DA /* AppCommander-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D68830A129E87C2B00F4D7DA /* AppCommander-InfoPlist.strings */; };
 		D6899EBE2A03F18500C7D787 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6899EBD2A03F18500C7D787 /* SheetView.swift */; };
+		D6899EC02A057D8000C7D787 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6899EBF2A057D7F00C7D787 /* StorageView.swift */; };
 		D6B79B0B29F2E51100E14922 /* AppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B79B0A29F2E51100E14922 /* AppIconView.swift */; };
 		D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */ = {isa = PBXBuildFile; productRef = D6D22B6129C64AC20095645B /* LocalConsole */; };
 		D6D22B6629C64D180095645B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D22B6529C64D180095645B /* SettingsView.swift */; };
@@ -132,6 +133,7 @@
 		D68830A829E9918B00F4D7DA /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D68830A929E99F8A00F4D7DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D6899EBD2A03F18500C7D787 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		D6899EBF2A057D7F00C7D787 /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		D6B79B0A29F2E51100E14922 /* AppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconView.swift; sourceTree = "<group>"; };
 		D6B79B0C29F44DE200E14922 /* ISIconCacheServiceProtocol-Protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ISIconCacheServiceProtocol-Protocol.h"; sourceTree = "<group>"; };
 		D6B79B0D29F44DF100E14922 /* IconServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IconServices.h; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				D6E3FC8129CDDFE600D019D1 /* RootView.swift */,
 				D6E5528229B165400083E6A5 /* MainView.swift */,
+				D6899EBF2A057D7F00C7D787 /* StorageView.swift */,
 				D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */,
 				D6E3FC9629CDE52900D019D1 /* AppabeticalView.swift */,
 				D6D22B6529C64D180095645B /* SettingsView.swift */,
@@ -623,6 +626,7 @@
 				D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */,
 				D6D22B6629C64D180095645B /* SettingsView.swift in Sources */,
 				D6E3FC9729CDE52900D019D1 /* AppabeticalView.swift in Sources */,
+				D6899EC02A057D8000C7D787 /* StorageView.swift in Sources */,
 				D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */,
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
 				D6E552CC29B2E9F50083E6A5 /* CommonFunctions.swift in Sources */,
