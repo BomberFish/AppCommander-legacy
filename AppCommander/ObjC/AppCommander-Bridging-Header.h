@@ -7,3 +7,4 @@
 #import "KernelPanic.h"
 #import "ISIconCacheServiceProtocol-Protocol.h"
 #import "IconServices.h"
+#import "jit.h"

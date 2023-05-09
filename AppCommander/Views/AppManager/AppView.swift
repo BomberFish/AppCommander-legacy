@@ -17,6 +17,7 @@ struct AppView: View {
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
     @State var ipapath: URL? = nil
     @State var dataDirectory: URL? = nil
+    let jit = JITManager.shared
     var body: some View {
         List {
             Section {
@@ -30,6 +31,28 @@ struct AppView: View {
                 }, label: {
                     Label("Open App", systemImage: "arrow.up.forward.app")
                 })
+                Button(action: {
+                    let title = "Warning"
+                    let message = "We will now try to enable JIT on \(sbapp.name). Make sure the app is opened in the background so we can find its PID and is signed with a free developer certificate!"
+                    let onOK: () -> Void = {
+                        UIApplication.shared.alert(title: "Please wait", body: "Enabling JIT...", withButton: false)
+                        
+                        callps()
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            UIApplication.shared.dismissAlert(animated: true)
+                            jit.enableJIT(pidApp: jit.returnPID(exec: sbapp.name))
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                ApplicationManager.openApp(bundleID: sbapp.bundleIdentifier)
+                            }
+                        }
+                    }
+                    UIApplication.shared.confirmAlert(title: title, body: message, onOK: onOK, noCancel: false)
+                }, label: {
+                    Label("Open with JIT", systemImage: "sparkles")
+                })
+                    
                 NavigationLink(destination: { MoreInfoView(sbapp: sbapp, iconPath: iconPath) }, label: { Label("More Info", systemImage: "info.circle") })
             } header: { Label("App Details", systemImage: "info.circle") }
             Section {

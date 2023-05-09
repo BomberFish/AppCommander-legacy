@@ -11,6 +11,15 @@
 		D6076BC229F9E96700BC3C3C /* FileBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6076BC129F9E96700BC3C3C /* FileBrowserView.swift */; };
 		D6076BC429FA0DCB00BC3C3C /* PackageCreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6076BC329FA0DCB00BC3C3C /* PackageCreditsView.swift */; };
 		D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */; };
+		D634CC952A091B8200EA9859 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634CC942A091B8200EA9859 /* ButtonStyles.swift */; };
+		D634CC972A091B9A00EA9859 /* TextField++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634CC962A091B9A00EA9859 /* TextField++.swift */; };
+		D634CC992A091BB800EA9859 /* jit.m in Sources */ = {isa = PBXBuildFile; fileRef = D634CC982A091BB800EA9859 /* jit.m */; };
+		D634CC9C2A091BE100EA9859 /* JITManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634CC9B2A091BE100EA9859 /* JITManager.swift */; };
+		D634CC9F2A091CBD00EA9859 /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634CC9E2A091CBD00EA9859 /* AppsView.swift */; };
+		D634CCA12A091CE000EA9859 /* JITSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634CCA02A091CE000EA9859 /* JITSettings.swift */; };
+		D634CCA32A091D0F00EA9859 /* JITSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634CCA22A091D0F00EA9859 /* JITSetupView.swift */; };
+		D634CCA52A091E7000EA9859 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634CCA42A091E7000EA9859 /* SearchBar.swift */; };
+		D634CCA72A091F0200EA9859 /* JITView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634CCA62A091F0200EA9859 /* JITView.swift */; };
 		D638E1A929DA02DF004CCA55 /* AVAudioPlayerNode++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */; };
 		D638E1AB29DA031E004CCA55 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1AA29DA031E004CCA55 /* PlayerClass.swift */; };
 		D638E1AD29DA05B2004CCA55 /* AppleLoopsMixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1AC29DA05B2004CCA55 /* AppleLoopsMixView.swift */; };
@@ -103,6 +112,16 @@
 		D6076BC329FA0DCB00BC3C3C /* PackageCreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageCreditsView.swift; sourceTree = "<group>"; };
 		D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AppCommander-Info.plist"; sourceTree = "<group>"; };
 		D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
+		D634CC942A091B8200EA9859 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		D634CC962A091B9A00EA9859 /* TextField++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField++.swift"; sourceTree = "<group>"; };
+		D634CC982A091BB800EA9859 /* jit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jit.m; sourceTree = "<group>"; };
+		D634CC9A2A091BCC00EA9859 /* jit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jit.h; sourceTree = "<group>"; };
+		D634CC9B2A091BE100EA9859 /* JITManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JITManager.swift; sourceTree = "<group>"; };
+		D634CC9E2A091CBD00EA9859 /* AppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsView.swift; sourceTree = "<group>"; };
+		D634CCA02A091CE000EA9859 /* JITSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JITSettings.swift; sourceTree = "<group>"; };
+		D634CCA22A091D0F00EA9859 /* JITSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JITSetupView.swift; sourceTree = "<group>"; };
+		D634CCA42A091E7000EA9859 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		D634CCA62A091F0200EA9859 /* JITView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JITView.swift; sourceTree = "<group>"; };
 		D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayerNode++.swift"; sourceTree = "<group>"; };
 		D638E1AA29DA031E004CCA55 /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
 		D638E1AC29DA05B2004CCA55 /* AppleLoopsMixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoopsMixView.swift; sourceTree = "<group>"; };
@@ -229,11 +248,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D634CC9D2A091C8E00EA9859 /* JIT */ = {
+			isa = PBXGroup;
+			children = (
+				D634CC9E2A091CBD00EA9859 /* AppsView.swift */,
+				D634CCA42A091E7000EA9859 /* SearchBar.swift */,
+				D634CCA22A091D0F00EA9859 /* JITSetupView.swift */,
+			);
+			path = JIT;
+			sourceTree = "<group>";
+		};
 		D64A00CB29FD760B0000F32C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				D638E1C129DEDD15004CCA55 /* LoadingView.swift */,
 				D6E3FC8129CDDFE600D019D1 /* RootView.swift */,
 				D6E5528229B165400083E6A5 /* MainView.swift */,
+				D634CCA62A091F0200EA9859 /* JITView.swift */,
 				D6899EBF2A057D7F00C7D787 /* StorageView.swift */,
 				D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */,
 				D6E3FC9629CDE52900D019D1 /* AppabeticalView.swift */,
@@ -280,6 +311,8 @@
 				D6B79B0C29F44DE200E14922 /* ISIconCacheServiceProtocol-Protocol.h */,
 				D6B79B0D29F44DF100E14922 /* IconServices.h */,
 				D6E552BA29B1790E0083E6A5 /* CoreServices.h */,
+				D634CC982A091BB800EA9859 /* jit.m */,
+				D634CC9A2A091BCC00EA9859 /* jit.h */,
 				D6E552AB29B16E160083E6A5 /* AppCommander-Bridging-Header.h */,
 				D6E3FC9229CDE4C600D019D1 /* UIImage+UIImageAverageColorAddition.m */,
 				D688309929E86D7D00F4D7DA /* KernelPanic.m */,
@@ -313,6 +346,7 @@
 				D6E552CB29B2E9F50083E6A5 /* CommonFunctions.swift */,
 				D6E3FC8829CDE31600D019D1 /* IconStateItemManager.swift */,
 				D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */,
+				D634CC9B2A091BE100EA9859 /* JITManager.swift */,
 				D6E3FC8A29CDE33700D019D1 /* HomeBackupManager.swift */,
 				D638E1B829DE1F15004CCA55 /* BackupServices.swift */,
 				D6E3FC8C29CDE34900D019D1 /* IconStateManager.swift */,
@@ -325,6 +359,7 @@
 		D6E3FC9A29CDECFD00D019D1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D634CCA02A091CE000EA9859 /* JITSettings.swift */,
 				D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */,
 				D6B79B0A29F2E51100E14922 /* AppIconView.swift */,
 				D6FC674829E5A28500585625 /* TranslatorsView.swift */,
@@ -339,8 +374,6 @@
 			children = (
 				D6E552C529B2BE730083E6A5 /* AppView.swift */,
 				D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */,
-				D65AA4C329D85FEA00C3EBE7 /* Tools */,
-				D6D55A7A29D5EDCD00DD6C4A /* Backup */,
 			);
 			path = AppManager;
 			sourceTree = "<group>";
@@ -419,6 +452,8 @@
 			children = (
 				D6E552B629B16E640083E6A5 /* Alert++.swift */,
 				D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */,
+				D634CC942A091B8200EA9859 /* ButtonStyles.swift */,
+				D634CC962A091B9A00EA9859 /* TextField++.swift */,
 				D6E3FC8329CDE07700D019D1 /* Color++.swift */,
 				D6E552B729B16E640083E6A5 /* Haptic++.swift */,
 				D638E1B229DAFA82004CCA55 /* View++.swift */,
@@ -430,10 +465,12 @@
 		D6E552C429B2BE3C0083E6A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D634CC9D2A091C8E00EA9859 /* JIT */,
 				D64A00CB29FD760B0000F32C /* Navigation */,
 				D6E3FC9B29CDED1600D019D1 /* AppManager */,
+				D6D55A7A29D5EDCD00DD6C4A /* Backup */,
+				D65AA4C329D85FEA00C3EBE7 /* Tools */,
 				D6E3FC9A29CDECFD00D019D1 /* Settings */,
-				D638E1C129DEDD15004CCA55 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -607,6 +644,7 @@
 				D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */,
 				D6E552BE29B2A0CC0083E6A5 /* ApplicationManager.swift in Sources */,
 				D64A00CA29FD75220000F32C /* GradientView.swift in Sources */,
+				D634CCA32A091D0F00EA9859 /* JITSetupView.swift in Sources */,
 				D6E3FC8629CDE2F300D019D1 /* SpringBoardItem.swift in Sources */,
 				D6076BC229F9E96700BC3C3C /* FileBrowserView.swift in Sources */,
 				D638E1C229DEDD15004CCA55 /* LoadingView.swift in Sources */,
@@ -616,17 +654,22 @@
 				D6FC674929E5A28500585625 /* TranslatorsView.swift in Sources */,
 				D6D22B6F29C65D6B0095645B /* Analytics.swift in Sources */,
 				D65AA4CC29D8615400C3EBE7 /* WhitelistManager.swift in Sources */,
+				D634CCA72A091F0200EA9859 /* JITView.swift in Sources */,
 				D6E3FC8229CDDFE600D019D1 /* RootView.swift in Sources */,
 				D6E3FC8929CDE31600D019D1 /* IconStateItemManager.swift in Sources */,
 				D6E552B929B16E640083E6A5 /* Haptic++.swift in Sources */,
 				D6E3FC8D29CDE34900D019D1 /* IconStateManager.swift in Sources */,
+				D634CCA12A091CE000EA9859 /* JITSettings.swift in Sources */,
+				D634CC992A091BB800EA9859 /* jit.m in Sources */,
 				D6E5528329B165400083E6A5 /* MainView.swift in Sources */,
 				D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */,
+				D634CC952A091B8200EA9859 /* ButtonStyles.swift in Sources */,
 				D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */,
 				D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */,
 				D6D22B6629C64D180095645B /* SettingsView.swift in Sources */,
 				D6E3FC9729CDE52900D019D1 /* AppabeticalView.swift in Sources */,
 				D6899EC02A057D8000C7D787 /* StorageView.swift in Sources */,
+				D634CC9C2A091BE100EA9859 /* JITManager.swift in Sources */,
 				D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */,
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
 				D6E552CC29B2E9F50083E6A5 /* CommonFunctions.swift in Sources */,
@@ -640,12 +683,15 @@
 				D638E1AD29DA05B2004CCA55 /* AppleLoopsMixView.swift in Sources */,
 				D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */,
 				D638E1A929DA02DF004CCA55 /* AVAudioPlayerNode++.swift in Sources */,
+				D634CCA52A091E7000EA9859 /* SearchBar.swift in Sources */,
 				D6D55A7C29D5EE0800DD6C4A /* ReplaceTestingView.swift in Sources */,
 				D638E1B929DE1F15004CCA55 /* BackupServices.swift in Sources */,
 				D6E5528129B165400083E6A5 /* AppCommanderApp.swift in Sources */,
 				D6E3FC9429CDE4C700D019D1 /* UIImage+UIImageAverageColorAddition.m in Sources */,
+				D634CC9F2A091CBD00EA9859 /* AppsView.swift in Sources */,
 				D6E3FC9129CDE43400D019D1 /* Constants.swift in Sources */,
 				D638E1B329DAFA82004CCA55 /* View++.swift in Sources */,
+				D634CC972A091B9A00EA9859 /* TextField++.swift in Sources */,
 				D6B79B0B29F2E51100E14922 /* AppIconView.swift in Sources */,
 				D638E1BB29DE1F49004CCA55 /* BackupItem.swift in Sources */,
 				D688309A29E86D7D00F4D7DA /* KernelPanic.m in Sources */,
