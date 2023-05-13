@@ -39,8 +39,10 @@ struct AppView: View {
                         do {
                             try AbsoluteSolver.replaceDDICert()
                             
-                            UIApplication.shared.changeBody("Enabling JIT...")
-                            callps()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                                UIApplication.shared.changeBody("Enabling JIT...")
+                                callps()
+                            }
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 UIApplication.shared.dismissAlert(animated: true)
