@@ -17,13 +17,28 @@ struct SettingsView: View {
     // found the funny!
     @State var sex: Bool = UserDefaults.standard.bool(forKey: "sex")
     @State var ASEnabled: Bool = UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")
-    
+
     @State var sheet: Bool = false
+    @State var setupsheet: Bool = false
+    
+    struct Contribution: Identifiable, Equatable, Hashable {
+        var id = UUID()
+        let name: String
+        let url: String
+        let contribution: String
+        let image: String
+    }
+    
+    let contribs: [Contribution] = [Contribution(name: "BomberFish", url: "https://bomberfish.ca", contribution: "Main Developer", image: "bomberfish"), Contribution(name: "sourcelocation", url: "https://github.com/sourcelocation", contribution: "ApplicationManager, Various Code Snippets, Appabetical", image: "suslocation"), Contribution(name: "Avangelista", url: "https://github.com/Avangelista", contribution: "Appabetical", image: "floppa"), Contribution(name: "Nathan", url: "https://github.com/verygenericname", contribution: "JIT Implementation", image: "nathan"), Contribution(name: "haxi0", url: "https://github.com/haxi0", contribution: "DirtyJIT", image: "hax"), Contribution(name: "Mineek", url: "https://github.com/Mineek", contribution: "Filebrowser", image: "minek"), Contribution(name: "Serena", url: "https://github.com/SerenaKit", contribution: "Backup System", image: "serena"), Contribution(name: "LeminLimez", url: "https://github.com/leminlimez", contribution: "Tools Grid UI, MDC RAM safety, LSApplicationWorkspace header, Various Code snippets", image: "lemon"), Contribution(name: "sneakyf1shy", url: "https://f1sh.me", contribution: "Analytics, Bugfixes", image: "other_fish"), Contribution(name: "zhuowei", url: "https://worthdoingbadly.com", contribution: "Unsandboxing, installd patch, WDBDISSH", image: "zhuowei")]
 
     var body: some View {
         NavigationView {
             List {
                 Section(header: Label("AppCommander \(appVersion)", systemImage: "info.circle").textCase(.none)) {}
+                Section {
+                    Button(action: { setupsheet = true }, label: { Label("Set up JIT", systemImage: "sparkles") })
+                        .sheet(isPresented: $setupsheet, content: { JITSetupView() })
+                }
                 Section {
                     NavigationLink {
                         AppIconView()
@@ -133,14 +148,9 @@ struct SettingsView: View {
 //                }
 
                 Section {
-                    LinkCell(imageName: "bomberfish", url: "https://github.com/BomberFish", title: "BomberFish", contribution: "Main Developer", circle: true)
-                    LinkCell(imageName: "suslocation", url: "https://github.com/sourcelocation", title: "sourcelocation", contribution: "ApplicationManager, Various Code Snippets, Appabetical", circle: true)
-                    LinkCell(imageName: "floppa", url: "https://github.com/Avangelista", title: "Avangelista", contribution: "Appabetical", circle: true)
-                    LinkCell(imageName: "minek", url: "https://github.com/Mineek", title: "Mineek", contribution: "File Browser", circle: true)
-                    LinkCell(imageName: "serena", url: "https://github.com/SerenaKit", title: "Serena", contribution: "App Backups", circle: true)
-                    LinkCell(imageName: "lemon", url: "https://github.com/leminlimez", title: "LeminLimez", contribution: "Tools Grid UI, MacDirtyCow RAM safety", circle: true)
-                    LinkCell(imageName: "other_fish", url: "https://github.com/f1shy-dev", title: "sneakyf1shy", contribution: "Analytics, Bugfixes", circle: true)
-                    LinkCell(imageName: "zhuowei", url: "https://twitter.com/zhuowei/", title: "zhuowei", contribution: "Unsandboxing, installd patch", circle: true)
+                    ForEach(contribs) { contrib in
+                        LinkCell(imageName: contrib.image, url: contrib.url, title: contrib.name, contribution: contrib.contribution)
+                    }
                     NavigationLink {
                         TranslatorsView()
                     } label: {
@@ -233,8 +243,8 @@ struct SettingsView: View {
                             } label: {
                                 Label("Open file browser in /", systemImage: "folder.badge.gearshape")
                             }
-                            Button(action: {sheet = true}, label: {Label("Test InfoSheetView", systemImage: "iphone.gen3")})
-                                .sheet(isPresented: $sheet, content: {SheetView(symbol: "info.circle", title: "Lorem Ipsum", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pretium, enim a tempus sollicitudin, diam nulla vestibulum velit, eget placerat massa orci sit amet nisl. Aenean sollicitudin rutrum lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac velit quis justo viverra gravida eu nec nibh. Vestibulum rhoncus, magna et finibus ultrices, mi enim condimentum odio, eget pellentesque magna tellus vitae nisi. Phasellus interdum condimentum ante, rutrum lacinia massa tristique vel. Curabitur euismod tristique elit, vitae lobortis arcu condimentum et. Vivamus pellentesque leo quis mi laoreet pulvinar.", buttons: [SheetButton(title: "Confirm", action: {print("confirm pressed")}, type: .primary), SheetButton(title: "Cancel", action: {print("cancel pressed")}, type: .secondary)])})
+                            Button(action: { sheet = true }, label: { Label("Test InfoSheetView", systemImage: "info.circle") })
+                                .sheet(isPresented: $sheet, content: { SheetView(symbol: "info.circle", title: "Lorem Ipsum", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pretium, enim a tempus sollicitudin, diam nulla vestibulum velit, eget placerat massa orci sit amet nisl. Aenean sollicitudin rutrum lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac velit quis justo viverra gravida eu nec nibh. Vestibulum rhoncus, magna et finibus ultrices, mi enim condimentum odio, eget pellentesque magna tellus vitae nisi. Phasellus interdum condimentum ante, rutrum lacinia massa tristique vel. Curabitur euismod tristique elit, vitae lobortis arcu condimentum et. Vivamus pellentesque leo quis mi laoreet pulvinar.", buttons: [SheetButton(title: "Confirm", action: { print("confirm pressed") }, type: .primary), SheetButton(title: "Cancel", action: { print("cancel pressed") }, type: .secondary)]) })
                             Button(action: { FLEXManager.shared.showExplorer() }, label: { Label("Show FLEX", systemImage: "gear") })
                             Button(action: respring, label: { Label("Restart frontboard", systemImage: "arrow.counterclockwise") })
                             Button(action: MacDirtyCow.restartBackboard, label: { Label("Restart backboard", systemImage: "arrow.counterclockwise") })

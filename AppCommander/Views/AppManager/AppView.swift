@@ -33,19 +33,25 @@ struct AppView: View {
                 })
                 Button(action: {
                     let title = "Warning"
-                    let message = "We will now try to enable JIT on \(sbapp.name). Make sure the app is opened in the background so we can find its PID and is signed with a free developer certificate!"
+                    let message = "AppCommander will now try to enable JIT on \(sbapp.name). Make sure the app is opened in the background so we can find its PID and is signed with the same *developer* certificate used to sign AppCommander!"
                     let onOK: () -> Void = {
-                        UIApplication.shared.alert(title: "Please wait", body: "Enabling JIT...", withButton: false)
-                        
-                        callps()
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            UIApplication.shared.dismissAlert(animated: true)
-                            jit.enableJIT(pidApp: jit.returnPID(exec: sbapp.name))
+                        UIApplication.shared.alert(title: "Please wait", body: "Replacing DDI certificate...", withButton: false)
+                        do {
+                            try AbsoluteSolver.replaceDDICert()
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                ApplicationManager.openApp(bundleID: sbapp.bundleIdentifier)
+                            UIApplication.shared.changeBody("Enabling JIT...")
+                            callps()
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                UIApplication.shared.dismissAlert(animated: true)
+                                jit.enableJIT(pidApp: jit.returnPID(exec: sbapp.name))
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    ApplicationManager.openApp(bundleID: sbapp.bundleIdentifier)
+                                }
                             }
+                        } catch {
+                            UIApplication.shared.alert(body: "Could not replace DDI cert! Error: \(error.localizedDescription)")
                         }
                     }
                     UIApplication.shared.confirmAlert(title: title, body: message, onOK: onOK, noCancel: false)
