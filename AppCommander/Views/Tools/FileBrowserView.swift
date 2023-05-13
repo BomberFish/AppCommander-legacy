@@ -85,7 +85,7 @@ struct Folder: Identifiable {
 // }
 
 func overwriteFile(fileDataLocked: Data, pathtovictim: String) -> Bool {
-    if UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled") {
+    if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
         do {
             try AbsoluteSolver.replace(at: URL(fileURLWithPath: pathtovictim), with: fileDataLocked as NSData, progress: { message in
                 print(message)
@@ -111,7 +111,7 @@ func overwriteFile(fileDataLocked: Data, pathtovictim: String) -> Bool {
 
 func deleteFile(_ path: String) throws {
     print(path)
-    if UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled") {
+    if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
         do {
             try AbsoluteSolver.delete(at: URL(fileURLWithPath: path), progress: { message in
                 print(message)
