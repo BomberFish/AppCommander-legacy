@@ -12,7 +12,6 @@ import SwiftUI
 // this is actually a modified LinkCell from cowabunga but i'm just too lazy to give creds
 
 struct AppCell: View {
-    var imagePath: String
     var bundleid: String
     var name: String
     var large: Bool
@@ -22,19 +21,17 @@ struct AppCell: View {
 
     var body: some View {
         if link {
-            NavigationLink(destination: AppView(iconPath: imagePath, bundleId: bundleid, name: name, bundleurl: bundleURL, sbapp: sbapp)) {
+            NavigationLink(destination: AppView(bundleId: bundleid, name: name, bundleurl: bundleURL, sbapp: sbapp)) {
                 HStack(alignment: .center) {
                     Group {
-                        // 💀
-                        if imagePath.contains("this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao") {
-                            Image("Placeholder")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } else {
-                            let image = UIImage(contentsOfFile: imagePath)
-                            Image(uiImage: image ?? UIImage(named: "Placeholder")!)
+                        if let image = UIImage(contentsOfFile: sbapp.bundleURL.appendingPathComponent(sbapp.pngIconPaths.first ?? "").path) {
+                            Image(uiImage: image)
                                 .resizable()
                                 .background(Color.black)
+                                .aspectRatio(contentMode: .fit)
+                        } else {
+                            Image("Placeholder")
+                                .resizable()
                                 .aspectRatio(contentMode: .fit)
                         }
                     }
@@ -68,14 +65,13 @@ struct AppCell: View {
             VStack {
                 HStack(alignment: .center) {
                     Group {
-                        // 💀
-                        if imagePath.contains("this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao") {
-                            Image("Placeholder")
+                        if let image = UIImage(contentsOfFile: sbapp.bundleURL.appendingPathComponent(sbapp.pngIconPaths.first ?? "").path) {
+                            Image(uiImage: image)
                                 .resizable()
+                                .background(Color.black)
                                 .aspectRatio(contentMode: .fit)
                         } else {
-                            let image = UIImage(contentsOfFile: imagePath)
-                            Image(uiImage: image ?? UIImage(named: "Placeholder")!)
+                            Image("Placeholder")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                         }

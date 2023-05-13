@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MoreInfoView: View {
     @State public var sbapp: SBApp
-    @State public var iconPath: String
     @State private var appsize: UInt64 = 0
     @State private var docsize: UInt64 = 0
     @State private var datadir: String = ""
@@ -96,6 +95,6 @@ struct MoreInfoView: View {
 
 struct MoreInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        MoreInfoView(sbapp: SBApp(bundleIdentifier: "com.example.placeholder", name: "Placeholder", bundleURL: URL(string: "/path/to/foo/bar/baz")!, version: "1.0.0", pngIconPaths: [""], hiddenFromSpringboard: false), iconPath: "")
+        MoreInfoView(sbapp: SBApp(bundleIdentifier: "com.example.placeholder", name: "Placeholder", bundleURL: URL(string: "/path/to/foo/bar/baz")!, version: "1.0.0", pngIconPaths: [""], hiddenFromSpringboard: false))
     }
 }

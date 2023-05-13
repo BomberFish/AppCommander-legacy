@@ -9,7 +9,6 @@ import AbsoluteSolver
 import SwiftUI
 
 struct AppView: View {
-    @State public var iconPath: String
     @State public var bundleId: String
     @State public var name: String
     @State public var bundleurl: URL
@@ -21,7 +20,7 @@ struct AppView: View {
     var body: some View {
         List {
             Section {
-                AppCell(imagePath: iconPath, bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl, sbapp: sbapp)
+                AppCell(bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl, sbapp: sbapp)
                 Button(action: {
                     if ApplicationManager.openApp(bundleID: sbapp.bundleIdentifier) {
                         Haptic.shared.notify(.success)
@@ -49,7 +48,10 @@ struct AppView: View {
                                 jit.enableJIT(pidApp: jit.returnPID(exec: sbapp.name))
                                 
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    ApplicationManager.openApp(bundleID: sbapp.bundleIdentifier)
+                                    if !(ApplicationManager.openApp(bundleID: sbapp.bundleIdentifier)) {
+                                        UIApplication.shared.alert(body: "Could not open app \(sbapp.name)")
+                                        Haptic.shared.notify(.error)
+                                    }
                                 }
                             }
                         } catch {
@@ -61,7 +63,7 @@ struct AppView: View {
                     Label("Open with JIT", systemImage: "sparkles")
                 })
                     
-                NavigationLink(destination: { MoreInfoView(sbapp: sbapp, iconPath: iconPath) }, label: { Label("More Info", systemImage: "info.circle") })
+                NavigationLink(destination: { MoreInfoView(sbapp: sbapp) }, label: { Label("More Info", systemImage: "info.circle") })
             } header: { Label("App Details", systemImage: "info.circle") }
             Section {
                 NavigationLink(destination: { BackupView(app: sbapp) }, label: { Label("Backup and Restore", systemImage: "externaldrive.badge.timemachine") })
@@ -220,6 +222,6 @@ struct AppView: View {
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView(iconPath: "", bundleId: "com.example.placeholder", name: "Placeholder", bundleurl: URL(string: "/path/to/foo/bar/baz")!, sbapp: SBApp(bundleIdentifier: "com.example.placeholder", name: "Placeholder", bundleURL: URL(string: "/path/to/foo/bar/baz")!, version: "1.0.0", pngIconPaths: [""], hiddenFromSpringboard: false))
+        AppView(bundleId: "com.example.placeholder", name: "Placeholder", bundleurl: URL(string: "/path/to/foo/bar/baz")!, sbapp: SBApp(bundleIdentifier: "com.example.placeholder", name: "Placeholder", bundleURL: URL(string: "/path/to/foo/bar/baz")!, version: "1.0.0", pngIconPaths: [""], hiddenFromSpringboard: false))
     }
 }
