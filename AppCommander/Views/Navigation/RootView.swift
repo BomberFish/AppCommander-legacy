@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @State var allApps: [SBApp] = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+    @State var allApps: [SBApp] = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.Loading", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: [""], hiddenFromSpringboard: false)]
 
     init() {
         let transparentAppearence = UITabBarAppearance()

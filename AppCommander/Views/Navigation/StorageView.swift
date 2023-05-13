@@ -12,7 +12,7 @@ import AbsoluteSolver
 struct StorageView: View {
     @Binding public var allApps: [SBApp]
     @State var sizes: [DataDir] = []
-    @State var apps: [SBApp] = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+    @State var apps: [SBApp] = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.Loading", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: [""], hiddenFromSpringboard: false)]
     @State var currentappsize: UInt64 = 0
     var body: some View {
         NavigationView {
@@ -23,9 +23,7 @@ struct StorageView: View {
                     //Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
                     VStack {
                         ForEach(apps) { app in
-                            // 💀
-                            // TODO: I could probably do the datadir one in a way that doesnt make jetsam slice the process in half
-                            MiniAppCell(imagePath: app.bundleURL.appendingPathComponent(app.pngIconPaths.first ?? "this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao").path, bundleid: app.bundleIdentifier, name: app.name, bundleURL: app.bundleURL, sbapp: app, size: 0)
+                            MiniAppCell(bundleid: app.bundleIdentifier, name: app.name, bundleURL: app.bundleURL, sbapp: app, size: 0)
                                 .contextMenu {
                                     Button(action: {
                                         if ApplicationManager.openApp(bundleID: app.bundleIdentifier) {
@@ -107,7 +105,6 @@ struct StorageView: View {
     }
     
     struct MiniAppCell: View {
-        var imagePath: String
         var bundleid: String
         var name: String
         var bundleURL: URL
@@ -117,14 +114,13 @@ struct StorageView: View {
             VStack {
                 HStack(alignment: .center) {
                     Group {
-                        // 💀
-                        if imagePath.contains("this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao") {
-                            Image("Placeholder")
+                        if let image = UIImage(contentsOfFile: sbapp.bundleURL.appendingPathComponent(sbapp.pngIconPaths.first ?? "").path) {
+                            Image(uiImage: image)
                                 .resizable()
+                                .background(Color.black)
                                 .aspectRatio(contentMode: .fit)
                         } else {
-                            let image = UIImage(contentsOfFile: imagePath)
-                            Image(uiImage: image ?? UIImage(named: "Placeholder")!)
+                            Image("Placeholder")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                         }

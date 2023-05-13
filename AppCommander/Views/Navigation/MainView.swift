@@ -14,7 +14,7 @@ struct MainView: View {
     // MARK: - Literally the worst code ever. Will I fix it? No!
 
     @Binding public var allApps: [SBApp]
-    @State var apps = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+    @State var apps = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.Loading", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: [""], hiddenFromSpringboard: false)]
     var body: some View {
         NavigationView {
             ZStack {
@@ -29,14 +29,14 @@ struct MainView: View {
                         VStack {
                             VStack {
                                 Section {
-                                    if apps == [SBApp(bundleIdentifier: "", name: "", bundleURL: URL(string: "/")!, version: "1.0.0", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)] {
+                                    if apps == [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.Loading", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: [""], hiddenFromSpringboard: false)] {
                                         Spacer()
                                         ProgressView()
                                         Spacer()
                                     } else {
                                         ForEach(apps) { app in
                                             // 💀
-                                            AppCell(imagePath: app.bundleURL.appendingPathComponent(app.pngIconPaths.first).path, bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
+                                            AppCell(bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
                                                 .contextMenu {
                                                     Button(action: {
                                                         if ApplicationManager.openApp(bundleID: app.bundleIdentifier) {
@@ -139,7 +139,7 @@ struct MainView: View {
                     do {
                         allApps = try ApplicationManager.getApps()
                     } catch {
-                        apps = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: ["this-app-does-not-have-an-icon-i-mean-how-could-anything-have-this-string-lmao"], hiddenFromSpringboard: false)]
+                        apps = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.GuruMeditation", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: [""], hiddenFromSpringboard: false)]
                         UIApplication.shared.alert(title: "WARNING", body: "AppCommander was unable to get installed apps. Press OK to continue in a feature-limited mode.")
                     }
                     apps = allApps
