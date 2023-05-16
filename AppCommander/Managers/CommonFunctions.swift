@@ -54,12 +54,11 @@ func openInFilza(path: String) {
     UIApplication.shared.open(URL(string: "filza://\(path)")!, options: [:], completionHandler: nil)
 }
 
-// MARK: - 💀
-
 func notimplementedalert() {
     UIApplication.shared.alert(title: "Not implemented", body: "")
 }
 
+// MARK: - solverless
 func delDirectoryContents(path: String, progress: ((Double,String)) -> ()) throws {
     var contents = [""]
     var currentfile: Int = 0
