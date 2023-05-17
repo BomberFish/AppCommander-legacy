@@ -34,6 +34,7 @@
 		D638E1C229DEDD15004CCA55 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D638E1C129DEDD15004CCA55 /* LoadingView.swift */; };
 		D64A00CA29FD75220000F32C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64A00C929FD75220000F32C /* GradientView.swift */; };
 		D64A00D029FEAC220000F32C /* FLEX in Frameworks */ = {isa = PBXBuildFile; productRef = D64A00CF29FEAC220000F32C /* FLEX */; };
+		D64F958B2A14F9CD00842076 /* bite_me.png in Resources */ = {isa = PBXBuildFile; fileRef = D64F958A2A14F9CC00842076 /* bite_me.png */; };
 		D6552B872A100B3E00DDA816 /* defaulticon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6552B862A100B3D00DDA816 /* defaulticon.jpg */; };
 		D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */; };
 		D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */; };
@@ -136,6 +137,7 @@
 		D638E1BF29DE2653004CCA55 /* iosplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iosplaceholder.png; sourceTree = "<group>"; };
 		D638E1C129DEDD15004CCA55 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D64A00C929FD75220000F32C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		D64F958A2A14F9CC00842076 /* bite_me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bite_me.png; sourceTree = "<group>"; };
 		D6552B862A100B3D00DDA816 /* defaulticon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaulticon.jpg; sourceTree = "<group>"; };
 		D65AA4C429D85FFB00C3EBE7 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		D65AA4C629D860A100C3EBE7 /* WhitelistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistView.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				7D64731129DDAE1B00DEBFBC /* AppCommander.entitlements */,
 				D6FC675029E5A48A00585625 /* Localizable.strings */,
 				D638E1BF29DE2653004CCA55 /* iosplaceholder.png */,
+				D64F958A2A14F9CC00842076 /* bite_me.png */,
 				D638E1AE29DA0BDC004CCA55 /* Apple Loops Mix.m4a */,
 				D6E5528029B165400083E6A5 /* AppCommanderApp.swift */,
 				D688309829E86D5D00F4D7DA /* ObjC */,
@@ -617,6 +620,7 @@
 				D6552B872A100B3E00DDA816 /* defaulticon.jpg in Resources */,
 				D68830A329E87C2B00F4D7DA /* AppCommander-InfoPlist.strings in Resources */,
 				D6FC674E29E5A48A00585625 /* Localizable.strings in Resources */,
+				D64F958B2A14F9CD00842076 /* bite_me.png in Resources */,
 				D6E5528829B165410083E6A5 /* Preview Assets.xcassets in Resources */,
 				D638E1AF29DA0BDD004CCA55 /* Apple Loops Mix.m4a in Resources */,
 				D6E5528529B165410083E6A5 /* Assets.xcassets in Resources */,

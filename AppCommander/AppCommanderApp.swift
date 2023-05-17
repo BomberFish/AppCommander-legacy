@@ -13,6 +13,7 @@ import SwiftUI
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
 let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+let cyn: URL = Bundle.main.url(forResource: "bite_me", withExtension: "png")!
 // var escaped = false
 // var has_cooked = false
 
