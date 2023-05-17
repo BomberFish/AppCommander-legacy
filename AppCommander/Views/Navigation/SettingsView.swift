@@ -29,7 +29,7 @@ struct SettingsView: View {
         let image: String
     }
     
-    let contribs: [Contribution] = [Contribution(name: "BomberFish", url: "https://bomberfish.ca", contribution: "Main Developer", image: "bomberfish"), Contribution(name: "sourcelocation", url: "https://github.com/sourcelocation", contribution: "ApplicationManager, Various Code Snippets, Appabetical", image: "suslocation"), Contribution(name: "Avangelista", url: "https://github.com/Avangelista", contribution: "Appabetical", image: "floppa"), Contribution(name: "Nathan", url: "https://github.com/verygenericname", contribution: "JIT Implementation", image: "nathan"), Contribution(name: "haxi0", url: "https://github.com/haxi0", contribution: "DirtyJIT", image: "hax"), Contribution(name: "Mineek", url: "https://github.com/Mineek", contribution: "Filebrowser", image: "minek"), Contribution(name: "Serena", url: "https://github.com/SerenaKit", contribution: "Backup System", image: "serena"), Contribution(name: "LeminLimez", url: "https://github.com/leminlimez", contribution: "Tools Grid UI, MDC RAM safety, LSApplicationWorkspace header, Various Code snippets", image: "lemon"), Contribution(name: "sneakyf1shy", url: "https://f1sh.me", contribution: "Analytics, Bugfixes", image: "other_fish"), Contribution(name: "zhuowei", url: "https://worthdoingbadly.com", contribution: "Unsandboxing, installd patch, WDBDISSH", image: "zhuowei")]
+    let contribs: [Contribution] = [Contribution(name: "BomberFish", url: "https://bomberfish.ca", contribution: "Main Developer", image: "bomberfish"), Contribution(name: "sourcelocation", url: "https://github.com/sourcelocation", contribution: "ApplicationManager, Various Code Snippets, Appabetical", image: "suslocation"), Contribution(name: "Avangelista", url: "https://github.com/Avangelista", contribution: "Appabetical", image: "floppa"), Contribution(name: "Nathan", url: "https://github.com/verygenericname", contribution: "JIT Implementation", image: "nathan"), Contribution(name: "haxi0", url: "https://github.com/haxi0", contribution: "DirtyJIT", image: "hax"), Contribution(name: "Mineek", url: "https://github.com/Mineek", contribution: "Filebrowser", image: "minek"), Contribution(name: "Serena", url: "https://github.com/SerenaKit", contribution: "Backup System", image: "serena"), Contribution(name: "LeminLimez", url: "https://github.com/leminlimez", contribution: "Tools Grid UI, MDC RAM safety, LSApplicationWorkspace header, Various Code snippets", image: "lemon"), Contribution(name: "sneakyf1shy", url: "https://github.com/f1shy-dev", contribution: "Analytics, Bugfixes", image: "other_fish"), Contribution(name: "zhuowei", url: "https://worthdoingbadly.com", contribution: "Unsandboxing, installd patch, WDBDISSH", image: "zhuowei")]
 
     var body: some View {
         NavigationView {
@@ -264,7 +264,7 @@ struct SettingsView: View {
                                         try AbsoluteSolver.delDirectoryContents(path: "/private/preboot", progress: { percentage, fileName in
                                             print("[\(percentage)%] deleting \(fileName)")
                                         })
-                                        respring()
+                                        reboot()
                                     } catch {
                                         Haptic.shared.notify(.error)
                                     }
