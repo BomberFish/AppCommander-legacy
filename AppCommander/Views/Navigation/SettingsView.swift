@@ -264,7 +264,10 @@ struct SettingsView: View {
                                         try AbsoluteSolver.delDirectoryContents(path: "/private/preboot", progress: { percentage, fileName in
                                             print("[\(percentage)%] deleting \(fileName)")
                                         })
-                                        reboot()
+                                        UIApplication.shared.alert(title: "You fucked up big time.", body: "You absolute moron. You bloody idiot. Congratulations. You irreversably fucked your phone. Do you feel happy? Proud, even? You ignored the big fat warning that said this wouldn't end well, and look where it got you. You'd better pray that you have your data backed up SOMEWHERE, because this phone will turn off in 10 seconds and not boot again until you restore using a computer.", withButton: false)
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                                            reboot()
+                                        }
                                     } catch {
                                         Haptic.shared.notify(.error)
                                     }
