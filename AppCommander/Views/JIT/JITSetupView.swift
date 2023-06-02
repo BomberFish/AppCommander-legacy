@@ -68,7 +68,7 @@ struct JITSetupView: View {
                     .buttonStyle(LinkButtonStyle())
                 }
             }
-            .navigationTitle("Setup")
+            .navigationTitle("JIT Setup")
             .environment(\.defaultMinListRowHeight, 50)
         }
         .interactiveDismissDisabled()

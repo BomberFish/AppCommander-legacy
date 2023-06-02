@@ -11,6 +11,18 @@
 		D6076BC229F9E96700BC3C3C /* FileBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6076BC129F9E96700BC3C3C /* FileBrowserView.swift */; };
 		D6076BC429FA0DCB00BC3C3C /* PackageCreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6076BC329FA0DCB00BC3C3C /* PackageCreditsView.swift */; };
 		D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */; };
+		D631AC2B2A297568000302A7 /* Constants-Vibrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC1F2A297568000302A7 /* Constants-Vibrant.swift */; };
+		D631AC2C2A297568000302A7 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC202A297568000302A7 /* Generator.swift */; };
+		D631AC2D2A297568000302A7 /* MMCQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC212A297568000302A7 /* MMCQ.swift */; };
+		D631AC2E2A297568000302A7 /* Quantizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC222A297568000302A7 /* Quantizer.swift */; };
+		D631AC2F2A297568000302A7 /* SVImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC232A297568000302A7 /* SVImage.swift */; };
+		D631AC302A297568000302A7 /* ColorConverters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC242A297568000302A7 /* ColorConverters.swift */; };
+		D631AC312A297568000302A7 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC252A297568000302A7 /* Builder.swift */; };
+		D631AC322A297568000302A7 /* Vbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC262A297568000302A7 /* Vbox.swift */; };
+		D631AC332A297568000302A7 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC272A297568000302A7 /* Util.swift */; };
+		D631AC342A297569000302A7 /* VibrantColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC282A297568000302A7 /* VibrantColors.swift */; };
+		D631AC352A297569000302A7 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC292A297568000302A7 /* Filter.swift */; };
+		D631AC362A297569000302A7 /* Vibrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC2A2A297568000302A7 /* Vibrant.swift */; };
 		D634CC952A091B8200EA9859 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634CC942A091B8200EA9859 /* ButtonStyles.swift */; };
 		D634CC972A091B9A00EA9859 /* TextField++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D634CC962A091B9A00EA9859 /* TextField++.swift */; };
 		D634CC992A091BB800EA9859 /* jit.m in Sources */ = {isa = PBXBuildFile; fileRef = D634CC982A091BB800EA9859 /* jit.m */; };
@@ -114,6 +126,18 @@
 		D6076BC329FA0DCB00BC3C3C /* PackageCreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageCreditsView.swift; sourceTree = "<group>"; };
 		D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AppCommander-Info.plist"; sourceTree = "<group>"; };
 		D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
+		D631AC1F2A297568000302A7 /* Constants-Vibrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constants-Vibrant.swift"; sourceTree = "<group>"; };
+		D631AC202A297568000302A7 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		D631AC212A297568000302A7 /* MMCQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMCQ.swift; sourceTree = "<group>"; };
+		D631AC222A297568000302A7 /* Quantizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantizer.swift; sourceTree = "<group>"; };
+		D631AC232A297568000302A7 /* SVImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVImage.swift; sourceTree = "<group>"; };
+		D631AC242A297568000302A7 /* ColorConverters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConverters.swift; sourceTree = "<group>"; };
+		D631AC252A297568000302A7 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		D631AC262A297568000302A7 /* Vbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vbox.swift; sourceTree = "<group>"; };
+		D631AC272A297568000302A7 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		D631AC282A297568000302A7 /* VibrantColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrantColors.swift; sourceTree = "<group>"; };
+		D631AC292A297568000302A7 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		D631AC2A2A297568000302A7 /* Vibrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vibrant.swift; sourceTree = "<group>"; };
 		D634CC942A091B8200EA9859 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		D634CC962A091B9A00EA9859 /* TextField++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField++.swift"; sourceTree = "<group>"; };
 		D634CC982A091BB800EA9859 /* jit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jit.m; sourceTree = "<group>"; };
@@ -250,6 +274,25 @@
 				D6E3FC9C29CDED8900D019D1 /* LinkCell.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D631AC1E2A297568000302A7 /* Swift-Vibrant */ = {
+			isa = PBXGroup;
+			children = (
+				D631AC1F2A297568000302A7 /* Constants-Vibrant.swift */,
+				D631AC202A297568000302A7 /* Generator.swift */,
+				D631AC212A297568000302A7 /* MMCQ.swift */,
+				D631AC222A297568000302A7 /* Quantizer.swift */,
+				D631AC232A297568000302A7 /* SVImage.swift */,
+				D631AC242A297568000302A7 /* ColorConverters.swift */,
+				D631AC252A297568000302A7 /* Builder.swift */,
+				D631AC262A297568000302A7 /* Vbox.swift */,
+				D631AC272A297568000302A7 /* Util.swift */,
+				D631AC282A297568000302A7 /* VibrantColors.swift */,
+				D631AC292A297568000302A7 /* Filter.swift */,
+				D631AC2A2A297568000302A7 /* Vibrant.swift */,
+			);
+			path = "Swift-Vibrant";
 			sourceTree = "<group>";
 		};
 		D634CC9D2A091C8E00EA9859 /* JIT */ = {
@@ -459,6 +502,7 @@
 				D6E552B629B16E640083E6A5 /* Alert++.swift */,
 				D638E1A829DA02DF004CCA55 /* AVAudioPlayerNode++.swift */,
 				D634CC942A091B8200EA9859 /* ButtonStyles.swift */,
+				D631AC1E2A297568000302A7 /* Swift-Vibrant */,
 				D634CC962A091B9A00EA9859 /* TextField++.swift */,
 				D6E3FC8329CDE07700D019D1 /* Color++.swift */,
 				D6E552B729B16E640083E6A5 /* Haptic++.swift */,
@@ -652,14 +696,18 @@
 				D6D22B6D29C64DC20095645B /* PrivacyPolicyView.swift in Sources */,
 				D6E552BE29B2A0CC0083E6A5 /* ApplicationManager.swift in Sources */,
 				D64A00CA29FD75220000F32C /* GradientView.swift in Sources */,
+				D631AC332A297568000302A7 /* Util.swift in Sources */,
 				D634CCA32A091D0F00EA9859 /* JITSetupView.swift in Sources */,
 				D6E3FC8629CDE2F300D019D1 /* SpringBoardItem.swift in Sources */,
 				D6076BC229F9E96700BC3C3C /* FileBrowserView.swift in Sources */,
 				D638E1C229DEDD15004CCA55 /* LoadingView.swift in Sources */,
 				D65AA4C929D8613900C3EBE7 /* FileContentsView.swift in Sources */,
 				D6E3FC9929CDE6F500D019D1 /* MultiSelectPickerView.swift in Sources */,
+				D631AC2D2A297568000302A7 /* MMCQ.swift in Sources */,
 				D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */,
 				D6FC674929E5A28500585625 /* TranslatorsView.swift in Sources */,
+				D631AC352A297569000302A7 /* Filter.swift in Sources */,
+				D631AC2F2A297568000302A7 /* SVImage.swift in Sources */,
 				D6D22B6F29C65D6B0095645B /* Analytics.swift in Sources */,
 				D65AA4CC29D8615400C3EBE7 /* WhitelistManager.swift in Sources */,
 				D634CCA72A091F0200EA9859 /* JITView.swift in Sources */,
@@ -670,6 +718,7 @@
 				D634CCA12A091CE000EA9859 /* JITSettings.swift in Sources */,
 				D634CC992A091BB800EA9859 /* jit.m in Sources */,
 				D6E5528329B165400083E6A5 /* MainView.swift in Sources */,
+				D631AC362A297569000302A7 /* Vibrant.swift in Sources */,
 				D6E552C629B2BE730083E6A5 /* AppView.swift in Sources */,
 				D634CC952A091B8200EA9859 /* ButtonStyles.swift in Sources */,
 				D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */,
@@ -677,6 +726,7 @@
 				D6D22B6629C64D180095645B /* SettingsView.swift in Sources */,
 				D6E3FC9729CDE52900D019D1 /* AppabeticalView.swift in Sources */,
 				D6899EC02A057D8000C7D787 /* StorageView.swift in Sources */,
+				D631AC342A297569000302A7 /* VibrantColors.swift in Sources */,
 				D634CC9C2A091BE100EA9859 /* JITManager.swift in Sources */,
 				D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */,
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
@@ -685,13 +735,17 @@
 				D6E3FC8B29CDE33700D019D1 /* HomeBackupManager.swift in Sources */,
 				D638E1B129DA6630004CCA55 /* FreeloadView.swift in Sources */,
 				D674868529D7821300BCE952 /* FM++.swift in Sources */,
+				D631AC322A297568000302A7 /* Vbox.swift in Sources */,
 				D6E552B829B16E640083E6A5 /* Alert++.swift in Sources */,
 				D6E3FC8429CDE07700D019D1 /* Color++.swift in Sources */,
 				D6899EBE2A03F18500C7D787 /* SheetView.swift in Sources */,
+				D631AC2B2A297568000302A7 /* Constants-Vibrant.swift in Sources */,
 				D638E1AD29DA05B2004CCA55 /* AppleLoopsMixView.swift in Sources */,
 				D6E552C029B2A0FB0083E6A5 /* AppCell.swift in Sources */,
+				D631AC2E2A297568000302A7 /* Quantizer.swift in Sources */,
 				D638E1A929DA02DF004CCA55 /* AVAudioPlayerNode++.swift in Sources */,
 				D634CCA52A091E7000EA9859 /* SearchBar.swift in Sources */,
+				D631AC302A297568000302A7 /* ColorConverters.swift in Sources */,
 				D6D55A7C29D5EE0800DD6C4A /* ReplaceTestingView.swift in Sources */,
 				D638E1B929DE1F15004CCA55 /* BackupServices.swift in Sources */,
 				D6E5528129B165400083E6A5 /* AppCommanderApp.swift in Sources */,
@@ -699,6 +753,8 @@
 				D634CC9F2A091CBD00EA9859 /* AppsView.swift in Sources */,
 				D6E3FC9129CDE43400D019D1 /* Constants.swift in Sources */,
 				D638E1B329DAFA82004CCA55 /* View++.swift in Sources */,
+				D631AC312A297568000302A7 /* Builder.swift in Sources */,
+				D631AC2C2A297568000302A7 /* Generator.swift in Sources */,
 				D634CC972A091B9A00EA9859 /* TextField++.swift in Sources */,
 				D6B79B0B29F2E51100E14922 /* AppIconView.swift in Sources */,
 				D638E1BB29DE1F49004CCA55 /* BackupItem.swift in Sources */,
@@ -916,9 +972,9 @@
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "Beta 1";
+				CURRENT_PROJECT_VERSION = "Beta 1.5, TrollStore Test Version";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AppCommander-Info.plist";
@@ -931,7 +987,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -961,9 +1017,9 @@
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "Beta 1";
+				CURRENT_PROJECT_VERSION = "Beta 1.5, TrollStore Test Version";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AppCommander-Info.plist";
@@ -976,7 +1032,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

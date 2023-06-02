@@ -17,6 +17,8 @@ struct SettingsView: View {
     // found the funny!
     @State var sex: Bool = UserDefaults.standard.bool(forKey: "sex")
     @State var ASEnabled: Bool = UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")
+    
+    @State var forceMDC: Bool = UserDefaults.standard.bool(forKey: "ForceMDC")
 
     @State var sheet: Bool = false
     @State var setupsheet: Bool = false
@@ -194,6 +196,18 @@ struct SettingsView: View {
                             .onChange(of: consoleEnabled) { new in
                                 // set the user defaults
                                 UserDefaults.standard.set(new, forKey: "LCEnabled")
+                                if new {
+                                    consoleManager.isVisible = true
+                                } else {
+                                    consoleManager.isVisible = false
+                                }
+                            }
+                        Toggle(isOn: $forceMDC, label: { Label("Force MacDirtyCow", systemImage: "terminal") })
+                            .toggleStyle(.switch)
+                            .tint(.accentColor)
+                            .onChange(of: consoleEnabled) { new in
+                                // set the user defaults
+                                UserDefaults.standard.set(new, forKey: "ForceMDC")
                                 if new {
                                     consoleManager.isVisible = true
                                 } else {

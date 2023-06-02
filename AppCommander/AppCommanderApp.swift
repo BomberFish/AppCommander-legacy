@@ -13,7 +13,7 @@ import SwiftUI
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
 let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-let cyn: URL = Bundle.main.url(forResource: "bite_me", withExtension: "png")!
+let funny: URL = Bundle.main.url(forResource: "bite_me", withExtension: "png")! //equivalent of the fabled coconut.jpg from tf2
 // var escaped = false
 // var has_cooked = false
 
@@ -152,13 +152,20 @@ struct AppCommanderApp: App {
                         escaped = false
                     } else {
                         do {
+                            if UserDefaults.standard.bool(forKey: "ForceMDC") == true {
+                                throw "Force MDC"
+                            }
                             try FileManager.default.contentsOfDirectory(at: URL(fileURLWithPath: "/var/mobile/Library/Caches"), includingPropertiesForKeys: nil)
+                            print("Using TrollStore.")
                         } catch {
                             // grant r/w access
+                            
+                            // ok this check is probably 100% useless
                             if #available(iOS 15, *) {
-                                print("Escaping Sandbox...")
+                                print("Using MacDirtyCow.")
                                 // asyncAfter(deadline: .now())
                                 sleep(UInt32(0.2))
+                                print("Escaping Sandbox...")
                                 do {
                                     try MacDirtyCow.unsandbox()
                                     escaped = true

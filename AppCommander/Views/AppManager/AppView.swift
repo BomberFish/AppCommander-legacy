@@ -16,6 +16,11 @@ struct AppView: View {
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
     @State var ipapath: URL? = nil
     @State var dataDirectory: URL? = nil
+    var currentAccentColor: Color {
+        return Color(uiColor: ((cs == .light ? palette.DarkMuted?.uiColor : palette.Vibrant?.uiColor) ?? UIColor(named: "AccentColor"))!)
+    }
+    @State var palette: Palette = .init()
+    @Environment(\.colorScheme) var cs
     let jit = JITManager.shared
     var body: some View {
         List {
@@ -62,7 +67,7 @@ struct AppView: View {
                 }, label: {
                     Label("Open with JIT", systemImage: "sparkles")
                 })
-                    
+                
                 NavigationLink(destination: { MoreInfoView(sbapp: sbapp) }, label: { Label("More Info", systemImage: "info.circle") })
             } header: { Label("App Details", systemImage: "info.circle") }
             Section {
@@ -76,7 +81,7 @@ struct AppView: View {
                     Label("Browse app data", systemImage: "folder")
                 })
             }
-
+            
             Section {
                 Button(role: .destructive) {
                     Haptic.shared.play(.medium)
@@ -142,7 +147,7 @@ struct AppView: View {
                     }
                 }
                 .disabled(!(FileManager.default.fileExists(atPath: dataDirectory?.appendingPathComponent("Documents").path ?? "/yourmother6969696969696969")))
-
+                
                 Button {
                     Haptic.shared.play(.medium)
                     let cachedir = ((dataDirectory!.appendingPathComponent("Library")).appendingPathComponent("Caches"))
@@ -172,11 +177,11 @@ struct AppView: View {
                 }
                 .disabled(!(FileManager.default.fileExists(atPath: dataDirectory?.appendingPathComponent("Library").appendingPathComponent("Caches").path ?? "/")))
             }
-
+            
             Section {
                 Button {
                     // UIApplication.shared.progressAlert(title: "Exporting IPA of \(sbapp.name)...")
-
+                    
                     Haptic.shared.play(.medium)
                     do {
                         ipapath = try ApplicationManager.exportIPA(app: sbapp)
@@ -200,23 +205,27 @@ struct AppView: View {
                         UIApplication.shared.dismissAlert(animated: true)
                         UIApplication.shared.alert(body: "Error!")
                     }
-
+                    
                 } label: {
                     Label("Export Encrypted IPA", systemImage: "arrow.down.app")
                 }
             }
             .navigationTitle(name)
             .navigationBarTitleDisplayMode(.automatic)
-            .onAppear {
+            .task(priority: .utility) {
                 do {
                     dataDirectory = try ApplicationManager.getDataDir(bundleID: bundleId)
                 } catch {
                     UIApplication.shared.alert(body: error.localizedDescription)
                 }
             }
+            .task(priority: .background) {
+                self.palette = Vibrant.from((UIImage(contentsOfFile: sbapp.bundleURL.appendingPathComponent(sbapp.pngIconPaths.first ?? "").path) ?? UIImage(named: "Placeholder"))!).getPalette()
+            }
         }
         // .background(GradientView())
-                .listRowBackground(Color.clear)
+        .listRowBackground(Color.clear)
+        .tint(currentAccentColor)
     }
 }
 

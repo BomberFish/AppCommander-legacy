@@ -191,7 +191,7 @@ class IconStateItemHelper {
     }
     
     /// Given an application/webclip identifier, return the average colour of its icon
-    func getColor(id: String) -> UIColor {
+      func getColor(id: String) -> UIColor {
         if let color = idToColor[id] {
             return color
         } else {
