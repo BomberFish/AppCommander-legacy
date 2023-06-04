@@ -12,6 +12,11 @@ import os.log
 import MacDirtyCow
 import Dynamic
 
+enum ApplicationMode {
+    case MacDirtyCow
+    case TrollStore
+}
+
 // MARK: - Print to localconsole. Totally not stolen from sneakyf1shy (who still needs to finish the damn frontend)
 
 public func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {

@@ -24,47 +24,54 @@ enum ApplicationManager {
     // MARK: - Goofy ahh function
 
     public static func getDataDir(bundleID: String) throws -> URL {
-        let fm = FileManager.default
-        var returnedurl = URL(string: "none")
-        var dirlist = [""]
-
-        do {
-            dirlist = try fm.contentsOfDirectory(atPath: "/var/mobile/Containers/Data/Application")
-            // print(dirlist)
-        } catch {
-            throw "Could not access /var/mobile/Containers/Data/Application.\n\(error.localizedDescription)"
-        }
-
-        for dir in dirlist {
-            // print(dir)
-            let mmpath = "/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist"
-            // print(mmpath)
-            do {
-                var mmDict: [String: Any]
-                if fm.fileExists(atPath: mmpath) {
-                    if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
-                        mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath, progress: {message in
-                            print(message)
-                        }), options: [], format: nil) as? [String: Any] ?? [:]
-                    } else {
-                        mmDict = try PropertyListSerialization.propertyList(from: Data(contentsOf: URL(fileURLWithPath: mmpath)), options: [], format: nil) as? [String: Any] ?? [:]
-                    }
-                    
-                    // print(mmDict as Any)
-                    if mmDict["MCMMetadataIdentifier"] as! String == bundleID {
-                        returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
-                    }
-                } else {
-                    print("WARNING: Directory \(dir) does not have a metadata plist, skipping.")
-                }
-            } catch {
-                throw ("Could not get data of \(mmpath): \(error.localizedDescription)")
-            }
-        }
-        if returnedurl != URL(string: "none") {
-            return returnedurl!
+        if currentAppMode == .TrollStore {
+            // FIXME: Probably very unstable, needs to be rewritten
+            let lsapps = LSApplicationWorkspace.default().allApplications()
+            let app = lsapps!.first(where: {$0.bundleIdentifier == bundleID})
+            return (app?.dataContainerURL)!
         } else {
-            throw "Error getting data directory for app \(bundleID)"
+            let fm = FileManager.default
+            var returnedurl = URL(string: "none")
+            var dirlist = [""]
+            
+            do {
+                dirlist = try fm.contentsOfDirectory(atPath: "/var/mobile/Containers/Data/Application")
+                // print(dirlist)
+            } catch {
+                throw "Could not access /var/mobile/Containers/Data/Application.\n\(error.localizedDescription)"
+            }
+            
+            for dir in dirlist {
+                // print(dir)
+                let mmpath = "/var/mobile/Containers/Data/Application/" + dir + "/.com.apple.mobile_container_manager.metadata.plist"
+                // print(mmpath)
+                do {
+                    var mmDict: [String: Any]
+                    if fm.fileExists(atPath: mmpath) {
+                        if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
+                            mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath, progress: {message in
+                                print(message)
+                            }), options: [], format: nil) as? [String: Any] ?? [:]
+                        } else {
+                            mmDict = try PropertyListSerialization.propertyList(from: Data(contentsOf: URL(fileURLWithPath: mmpath)), options: [], format: nil) as? [String: Any] ?? [:]
+                        }
+                        
+                        // print(mmDict as Any)
+                        if mmDict["MCMMetadataIdentifier"] as! String == bundleID {
+                            returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
+                        }
+                    } else {
+                        print("WARNING: Directory \(dir) does not have a metadata plist, skipping.")
+                    }
+                } catch {
+                    throw ("Could not get data of \(mmpath): \(error.localizedDescription)")
+                }
+            }
+            if returnedurl != URL(string: "none") {
+                return returnedurl!
+            } else {
+                throw "Error getting data directory for app \(bundleID)"
+            }
         }
     }
 
@@ -114,18 +121,15 @@ enum ApplicationManager {
     
     // MARK: - opens apps
 
-    // from stackoverflow
     public static func openApp(bundleID: String) -> Bool {
-//        guard let obj = objc_getClass("LSApplicationWorkspace") as? NSObject else { return false }
-//        let workspace = obj.perform(#selector(LSApplicationWorkspace.default))?.takeUnretainedValue() as? NSObject
-//        let open = workspace?.perform(#selector(LSApplicationWorkspace.openApplication(withBundleID:)), with: bundleID) != nil
         return LSApplicationWorkspace.default().openApplication(withBundleID: bundleID)
     }
 
     static func getApps() throws -> [SBApp] {
         let lsapps = LSApplicationWorkspace.default().allApplications()
 
-        if (lsapps?.isEmpty) == nil {
+        // If allApplications returns nothing, we likely aren't using TrollStore. Alternatively, we COULD use currentAppMode like in getDataDir().
+        if ((lsapps?.isEmpty) != nil) {
             
             var dotAppDirs: [URL] = []
             
@@ -207,7 +211,56 @@ enum ApplicationManager {
             return apps
         } else {
             // TODO: LSApplicationWorkspace support
-            return []
+            let apps: [LSApplicationProxy] = lsapps!
+            var sbapps: [SBApp] = []
+            for app in apps {
+                let infoPlistUrl = app.bundleURL.appendingPathComponent("Info.plist")
+                if !fm.fileExists(atPath: infoPlistUrl.path) {
+                    // some system apps don't have it, just ignore it and move on.
+                    continue
+                }
+                guard let infoPlist = NSDictionary(contentsOf: infoPlistUrl) as? [String: AnyObject] else { UIApplication.shared.alert(body: "Error opening info.plist for \(app.bundleURL.absoluteString)"); throw "Error opening info.plist for \(app.bundleURL.absoluteString)" }
+                guard let CFBundleIdentifier = infoPlist["CFBundleIdentifier"] as? String else { UIApplication.shared.alert(body: "App \(app.bundleURL.absoluteString) doesn't have bundleid"); throw ("App \(app.bundleURL.absoluteString) doesn't have bundleid") }
+                // FIXME: isRestricted is likely NOT whether app is hidden from SpringBoard.
+                var sbapp = SBApp(bundleIdentifier: app.bundleIdentifier, name: app.localizedName(), bundleURL: app.bundleURL, version: "Unknown", pngIconPaths: [], hiddenFromSpringboard: app.isRestricted)
+                
+                if infoPlist.keys.contains("CFBundleShortVersionString") {
+                    guard let CFBundleShortVersionString = infoPlist["CFBundleShortVersionString"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(app.bundleURL.absoluteString)"); throw ("Error reading display name for \(app.bundleURL.absoluteString)") }
+                    sbapp.version = CFBundleShortVersionString
+                } else if infoPlist.keys.contains("CFBundleVersion") {
+                    guard let CFBundleVersion = infoPlist["CFBundleVersion"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(app.bundleURL.absoluteString)"); throw ("Error reading display name for \(app.bundleURL.absoluteString)") }
+                    sbapp.version = CFBundleVersion
+                }
+                
+                // obtaining png icons inside bundle. defined in info.plist
+                if app.bundleIdentifier == "com.apple.mobiletimer" {
+                    // use correct paths for clock, because it has arrows
+                    // This looks absolutely horrible, why do we even try
+                    sbapp.pngIconPaths += ["circle_borderless@2x~iphone.png"]
+                }
+                if let CFBundleIcons = infoPlist["CFBundleIcons"] {
+                    if let CFBundlePrimaryIcon = CFBundleIcons["CFBundlePrimaryIcon"] as? [String: AnyObject] {
+                        if let CFBundleIconFiles = CFBundlePrimaryIcon["CFBundleIconFiles"] as? [String] {
+                            sbapp.pngIconPaths += CFBundleIconFiles.map { $0 + "@2x.png" }
+                        }
+                    }
+                }
+                if infoPlist.keys.contains("CFBundleIconFile") {
+                    // happens in the case of pseudo-installed apps
+                    if let CFBundleIconFile = infoPlist["CFBundleIconFile"] as? String {
+                        sbapp.pngIconPaths.append(CFBundleIconFile + ".png")
+                    }
+                }
+                if infoPlist.keys.contains("CFBundleIconFiles") {
+                    // only seen this happen in the case of Wallet
+                    if let CFBundleIconFiles = infoPlist["CFBundleIconFiles"] as? [String], !CFBundleIconFiles.isEmpty {
+                        sbapp.pngIconPaths += CFBundleIconFiles.map { $0 + ".png" }
+                    }
+                }
+                
+                sbapps.append(sbapp)
+            }
+            return sbapps
         }
     }
 }

@@ -14,6 +14,7 @@ let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as?
 let consoleManager = LCManager.shared
 let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 let funny: URL = Bundle.main.url(forResource: "bite_me", withExtension: "png")! //equivalent of the fabled coconut.jpg from tf2
+var currentAppMode: ApplicationMode = ApplicationMode.MacDirtyCow
 // var escaped = false
 // var has_cooked = false
 
@@ -157,12 +158,14 @@ struct AppCommanderApp: App {
                             }
                             try FileManager.default.contentsOfDirectory(at: URL(fileURLWithPath: "/var/mobile/Library/Caches"), includingPropertiesForKeys: nil)
                             print("Using TrollStore.")
+                            currentAppMode = .TrollStore
                         } catch {
                             // grant r/w access
                             
                             // ok this check is probably 100% useless
                             if #available(iOS 15, *) {
                                 print("Using MacDirtyCow.")
+                                currentAppMode = .MacDirtyCow
                                 // asyncAfter(deadline: .now())
                                 sleep(UInt32(0.2))
                                 print("Escaping Sandbox...")
