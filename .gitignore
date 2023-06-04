@@ -3,6 +3,7 @@ Payload/*
 build
 build/*
 *.ipa
+*.tipa
 .DS_Store
 */.DS_Store
 
