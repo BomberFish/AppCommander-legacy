@@ -36,7 +36,14 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Label("AppCommander \(appVersion)", systemImage: "info.circle").textCase(.none)) {}
+                //Section(header: Label("AppCommander \(appVersion)", systemImage: "info.circle").textCase(.none)) {}
+                Section {
+                    NavigationLink {
+                        AppIconView()
+                    } label: {
+                        Label("About", systemImage: "info.circle")
+                    }
+                }
                 Section {
                     Button(action: { setupsheet = true }, label: { Label("Set up JIT", systemImage: "sparkles") })
                         .sheet(isPresented: $setupsheet, content: { JITSetupView() })
@@ -149,23 +156,23 @@ struct SettingsView: View {
 //                    })
 //                }
 
-                Section {
-                    ForEach(contribs) { contrib in
-                        LinkCell(imageName: contrib.image, url: contrib.url, title: contrib.name, contribution: contrib.contribution)
-                    }
-                    NavigationLink {
-                        TranslatorsView()
-                    } label: {
-                        Label("Translators", systemImage: "character.bubble")
-                    }
-                    NavigationLink {
-                        PackageCreditsView()
-                    } label: {
-                        Label("Swift Packages", systemImage: "shippingbox")
-                    }
-                } header: {
-                    Label("Credits", systemImage: "heart")
-                }
+//                Section {
+//                    ForEach(contribs) { contrib in
+//                        LinkCell(imageName: contrib.image, url: contrib.url, title: contrib.name, contribution: contrib.contribution)
+//                    }
+//                    NavigationLink {
+//                        TranslatorsView()
+//                    } label: {
+//                        Label("Translators", systemImage: "character.bubble")
+//                    }
+//                    NavigationLink {
+//                        PackageCreditsView()
+//                    } label: {
+//                        Label("Swift Packages", systemImage: "shippingbox")
+//                    }
+//                } header: {
+//                    Label("Credits", systemImage: "heart")
+//                }
 
                 Section {
                     Toggle(isOn: $debugEnabled, label: { Label("Debug Mode", systemImage: "ladybug") })

@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct TranslatorsView: View {
+    struct Translator: Identifiable, Equatable {
+        var id = UUID()
+        let lang: String
+        let translators: String
+    }
+    
+    let translators: [Translator] = [Translator(lang: "🇫🇷", translators: "C22#9618"), Translator(lang: "🇩🇪", translators: "Zarapho#1453 & SeanMC#1024"), Translator(lang: "🇻🇳", translators: "odyssey#0666"), Translator(lang: "🇰🇷", translators: "TaekyungAncal#7857"), Translator(lang: "🇫🇮", translators: "Spongebob#9593"), Translator(lang: "🇨🇳", translators: "jbjf#1431")]
     
     var body: some View {
         List {
-            Text("🇫🇷 C22#9618")
-            Text("🇩🇪 Zarapho#1453 & SeanMC#1024")
-            Text("🇰🇷 TaekyungAncal#7857")
-            Text("🇫🇮 Spongebob#9593")
-            Text("🇨🇳 jbjf#1431")
-            Text("🇻🇳 odyssey#0666")
+            ForEach(translators) {translator in
+                Text("\(translator.lang) \(translator.translators)")
+            }
         }
         //.listStyle(.sidebar)
         // .background(GradientView())

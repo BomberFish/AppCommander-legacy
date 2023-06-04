@@ -10,6 +10,7 @@
 		D6039E7F29E484DE002F91D7 /* DirtyCowKit in Frameworks */ = {isa = PBXBuildFile; productRef = D6039E7E29E484DE002F91D7 /* DirtyCowKit */; };
 		D6076BC229F9E96700BC3C3C /* FileBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6076BC129F9E96700BC3C3C /* FileBrowserView.swift */; };
 		D6076BC429FA0DCB00BC3C3C /* PackageCreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6076BC329FA0DCB00BC3C3C /* PackageCreditsView.swift */; };
+		D613090E2A2C1EDA00F6F77E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D613090D2A2C1EDA00F6F77E /* AboutView.swift */; };
 		D61FDEDE29C117AB007649E9 /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */; };
 		D631AC2B2A297568000302A7 /* Constants-Vibrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC1F2A297568000302A7 /* Constants-Vibrant.swift */; };
 		D631AC2C2A297568000302A7 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631AC202A297568000302A7 /* Generator.swift */; };
@@ -124,6 +125,7 @@
 		7D64731129DDAE1B00DEBFBC /* AppCommander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppCommander.entitlements; sourceTree = "<group>"; };
 		D6076BC129F9E96700BC3C3C /* FileBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserView.swift; sourceTree = "<group>"; };
 		D6076BC329FA0DCB00BC3C3C /* PackageCreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageCreditsView.swift; sourceTree = "<group>"; };
+		D613090D2A2C1EDA00F6F77E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		D61FDEDC29BF9FDA007649E9 /* AppCommander-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AppCommander-Info.plist"; sourceTree = "<group>"; };
 		D61FDEDD29C117AB007649E9 /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
 		D631AC1F2A297568000302A7 /* Constants-Vibrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constants-Vibrant.swift"; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				D634CCA02A091CE000EA9859 /* JITSettings.swift */,
+				D613090D2A2C1EDA00F6F77E /* AboutView.swift */,
 				D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */,
 				D6B79B0A29F2E51100E14922 /* AppIconView.swift */,
 				D6FC674829E5A28500585625 /* TranslatorsView.swift */,
@@ -515,9 +518,9 @@
 		D6E552C429B2BE3C0083E6A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D6E3FC9B29CDED1600D019D1 /* AppManager */,
 				D634CC9D2A091C8E00EA9859 /* JIT */,
 				D64A00CB29FD760B0000F32C /* Navigation */,
-				D6E3FC9B29CDED1600D019D1 /* AppManager */,
 				D6D55A7A29D5EDCD00DD6C4A /* Backup */,
 				D65AA4C329D85FEA00C3EBE7 /* Tools */,
 				D6E3FC9A29CDECFD00D019D1 /* Settings */,
@@ -729,6 +732,7 @@
 				D631AC342A297569000302A7 /* VibrantColors.swift in Sources */,
 				D634CC9C2A091BE100EA9859 /* JITManager.swift in Sources */,
 				D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */,
+				D613090E2A2C1EDA00F6F77E /* AboutView.swift in Sources */,
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
 				D6E552CC29B2E9F50083E6A5 /* CommonFunctions.swift in Sources */,
 				D6076BC429FA0DCB00BC3C3C /* PackageCreditsView.swift in Sources */,
@@ -972,7 +976,7 @@
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "Beta 1.5, TrollStore Test Version";
+				CURRENT_PROJECT_VERSION = "Beta 2";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
@@ -1017,7 +1021,7 @@
 				CODE_SIGN_ENTITLEMENTS = AppCommander/AppCommander.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "Beta 1.5, TrollStore Test Version";
+				CURRENT_PROJECT_VERSION = "Beta 2";
 				DEVELOPMENT_ASSET_PATHS = "\"AppCommander/Preview Content\"";
 				DEVELOPMENT_TEAM = 8JKVMYCRTJ;
 				ENABLE_PREVIEWS = YES;
