@@ -124,89 +124,91 @@ enum ApplicationManager {
 
     static func getApps() throws -> [SBApp] {
         let lsapps = LSApplicationWorkspace.default().allApplications()
-        //print("lsapps: \(String(describing: lsapps))")
-        
-        // TODO: Map LSApplicationProxy to SBApp?
-        if (lsapps?.isEmpty) == nil {}
+
+        if (lsapps?.isEmpty) == nil {
             
-        var dotAppDirs: [URL] = []
+            var dotAppDirs: [URL] = []
             
-        let systemAppsDir = try fm.contentsOfDirectory(at: systemApplicationsUrl, includingPropertiesForKeys: nil)
-        let userAppsDir = try fm.contentsOfDirectory(at: userApplicationsUrl, includingPropertiesForKeys: nil)
+            let systemAppsDir = try fm.contentsOfDirectory(at: systemApplicationsUrl, includingPropertiesForKeys: nil)
+            let userAppsDir = try fm.contentsOfDirectory(at: userApplicationsUrl, includingPropertiesForKeys: nil)
             
-        for userAppFolder in userAppsDir {
-            let userAppFolderContents = try fm.contentsOfDirectory(at: userAppFolder, includingPropertiesForKeys: nil)
-            if let dotApp = userAppFolderContents.first(where: { $0.absoluteString.hasSuffix(".app/") }) {
-                dotAppDirs.append(dotApp)
-            }
-        }
-            
-        dotAppDirs += systemAppsDir
-            
-        var apps: [SBApp] = []
-            
-        for bundleUrl in dotAppDirs {
-            let infoPlistUrl = bundleUrl.appendingPathComponent("Info.plist")
-            if !fm.fileExists(atPath: infoPlistUrl.path) {
-                // some system apps don't have it, just ignore it and move on.
-                continue
-            }
-                
-            guard let infoPlist = NSDictionary(contentsOf: infoPlistUrl) as? [String: AnyObject] else { UIApplication.shared.alert(body: "Error opening info.plist for \(bundleUrl.absoluteString)"); throw "Error opening info.plist for \(bundleUrl.absoluteString)" }
-            guard let CFBundleIdentifier = infoPlist["CFBundleIdentifier"] as? String else { UIApplication.shared.alert(body: "App \(bundleUrl.absoluteString) doesn't have bundleid"); throw ("App \(bundleUrl.absoluteString) doesn't have bundleid") }
-                
-            var app = SBApp(bundleIdentifier: CFBundleIdentifier, name: "Unknown", bundleURL: bundleUrl, version: "Unknown", pngIconPaths: [], hiddenFromSpringboard: false)
-                
-            if infoPlist.keys.contains("CFBundleShortVersionString") {
-                guard let CFBundleShortVersionString = infoPlist["CFBundleShortVersionString"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw ("Error reading display name for \(bundleUrl.absoluteString)") }
-                app.version = CFBundleShortVersionString
-            } else if infoPlist.keys.contains("CFBundleVersion") {
-                guard let CFBundleVersion = infoPlist["CFBundleVersion"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw ("Error reading display name for \(bundleUrl.absoluteString)") }
-                app.version = CFBundleVersion
-            }
-                
-            if infoPlist.keys.contains("CFBundleDisplayName") {
-                guard let CFBundleDisplayName = infoPlist["CFBundleDisplayName"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw ("Error reading display name for \(bundleUrl.absoluteString)") }
-                if CFBundleDisplayName != "" {
-                    app.name = CFBundleDisplayName
-                } else {
-                    app.name = ((NSURL(fileURLWithPath: bundleUrl.path).deletingPathExtension)?.lastPathComponent)!
+            for userAppFolder in userAppsDir {
+                let userAppFolderContents = try fm.contentsOfDirectory(at: userAppFolder, includingPropertiesForKeys: nil)
+                if let dotApp = userAppFolderContents.first(where: { $0.absoluteString.hasSuffix(".app/") }) {
+                    dotAppDirs.append(dotApp)
                 }
-            } else if infoPlist.keys.contains("CFBundleName") {
-                guard let CFBundleName = infoPlist["CFBundleName"] as? String else { UIApplication.shared.alert(body: "Error reading name for \(bundleUrl.absoluteString)"); throw ("Error reading name for \(bundleUrl.absoluteString)") }
-                app.name = CFBundleName
             }
+            
+            dotAppDirs += systemAppsDir
+            
+            var apps: [SBApp] = []
+            
+            for bundleUrl in dotAppDirs {
+                let infoPlistUrl = bundleUrl.appendingPathComponent("Info.plist")
+                if !fm.fileExists(atPath: infoPlistUrl.path) {
+                    // some system apps don't have it, just ignore it and move on.
+                    continue
+                }
                 
-            // obtaining png icons inside bundle. defined in info.plist
-            if app.bundleIdentifier == "com.apple.mobiletimer" {
-                // use correct paths for clock, because it has arrows
-                // This looks absolutely horrible, why do we even try
-                app.pngIconPaths += ["circle_borderless@2x~iphone.png"]
-            }
-            if let CFBundleIcons = infoPlist["CFBundleIcons"] {
-                if let CFBundlePrimaryIcon = CFBundleIcons["CFBundlePrimaryIcon"] as? [String: AnyObject] {
-                    if let CFBundleIconFiles = CFBundlePrimaryIcon["CFBundleIconFiles"] as? [String] {
-                        app.pngIconPaths += CFBundleIconFiles.map { $0 + "@2x.png" }
+                guard let infoPlist = NSDictionary(contentsOf: infoPlistUrl) as? [String: AnyObject] else { UIApplication.shared.alert(body: "Error opening info.plist for \(bundleUrl.absoluteString)"); throw "Error opening info.plist for \(bundleUrl.absoluteString)" }
+                guard let CFBundleIdentifier = infoPlist["CFBundleIdentifier"] as? String else { UIApplication.shared.alert(body: "App \(bundleUrl.absoluteString) doesn't have bundleid"); throw ("App \(bundleUrl.absoluteString) doesn't have bundleid") }
+                
+                var app = SBApp(bundleIdentifier: CFBundleIdentifier, name: "Unknown", bundleURL: bundleUrl, version: "Unknown", pngIconPaths: [], hiddenFromSpringboard: false)
+                
+                if infoPlist.keys.contains("CFBundleShortVersionString") {
+                    guard let CFBundleShortVersionString = infoPlist["CFBundleShortVersionString"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw ("Error reading display name for \(bundleUrl.absoluteString)") }
+                    app.version = CFBundleShortVersionString
+                } else if infoPlist.keys.contains("CFBundleVersion") {
+                    guard let CFBundleVersion = infoPlist["CFBundleVersion"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw ("Error reading display name for \(bundleUrl.absoluteString)") }
+                    app.version = CFBundleVersion
+                }
+                
+                if infoPlist.keys.contains("CFBundleDisplayName") {
+                    guard let CFBundleDisplayName = infoPlist["CFBundleDisplayName"] as? String else { UIApplication.shared.alert(body: "Error reading display name for \(bundleUrl.absoluteString)"); throw ("Error reading display name for \(bundleUrl.absoluteString)") }
+                    if CFBundleDisplayName != "" {
+                        app.name = CFBundleDisplayName
+                    } else {
+                        app.name = ((NSURL(fileURLWithPath: bundleUrl.path).deletingPathExtension)?.lastPathComponent)!
+                    }
+                } else if infoPlist.keys.contains("CFBundleName") {
+                    guard let CFBundleName = infoPlist["CFBundleName"] as? String else { UIApplication.shared.alert(body: "Error reading name for \(bundleUrl.absoluteString)"); throw ("Error reading name for \(bundleUrl.absoluteString)") }
+                    app.name = CFBundleName
+                }
+                
+                // obtaining png icons inside bundle. defined in info.plist
+                if app.bundleIdentifier == "com.apple.mobiletimer" {
+                    // use correct paths for clock, because it has arrows
+                    // This looks absolutely horrible, why do we even try
+                    app.pngIconPaths += ["circle_borderless@2x~iphone.png"]
+                }
+                if let CFBundleIcons = infoPlist["CFBundleIcons"] {
+                    if let CFBundlePrimaryIcon = CFBundleIcons["CFBundlePrimaryIcon"] as? [String: AnyObject] {
+                        if let CFBundleIconFiles = CFBundlePrimaryIcon["CFBundleIconFiles"] as? [String] {
+                            app.pngIconPaths += CFBundleIconFiles.map { $0 + "@2x.png" }
+                        }
                     }
                 }
-            }
-            if infoPlist.keys.contains("CFBundleIconFile") {
-                // happens in the case of pseudo-installed apps
-                if let CFBundleIconFile = infoPlist["CFBundleIconFile"] as? String {
-                    app.pngIconPaths.append(CFBundleIconFile + ".png")
+                if infoPlist.keys.contains("CFBundleIconFile") {
+                    // happens in the case of pseudo-installed apps
+                    if let CFBundleIconFile = infoPlist["CFBundleIconFile"] as? String {
+                        app.pngIconPaths.append(CFBundleIconFile + ".png")
+                    }
                 }
-            }
-            if infoPlist.keys.contains("CFBundleIconFiles") {
-                // only seen this happen in the case of Wallet
-                if let CFBundleIconFiles = infoPlist["CFBundleIconFiles"] as? [String], !CFBundleIconFiles.isEmpty {
-                    app.pngIconPaths += CFBundleIconFiles.map { $0 + ".png" }
+                if infoPlist.keys.contains("CFBundleIconFiles") {
+                    // only seen this happen in the case of Wallet
+                    if let CFBundleIconFiles = infoPlist["CFBundleIconFiles"] as? [String], !CFBundleIconFiles.isEmpty {
+                        app.pngIconPaths += CFBundleIconFiles.map { $0 + ".png" }
+                    }
                 }
-            }
                 
-            apps.append(app)
-        }
+                apps.append(app)
+            }
             
-        return apps
+            return apps
+        } else {
+            // TODO: LSApplicationWorkspace support
+            return []
+        }
     }
 }
 
