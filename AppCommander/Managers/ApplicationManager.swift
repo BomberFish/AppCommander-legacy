@@ -128,7 +128,7 @@ enum ApplicationManager {
     static func getApps() throws -> [SBApp] {
         let lsapps = LSApplicationWorkspace.default().allApplications()
 
-        // If allApplications returns nothing, we likely aren't using TrollStore. Alternatively, we COULD use currentAppMode like in getDataDir().
+        // If allApplications() returns nothing, we likely aren't using TrollStore. Alternatively, we COULD use currentAppMode like in getDataDir(), but thats a change for another day.
         if ((lsapps?.isEmpty) != nil) {
             
             var dotAppDirs: [URL] = []
