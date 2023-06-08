@@ -31,7 +31,7 @@ struct SettingsView: View {
                     NavigationLink {
                         AboutView()
                     } label: {
-                        Label("About", systemImage: "info.circle")
+                        Label("About AppCommander", systemImage: "info.circle")
                     }
                 }
                 Section {
