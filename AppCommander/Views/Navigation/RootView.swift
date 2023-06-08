@@ -45,7 +45,7 @@ struct RootView: View {
         //.listStyle(.sidebar)
         // .background(GradientView())
                 .listRowBackground(Color.clear)
-        .onAppear {
+        .task(priority: .high)  {
             do {
                 allApps = try ApplicationManager.getApps()
             } catch {

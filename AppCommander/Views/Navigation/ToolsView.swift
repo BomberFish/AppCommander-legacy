@@ -150,7 +150,7 @@ struct ToolsView: View {
                 .navigationTitle("Tools")
             }
         }
-        .onAppear{
+        .onAppear {
             debugEnabled = UserDefaults.standard.bool(forKey: "sex")
         }
     }

@@ -114,7 +114,7 @@ struct MainView: View {
                         .foregroundColor(Color(UIColor.label))
                     }
                 }
-                .onAppear {
+                .task(priority: .high)  {
                     apps = allApps
                 }
                 //            .onAppear {

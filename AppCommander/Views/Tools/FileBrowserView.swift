@@ -215,7 +215,7 @@ struct FileBrowserView: View {
                 NavigationLink(destination: FileBrowserView(path: path + folder.name + "/", title: folder.name)) {
                     FolderItem(folder: folder, items: 0)
                 }
-                .onAppear {
+                .task(priority: .background)  {
                     do {
                         count = try FileManager.default.contentsOfDirectory(atPath: path + folder.name).count
                     } catch {

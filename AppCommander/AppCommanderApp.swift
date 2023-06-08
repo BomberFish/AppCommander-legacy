@@ -32,7 +32,7 @@ struct AppCommanderApp: App {
                 if escaped && has_cooked {
                     RootView()
                         .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.25)))
-                        .onAppear {
+                        .task(priority: .high)  {
                             let userDefaults = UserDefaults.standard
                             // check for updates. this would be replaced by kouyou but its JUST NOT FINISHED!!!!!!!!!!!!!!
                             // F1shy I'm begging you PLEASE just FINISH the frontend PLEASE
@@ -123,7 +123,7 @@ struct AppCommanderApp: App {
                         .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.25)))
                 }
             }
-            .onAppear {
+            .task(priority: .high)  {
                 print("AppCommander v\(appVersion)")
 
                 DispatchQueue.global(qos: .background).sync {

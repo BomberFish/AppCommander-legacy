@@ -22,16 +22,6 @@ struct SettingsView: View {
 
     @State var sheet: Bool = false
     @State var setupsheet: Bool = false
-    
-    struct Contribution: Identifiable, Equatable, Hashable {
-        var id = UUID()
-        let name: String
-        let url: String
-        let contribution: String
-        let image: String
-    }
-    
-    let contribs: [Contribution] = [Contribution(name: "BomberFish", url: "https://bomberfish.ca", contribution: "Main Developer", image: "bomberfish"), Contribution(name: "sourcelocation", url: "https://github.com/sourcelocation", contribution: "ApplicationManager, Various Code Snippets, Appabetical", image: "suslocation"), Contribution(name: "Avangelista", url: "https://github.com/Avangelista", contribution: "Appabetical", image: "floppa"), Contribution(name: "Nathan", url: "https://github.com/verygenericname", contribution: "JIT Implementation", image: "nathan"), Contribution(name: "haxi0", url: "https://github.com/haxi0", contribution: "DirtyJIT", image: "hax"), Contribution(name: "Mineek", url: "https://github.com/Mineek", contribution: "Filebrowser", image: "minek"), Contribution(name: "Serena", url: "https://github.com/SerenaKit", contribution: "Backup System", image: "serena"), Contribution(name: "LeminLimez", url: "https://github.com/leminlimez", contribution: "Tools Grid UI, MDC RAM safety, LSApplicationWorkspace header, Various Code snippets", image: "lemon"), Contribution(name: "sneakyf1shy", url: "https://github.com/f1shy-dev", contribution: "Analytics, Bugfixes", image: "other_fish"), Contribution(name: "zhuowei", url: "https://worthdoingbadly.com", contribution: "Unsandboxing, installd patch, WDBDISSH", image: "zhuowei")]
 
     var body: some View {
         NavigationView {
@@ -39,7 +29,7 @@ struct SettingsView: View {
                 //Section(header: Label("AppCommander \(appVersion)", systemImage: "info.circle").textCase(.none)) {}
                 Section {
                     NavigationLink {
-                        AppIconView()
+                        AboutView()
                     } label: {
                         Label("About", systemImage: "info.circle")
                     }

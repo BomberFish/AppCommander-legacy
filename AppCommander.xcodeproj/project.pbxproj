@@ -54,7 +54,6 @@
 		D65AA4C929D8613900C3EBE7 /* FileContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */; };
 		D65AA4CC29D8615400C3EBE7 /* WhitelistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */; };
 		D6609A9A29D73D680033F66D /* CompressionWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9929D73D680033F66D /* CompressionWrapper */; };
-		D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9B29D73D680033F66D /* DiskImagesWrapper */; };
 		D6609AA029D73D680033F66D /* NSTask in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9F29D73D680033F66D /* NSTask */; };
 		D674868529D7821300BCE952 /* FM++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D674868429D7821300BCE952 /* FM++.swift */; };
 		D688309A29E86D7D00F4D7DA /* KernelPanic.m in Sources */ = {isa = PBXBuildFile; fileRef = D688309929E86D7D00F4D7DA /* KernelPanic.m */; };
@@ -240,7 +239,6 @@
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
 				D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */,
 				D688309F29E870FF00F4D7DA /* IOKit.framework in Frameworks */,
-				D6609A9C29D73D680033F66D /* DiskImagesWrapper in Frameworks */,
 				D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */,
 				D688309D29E870F000F4D7DA /* IOSurface.framework in Frameworks */,
 				D6E6CF6129EB53F6009FC842 /* FilePicker in Frameworks */,
@@ -550,7 +548,6 @@
 				D6E3FC7A29CDCBF000D019D1 /* Dynamic */,
 				D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */,
 				D6609A9929D73D680033F66D /* CompressionWrapper */,
-				D6609A9B29D73D680033F66D /* DiskImagesWrapper */,
 				D6609A9F29D73D680033F66D /* NSTask */,
 				D6039E7E29E484DE002F91D7 /* DirtyCowKit */,
 				D6E6CF6029EB53F6009FC842 /* FilePicker */,
@@ -1264,11 +1261,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
 			productName = CompressionWrapper;
-		};
-		D6609A9B29D73D680033F66D /* DiskImagesWrapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6E3FC7C29CDCC2000D019D1 /* XCRemoteSwiftPackageReference "PrivateKits" */;
-			productName = DiskImagesWrapper;
 		};
 		D6609A9F29D73D680033F66D /* NSTask */ = {
 			isa = XCSwiftPackageProductDependency;

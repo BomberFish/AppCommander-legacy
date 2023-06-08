@@ -68,7 +68,7 @@ struct MoreInfoView: View {
                 }
         }
         .navigationTitle("More Info")
-        .onAppear {
+        .task(priority: .utility) {
             do {
                 appsize = try FileManager.default.allocatedSizeOfDirectory(at: sbapp.bundleURL)
                 docsize = try FileManager.default.allocatedSizeOfDirectory(at: ApplicationManager.getDataDir(bundleID: sbapp.bundleIdentifier))

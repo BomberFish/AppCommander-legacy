@@ -43,7 +43,7 @@ struct BackupView: View {
                     Label("Back up now", systemImage: "arrow.down.app")
                 })
             }
-            .onAppear {
+            .task(priority: .medium)  {
                 backups = BackupServices.shared.backups(for: app)
             }
             .navigationTitle("Backups")

@@ -45,7 +45,7 @@ struct StorageView: View {
                     .padding([.top], 10)
                 }
             }
-            .onAppear {
+            .task(priority: .background)  {
                 apps = allApps
                 do {
                     sizes = try getSizes(apps: allApps)

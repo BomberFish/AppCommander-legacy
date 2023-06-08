@@ -124,7 +124,7 @@ struct FileContentsView: View {
             }
         }
             .navigationTitle("Blacklist File Contents")
-            .onAppear {
+            .task(priority: .utility)  {
                 print("Reading files!")
                 do {
                     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {

@@ -40,49 +40,55 @@ struct AboutView: View {
                     if colorScheme == .dark {
                         Image("AbsoluteSolver")
                             .resizable()
-                            .antialiased(false)
+                            .antialiased(true)
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20)
+                            .frame(width: 14, height: 14)
                             .padding(.trailing, -4)
                         Text("Powered by AbsoluteSolver")
                             .foregroundColor(.white)
                             .lineLimit(1)
-                            .font(.system(.footnote, design: .monospaced))
+                            .font(.system(.footnote, design: .rounded))
                     } else {
                         Image("AbsoluteSolver")
                             .resizable()
-                            .antialiased(false)
+                            .antialiased(true)
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20)
+                            .frame(width: 14, height: 14)
                             .padding(.trailing, -4)
                             .colorInvert()
                         Text("Powered by AbsoluteSolver")
                             .foregroundColor(.black)
                             .lineLimit(1)
-                            .font(.system(.footnote, design: .monospaced))
+                            .font(.system(.footnote, design: .rounded))
                     }
                 }
-                .opacity(0.75)
+                .opacity(0.35)
             }
-            List {
-                Section {
-                    ForEach(contribs) { contrib in
-                        LinkCell(imageName: contrib.image, url: contrib.url, title: contrib.name, contribution: contrib.contribution)
+            ZStack {
+                NavigationView {
+                    List {
+                        Section {
+                            ForEach(contribs) { contrib in
+                                LinkCell(imageName: contrib.image, url: contrib.url, title: contrib.name, contribution: contrib.contribution, circle: true)
+                            }
+                            NavigationLink {
+                                TranslatorsView()
+                            } label: {
+                                Label("Translators", systemImage: "character.bubble")
+                            }
+                            NavigationLink {
+                                PackageCreditsView()
+                            } label: {
+                                Label("Swift Packages", systemImage: "shippingbox")
+                            }
+                        } header: {
+                            Label("Credits", systemImage: "heart")
+                        }
                     }
-                    NavigationLink {
-                        TranslatorsView()
-                    } label: {
-                        Label("Translators", systemImage: "character.bubble")
-                    }
-                    NavigationLink {
-                        PackageCreditsView()
-                    } label: {
-                        Label("Swift Packages", systemImage: "shippingbox")
-                    }
-                } header: {
-                    Label("Credits", systemImage: "heart")
                 }
+                .cornerRadius(20)
             }
+            .padding(10)
         }
         .navigationTitle("About")
     }
