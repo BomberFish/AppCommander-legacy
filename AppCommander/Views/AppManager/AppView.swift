@@ -226,6 +226,7 @@ struct AppView: View {
         // .background(GradientView())
         .listRowBackground(Color.clear)
         .tint(currentAccentColor)
+        .animation(.easeInOut(duration: 0.25), value: currentAccentColor)
     }
 }
 

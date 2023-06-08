@@ -26,6 +26,7 @@ struct RootView: View {
                 .tabItem {
                     Label("Tools", systemImage: "hammer")
                 }
+            // you could call this a cancelled feature :trolley:
             /*StorageView(allApps: $allApps)
                 .tabItem {
                     Label("Storage", systemImage: "internaldrive")
