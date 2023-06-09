@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AboutView: View {
-    let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-    let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
+    let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "606.0"
+    let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "606"
     @Environment(\.colorScheme) var colorScheme
     struct Contribution: Identifiable, Equatable, Hashable {
         var id = UUID()
@@ -22,13 +22,15 @@ struct AboutView: View {
     let contribs: [Contribution] = [Contribution(name: "BomberFish", url: "https://bomberfish.ca", contribution: "Main Developer", image: "bomberfish"), Contribution(name: "sourcelocation", url: "https://github.com/sourcelocation", contribution: "ApplicationManager, Various Code Snippets, Appabetical", image: "suslocation"), Contribution(name: "Avangelista", url: "https://github.com/Avangelista", contribution: "Appabetical", image: "floppa"), Contribution(name: "Nathan", url: "https://github.com/verygenericname", contribution: "JIT Implementation", image: "nathan"), Contribution(name: "haxi0", url: "https://haxi0.space", contribution: "DirtyJIT", image: "hax"), Contribution(name: "Mineek", url: "https://github.com/Mineek", contribution: "Filebrowser", image: "minek"), Contribution(name: "Serena", url: "https://github.com/SerenaKit", contribution: "Backup System", image: "serena"), Contribution(name: "LeminLimez", url: "https://github.com/leminlimez", contribution: "Tools Grid UI, MDC RAM safety, LSApplicationWorkspace header, Various Code snippets", image: "lemon"), Contribution(name: "sneakyf1shy", url: "https://github.com/f1shy-dev", contribution: "Analytics, Bugfixes", image: "other_fish"), Contribution(name: "zhuowei", url: "https://worthdoingbadly.com", contribution: "Unsandboxing, installd patch, WDBDISSH", image: "zhuowei")]
     
     let logo = UIImage(named: "Default")!
-    let logoFlipped = UIImage(named: "Default")!.withHorizontallyFlippedOrientation()
+    let logoFlipped = UIImage(named: "Default")!.withHorizontallyFlippedOrientation() //literally useless rn but funni
 
     @State var opened = false
     @State var rotation = 0.0
     // THESE SHOULD ALWAYS BE THE SAME!!!
     let defaultAnimDuration = 0.35
     @State var animDuration = 0.35
+    
+    @State var isCorrupted = false
 
     var body: some View {
         VStack {
@@ -91,6 +93,13 @@ struct AboutView: View {
                     .foregroundColor(Color(uiColor: UIColor.secondaryLabel))
                 Text("")
                 HStack {
+                    Image(systemName: "xmark")
+                    Text("  Error 606: Installation appears to be corrupt. Please reinstall AppCommander.")
+                }
+                .foregroundColor(Color(uiColor: UIColor.systemYellow))
+                .font(.subheadline)
+                Text("")
+                HStack {
                     if colorScheme == .dark {
                         Image("AbsoluteSolver")
                             .resizable()
@@ -145,6 +154,9 @@ struct AboutView: View {
             .padding(10)
         }
         .navigationTitle("About")
+        .task(priority: .userInitiated) {
+                isCorrupted = (version == "606.0" || build == "606")
+        }
     }
 }
 
