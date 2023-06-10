@@ -155,7 +155,7 @@ struct BackupView: View {
             backups = BackupServices.shared.backups(for: app)
         }
         .toolbar {
-            FilePicker(types: [.init(filenameExtension: "abdk")!/*, .init(filenameExtension: "zip")!*/], allowMultiple: false, onPicked: { urls in
+            FilePicker(types: [.init(filenameExtension: "abdk")!, .init(filenameExtension: "zip")!], allowMultiple: false, onPicked: { urls in
                 print(urls.first ?? "no files picked?!")
                 UIApplication.shared.progressAlert(title: "Backing up \(app.name)...")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

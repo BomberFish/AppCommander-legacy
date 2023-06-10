@@ -46,6 +46,7 @@ public class BackupServices {
             try FileManager.default.createDirectory(at: docURL, withIntermediateDirectories: true)
             
             try FileManager.default.createDirectory(at: stagingDirectory, withIntermediateDirectories: true)
+            FileManager.default.createFile(atPath: (stagingDirectory.appendingPathComponent(".DO_NOT_DELETE_AppCommander-Backup.txt")).path, contents: nil, attributes: nil)
             try FileManager.default.createDirectory(at: groups, withIntermediateDirectories: true)
             print("Copying files...")
             progress("Copying files...")
@@ -118,6 +119,7 @@ public class BackupServices {
         let fm = FileManager.default
         let tempurl = docURL.appendingPathComponent(path.lastPathComponent)
         try Compression.shared.extract(path: path, to: tempurl)
+        print(try fm.contentsOfDirectory(atPath: tempurl.path).contains(".DO_NOT_DELETE_AppCommander-Backup.txt"))
 //        do {
 //            if try fm.contentsOfDirectory(atPath: tempurl.path).contains(app.bundleIdentifier) {
 //                print(docURL.appendingPathComponent(app.bundleIdentifier))
@@ -195,8 +197,61 @@ public class BackupServices {
                 } else {
                     try fm.removeItem(at: stagingDirectory)
                 }
+            } else if try fm.contentsOfDirectory(atPath: tempurl.path).contains(".DO_NOT_DELETE_AppCommander-Backup.txt") {
+                if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
+                    try AbsoluteSolver.copy(at: path, to: docURL, progress: {message in
+                        print(message)
+                    })
+                } else {
+                    try fm.copyItem(at: path, to: docURL)
+                }
+                
+                let stagingDirectory = tempurl
+                let containerURL = stagingDirectory.appendingPathComponent("Container")
+                let groups = stagingDirectory.appendingPathComponent("Groups")
+                
+                let item = BackupItem(application: application,
+                                      stagingDirectoryName: stagingDirectory.pathComponents.suffix(2).joined(separator: "/"))
+                let filename = item.backupFilename
+                try FileManager.default.createDirectory(at: docURL, withIntermediateDirectories: true)
+                
+                try FileManager.default.createDirectory(at: stagingDirectory, withIntermediateDirectories: true)
+                //try? text.write(to: stagingDirectory.appendingPathComponent(".DO_NOT_DELETE_AppCommander-Backup.txt"), atomically: true, encoding: String.Encoding.utf8)
+                try FileManager.default.createDirectory(at: groups, withIntermediateDirectories: true)
+                print("Copying files...")
+                progress("Copying files...")
+//                if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
+//                    try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL, progress: {message in
+//                        print(message)
+//                    })
+//                } else {
+//                    try fm.copyItem(at: applicationContainerURL, to: containerURL)
+//                }
+                
+                //        for (groupID, groupContainerURL) in application.proxy.groupContainerURLs() {
+                //            try FileManager.default.copyItem(at: groupContainerURL, to: groups.appendingPathComponent(groupID))
+                //        }
+                print("Compressing...")
+                progress("Compressing...")
+                try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip, filenameExcludes: ["v0", ".com.apple.mobile_container_manager.metadata.plist"])
+                
+                print("Finishing up...")
+                progress("Finishing up...")
+                var registry = savedBackups()
+                
+                registry.append(item)
+                try JSONEncoder().encode(registry).write(to: backupsRegistryURL)
+                if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
+                    try AbsoluteSolver.delete(at: stagingDirectory, progress: {message in
+                        print(message)
+                    })
+                } else {
+                    try fm.removeItem(at: stagingDirectory)
+                }
+                
+                
             } else {
-                throw "Backup is not for this app!"
+                throw "Invalid Backup!"
             }
         } catch {
             throw error.localizedDescription
