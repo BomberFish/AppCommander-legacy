@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AboutView: View {
-    let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "606.0"
-    let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "606"
+    let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
     @Environment(\.colorScheme) var colorScheme
     struct Contribution: Identifiable, Equatable, Hashable {
         var id = UUID()
