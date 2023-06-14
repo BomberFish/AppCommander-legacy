@@ -12,6 +12,7 @@ import Foundation
 import MobileCoreServices
 import SwiftUI
 import AbsoluteSolver
+import OSLog
 
 // stolen from appabetical :trolley:
 // I do not know how this code works but all I know is that it does.
@@ -20,6 +21,8 @@ enum ApplicationManager {
     
     private static let systemApplicationsUrl = URL(fileURLWithPath: "/Applications", isDirectory: true)
     private static let userApplicationsUrl = URL(fileURLWithPath: "/var/containers/Bundle/Application", isDirectory: true)
+    
+    private static let logger = Logger(subsystem: "Application Manager", category: "Uncategorized")
     
     // MARK: - Goofy ahh function
 
@@ -50,7 +53,7 @@ enum ApplicationManager {
                     if fm.fileExists(atPath: mmpath) {
                         if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                             mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath, progress: {message in
-                                print(message, loglevel: .debug)
+                                print(message, loglevel: .debug, logger: aslogger)
                             }), options: [], format: nil) as? [String: Any] ?? [:]
                         } else {
                             mmDict = try PropertyListSerialization.propertyList(from: Data(contentsOf: URL(fileURLWithPath: mmpath)), options: [], format: nil) as? [String: Any] ?? [:]
@@ -61,10 +64,10 @@ enum ApplicationManager {
                             returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
                         }
                     } else {
-                        print("WARNING: Directory \(dir) does not have a metadata plist, skipping.", loglevel: .info)
+                        print("WARNING: Directory \(dir) does not have a metadata plist, skipping.", loglevel: .info, logger: logger)
                     }
                 } catch {
-                    print ("Could not get data of \(mmpath): \(error.localizedDescription)", loglevel: .error)
+                    print ("Could not get data of \(mmpath): \(error.localizedDescription)", loglevel: .error, logger: logger)
                     throw ("Could not get data of \(mmpath): \(error.localizedDescription)")
                 }
             }
@@ -84,37 +87,37 @@ enum ApplicationManager {
             let filename = app.name + "_" + app.version + "_" + uuid
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                 try? AbsoluteSolver.delete(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid), progress: {message in
-                    print(message, loglevel: .debug)
+                    print(message, loglevel: .debug, logger: aslogger)
                 })
             } else {
                 try? FileManager.default.removeItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid))
             }
-            print("rmed file", loglevel: .debug)
+            print("rmed file", loglevel: .debug, logger: logger)
             try FileManager.default.createDirectory(at: payloaddir, withIntermediateDirectories: true)
-            print("made payload dir \(payloaddir)", loglevel: .debug)
+            print("made payload dir \(payloaddir)", loglevel: .debug, logger: logger)
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                 try AbsoluteSolver.copy(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent), progress: {message in
-                    print(message, loglevel: .debug)
+                    print(message, loglevel: .debug, logger: aslogger)
                 })
             } else {
                 try fm.copyItem(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
             }
-            print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))", loglevel: .info)
+            print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))", loglevel: .info, logger: logger)
             // try FileManager().zipItem(at: payloaddir, to: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))
             try Compression.shared.compress(paths: [payloaddir], outputPath: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"), format: .zip)
             UIApplication.shared.dismissAlert(animated: false)
-            print("zipped \(payloaddir) to \(FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))", loglevel: .info)
+            print("zipped \(payloaddir) to \(FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))", loglevel: .info, logger: logger)
             // sleep(UInt32(0.5))
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                 try? AbsoluteSolver.delete(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid), progress: {message in
-                    print(message)
+                    print(message, logger: logger)
                 })
             } else {
                 try? FileManager.default.removeItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid))
             }
             return FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa")
         } catch {
-            print("error at the next step \(error.localizedDescription)", loglevel: .error)
+            print("error at the next step \(error.localizedDescription)", loglevel: .error, logger: logger)
             Haptic.shared.notify(.error)
             throw "There was an error exporting the ipa.\n\(error.localizedDescription)"
         }

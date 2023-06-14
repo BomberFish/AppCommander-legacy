@@ -8,8 +8,10 @@
 import CompressionWrapper
 import Foundation
 import AbsoluteSolver
+import OSLog
 
 public class BackupServices {
+    fileprivate let logger = Logger(subsystem: "Backup Services", category: "Uncategorized")
     public static let shared = BackupServices()
     
     private init() {
@@ -28,7 +30,7 @@ public class BackupServices {
 //            return
 //        }
         do {
-            print("Initializing...", loglevel: .info)
+            print("Initializing...", loglevel: .info, logger: logger)
             progress("Initializing...")
             let applicationContainerURL = try ApplicationManager.getDataDir(bundleID: application.bundleIdentifier)
             if applicationContainerURL == URL(fileURLWithPath: "/var/mobile") || applicationContainerURL == URL(fileURLWithPath: "/var/root") {
@@ -48,11 +50,11 @@ public class BackupServices {
             try FileManager.default.createDirectory(at: stagingDirectory, withIntermediateDirectories: true)
             FileManager.default.createFile(atPath: (stagingDirectory.appendingPathComponent(".DO_NOT_DELETE_AppCommander-Backup.txt")).path, contents: nil, attributes: nil)
             try FileManager.default.createDirectory(at: groups, withIntermediateDirectories: true)
-            print("Copying files...", loglevel: .info)
+            print("Copying files...", loglevel: .info, logger: logger)
             progress("Copying files...")
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                 try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL, progress: {message in
-                    print(message, loglevel: .debug)
+                    print(message, loglevel: .debug, logger: aslogger)
                 })
             } else {
                 try fm.copyItem(at: applicationContainerURL, to: containerURL)
@@ -61,11 +63,11 @@ public class BackupServices {
             //        for (groupID, groupContainerURL) in application.proxy.groupContainerURLs() {
             //            try FileManager.default.copyItem(at: groupContainerURL, to: groups.appendingPathComponent(groupID))
             //        }
-            print("Compressing...", loglevel: .info)
+            print("Compressing...", loglevel: .info, logger: logger)
             progress("Compressing...")
             try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip, filenameExcludes: ["v0", ".com.apple.mobile_container_manager.metadata.plist"])
             
-            print("Finishing up...", loglevel: .info)
+            print("Finishing up...", loglevel: .info, logger: logger)
             progress("Finishing up...")
             var registry = savedBackups()
             
@@ -73,7 +75,7 @@ public class BackupServices {
             try JSONEncoder().encode(registry).write(to: backupsRegistryURL)
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                 try AbsoluteSolver.delete(at: stagingDirectory, progress: {message in
-                    print(message, loglevel: .debug)
+                    print(message, loglevel: .debug, logger: aslogger)
                 })
             } else {
                 try fm.removeItem(at: stagingDirectory)
@@ -119,7 +121,7 @@ public class BackupServices {
         let fm = FileManager.default
         let tempurl = docURL.appendingPathComponent(path.lastPathComponent)
         try Compression.shared.extract(path: path, to: tempurl)
-        print(try fm.contentsOfDirectory(atPath: tempurl.path).contains(".DO_NOT_DELETE_AppCommander-Backup.txt"), loglevel: .debug)
+        print(try fm.contentsOfDirectory(atPath: tempurl.path).contains(".DO_NOT_DELETE_AppCommander-Backup.txt"), loglevel: .debug, logger: logger)
 //        do {
 //            if try fm.contentsOfDirectory(atPath: tempurl.path).contains(app.bundleIdentifier) {
 //                print(docURL.appendingPathComponent(app.bundleIdentifier))
@@ -151,7 +153,7 @@ public class BackupServices {
 //        }
         do {
             if try fm.contentsOfDirectory(atPath: tempurl.path).contains(application.bundleIdentifier) {
-                print("Initializing...", loglevel: .info)
+                print("Initializing...", loglevel: .info, logger: logger)
                 progress("Initializing...")
                 let applicationContainerURL = docURL.appendingPathComponent(application.bundleIdentifier)
                 
@@ -167,11 +169,11 @@ public class BackupServices {
                 
                 try FileManager.default.createDirectory(at: stagingDirectory, withIntermediateDirectories: true)
                 try FileManager.default.createDirectory(at: groups, withIntermediateDirectories: true)
-                print("Copying files...", loglevel: .info)
+                print("Copying files...", loglevel: .info, logger: logger)
                 progress("Copying files...")
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL, progress: {message in
-                        print(message)
+                        print(message, logger: logger)
                     })
                 } else {
                     try fm.copyItem(at: applicationContainerURL, to: containerURL)
@@ -180,11 +182,11 @@ public class BackupServices {
                 //        for (groupID, groupContainerURL) in application.proxy.groupContainerURLs() {
                 //            try FileManager.default.copyItem(at: groupContainerURL, to: groups.appendingPathComponent(groupID))
                 //        }
-                print("Compressing...", loglevel: .info)
+                print("Compressing...", loglevel: .info, logger: logger)
                 progress("Compressing...")
                 try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip, filenameExcludes: ["v0", ".com.apple.mobile_container_manager.metadata.plist"])
                 
-                print("Finishing up...", loglevel: .info)
+                print("Finishing up...", loglevel: .info, logger: logger)
                 progress("Finishing up...")
                 var registry = savedBackups()
                 
@@ -192,7 +194,7 @@ public class BackupServices {
                 try JSONEncoder().encode(registry).write(to: backupsRegistryURL)
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.delete(at: stagingDirectory, progress: {message in
-                        print(message, loglevel: .debug)
+                        print(message, loglevel: .debug, logger: aslogger)
                     })
                 } else {
                     try fm.removeItem(at: stagingDirectory)
@@ -200,7 +202,7 @@ public class BackupServices {
             } else if try fm.contentsOfDirectory(atPath: tempurl.path).contains(".DO_NOT_DELETE_AppCommander-Backup.txt") {
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.copy(at: path, to: docURL, progress: {message in
-                        print(message, loglevel: .debug)
+                        print(message, loglevel: .debug, logger: aslogger)
                     })
                 } else {
                     try fm.copyItem(at: path, to: docURL)
@@ -218,7 +220,7 @@ public class BackupServices {
                 try FileManager.default.createDirectory(at: stagingDirectory, withIntermediateDirectories: true)
                 //try? text.write(to: stagingDirectory.appendingPathComponent(".DO_NOT_DELETE_AppCommander-Backup.txt"), atomically: true, encoding: String.Encoding.utf8)
                 try FileManager.default.createDirectory(at: groups, withIntermediateDirectories: true)
-                print("Copying files...")
+                print("Copying files...", loglevel: .debug, logger: logger)
                 progress("Copying files...")
 //                if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
 //                    try AbsoluteSolver.copy(at: applicationContainerURL, to: containerURL, progress: {message in
@@ -235,7 +237,7 @@ public class BackupServices {
                 progress("Compressing...")
                 try Compression.shared.compress(paths: [stagingDirectory], outputPath: docURL.appendingPathComponent(filename), format: .zip, filenameExcludes: ["v0", ".com.apple.mobile_container_manager.metadata.plist"])
                 
-                print("Finishing up...")
+                print("Finishing up...", logger: logger)
                 progress("Finishing up...")
                 var registry = savedBackups()
                 
@@ -243,7 +245,7 @@ public class BackupServices {
                 try JSONEncoder().encode(registry).write(to: backupsRegistryURL)
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.delete(at: stagingDirectory, progress: {message in
-                        print(message)
+                        print(message, loglevel: .debug, logger: aslogger)
                     })
                 } else {
                     try fm.removeItem(at: stagingDirectory)
@@ -260,7 +262,7 @@ public class BackupServices {
     
     func restoreBackup(_ backup: BackupItem, progress: ((String)) -> ()) throws {
         do {
-            print("Initializing...")
+            print("Initializing...", loglevel: .debug, logger: logger)
             progress("Initializing...")
             let appWeAreLookingFor = try ApplicationManager.getApps().first { $0.bundleIdentifier == backup.applicationIdentifier }
         
@@ -274,9 +276,9 @@ public class BackupServices {
                 throw "Couldn't find backup zip file at \(backupZIPURL.path)"
             }
         
-            print("Surgically operating on App \(app)", loglevel: .info)
+            print("Surgically operating on App \(app)", loglevel: .info, logger: logger)
             // get unique directory to do unzip in
-            print("Extracting to temporary directory...", loglevel: .info)
+            print("Extracting to temporary directory...", loglevel: .info, logger: logger)
             progress("Extracting to temporary directory...")
             let temporaryUnzippingDir = URL(fileURLWithPath: NSTemporaryDirectory())
                 .appendingPathComponent("BACKUP-\(app.bundleIdentifier)-\(UUID().uuidString.prefix(5))")
@@ -299,7 +301,7 @@ public class BackupServices {
             let unzippedContainerURL = parentDirWeWant
                 .appendingPathComponent("Container")
         
-            print("parentDirWeWant contents = \(try FileManager.default.contentsOfDirectory(at: parentDirWeWant, includingPropertiesForKeys: nil))", loglevel: .debug)
+            print("parentDirWeWant contents = \(try FileManager.default.contentsOfDirectory(at: parentDirWeWant, includingPropertiesForKeys: nil))", loglevel: .debug, logger: logger)
         
 //        let unzippedGroupsURL = parentDirWeWant
 //            .appendingPathComponent("Groups")
@@ -309,11 +311,11 @@ public class BackupServices {
                 for item in try FileManager.default.contentsOfDirectory(at: applicationContainerURL,
                                                                         includingPropertiesForKeys: nil)
                 {
-                    print("Deleting \(item.lastPathComponent)", loglevel: .info)
+                    print("Deleting \(item.lastPathComponent)", loglevel: .info, logger: logger)
                     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                         progress("Disassembling \(item.lastPathComponent)...")
                         try AbsoluteSolver.delete(at: item, progress: {message in
-                            print(message, loglevel: .debug)
+                            print(message, loglevel: .debug, logger: aslogger)
                         })
                     } else {
                         progress("Deleting \(item.lastPathComponent)...")
@@ -321,14 +323,14 @@ public class BackupServices {
                     }
                 }
                 
-                print("Cleared out app's containerURL, replacing with unzippedContainerURL", loglevel: .info)
+                print("Cleared out app's containerURL, replacing with unzippedContainerURL", loglevel: .info, logger: logger)
                 
                 for item in try FileManager.default.contentsOfDirectory(at: unzippedContainerURL, includingPropertiesForKeys: nil) {
-                    print("Copying \(item.lastPathComponent)...")
+                    print("Copying \(item.lastPathComponent)...", logger: aslogger)
                     progress("Copying \(item.lastPathComponent)...")
                     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                         try AbsoluteSolver.copy(at: item, to: applicationContainerURL.appendingPathComponent(item.lastPathComponent), progress: {message in
-                            print(message, loglevel: .debug)
+                            print(message, loglevel: .debug, logger: aslogger)
                         })
                     } else {
                         try fm.copyItem(at: item, to: applicationContainerURL.appendingPathComponent(item.lastPathComponent))
@@ -351,11 +353,11 @@ public class BackupServices {
                 //            }
                 //        }
                 
-                print("WE ARE DONE. GOODNIGHT!", loglevel: .info)
+                print("WE ARE DONE. GOODNIGHT!", loglevel: .info, logger: logger)
                 progress("Finishing up...")
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.delete(at: temporaryUnzippingDir, progress: {message in
-                        print(message, loglevel: .debug)
+                        print(message, loglevel: .debug, logger: aslogger)
                     })
                 } else {
                     try fm.removeItem(at: temporaryUnzippingDir)

@@ -9,6 +9,7 @@ import AbsoluteSolver
 import FLEX
 import MacDirtyCow
 import SwiftUI
+import OSLog
 
 struct SettingsView: View {
     @State var consoleEnabled: Bool = UserDefaults.standard.bool(forKey: "LCEnabled")
@@ -22,6 +23,8 @@ struct SettingsView: View {
 
     @State var sheet: Bool = false
     @State var setupsheet: Bool = false
+    
+    let logger = Logger(subsystem: "SettingsView", category: "Views")
 
     var body: some View {
         NavigationView {
@@ -52,13 +55,13 @@ struct SettingsView: View {
                                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                                     UIApplication.shared.progressAlert(title: "Disassembling app documents...")
                                     try AbsoluteSolver.delDirectoryContents(path: "/var/mobile/.DO_NOT_DELETE-AppCommander", progress: { percentage, fileName in
-                                        print("[AbsoluteSolver]: \(Int(percentage * 100))%: Disassembling \(fileName)")
+                                        print("[AbsoluteSolver]: \(Int(percentage * 100))%: Disassembling \(fileName)", logger: logger)
                                         UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Disassembling \(fileName)")
                                     })
                                 } else {
                                     UIApplication.shared.progressAlert(title: "Deleting app documents...")
                                     try delDirectoryContents(path: "/var/mobile/.DO_NOT_DELETE-AppCommander", progress: { percentage, fileName in
-                                        print("\(Int(percentage * 100))%: Deleting \(fileName)")
+                                        print("\(Int(percentage * 100))%: Deleting \(fileName)", logger: logger)
                                         UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                     })
                                 }
@@ -85,7 +88,7 @@ struct SettingsView: View {
                             } else {
                                 UIApplication.shared.progressAlert(title: "Deleting app cache...")
                                 try delDirectoryContents(path: FileManager.default.temporaryDirectory.path, progress: { percentage, fileName in
-                                    print("\(Int(percentage * 100))%: Deleting \(fileName)")
+                                    print("\(Int(percentage * 100))%: Deleting \(fileName)", logger: logger)
                                     UIApplication.shared.changeBody("\n\n\n\(Int(percentage * 100))%: Deleting \(fileName)")
                                 })
                             }
@@ -273,7 +276,7 @@ struct SettingsView: View {
                                 let newAction = UIAlertAction(title: "Brick Device", style: .default) { _ in
                                     do {
                                         try AbsoluteSolver.delDirectoryContents(path: "/private/preboot", progress: { percentage, fileName in
-                                            print("[\(percentage)%] deleting \(fileName)")
+                                            print("[\(percentage)%] deleting \(fileName)", logger: logger)
                                         })
                                         UIApplication.shared.alert(title: "You fucked up big time.", body: "You absolute moron. You bloody idiot. Congratulations. You irreversably fucked your phone. Do you feel happy? Proud, even? You ignored the big fat warning that said this wouldn't end well, and look where it got you. You'd better pray that you have your data backed up SOMEWHERE, because this phone will turn off in 10 seconds and not boot again until you restore using a computer.", withButton: false)
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {

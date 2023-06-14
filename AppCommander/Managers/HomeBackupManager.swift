@@ -8,8 +8,10 @@
 import Foundation
 import SwiftUI
 import AbsoluteSolver
+import OSLog
 
 class HomeBackupManager {
+    private static let logger = Logger(subsystem: "HomeBackupManager", category: "Uncategorized")
     /// Save a homescreen backup manually
     static func saveLayout() {
         func copyAndAlert() {
@@ -17,7 +19,7 @@ class HomeBackupManager {
                 try? fm.removeItem(at: savedLayoutUrl)
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.copy(at: plistUrl, to: savedLayoutUrl, progress: {message in
-                        print(message, loglevel: .debug)
+                        print(message, loglevel: .debug, logger: aslogger)
                     })
                 } else {
                     try fm.copyItem(at: plistUrl, to: savedLayoutUrl)
@@ -45,7 +47,7 @@ class HomeBackupManager {
         let _ = try fm.replaceItemAt(plistUrl, withItemAt: savedLayoutUrl)
         if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
             try AbsoluteSolver.copy(at: plistUrl, to: savedLayoutUrl, progress: {message in
-                print(message, loglevel: .debug)
+                print(message, loglevel: .debug, logger: aslogger)
             })
         } else {
             try fm.copyItem(at: plistUrl, to: savedLayoutUrl)
@@ -60,7 +62,7 @@ class HomeBackupManager {
         try? fm.removeItem(at: plistUrlBkp)
         if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
             try AbsoluteSolver.copy(at: plistUrl, to: plistUrlBkp, progress: {message in
-                print(message, loglevel: .debug)
+                print(message, loglevel: .debug, logger: aslogger)
             })
         } else {
             try fm.copyItem(at: plistUrl, to: plistUrlBkp)

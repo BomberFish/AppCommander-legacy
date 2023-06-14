@@ -8,12 +8,14 @@
 import MarqueeText
 import SwiftUI
 import AbsoluteSolver
+import OSLog
 
 struct StorageView: View {
     @Binding public var allApps: [SBApp]
     @State var sizes: [DataDir] = []
     @State var apps: [SBApp] = [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.Loading", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: [""], hiddenFromSpringboard: false)]
     @State var currentappsize: UInt64 = 0
+    let logger = Logger(subsystem: "Storage View", category: "Views")
     var body: some View {
         NavigationView {
             ZStack {
@@ -49,7 +51,7 @@ struct StorageView: View {
                 apps = allApps
                 do {
                     sizes = try getSizes(apps: allApps)
-                    print(sizes, loglevel: .debug)
+                    print(sizes, loglevel: .debug, logger: logger)
                 } catch {
                     UIApplication.shared.alert(body: "Couldn't get app sizes: \(error.localizedDescription)")
                 }
@@ -79,7 +81,7 @@ struct StorageView: View {
                 if fm.fileExists(atPath: mmpath) {
                     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                         mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath, progress: {message in
-                            print(message, loglevel: .debug)
+                            print(message, loglevel: .debug, logger: aslogger)
                         }), options: [], format: nil) as? [String: Any] ?? [:]
                     } else {
                         mmDict = try PropertyListSerialization.propertyList(from: Data(contentsOf: URL(fileURLWithPath: mmpath)), options: [], format: nil) as? [String: Any] ?? [:]
@@ -90,7 +92,7 @@ struct StorageView: View {
                         //returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
                     //}
                 } else {
-                    print("WARNING: Directory \(dir) does not have a metadata plist, skipping.", loglevel: .info)
+                    print("WARNING: Directory \(dir) does not have a metadata plist, skipping.", loglevel: .info, logger: logger)
                 }
             } catch {
                 throw ((error.localizedDescription))

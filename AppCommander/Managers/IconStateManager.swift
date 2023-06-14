@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import OSLog
 
 public class IconStateManager {
     
     static var shared = IconStateManager()
+    
+    private static let logger = Logger(subsystem: "IconState Manager", category: "Uncategorized")
     
     public func pageCount() throws -> Int {
         guard let plist = NSDictionary(contentsOf: plistUrl) as? [String:AnyObject] else { throw "no iconstate" }
@@ -23,7 +26,7 @@ public class IconStateManager {
         // Open IconState.plist
         guard var plist = NSDictionary(contentsOf: plistUrl) as? [String:AnyObject] else { return }
         guard var iconLists = plist["iconLists"] as? [[AnyObject]] else { return }
-        print(iconLists)
+        print(iconLists, loglevel: .debug, logger: IconStateManager.logger)
         let springBoardItemLists = iconLists.map { $0.map { SpringBoardItem(from: $0) } }
         
         var newSpringBoardItems: [[SpringBoardItem]]!
@@ -42,7 +45,7 @@ public class IconStateManager {
             }
         }
         
-        print(newSpringBoardItems as Any, loglevel: .debug)
+        print(newSpringBoardItems as Any, loglevel: .debug, logger: IconStateManager.logger)
         
         // Evenly distribute newSpringBoardItems amongst pages to avoid overflow
         var newIconLists: [[AnyObject]] = []
@@ -65,13 +68,13 @@ public class IconStateManager {
             newIconLists.append(pageNew)
         }
         
-        print(newIconLists, loglevel: .debug)
+        print(newIconLists, loglevel: .debug, logger: IconStateManager.logger)
         
         // Set selected pages in iconLists to [], so indicies don't fuck up. Removes all remaining [] values later
         for i in selectedPages {
             iconLists[i] = []
         }
-        print(selectedPages, loglevel: .debug)
+        print(selectedPages, loglevel: .debug, logger: IconStateManager.logger)
         
         // Insert new pages into old iconLists
         for (newPageI, page) in newIconLists.enumerated() {
@@ -83,7 +86,7 @@ public class IconStateManager {
         // Remove all remaining [] values created earlier
         iconLists = iconLists.filter({ page in !page.isEmpty })
         
-        print(iconLists, loglevel: .debug)
+        print(iconLists, loglevel: .debug, logger: IconStateManager.logger)
         
         plist["iconLists"] = iconLists as AnyObject
         let pageCount = iconLists.count

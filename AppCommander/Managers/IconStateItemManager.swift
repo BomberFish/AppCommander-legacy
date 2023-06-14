@@ -8,6 +8,7 @@
 import Foundation
 import AssetCatalogWrapper
 import SwiftUI
+import OSLog
 
 class IconStateItemHelper {
     static let shared = IconStateItemHelper()
@@ -18,9 +19,10 @@ class IconStateItemHelper {
         idToColor = [:]
         
          let apps = LSApplicationWorkspace.default().allApplications() ?? []
+         let logger = Logger(subsystem: "IconStateItemHelper", category: "Uncategorized")
          if apps.isEmpty {
             // Private api didn't work, time to go old fashioned
-            print("Manually searching for apps...", loglevel: .debug)
+            print("Manually searching for apps...", loglevel: .debug, logger: logger)
             do {
                 var dotAppDirs: [URL] = []
                 let systemAppsDir = try fm.contentsOfDirectory(at: systemApplicationsUrl, includingPropertiesForKeys: nil)

@@ -7,10 +7,11 @@
 
 import SwiftUI
 import AbsoluteSolver
+import OSLog
 
 struct ReplaceTestingView: View {
     let testfile = FileManager.default.temporaryDirectory.appendingPathComponent("testfile")
-    
+    let logger = Logger(subsystem: "ReplaceTestingView", category: "Views")
     var body: some View {
         List {
             Section {
@@ -24,7 +25,7 @@ struct ReplaceTestingView: View {
                 Button(action: {
                     do {
                         try AbsoluteSolver.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!), progress: {message in
-                            print(message, loglevel: .debug)
+                            print(message, loglevel: .debug, logger: aslogger)
                         })
                         UIApplication.shared.alert(body: "Success!")
                     } catch {
@@ -38,7 +39,7 @@ struct ReplaceTestingView: View {
                 Button(action: {
                     do {
                         let contents = try String(contentsOf: testfile)
-                        print(contents, loglevel: .debug)
+                        print(contents, loglevel: .debug, logger: logger)
                         if contents == "t" {
                             UIApplication.shared.alert(body: "Success!")
                         } else {

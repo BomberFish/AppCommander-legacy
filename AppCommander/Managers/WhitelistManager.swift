@@ -7,8 +7,10 @@
 
 import Foundation
 import AbsoluteSolver
+import OSLog
 
 public struct Whitelist {
+    private static let logger = Logger(subsystem: "Whitelist File Reading", category: "Uncategorized")
     public static let blankplist = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHBsaXN0IFBVQkxJQyAiLS8vQXBwbGUvL0RURCBQTElTVCAxLjAvL0VOIiAiaHR0cDovL3d3dy5hcHBsZS5jb20vRFREcy9Qcm9wZXJ0eUxpc3QtMS4wLmR0ZCI+CjxwbGlzdCB2ZXJzaW9uPSIxLjAiPgo8ZGljdC8+CjwvcGxpc3Q+Cg=="
 
     public static func overwriteBlacklist() throws {
@@ -16,7 +18,7 @@ public struct Whitelist {
             do {
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), with: Data(base64Encoded: blankplist)! as NSData, progress: {message in
-                        print(message, loglevel: .debug)
+                        print(message, loglevel: .debug, logger: Whitelist.logger)
                     })
                 } else {
                     try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), options: .atomic)
@@ -32,7 +34,7 @@ public struct Whitelist {
             do {
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), with: Data(base64Encoded: blankplist)! as NSData, progress: {message in
-                        print(message, loglevel: .debug)
+                        print(message, loglevel: .debug, logger: Whitelist.logger)
                     })
                 } else {
                     try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), options: .atomic)
@@ -48,7 +50,7 @@ public struct Whitelist {
             do {
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), with:  Data(base64Encoded: blankplist)! as NSData, progress: {message in
-                        print(message, loglevel: .debug)
+                        print(message, loglevel: .debug, logger: Whitelist.logger)
                     })
                 } else {
                     try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), options: .atomic)

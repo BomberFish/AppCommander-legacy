@@ -9,12 +9,14 @@ import AbsoluteSolver
 import LocalConsole
 @preconcurrency import MacDirtyCow
 import SwiftUI
+import OSLog
 
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
 let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 let funny: URL = Bundle.main.url(forResource: "bite_me", withExtension: "png")! //equivalent of the fabled coconut.jpg from tf2
 var currentAppMode: ApplicationMode = ApplicationMode.MacDirtyCow
+let aslogger = Logger(subsystem: "AbsoluteSolver", category: "wdOS")
 // var escaped = false
 // var has_cooked = false
 
@@ -23,7 +25,7 @@ struct AppCommanderApp: App {
     init() {
         UITableView.appearance().backgroundColor = .clear
     }
-
+    fileprivate let logger = Logger(subsystem: "AppCommanderApp", category: "Uncategorized")
     @State var escaped = false
     @State var has_cooked = true
     var body: some Scene {
@@ -42,7 +44,7 @@ struct AppCommanderApp: App {
 
                                     if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
                                         if (json["tag_name"] as? String)?.replacingOccurrences(of: "v", with: "").compare(version, options: .numeric) == .orderedDescending {
-                                            print("Update found: \(appVersion) -> \(json["tag_name"] ?? "null")", loglevel: .debug)
+                                            print("Update found: \(appVersion) -> \(json["tag_name"] ?? "null")", loglevel: .debug, logger: logger)
                                             UIApplication.shared.confirmAlert(title: "Update available!", body: "A new app update is available, do you want to visit the releases page?", onOK: {
                                                 UIApplication.shared.open(URL(string: "https://github.com/BomberFish/AppCommander/releases/latest")!)
                                             }, noCancel: false)
@@ -73,12 +75,12 @@ struct AppCommanderApp: App {
                             }
 
                             if !(userDefaults.bool(forKey: "AbsoluteSolverDisabled")) {
-                                print("Absolute Solver ENABLED", loglevel: .debug)
+                                print("Absolute Solver ENABLED", loglevel: .debug, logger: logger)
                             } else {
-                                print("Absolute Solver DISABLED", loglevel: .debug)
+                                print("Absolute Solver DISABLED", loglevel: .debug, logger: logger)
                             }
                             if FileManager.default.fileExists(atPath: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Backups")).path) {
-                                print("Backups not migrated, migrating now.", loglevel: .info)
+                                print("Backups not migrated, migrating now.", loglevel: .info, logger: logger)
                                 UIApplication.shared.progressAlert(title: "Migrating backups...")
                                 if userDefaults.bool(forKey: "AbsoluteSolverDisabled") {
                                     do {
@@ -114,7 +116,7 @@ struct AppCommanderApp: App {
                                     }
                                 }
                             } else {
-                                print("Backups already migrated.", loglevel: .debug)
+                                print("Backups already migrated.", loglevel: .debug, logger: logger)
                             }
                             // }
                         }
@@ -124,13 +126,13 @@ struct AppCommanderApp: App {
                 }
             }
             .task(priority: .high)  {
-                print("AppCommander v\(appVersion)", loglevel: .info)
+                print("AppCommander v\(appVersion)", loglevel: .info, logger: logger)
 
                 DispatchQueue.global(qos: .background).sync {
                     Whitelist.top_secret_sauce { baked_goods in
                         has_cooked = true
                         if baked_goods == false {
-                            print("piss off pirate cunt", loglevel: .fault)
+                            print("piss off pirate cunt", loglevel: .fault, logger: logger)
                             DispatchQueue.main.async {
                                 UIApplication.shared.alert(title: "Uh oh... 🏴‍☠️", body: "Looks like you're using a leaked build! Crashing in 5 seconds... Begone, pirate!", withButton: false)
                             }
@@ -146,7 +148,7 @@ struct AppCommanderApp: App {
                 #else
                     if #available(iOS 16.2, *) {
                         // I'm sorry 16.2 dev beta 1 users, you are a vast minority.
-                        print("Throwing not supported error (mdc patched)", loglevel: .error)
+                        print("Throwing not supported error (mdc patched)", loglevel: .error, logger: logger)
                         DispatchQueue.main.async {
                             UIApplication.shared.alert(title: "Not Supported", body: "This version of iOS is not supported.")
                         }
@@ -157,22 +159,22 @@ struct AppCommanderApp: App {
                                 throw "Force MDC"
                             }
                             try FileManager.default.contentsOfDirectory(at: URL(fileURLWithPath: "/var/mobile/Library/Caches"), includingPropertiesForKeys: nil)
-                            print("Using TrollStore.", loglevel: .info)
+                            print("Using TrollStore.", loglevel: .info, logger: logger)
                             currentAppMode = .TrollStore
                         } catch {
                             // grant r/w access
                             
                             // ok this check is probably 100% useless
                             if #available(iOS 15, *) {
-                                print("Using MacDirtyCow.", loglevel: .info)
+                                print("Using MacDirtyCow.", loglevel: .info, logger: logger)
                                 currentAppMode = .MacDirtyCow
                                 // asyncAfter(deadline: .now())
                                 sleep(UInt32(0.2))
-                                print("Escaping Sandbox...", loglevel: .debug)
+                                print("Escaping Sandbox...", loglevel: .debug, logger: logger)
                                 do {
                                     try MacDirtyCow.unsandbox()
                                     escaped = true
-                                    print("Successfully escaped sandbox!", loglevel: .debug)
+                                    print("Successfully escaped sandbox!", loglevel: .debug, logger: logger)
                                 } catch {
                                     escaped = false
                                     var message = ""
@@ -182,7 +184,7 @@ struct AppCommanderApp: App {
                                     } else {
                                         message = error.localizedDescription
                                     }
-                                    print("Unsandboxing error: \(message)", loglevel: .error)
+                                    print("Unsandboxing error: \(message)", loglevel: .error, logger: logger)
                                     UIApplication.shared.choiceAlert(title: "💣 GURU MEDITATION ERROR 💣", body: "Unsandboxing Error: \(message)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: { escaped = true })
                                 }
                             }

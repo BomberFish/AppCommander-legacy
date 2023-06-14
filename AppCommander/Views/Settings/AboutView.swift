@@ -92,14 +92,13 @@ struct AboutView: View {
                     .font(.caption)
                     .foregroundColor(Color(uiColor: UIColor.secondaryLabel))
                 Text("")
-                HStack {
-                    Image(systemName: "xmark")
-                    Text("  Error 606: Installation appears to be corrupt. Please reinstall AppCommander.")
-                }
-                .hidden()
-                .foregroundColor(Color(uiColor: UIColor.systemYellow))
-                .font(.subheadline)
-                Text("")
+//                HStack {
+//                    Image(systemName: "xmark")
+//                    Text("  Error 606: Installation appears to be corrupt. Please reinstall AppCommander.")
+//                }
+//                .foregroundColor(Color(uiColor: UIColor.systemYellow))
+//                .font(.subheadline)
+//                Text("")
                 HStack {
                     if colorScheme == .dark {
                         Image("AbsoluteSolver")
@@ -150,9 +149,9 @@ struct AboutView: View {
                         }
                     }
                 }
-                .cornerRadius(20)
+                .cornerRadius(16)
             }
-            .padding(10)
+            .padding(8)
         }
         .navigationTitle("About")
         .task(priority: .userInitiated) {

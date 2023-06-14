@@ -80,7 +80,7 @@ extension UIApplication {
         }
     }
     
-    func confirmAlertDestructive(title: String = "Error", body: String, onOK: @escaping () -> (), onCancel: @escaping () -> () = {print("cancel pressed", loglevel: .debug)}, destructActionText: String) {
+    func confirmAlertDestructive(title: String = "Error", body: String, onOK: @escaping () -> (), onCancel: @escaping () -> () = {}, destructActionText: String) {
         DispatchQueue.main.async {
             currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)
             currentUIAlertController?.addAction(.init(title: destructActionText, style: .destructive, handler: { _ in

@@ -19,11 +19,23 @@ enum ApplicationMode {
 
 // MARK: - Print to localconsole. Totally not stolen from sneakyf1shy (who still needs to finish the damn frontend)
 
-public func print(_ items: Any..., separator: String = " ", terminator: String = "\n", loglevel: OSLogType = .default) {
-    let logger = Logger()
+public func print(_ items: Any..., separator: String = " ", terminator: String = "\n", loglevel: OSLogType = .default, logger: Logger = Logger(subsystem: "Default", category: "Uncategorized")) {
     let data = items.map { "\($0)" }.joined(separator: separator)
     //Swift.print(data, terminator: terminator)
-    logger.log(level: loglevel, "\(data)")
+    switch loglevel {
+    case OSLogType.default:
+        logger.log("\(data)")
+    case .debug:
+        logger.debug("\(data)")
+    case .error:
+        logger.error("\(data)")
+    case .fault:
+        logger.fault("\(data)")
+    case .info:
+        logger.info("\(data)")
+    default:
+        logger.log("\(data)")
+    }
     consoleManager.print(data)
 }
 

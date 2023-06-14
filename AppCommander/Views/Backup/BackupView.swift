@@ -8,12 +8,13 @@
 import SwiftUI
 import UIKit
 import FilePicker
+import OSLog
 
 struct BackupView: View {
     @State public var app: SBApp
     @State private var backups: [BackupItem] = []
     @State var errormsg: String = ""
-    
+    let logger = Logger(subsystem: "BackupView", category: "Views")
     var body: some View {
         List {
             Section {
@@ -22,7 +23,7 @@ struct BackupView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         do {
                             try BackupServices.shared.backup(application: app, rootHelper: false, progress: {message in
-                                print(message)
+                                print(message, logger: logger)
                                 UIApplication.shared.changeBody("\n\n\n\(message))")
                             })
                             backups = BackupServices.shared.backups(for: app)
@@ -156,13 +157,13 @@ struct BackupView: View {
         }
         .toolbar {
             FilePicker(types: [.init(filenameExtension: "abdk")!, .init(filenameExtension: "zip")!], allowMultiple: false, onPicked: { urls in
-                print(urls.first ?? "no files picked?!")
+                print(urls.first ?? "no files picked?!", loglevel: urls.first == nil ? .error : .debug, logger: logger)
                 UIApplication.shared.progressAlert(title: "Backing up \(app.name)...")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     if let path = urls.first {
                         do {
                             try BackupServices.shared.importBackup(path, application: app, progress: {message in
-                                print(message)
+                                print(message, logger: logger)
                                 UIApplication.shared.changeBody("\n\n\n\(message))")
                             })
                         } catch {
