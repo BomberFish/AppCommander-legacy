@@ -16,7 +16,7 @@ public struct Whitelist {
             do {
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), with: Data(base64Encoded: blankplist)! as NSData, progress: {message in
-                        print(message)
+                        print(message, loglevel: .debug)
                     })
                 } else {
                     try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/Rejections.plist"), options: .atomic)
@@ -32,7 +32,7 @@ public struct Whitelist {
             do {
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), with: Data(base64Encoded: blankplist)! as NSData, progress: {message in
-                        print(message)
+                        print(message, loglevel: .debug)
                     })
                 } else {
                     try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedUpps.plist"), options: .atomic)
@@ -48,7 +48,7 @@ public struct Whitelist {
             do {
                 if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                     try AbsoluteSolver.replace(at: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), with:  Data(base64Encoded: blankplist)! as NSData, progress: {message in
-                        print(message)
+                        print(message, loglevel: .debug)
                     })
                 } else {
                     try Data(base64Encoded: blankplist)!.write(to: URL(fileURLWithPath: "/var/db/MobileIdentityData/AuthListBannedCdHashes.plist"), options: .atomic)

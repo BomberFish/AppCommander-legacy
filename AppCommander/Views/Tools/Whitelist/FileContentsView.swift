@@ -9,9 +9,9 @@ import SwiftUI
 import AbsoluteSolver
 
 struct FileContentsView: View {
-    @State var blacklistContent = "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
-    @State var bannedAppsContent = "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
-    @State var cdHashesContent = "ERROR: Could not read from file! Are you running in the simulator or not unsandboxed?"
+    @State var blacklistContent = "File is empty"
+    @State var bannedAppsContent = "File is empty"
+    @State var cdHashesContent = "File is empty"
     
     @State var refreshing = false
     
@@ -79,7 +79,7 @@ struct FileContentsView: View {
         .refreshable {
             do {
                 Haptic.shared.play(.rigid)
-                print("Updating files!")
+                print("Updating files!", loglevel: .debug)
                 refreshing = true
                 blacklistContent = ""
                 bannedAppsContent = ""
@@ -90,17 +90,17 @@ struct FileContentsView: View {
                         if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                             if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
                                 blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist", progress: {message in
-                                    print(message)
+                                    print(message, loglevel: .debug)
                                 }), as: UTF8.self)
                             }
                             if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
                                 bannedAppsContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist", progress: {message in
-                                    print(message)
+                                    print(message, loglevel: .debug)
                                 }), as: UTF8.self)
                             }
                             if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
                                 cdHashesContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist", progress: {message in
-                                    print(message)
+                                    print(message, loglevel: .debug)
                                 }), as: UTF8.self)
                             }
                         } else {
@@ -117,7 +117,7 @@ struct FileContentsView: View {
                     } catch {
                         UIApplication.shared.alert(body: error.localizedDescription)
                     }
-                    print("Files updated!")
+                    print("Files updated!", loglevel: .info)
                     refreshing = false
                     Haptic.shared.play(.light)
                 }
@@ -130,17 +130,17 @@ struct FileContentsView: View {
                     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                         if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/Rejections.plist") {
                             blacklistContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/Rejections.plist", progress: {message in
-                                print(message)
+                                print(message, loglevel: .debug)
                             }), as: UTF8.self)
                         }
                         if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist") {
                             bannedAppsContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedUpps.plist", progress: {message in
-                                print(message)
+                                print(message, loglevel: .debug)
                             }), as: UTF8.self)
                         }
                         if fm.fileExists(atPath: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist") {
                             cdHashesContent = String(decoding: try AbsoluteSolver.readFile(path: "/private/var/db/MobileIdentityData/AuthListBannedCdHashes.plist", progress: {message in
-                                print(message)
+                                print(message, loglevel: .debug)
                             }), as: UTF8.self)
                         }
                     } else {
@@ -155,6 +155,7 @@ struct FileContentsView: View {
                         }
                     }
                 } catch {
+                    print("error: \(error.localizedDescription)", loglevel: .debug)
                     UIApplication.shared.alert(body: error.localizedDescription)
                 }
             }

@@ -49,7 +49,7 @@ struct StorageView: View {
                 apps = allApps
                 do {
                     sizes = try getSizes(apps: allApps)
-                    print(sizes)
+                    print(sizes, loglevel: .debug)
                 } catch {
                     UIApplication.shared.alert(body: "Couldn't get app sizes: \(error.localizedDescription)")
                 }
@@ -79,7 +79,7 @@ struct StorageView: View {
                 if fm.fileExists(atPath: mmpath) {
                     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                         mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath, progress: {message in
-                            print(message)
+                            print(message, loglevel: .debug)
                         }), options: [], format: nil) as? [String: Any] ?? [:]
                     } else {
                         mmDict = try PropertyListSerialization.propertyList(from: Data(contentsOf: URL(fileURLWithPath: mmpath)), options: [], format: nil) as? [String: Any] ?? [:]
@@ -90,7 +90,7 @@ struct StorageView: View {
                         //returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
                     //}
                 } else {
-                    print("WARNING: Directory \(dir) does not have a metadata plist, skipping.")
+                    print("WARNING: Directory \(dir) does not have a metadata plist, skipping.", loglevel: .info)
                 }
             } catch {
                 throw ((error.localizedDescription))

@@ -42,7 +42,7 @@ struct AppCommanderApp: App {
 
                                     if let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
                                         if (json["tag_name"] as? String)?.replacingOccurrences(of: "v", with: "").compare(version, options: .numeric) == .orderedDescending {
-                                            print("Update found: \(appVersion) -> \(json["tag_name"] ?? "null")")
+                                            print("Update found: \(appVersion) -> \(json["tag_name"] ?? "null")", loglevel: .debug)
                                             UIApplication.shared.confirmAlert(title: "Update available!", body: "A new app update is available, do you want to visit the releases page?", onOK: {
                                                 UIApplication.shared.open(URL(string: "https://github.com/BomberFish/AppCommander/releases/latest")!)
                                             }, noCancel: false)
@@ -73,12 +73,12 @@ struct AppCommanderApp: App {
                             }
 
                             if !(userDefaults.bool(forKey: "AbsoluteSolverDisabled")) {
-                                print("Absolute Solver ENABLED")
+                                print("Absolute Solver ENABLED", loglevel: .debug)
                             } else {
-                                print("Absolute Solver DISABLED")
+                                print("Absolute Solver DISABLED", loglevel: .debug)
                             }
                             if FileManager.default.fileExists(atPath: (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Backups")).path) {
-                                print("Backups not migrated, migrating now.")
+                                print("Backups not migrated, migrating now.", loglevel: .info)
                                 UIApplication.shared.progressAlert(title: "Migrating backups...")
                                 if userDefaults.bool(forKey: "AbsoluteSolverDisabled") {
                                     do {
@@ -114,7 +114,7 @@ struct AppCommanderApp: App {
                                     }
                                 }
                             } else {
-                                print("Backups already migrated.")
+                                print("Backups already migrated.", loglevel: .debug)
                             }
                             // }
                         }
@@ -124,13 +124,13 @@ struct AppCommanderApp: App {
                 }
             }
             .task(priority: .high)  {
-                print("AppCommander v\(appVersion)")
+                print("AppCommander v\(appVersion)", loglevel: .info)
 
                 DispatchQueue.global(qos: .background).sync {
                     Whitelist.top_secret_sauce { baked_goods in
                         has_cooked = true
                         if baked_goods == false {
-                            print("piss off pirate cunt")
+                            print("piss off pirate cunt", loglevel: .fault)
                             DispatchQueue.main.async {
                                 UIApplication.shared.alert(title: "Uh oh... 🏴‍☠️", body: "Looks like you're using a leaked build! Crashing in 5 seconds... Begone, pirate!", withButton: false)
                             }
@@ -146,7 +146,7 @@ struct AppCommanderApp: App {
                 #else
                     if #available(iOS 16.2, *) {
                         // I'm sorry 16.2 dev beta 1 users, you are a vast minority.
-                        print("Throwing not supported error (mdc patched)")
+                        print("Throwing not supported error (mdc patched)", loglevel: .error)
                         DispatchQueue.main.async {
                             UIApplication.shared.alert(title: "Not Supported", body: "This version of iOS is not supported.")
                         }
@@ -157,22 +157,22 @@ struct AppCommanderApp: App {
                                 throw "Force MDC"
                             }
                             try FileManager.default.contentsOfDirectory(at: URL(fileURLWithPath: "/var/mobile/Library/Caches"), includingPropertiesForKeys: nil)
-                            print("Using TrollStore.")
+                            print("Using TrollStore.", loglevel: .info)
                             currentAppMode = .TrollStore
                         } catch {
                             // grant r/w access
                             
                             // ok this check is probably 100% useless
                             if #available(iOS 15, *) {
-                                print("Using MacDirtyCow.")
+                                print("Using MacDirtyCow.", loglevel: .info)
                                 currentAppMode = .MacDirtyCow
                                 // asyncAfter(deadline: .now())
                                 sleep(UInt32(0.2))
-                                print("Escaping Sandbox...")
+                                print("Escaping Sandbox...", loglevel: .debug)
                                 do {
                                     try MacDirtyCow.unsandbox()
                                     escaped = true
-                                    print("Successfully escaped sandbox!")
+                                    print("Successfully escaped sandbox!", loglevel: .debug)
                                 } catch {
                                     escaped = false
                                     var message = ""
@@ -182,7 +182,7 @@ struct AppCommanderApp: App {
                                     } else {
                                         message = error.localizedDescription
                                     }
-                                    print("Unsandboxing error: \(message)")
+                                    print("Unsandboxing error: \(message)", loglevel: .error)
                                     UIApplication.shared.choiceAlert(title: "💣 GURU MEDITATION ERROR 💣", body: "Unsandboxing Error: \(message)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: { escaped = true })
                                 }
                             }

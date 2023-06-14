@@ -24,7 +24,7 @@ struct ReplaceTestingView: View {
                 Button(action: {
                     do {
                         try AbsoluteSolver.replace(at: testfile, with: NSData(data: Data(base64Encoded: "dA==")!), progress: {message in
-                            print(message)
+                            print(message, loglevel: .debug)
                         })
                         UIApplication.shared.alert(body: "Success!")
                     } catch {
@@ -38,7 +38,7 @@ struct ReplaceTestingView: View {
                 Button(action: {
                     do {
                         let contents = try String(contentsOf: testfile)
-                        print(contents)
+                        print(contents, loglevel: .debug)
                         if contents == "t" {
                             UIApplication.shared.alert(body: "Success!")
                         } else {

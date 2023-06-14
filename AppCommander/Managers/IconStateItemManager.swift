@@ -17,10 +17,10 @@ class IconStateItemHelper {
         idToBundle = [:]
         idToColor = [:]
         
-        // let apps = LSApplicationWorkspace.default().allApplications()
-        // if apps.isEmpty {
+         let apps = LSApplicationWorkspace.default().allApplications() ?? []
+         if apps.isEmpty {
             // Private api didn't work, time to go old fashioned
-            print("Manually searching for apps...")
+            print("Manually searching for apps...", loglevel: .debug)
             do {
                 var dotAppDirs: [URL] = []
                 let systemAppsDir = try fm.contentsOfDirectory(at: systemApplicationsUrl, includingPropertiesForKeys: nil)
@@ -56,17 +56,17 @@ class IconStateItemHelper {
             } catch {
                 UIApplication.shared.alert(body: "Error reading app information - \(error.localizedDescription)")
             }
-//        } else {
-//            for app in apps {
-//                // Get name
-//                let name = app.localizedName()
-//                idToName[app.applicationIdentifier()] = name
-//
-//                // Get bundle
-//                let bundleUrl = app.bundleURL()
-//                idToBundle[app.applicationIdentifier()] = bundleUrl
-//            }
-//        }
+        } else {
+            for app in apps {
+                // Get name
+                let name = app.localizedName()
+                idToName[app.applicationIdentifier] = name
+
+                // Get bundle
+                let bundleUrl = app.bundleURL
+                idToBundle[app.applicationIdentifier] = bundleUrl
+            }
+        }
     }
 
     private let fm: FileManager

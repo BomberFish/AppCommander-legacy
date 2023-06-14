@@ -42,7 +42,7 @@ public class IconStateManager {
             }
         }
         
-        print(newSpringBoardItems as Any)
+        print(newSpringBoardItems as Any, loglevel: .debug)
         
         // Evenly distribute newSpringBoardItems amongst pages to avoid overflow
         var newIconLists: [[AnyObject]] = []
@@ -65,13 +65,13 @@ public class IconStateManager {
             newIconLists.append(pageNew)
         }
         
-        print(newIconLists)
+        print(newIconLists, loglevel: .debug)
         
         // Set selected pages in iconLists to [], so indicies don't fuck up. Removes all remaining [] values later
         for i in selectedPages {
             iconLists[i] = []
         }
-        print(selectedPages)
+        print(selectedPages, loglevel: .debug)
         
         // Insert new pages into old iconLists
         for (newPageI, page) in newIconLists.enumerated() {
@@ -83,7 +83,7 @@ public class IconStateManager {
         // Remove all remaining [] values created earlier
         iconLists = iconLists.filter({ page in !page.isEmpty })
         
-        print(iconLists)
+        print(iconLists, loglevel: .debug)
         
         plist["iconLists"] = iconLists as AnyObject
         let pageCount = iconLists.count

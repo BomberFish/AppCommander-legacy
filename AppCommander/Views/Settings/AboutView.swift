@@ -96,6 +96,7 @@ struct AboutView: View {
                     Image(systemName: "xmark")
                     Text("  Error 606: Installation appears to be corrupt. Please reinstall AppCommander.")
                 }
+                .hidden()
                 .foregroundColor(Color(uiColor: UIColor.systemYellow))
                 .font(.subheadline)
                 Text("")

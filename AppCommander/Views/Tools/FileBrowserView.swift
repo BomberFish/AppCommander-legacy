@@ -88,11 +88,11 @@ func overwriteFile(fileDataLocked: Data, pathtovictim: String) -> Bool {
     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled"))  {
         do {
             try AbsoluteSolver.replace(at: URL(fileURLWithPath: pathtovictim), with: fileDataLocked as NSData, progress: { message in
-                print(message)
+                print(message, loglevel: .debug)
             })
             return true
         } catch {
-            print(error.localizedDescription)
+            print(error.localizedDescription, loglevel: .error)
             UIApplication.shared.alert(body: error.localizedDescription)
             return false
         }
@@ -110,22 +110,22 @@ func overwriteFile(fileDataLocked: Data, pathtovictim: String) -> Bool {
 }
 
 func deleteFile(_ path: String) throws {
-    print(path)
+    print(path, loglevel: .debug)
     if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
         do {
             try AbsoluteSolver.delete(at: URL(fileURLWithPath: path), progress: { message in
-                print(message)
+                print(message, loglevel: .debug)
             })
         } catch {
-            print(error.localizedDescription)
+            print(error.localizedDescription, loglevel: .error)
             throw error.localizedDescription
         }
     } else {
         do {
-            print("Deleting \(path)")
+            print("Deleting \(path)", loglevel: .debug)
             try FileManager.default.removeItem(atPath: path)
         } catch {
-            print("Error: \(error.localizedDescription)")
+            print("Error: \(error.localizedDescription)", loglevel: .error)
             UIApplication.shared.alert(body: error.localizedDescription)
             throw error.localizedDescription
         }
@@ -251,7 +251,7 @@ struct FileBrowserView: View {
                             let vc = UIHostingController(rootView: PlistEditorView(path: path + file.name, plist: plist, keys: keys, values: values, types: types))
                             UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true, completion: nil)
                         } catch {
-                            print("WARNING: Error opening plist \(file.name): \(error.localizedDescription), Falling back to texteditor...")
+                            print("WARNING: Error opening plist \(file.name): \(error.localizedDescription), Falling back to texteditor...", loglevel: .info)
                             // use TextEditor to edit the file
                             let vc = UIHostingController(rootView: TextEditorView(path: path + file.name))
                             UIApplication.shared.windows.first?.rootViewController?.present(vc, animated: true, completion: nil)
@@ -571,7 +571,7 @@ struct PlistEditorView: View {
                     }
                 }
             } catch {
-                print(error.localizedDescription)
+                print(error.localizedDescription, loglevel: .error)
                 UIApplication.shared.alert(body: "Error opening plist: \(error.localizedDescription)")
             }
         }

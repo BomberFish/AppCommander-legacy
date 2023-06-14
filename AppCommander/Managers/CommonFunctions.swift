@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import AbsoluteSolver
-import os.log
+import OSLog
 import MacDirtyCow
 import Dynamic
 
@@ -19,18 +19,19 @@ enum ApplicationMode {
 
 // MARK: - Print to localconsole. Totally not stolen from sneakyf1shy (who still needs to finish the damn frontend)
 
-public func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+public func print(_ items: Any..., separator: String = " ", terminator: String = "\n", loglevel: OSLogType = .default) {
+    let logger = Logger()
     let data = items.map { "\($0)" }.joined(separator: separator)
-    Swift.print(data, terminator: terminator)
-    os_log("%s", type: .default, data)
+    //Swift.print(data, terminator: terminator)
+    logger.log(level: loglevel, "\(data)")
     consoleManager.print(data)
 }
 
-public func conditionalPrint(_ items: Any..., c: Bool, separator: String = " ", terminator: String = "\n") {
+public func conditionalPrint(_ items: Any..., c: Bool, separator: String = " ", terminator: String = "\n", loglevel: OSLogType = .default) {
     if c {
         let data = items.map { "\($0)" }.joined(separator: separator)
-        Swift.print(data, terminator: terminator)
-        os_log("%s", type: .default, data)
+        //Swift.print(data, terminator: terminator)
+        os_log("%s", type: loglevel, data)
         consoleManager.print(data)
     }
 }
@@ -70,7 +71,7 @@ func delDirectoryContents(path: String, progress: ((Double,String)) -> ()) throw
     do {
         contents = try FileManager.default.contentsOfDirectory(atPath: path)
         for file in contents {
-            print("Deleting \(file)")
+            print("Deleting \(file)", loglevel: .debug)
             do {
                 try FileManager.default.removeItem(at: URL(fileURLWithPath: path).appendingPathComponent(file))
                 currentfile += 1
@@ -130,16 +131,16 @@ var connection: NSXPCConnection?
 
 // 💀
 func remvoeIconCache() {
-    print("removing icon cache")
+    print("Removing icon cache", loglevel: .info)
     if connection == nil {
         let myCookieInterface = NSXPCInterface(with: ISIconCacheServiceProtocol.self)
         connection = Dynamic.NSXPCConnection(machServiceName: "com.apple.iconservices", options: []).asObject as? NSXPCConnection
         connection!.remoteObjectInterface = myCookieInterface
         connection!.resume()
-        print("Connection: \(connection!)")
+        print("Connection: \(connection!)", loglevel: .debug)
     }
     
     (connection!.remoteObjectProxy as AnyObject).clearCachedItems(forBundeID: nil) { (a, b) in // passing nil to remove all icon cache
-        print("Successfully responded (\(a), \(b ?? "(null)"))")
+        print("Successfully responded (\(a), \(b ?? "(null)"))", loglevel: .info)
     }
 }

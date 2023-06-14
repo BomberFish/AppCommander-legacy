@@ -50,7 +50,7 @@ enum ApplicationManager {
                     if fm.fileExists(atPath: mmpath) {
                         if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                             mmDict = try PropertyListSerialization.propertyList(from: try AbsoluteSolver.readFile(path: mmpath, progress: {message in
-                                print(message)
+                                print(message, loglevel: .debug)
                             }), options: [], format: nil) as? [String: Any] ?? [:]
                         } else {
                             mmDict = try PropertyListSerialization.propertyList(from: Data(contentsOf: URL(fileURLWithPath: mmpath)), options: [], format: nil) as? [String: Any] ?? [:]
@@ -61,9 +61,10 @@ enum ApplicationManager {
                             returnedurl = URL(fileURLWithPath: "/var/mobile/Containers/Data/Application").appendingPathComponent(dir)
                         }
                     } else {
-                        print("WARNING: Directory \(dir) does not have a metadata plist, skipping.")
+                        print("WARNING: Directory \(dir) does not have a metadata plist, skipping.", loglevel: .info)
                     }
                 } catch {
+                    print ("Could not get data of \(mmpath): \(error.localizedDescription)", loglevel: .error)
                     throw ("Could not get data of \(mmpath): \(error.localizedDescription)")
                 }
             }
@@ -83,26 +84,26 @@ enum ApplicationManager {
             let filename = app.name + "_" + app.version + "_" + uuid
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                 try? AbsoluteSolver.delete(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid), progress: {message in
-                    print(message)
+                    print(message, loglevel: .debug)
                 })
             } else {
                 try? FileManager.default.removeItem(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid))
             }
-            print("rmed file")
+            print("rmed file", loglevel: .debug)
             try FileManager.default.createDirectory(at: payloaddir, withIntermediateDirectories: true)
-            print("made payload dir \(payloaddir)")
+            print("made payload dir \(payloaddir)", loglevel: .debug)
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                 try AbsoluteSolver.copy(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent), progress: {message in
-                    print(message)
+                    print(message, loglevel: .debug)
                 })
             } else {
                 try fm.copyItem(at: app.bundleURL, to: payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))
             }
-            print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))")
+            print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))", loglevel: .info)
             // try FileManager().zipItem(at: payloaddir, to: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))
             try Compression.shared.compress(paths: [payloaddir], outputPath: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"), format: .zip)
             UIApplication.shared.dismissAlert(animated: false)
-            print("zipped \(payloaddir) to \(FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))")
+            print("zipped \(payloaddir) to \(FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))", loglevel: .info)
             // sleep(UInt32(0.5))
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
                 try? AbsoluteSolver.delete(at: FileManager.default.temporaryDirectory.appendingPathComponent(uuid), progress: {message in
@@ -113,7 +114,7 @@ enum ApplicationManager {
             }
             return FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa")
         } catch {
-            print("error at the next step")
+            print("error at the next step \(error.localizedDescription)", loglevel: .error)
             Haptic.shared.notify(.error)
             throw "There was an error exporting the ipa.\n\(error.localizedDescription)"
         }
