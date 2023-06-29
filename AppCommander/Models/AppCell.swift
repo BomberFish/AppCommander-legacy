@@ -38,18 +38,16 @@ struct AppCell: View {
                             }
                         }
                         .cornerRadius(large ? 14 : 12)
-                        .frame(width: large ? 68 : 58, height: large ? 68 : 58)
+                        .frame(width: large ? 58 : 48, height: large ? 58 : 48)
                         
                         VStack {
                             HStack {
                                 MarqueeText(text: name, font: UIFont.preferredFont(forTextStyle: large ? .title2 : .headline), leftFade: 16, rightFade: 16, startDelay: 1.25)
                                     .padding(.horizontal, 6)
-                                    .multilineTextAlignment(.center)
                                 Spacer()
                             }
                             HStack {
                                 MarqueeText(text: bundleid, font: UIFont.preferredFont(forTextStyle: large ? .headline : .footnote), leftFade: 16, rightFade: 16, startDelay: 1.25)
-                                    .multilineTextAlignment(.center)
                                     .padding(.horizontal, 6)
                                 Spacer()
                             }
@@ -61,7 +59,6 @@ struct AppCell: View {
 //                            .foregroundColor(Color(UIColor.secondaryLabel))
 //                            .padding([.trailing], 10)
                     }
-                    .multilineTextAlignment(.center)
                     .foregroundColor(Color(UIColor.label))
                     .padding(10)
                     .padding([.vertical], 8)

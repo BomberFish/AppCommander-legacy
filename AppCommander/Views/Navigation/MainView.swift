@@ -51,12 +51,12 @@ struct MainView: View {
                                                 }
                                         }
                                         .padding(8)
-                                        .cornerRadius(16)
                                     }
                                 }
                                 .listRowBackground(Color.clear)
-                                .cornerRadius(16)
+                                
                                 .background(.ultraThinMaterial)
+                                .cornerRadius(16)
                             }
                             .padding([.horizontal], 16)
                             .padding([.vertical], 5)
