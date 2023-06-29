@@ -38,7 +38,7 @@ struct AppCell: View {
                             }
                         }
                         .cornerRadius(large ? 14 : 12)
-                        .frame(width: large ? 58 : 48, height: large ? 58 : 48)
+                        .frame(width: large ? 68 : 58, height: large ? 68 : 58)
                         
                         VStack {
                             HStack {
