@@ -10,6 +10,7 @@ import SwiftUI
 import OSLog
 
 struct AppView: View {
+    @State private var test: Bool = false
     @State public var bundleId: String
     @State public var name: String
     @State public var bundleurl: URL
@@ -27,7 +28,7 @@ struct AppView: View {
     var body: some View {
         List {
             Section {
-                AppCell(bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl, sbapp: sbapp)
+                AppCell(bundleid: bundleId, name: name, large: true, link: false, bundleURL: bundleurl, sbapp: sbapp, tile: $test)
                 Button(action: {
                     if ApplicationManager.openApp(bundleID: sbapp.bundleIdentifier) {
                         Haptic.shared.notify(.success)

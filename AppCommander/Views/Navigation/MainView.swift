@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @State private var searchText = ""
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
+    @State var gridEnabled: Bool = false
 
     // MARK: - Literally the worst code ever. Will I fix it? No!
 
@@ -27,16 +28,16 @@ struct MainView: View {
                                 .foregroundColor(Color(UIColor.secondaryLabel))
                         }
                         VStack {
-                            VStack {
+                            LazyVGrid(columns: [GridItem(.adaptive(minimum: gridEnabled ? 150 : 4000))], alignment: .center) {
                                 Section {
-                                    if apps == [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.Loading", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: [""], hiddenFromSpringboard: false)] {
+                                    if apps == [SBApp(bundleIdentifier: "ca.bomberfish.AppCommander.Loading", name: "Application Error", bundleURL: URL(string: "/")!, version: "0.6.9", pngIconPaths: [""], hiddenFromSpringboard: false)] { // mega jank
                                         Spacer()
                                         ProgressView()
                                         Spacer()
                                     } else {
                                         ForEach(apps) { app in
                                             // 💀
-                                            AppCell(bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app)
+                                            AppCell(bundleid: app.bundleIdentifier, name: app.name, large: false, link: true, bundleURL: app.bundleURL, sbapp: app, tile: $gridEnabled)
                                                 .contextMenu {
                                                     Button(action: {
                                                         if ApplicationManager.openApp(bundleID: app.bundleIdentifier) {
@@ -49,6 +50,7 @@ struct MainView: View {
                                                     })
                                                 }
                                         }
+                                        .padding(8)
                                     }
                                 }
                                 .listRowBackground(Color.clear)
@@ -56,7 +58,7 @@ struct MainView: View {
                                 .background(.ultraThinMaterial)
                                 .cornerRadius(16)
                             }
-                            .padding([.horizontal], 8)
+                            .padding([.horizontal], 16)
                             .padding([.vertical], 5)
                         }
                         .cornerRadius(16)
@@ -83,6 +85,13 @@ struct MainView: View {
                 }
                 .toolbar {
                     HStack {
+                        Button(action: {
+                            gridEnabled.toggle()
+                            Haptic.shared.notify(.success)
+                        }, label: {
+                            Label("View", systemImage: gridEnabled ? "list.bullet" : "square.grid.2x2")
+                                .foregroundColor(Color(UIColor.label))
+                        })
                         Menu(content: {
                             Section {
                                 Button(action: {
