@@ -9,7 +9,7 @@ import Foundation
 import MarqueeText
 import SwiftUI
 
-// this is actually a HEAVILY modified LinkCell from cowabunga
+// this is actually a HEAVILY modified LinkCell from cowabunga lol
 
 struct AppCell: View {
     var bundleid: String

@@ -47,7 +47,14 @@ struct SettingsView: View {
                     } label: {
                         Label("Alternate App Icons", systemImage: "app.badge")
                     }
+
+                    NavigationLink {
+                        ViewSettings()
+                    } label: {
+                        Label("View Options", systemImage: "paintbrush")
+                    }
                 }
+                
                 Section {
                     Button(action: {
                         UIApplication.shared.confirmAlertDestructive(title: "Confirmation", body: "Do you really want to do this?", onOK: {

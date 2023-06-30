@@ -56,6 +56,8 @@
 		D6609A9A29D73D680033F66D /* CompressionWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9929D73D680033F66D /* CompressionWrapper */; };
 		D6609AA029D73D680033F66D /* NSTask in Frameworks */ = {isa = PBXBuildFile; productRef = D6609A9F29D73D680033F66D /* NSTask */; };
 		D674868529D7821300BCE952 /* FM++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D674868429D7821300BCE952 /* FM++.swift */; };
+		D676CA2C2A4DF4670080BE8E /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D676CA2B2A4DF4670080BE8E /* RadioButtonGroup.swift */; };
+		D676CA2E2A4DF4FD0080BE8E /* ViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D676CA2D2A4DF4FD0080BE8E /* ViewSettings.swift */; };
 		D688309A29E86D7D00F4D7DA /* KernelPanic.m in Sources */ = {isa = PBXBuildFile; fileRef = D688309929E86D7D00F4D7DA /* KernelPanic.m */; };
 		D688309D29E870F000F4D7DA /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688309C29E870F000F4D7DA /* IOSurface.framework */; };
 		D688309F29E870FF00F4D7DA /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688309E29E870FE00F4D7DA /* IOKit.framework */; };
@@ -169,6 +171,8 @@
 		D65AA4C829D8613900C3EBE7 /* FileContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentsView.swift; sourceTree = "<group>"; };
 		D65AA4CB29D8615400C3EBE7 /* WhitelistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhitelistManager.swift; sourceTree = "<group>"; };
 		D674868429D7821300BCE952 /* FM++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FM++.swift"; sourceTree = "<group>"; };
+		D676CA2B2A4DF4670080BE8E /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
+		D676CA2D2A4DF4FD0080BE8E /* ViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSettings.swift; sourceTree = "<group>"; };
 		D688309929E86D7D00F4D7DA /* KernelPanic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KernelPanic.m; sourceTree = "<group>"; };
 		D688309B29E86FC100F4D7DA /* KernelPanic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelPanic.h; sourceTree = "<group>"; };
 		D688309C29E870F000F4D7DA /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
@@ -271,6 +275,7 @@
 				D6E552BF29B2A0FB0083E6A5 /* AppCell.swift */,
 				D64A00C929FD75220000F32C /* GradientView.swift */,
 				D6E3FC9829CDE6F500D019D1 /* MultiSelectPickerView.swift */,
+				D676CA2B2A4DF4670080BE8E /* RadioButtonGroup.swift */,
 				D6E3FC9C29CDED8900D019D1 /* LinkCell.swift */,
 			);
 			path = Models;
@@ -407,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				D634CCA02A091CE000EA9859 /* JITSettings.swift */,
+				D676CA2D2A4DF4FD0080BE8E /* ViewSettings.swift */,
 				D613090D2A2C1EDA00F6F77E /* AboutView.swift */,
 				D6D22B6C29C64DC20095645B /* PrivacyPolicyView.swift */,
 				D6B79B0A29F2E51100E14922 /* AppIconView.swift */,
@@ -603,7 +609,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					D6E5527C29B165400083E6A5 = {
 						CreatedOnToolsVersion = 14.2;
@@ -729,6 +735,7 @@
 				D631AC342A297569000302A7 /* VibrantColors.swift in Sources */,
 				D634CC9C2A091BE100EA9859 /* JITManager.swift in Sources */,
 				D65AA4C529D85FFB00C3EBE7 /* ToolsView.swift in Sources */,
+				D676CA2C2A4DF4670080BE8E /* RadioButtonGroup.swift in Sources */,
 				D613090E2A2C1EDA00F6F77E /* AboutView.swift in Sources */,
 				D6E3FC9D29CDED8900D019D1 /* LinkCell.swift in Sources */,
 				D6E552CC29B2E9F50083E6A5 /* CommonFunctions.swift in Sources */,
@@ -759,6 +766,7 @@
 				D634CC972A091B9A00EA9859 /* TextField++.swift in Sources */,
 				D6B79B0B29F2E51100E14922 /* AppIconView.swift in Sources */,
 				D638E1BB29DE1F49004CCA55 /* BackupItem.swift in Sources */,
+				D676CA2E2A4DF4FD0080BE8E /* ViewSettings.swift in Sources */,
 				D688309A29E86D7D00F4D7DA /* KernelPanic.m in Sources */,
 				D638E1AB29DA031E004CCA55 /* PlayerClass.swift in Sources */,
 			);
@@ -828,6 +836,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -861,6 +870,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -900,6 +910,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -933,6 +944,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

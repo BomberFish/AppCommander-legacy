@@ -156,3 +156,10 @@ func remvoeIconCache() {
         print("Successfully responded (\(a), \(b ?? "(null)"))", loglevel: .info)
     }
 }
+
+func exitGracefully() {
+    UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+        exit(0)
+    }
+}

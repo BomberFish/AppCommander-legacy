@@ -11,6 +11,7 @@ struct MainView: View {
     @State private var searchText = ""
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
     @State var gridEnabled: Bool = false
+    @State var compactEnabled: Bool = UserDefaults.standard.bool(forKey: "compactEnabled")
 
     // MARK: - Literally the worst code ever. Will I fix it? No!
 
@@ -50,7 +51,8 @@ struct MainView: View {
                                                     })
                                                 }
                                         }
-                                        .padding(8)
+                                        .padding(!compactEnabled ? 10 : 8)
+                                        .padding([.vertical], !compactEnabled ? 10 : 6)
                                     }
                                 }
                                 .listRowBackground(Color.clear)
@@ -58,8 +60,8 @@ struct MainView: View {
                                 .background(.ultraThinMaterial)
                                 .cornerRadius(16)
                             }
-                            .padding([.horizontal], 16)
-                            .padding([.vertical], 5)
+                            .padding([.horizontal], !compactEnabled ? 16 : 8)
+                            .padding([.vertical], !compactEnabled ? 8 : 6)
                         }
                         .cornerRadius(16)
                         VStack(alignment: .leading) {
@@ -125,6 +127,7 @@ struct MainView: View {
                 }
                 .task(priority: .high)  {
                     apps = allApps
+                    print(compactEnabled)
                 }
                 //            .onAppear {
                 // #if targetEnvironment(simulator)
