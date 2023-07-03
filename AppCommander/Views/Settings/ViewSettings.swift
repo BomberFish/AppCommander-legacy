@@ -11,6 +11,7 @@ struct ViewSettings: View {
     let options: [String] = ["Cozy", "Compact"]
     @State var selected: Int = UserDefaults.standard.bool(forKey: "compactEnabled") ? 1 : 0
     @State var compactEnabled: Bool = UserDefaults.standard.bool(forKey: "compactEnabled")
+    @AppStorage("vibrantTheming") var vibrantTheming: Bool = true // finally using this api lmao
 
 //    init() { // finally learned what this does
 //        options = ["Cozy", "Compact"]
@@ -92,7 +93,8 @@ struct ViewSettings: View {
             }
             .listRowBackground(GradientView())
                 
-            RadioButtonGroup(items: options, selectedId: String(options[selected])) { tempselected in
+            Section {
+                RadioButtonGroup(items: options, selectedId: String(options[selected])) { tempselected in
                     selected = options.firstIndex(of: tempselected) ?? 0
                     print("selected \(options.firstIndex(of: tempselected) ?? 0)")
                     print("setting \(selected == 1)")
@@ -102,6 +104,24 @@ struct ViewSettings: View {
                         exitGracefully()
                     }, noCancel: true)
                 }
+            }
+            
+            Section {
+                Toggle(isOn: $vibrantTheming, label: {
+                    HStack {
+                        Text("Vibrant App View Theming")
+                        Button(action: {UIApplication.shared.alert(title: "Info", body: "This makes the app view's accent color match that of the app's icon.")}, label: {Image(systemName: "questionmark.circle")})
+                            .foregroundColor(Color(uiColor: UIColor.secondaryLabel))
+                    }
+                })
+                .tint(.accentColor)
+                .toggleStyle(.switch)
+            }
+            .listRowBackground(
+                Rectangle()
+                    .background(Color(uiColor: UIColor.systemGray6))
+                    .opacity(0.05)
+            )
             
         }
         .onAppear {

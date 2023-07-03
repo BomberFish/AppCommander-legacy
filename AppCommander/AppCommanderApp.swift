@@ -13,7 +13,7 @@ import OSLog
 
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
-let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+let launchedBefore =  UserDefaults.standard.bool(forKey: "launchedBefore")
 let funny: URL = Bundle.main.url(forResource: "bite_me", withExtension: "png")! //equivalent of the fabled coconut.jpg from tf2
 var currentAppMode: ApplicationMode = ApplicationMode.MacDirtyCow
 let aslogger = Logger(subsystem: "AbsoluteSolver", category: "wdOS")

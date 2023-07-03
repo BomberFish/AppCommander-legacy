@@ -210,6 +210,7 @@ struct FileBrowserView: View {
     @State var empty: Bool = false
     @State var title: String = ""
     @State var skipped: Int = 0
+    @State var skippedFiles: [String] = []
     @State var count = 0
 
     var body: some View {
@@ -325,6 +326,9 @@ struct FileBrowserView: View {
                                 }
                             } catch {
                                 skipped += 1
+                                skippedFiles.append(element)
+                                print(element)
+                                print(skippedFiles)
                             }
                         }
                         if folders.count == 0, files.count == 0 {
@@ -341,8 +345,24 @@ struct FileBrowserView: View {
 
             if skipped > 1 {
                 Section(header: Label("\(skipped) files skipped due to errors.", systemImage: "exclamationmark.triangle").textCase(.none)) {}
+                    .onTapGesture {
+                        print(skippedFiles)
+                        var allSkipped: String = ""
+                        skippedFiles.forEach {file in
+                            allSkipped += "\n\(file)"
+                            print(allSkipped)
+                        }
+                        UIApplication.shared.alert(title: "Skipped files:", body: "\(allSkipped)")
+                    }
             } else if skipped == 1 {
                 Section(header: Label("1 file skipped due to errors.", systemImage: "exclamationmark.triangle").textCase(.none)) {}
+                    .onTapGesture {
+                        var allSkipped: String = ""
+                        skippedFiles.forEach {file in
+                            allSkipped += "\n\"\(file)\""
+                        }
+                        UIApplication.shared.alert(title: "Skipped files:", body: "\(allSkipped)")
+                    }
             }
         }
         // .background(GradientView())

@@ -51,7 +51,7 @@ struct SettingsView: View {
                     NavigationLink {
                         ViewSettings()
                     } label: {
-                        Label("View Options (Beta)", systemImage: "paintbrush")
+                        Label("View Options", systemImage: "paintbrush")
                     }
                 }
                 
@@ -110,6 +110,11 @@ struct SettingsView: View {
                     }, label: {
                         Label("Delete temporary storage", systemImage: "trash")
                     })
+                    NavigationLink {
+                        FileBrowserView(path: "/var/mobile/.DO_NOT_DELETE-AppCommander/Backups/", title: "Backups")
+                    } label: {
+                        Label("Manage Backups", systemImage: "folder.badge.gearshape")
+                    }
                 } header: {
                     Label("Storage Management", systemImage: "internaldrive")
                 }

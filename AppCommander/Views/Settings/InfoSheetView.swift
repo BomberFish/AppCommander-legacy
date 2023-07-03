@@ -24,7 +24,7 @@ struct SheetView: View {
                 .padding(.top, 15)
                 .padding(.bottom, 25)
             Text(description)
-                .font(.title3)
+                .font(.headline)
                 .fontWeight(.regular)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 23)
@@ -35,16 +35,18 @@ struct SheetView: View {
                         Text(button.title)
                             .font(.headline)
                             .fontWeight(.medium)
-                            .padding([.horizontal], 100)
-                            .padding([.vertical], 15)
+                            .padding([.horizontal], 130)
+                            .padding([.vertical], 8)
                     })
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                         .buttonStyle(.borderedProminent)
                 } else {
                     Button(action: button.action, label: {
                         Text(button.title)
-                            .padding([.horizontal], 90)
-                            .padding([.vertical], 10)
+                            .padding([.horizontal], 110)
+                            .padding([.vertical], 6)
                     })
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                         .buttonStyle(.borderless)
                 }
             }

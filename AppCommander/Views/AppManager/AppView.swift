@@ -25,6 +25,9 @@ struct AppView: View {
     @Environment(\.colorScheme) var cs
     let jit = JITManager.shared
     let logger = Logger(subsystem: "AppView", category: "Views")
+    @AppStorage("vibrantTheming") var vibrantTheming: Bool = true
+    
+    
     var body: some View {
         List {
             Section {
@@ -223,7 +226,9 @@ struct AppView: View {
                 }
             }
             .task(priority: .background) {
-                self.palette = Vibrant.from((UIImage(contentsOfFile: sbapp.bundleURL.appendingPathComponent(sbapp.pngIconPaths.first ?? "").path) ?? UIImage(named: "Placeholder"))!).getPalette()
+                if vibrantTheming {
+                    self.palette = Vibrant.from((UIImage(contentsOfFile: sbapp.bundleURL.appendingPathComponent(sbapp.pngIconPaths.first ?? "").path) ?? UIImage(named: "Placeholder"))!).getPalette()
+                }
             }
         }
         // .background(GradientView())

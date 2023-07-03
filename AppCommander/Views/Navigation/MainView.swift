@@ -51,8 +51,8 @@ struct MainView: View {
                                                     })
                                                 }
                                         }
-                                        .padding(!compactEnabled ? 10 : 8)
-                                        .padding([.vertical], !compactEnabled ? 10 : 6)
+                                        .padding(compactEnabled ? 4 : 10)
+                                        .padding([.vertical], compactEnabled ? 2 : 10)
                                     }
                                 }
                                 .listRowBackground(Color.clear)
@@ -60,8 +60,8 @@ struct MainView: View {
                                 .background(.ultraThinMaterial)
                                 .cornerRadius(16)
                             }
-                            .padding([.horizontal], !compactEnabled ? 16 : 8)
-                            .padding([.vertical], !compactEnabled ? 8 : 6)
+                            .padding([.horizontal], compactEnabled ? 4 : 16)
+                            .padding([.vertical], compactEnabled ? 2 : 8)
                         }
                         .cornerRadius(16)
                         VStack(alignment: .leading) {
@@ -127,7 +127,7 @@ struct MainView: View {
                 }
                 .task(priority: .high)  {
                     apps = allApps
-                    print(compactEnabled)
+                    print("compactEnabled: \(compactEnabled)")
                 }
                 //            .onAppear {
                 // #if targetEnvironment(simulator)
