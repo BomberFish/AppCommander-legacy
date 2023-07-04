@@ -161,11 +161,9 @@ struct AppCommanderApp: App {
                             try FileManager.default.contentsOfDirectory(at: URL(fileURLWithPath: "/var/mobile/Library/Caches"), includingPropertiesForKeys: nil)
                             print("Using TrollStore.", loglevel: .info, logger: logger)
                             currentAppMode = .TrollStore
+                            UIApplication.shared.alert(title: "Warning", body: "AppCommander has detected it has been installed using TrollStore, which is not fully supported. Press OK to continue.")
                         } catch {
                             // grant r/w access
-                            
-                            // ok this check is probably 100% useless
-                            if #available(iOS 15, *) {
                                 print("Using MacDirtyCow.", loglevel: .info, logger: logger)
                                 currentAppMode = .MacDirtyCow
                                 // asyncAfter(deadline: .now())
@@ -187,7 +185,7 @@ struct AppCommanderApp: App {
                                     print("Unsandboxing error: \(message)", loglevel: .error, logger: logger)
                                     UIApplication.shared.choiceAlert(title: "💣 GURU MEDITATION ERROR 💣", body: "Unsandboxing Error: \(message)\nPlease close the app and retry. If the problem persists, reboot your device.", confirmTitle: "Dismiss", cancelTitle: "Reboot", yesAction: reboot, noAction: { escaped = true })
                                 }
-                            }
+                            
                         }
                     }
                 #endif
