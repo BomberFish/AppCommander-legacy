@@ -14,7 +14,14 @@ struct TranslatorsView: View {
         let translators: String
     }
     
-    let translators: [Translator] = [Translator(lang: "🇫🇷", translators: "C22#9618"), Translator(lang: "🇩🇪", translators: "Zarapho#1453 & SeanMC#1024"), Translator(lang: "🇻🇳", translators: "odyssey#0666"), Translator(lang: "🇰🇷", translators: "TaekyungAncal#7857"), Translator(lang: "🇫🇮", translators: "Spongebob#9593"), Translator(lang: "🇨🇳", translators: "jbjf#1431")]
+    let translators: [Translator] = [
+        Translator(lang: "🇫🇷", translators: "c22dev"),
+        Translator(lang: "🇩🇪", translators: "zarapho & overwritemeoooow"),
+        Translator(lang: "🇻🇳", translators: "odyssey#0666"), // havent been able to track this guy down
+        Translator(lang: "🇰🇷", translators: "ancal_taekyung"),
+        Translator(lang: "🇫🇮", translators: "korpiw"),
+        Translator(lang: "🇨🇳", translators: "jbjf#1431") // hasnt gotten pomelo yet (???)
+    ]
     
     var body: some View {
         List {
