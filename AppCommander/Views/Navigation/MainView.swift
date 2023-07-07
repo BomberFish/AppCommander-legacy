@@ -51,8 +51,8 @@ struct MainView: View {
                                                     })
                                                 }
                                         }
-                                        .padding(compactEnabled ? 4 : 10)
-                                        .padding([.vertical], compactEnabled ? 2 : 10)
+                                        .padding(compactEnabled ? 1 : 6)
+                                        .padding([.vertical], compactEnabled ? 0 : 4)
                                     }
                                 }
                                 .listRowBackground(Color.clear)
@@ -60,8 +60,8 @@ struct MainView: View {
                                 .background(.ultraThinMaterial)
                                 .cornerRadius(16)
                             }
-                            .padding([.horizontal], compactEnabled ? 4 : 16)
-                            .padding([.vertical], compactEnabled ? 2 : 8)
+                            .padding([.horizontal], compactEnabled ? 3 : 8)
+                            .padding([.vertical], compactEnabled ? 0 : 4)
                         }
                         .cornerRadius(16)
                         VStack(alignment: .leading) {
