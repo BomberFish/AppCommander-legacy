@@ -187,31 +187,31 @@ struct AppView: View {
             Section {
                 Button {
                     // UIApplication.shared.progressAlert(title: "Exporting IPA of \(sbapp.name)...")
-                    
-                    Haptic.shared.play(.medium)
-                    do {
-                        ipapath = try ApplicationManager.exportIPA(app: sbapp)
+                    Task {
+                        Haptic.shared.play(.medium)
+                        do {
+                            ipapath = try await ApplicationManager.exportIPA(app: sbapp)
+                            UIApplication.shared.dismissAlert(animated: true)
+                        } catch {
+                            UIApplication.shared.dismissAlert(animated: true)
+                            UIApplication.shared.alert(body: error.localizedDescription)
+                        }
                         UIApplication.shared.dismissAlert(animated: true)
-                    } catch {
-                        UIApplication.shared.dismissAlert(animated: true)
-                        UIApplication.shared.alert(body: error.localizedDescription)
+                        sleep(UInt32(0.5))
+                        if ipapath != nil {
+                            UIApplication.shared.dismissAlert(animated: true)
+                            let vc = UIActivityViewController(activityItems: [ipapath as Any], applicationActivities: nil)
+                            Haptic.shared.notify(.success)
+                            vc.isModalInPresentation = true
+                            UIApplication.shared.dismissAlert(animated: true)
+                            UIApplication.shared.windows[0].rootViewController?.present(vc, animated: true)
+                            UIApplication.shared.dismissAlert(animated: true)
+                            vc.isModalInPresentation = true
+                        } else {
+                            UIApplication.shared.dismissAlert(animated: true)
+                            UIApplication.shared.alert(body: "Error!")
+                        }
                     }
-                    UIApplication.shared.dismissAlert(animated: true)
-                    sleep(UInt32(0.5))
-                    if ipapath != nil {
-                        UIApplication.shared.dismissAlert(animated: true)
-                        let vc = UIActivityViewController(activityItems: [ipapath as Any], applicationActivities: nil)
-                        Haptic.shared.notify(.success)
-                        vc.isModalInPresentation = true
-                        UIApplication.shared.dismissAlert(animated: true)
-                        UIApplication.shared.windows[0].rootViewController?.present(vc, animated: true)
-                        UIApplication.shared.dismissAlert(animated: true)
-                        vc.isModalInPresentation = true
-                    } else {
-                        UIApplication.shared.dismissAlert(animated: true)
-                        UIApplication.shared.alert(body: "Error!")
-                    }
-                    
                 } label: {
                     Label("Export Encrypted IPA", systemImage: "arrow.down.app")
                 }

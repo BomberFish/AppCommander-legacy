@@ -79,7 +79,7 @@ enum ApplicationManager {
         }
     }
 
-    public static func exportIPA(app: SBApp) throws -> URL {
+    public static func exportIPA(app: SBApp) async throws -> URL {
         // UIApplication.shared.progressAlert(title: "Exporting \(app.name)...")
         do {
             let uuid = UUID().uuidString
@@ -105,7 +105,7 @@ enum ApplicationManager {
             print("copied \(app.bundleURL) to \(payloaddir.appendingPathComponent(app.bundleURL.lastPathComponent))", loglevel: .info, logger: logger)
             // try FileManager().zipItem(at: payloaddir, to: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))
             try Compression.shared.compress(paths: [payloaddir], outputPath: FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"), format: .zip)
-            UIApplication.shared.dismissAlert(animated: false)
+            await UIApplication.shared.dismissAlert(animated: false)
             print("zipped \(payloaddir) to \(FileManager.default.temporaryDirectory.appendingPathComponent(filename).appendingPathExtension("ipa"))", loglevel: .info, logger: logger)
             // sleep(UInt32(0.5))
             if !(UserDefaults.standard.bool(forKey: "AbsoluteSolverDisabled")) {
