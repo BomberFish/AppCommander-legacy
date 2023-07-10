@@ -1,4 +1,4 @@
-![Mac 128pt](https://github.com/BomberFish/AppCommander/assets/87151697/e6705d37-150d-4f0f-982c-a5a39f8f0b09)
+![AppCommander Icon](https://github.com/BomberFish/AppCommander/assets/87151697/e6705d37-150d-4f0f-982c-a5a39f8f0b09)
 # AppCommander
 
 A swiss army knife for your iPhone apps using [CVE-2022-46689](https://support.apple.com/en-us/HT213530).
