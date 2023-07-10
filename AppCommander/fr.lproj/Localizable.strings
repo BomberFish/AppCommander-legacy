@@ -1,11 +1,71 @@
 /* No comment provided by engineer. */
-"  Loading..." = "  Chargement...";
+"\nAbsoluteSolver Testing" = "\nTests d'AbsoluteSolver";
+
+/* No comment provided by engineer. */
+"\nApple Loops Mix" = "\nMix Apple Loops";
+
+/* No comment provided by engineer. */
+"\nRebuild Icon Cache" = "\nRecréer le cache d'icône";
+
+/* No comment provided by engineer. */
+"\nRemove three-app limit" = "\nEffacer la limite d'installation de 3 apps";
+
+/* No comment provided by engineer. */
+"\nWhitelist" = "\nWhitelist";
+
+/* No comment provided by engineer. */
+"  %@" = "  %@";
+
+/* No comment provided by engineer. */
+"%lld files" = "%lld fichiers";
+
+/* No comment provided by engineer. */
+"%lld files skipped due to errors." = "%lld fichiers passés à cause d'erreurs";
+
+/* No comment provided by engineer. */
+"%llu" = "%llu";
+
+/* No comment provided by engineer. */
+"1 file" = "1 fichier";
+
+/* No comment provided by engineer. */
+"1 file skipped due to errors." = "1 fichier passs à cause d'erreurs";
+
+/* No comment provided by engineer. */
+"A-Z" = "A-Z";
+
+/* No comment provided by engineer. */
+"AbsoluteSolver Testing" = "Test d'AbsoluteSolver";
+
+/* No comment provided by engineer. */
+"Actions" = "Actions";
+
+/* No comment provided by engineer. */
+"Add" = "Ajouter";
+
+/* No comment provided by engineer. */
+"Add Key" = "Ajouter une clé";
 
 /* No comment provided by engineer. */
 "Advanced" = "Avancé";
 
 /* No comment provided by engineer. */
+"After rebooting, press the button below to replace iPhoneDebug.pem with cert.pem. Make sure you are NOT connected to a PC!" = "Après le redémarrage, veuillez appuyer sur le bouton ci-dessous pour remplacer iPhoneDebug.pem par cert.pem. Assurez-vous que vous N'ÊTES PAS connecté à un ordinateur !";
+
+/* No comment provided by engineer. */
+"After replacing the file, connect your device to your PC. Run the commands below to mount the image from the first step. Make sure you have ideviceimagemounter installed and you are in the folder where you downloaded those files. If the commands don't work, disconnect and reboot your phone, replace the certificate again, and then try again (Step 3)." = "Après avoir remplacé le fichier, veuillez connecter votre appareil à votre ordinateur. Lancez les commandes ci-dessous pour monter l'image téléchargée (première étape). Vérifiez qu'ideviceimagemounter soit bien installé sur votre ordinateur, et que vous soyez positionné dans le dossier où vous avez téléchargé ces fichiers. Si les commandes ne fonctionnent pas, veuillez déconnecter votre appareil, le redémarrer, et remplacer le certificat, pour ensuite réessayer (étape 3).";
+
+/* No comment provided by engineer. */
 "All hidden pages will be unhidden." = "Toutes les pages cachées seront montrées";
+
+/* No comment provided by engineer. */
+"Alphabetical" = "Alphabetical";
+
+/* No comment provided by engineer. */
+"Alternate App Icons" = "Icônes d'applications alternatives";
+
+/* No comment provided by engineer. */
+"Alternate Icons" = "Icônes alternatives";
 
 /* No comment provided by engineer. */
 "App Details" = "Détails de l'App";
@@ -17,16 +77,22 @@
 "App Size: %@" = "Taille de l'App : %@";
 
 /* No comment provided by engineer. */
-"AppCommander %@\nMade with ❤️ by BomberFish" = "AppCommander %@\nFait avec ❤️ par BomberFish";
+"AppCommander" = "AppCommander";
+
+/* No comment provided by engineer. */
+"AppCommander %@" = "AppCommander %@";
 
 /* No comment provided by engineer. */
 "Apple Loops Mix" = "Mix Apple Loops";
 
 /* No comment provided by engineer. */
-"Apple Loops Mix :trolley:" = "Mix Apple Loops :trolley:";
+"Apply" = "Appliquer";
 
 /* No comment provided by engineer. */
-"Apply" = "Appliquer";
+"Apps (%lld)" = "Apps (%lld)";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the key %@?" = "Êtes vous sûr de vouloir supprimer cette clé %@?";
 
 /* No comment provided by engineer. */
 "Back Up Current Layout" = "Sauvegarder la disposition actuelle";
@@ -35,7 +101,7 @@
 "Back up now" = "Sauvegarder maintenant";
 
 /* No comment provided by engineer. */
-"Backup and Restore (Beta)" = "Sauvegarder et Restorer (Beta)";
+"Backup and Restore" = "Sauvegarde et restoration";
 
 /* No comment provided by engineer. */
 "Backup filename: %@" = "Nom du fichier de sauvegarde : %@";
@@ -47,16 +113,25 @@
 "Backups" = "Sauvegardes";
 
 /* No comment provided by engineer. */
-"Backups are still in beta. Unexpected issues may arise." = "Le système de sauvegarde est encore en beta. Des erreurs inattendues peuvent survenir.";
+"Banned Apps" = "Apps Bannies";
 
 /* No comment provided by engineer. */
-"Banned Apps" = "Apps Bannies";
+"Blacklist" = "Blacklist";
 
 /* No comment provided by engineer. */
 "Blacklist File Contents" = "Contenu du fichier de Blacklist";
 
 /* No comment provided by engineer. */
+"Boolean" = "Booléen";
+
+/* No comment provided by engineer. */
 "Brick Device" = "Briquer l'appareil";
+
+/* No comment provided by engineer. */
+"Browse app data" = "Explorer les données de l'app";
+
+/* No comment provided by engineer. */
+"Bundle ID: %@" = "Bundle ID: %@";
 
 /* No comment provided by engineer. */
 "Bundle Path: %@" = "Chemin du Bundle: %@";
@@ -71,6 +146,9 @@
 "Case-sensitive" = "Sensible à la case";
 
 /* No comment provided by engineer. */
+"CD Hashes" = "CD Hashes";
+
+/* No comment provided by engineer. */
 "Check Results" = "Verifier les résultats";
 
 /* No comment provided by engineer. */
@@ -78,6 +156,9 @@
 
 /* No comment provided by engineer. */
 "Coming Soon" = "Bientôt disponible";
+
+/* No comment provided by engineer. */
+"Congratulations! If you haven't encountered any errors, you have finished the setup. Please note that after rebooting, you still need to repeat steps 3 and 4. Otherwise, you are good to go and you can click the dismiss button. If you have any questions or encountered some errors, ask for help in our Discord server." = "Félicitations ! Si vous n'avez rencontré aucune erreur, vous avez finalisé la préparation. Veuillez prendre en compte qu'après chaque redémarrage, vous devez encore répéter les étapes 3 et 4. Si ce n'est pas le cas, vous pouvez cliquer sur le bouton \"Fermer\". Si vous avez des questions ou si vous avez rencontré des erreurs, demandez de l'aide sur notre serveur Discord.";
 
 /* No comment provided by engineer. */
 "Copy" = "Copier";
@@ -113,37 +194,103 @@
 "Delete app documents (including backups)" = "Supprimer les documents de l'app (sauvegardes incluses)";
 
 /* No comment provided by engineer. */
+"Delete Key" = "Supprimer la clé";
+
+/* No comment provided by engineer. */
 "Delete temporary storage" = "Supprimer le stockage temporaire";
 
 /* No comment provided by engineer. */
 "Delete Test File" = "Supprimer le fichier de test";
 
 /* No comment provided by engineer. */
+"DirtyJIT" = "DirtyJIT";
+
+/* No comment provided by engineer. */
+"DirtyJIT in AppCommander is a **beta** feature. Things may break.\n**PLEASE NOTE: DISK IMAGES CREATED FOR DIRTYJIT WILL __NOT__ WORK WITH APPCOMMANDER!!! Please use the links in this window for more.**" = "DirtyJIT dans AppCommander est une fonctionnalité **bêta**. Les choses peuvent mal tourner.\n**A NOTER: LES IMAGES DISQUES CRÉES POUR DIRTYJIT __NE__ MARCHERONT PAS AVEC APPCOMMANDER!!! Veuillez utiliser les liens dans cette fenêtre pour en savoir plus.**";
+
+/* No comment provided by engineer. */
+"DirtyJIT is an app that enables JIT by exploiting the MacDirtyCow (CVE-2022-46689) vulnerability in macOS, which also works on iOS. It can be used with apps, emulators, or any software that requires JIT (e.g., PojavLauncher, DolphiniOS). Follow these setup steps to use this app on your device." = "DirtyJIT est une application qui active JIT en utilisant la faille MacDirtyCow (CVE-2022-46689) provenant de macOS, fonctionnant aussi avec iOS. Cette app peut être utilisé pour d'autre applications, émulateurs, ou autre logiciels qui nécessitent JIT (par exemple ; PojavLauncher, DolphiniOS). Suivez les étapes de mise en marche pour utiliser cette fonctionnalité sur votre appareil.";
+
+/* No comment provided by engineer. */
+"Disable Absolute Solver" = "Désactiver Absolute Solver";
+
+/* No comment provided by engineer. */
+"Dismiss" = "Fermer";
+
+/* No comment provided by engineer. */
 "Documents Size: %@" = "Taille des Documents : %@";
 
 /* No comment provided by engineer. */
-"Enable Absolute Solver" = "Activer \"Absolute Solver\"";
+"Done" = "Terminé";
+
+/* No comment provided by engineer. */
+"Double" = "Double";
+
+/* No comment provided by engineer. */
+"Download the attachments that match your device's iOS version from the latest action and put them in a folder. You can find the link below." = "Téléchargez les fichiers correspondant à la version iOS de votre appareil à partir de la dernière action et placez-les dans un dossier. Vous trouverez le lien ci-dessous.";
+
+/* No comment provided by engineer. */
+"Download the file from the link below. It should appear in Settings. Install it, disconnect your phone from your PC if you haven't yet and then reboot your device." = "Téléchargez le profil à partir du lien ci-dessous. Il devrait apparaître dans les paramètres. Installez-le, déconnectez votre téléphone de votre PC si vous ne l'avez pas encore fait, puis redémarrez votre appareil.";
+
+/* No comment provided by engineer. */
+"Edit" = "Modifier";
+
+/* No comment provided by engineer. */
+"Edit Key" = "Modifier la clé";
 
 /* No comment provided by engineer. */
 "Enable in-app console" = "Activer la console intégrée à l'app";
 
 /* No comment provided by engineer. */
+"Enter Direct Path" = "Entrer dans le Direct Path";
+
+/* No comment provided by engineer. */
 "Error" = "Erreur";
 
 /* No comment provided by engineer. */
-"Experiments" = "Experimentations";
+"Export Backup" = "Exporter une sauvegarde";
 
 /* No comment provided by engineer. */
 "Export Encrypted IPA" = "Exporter l'IPA chiffré";
 
 /* No comment provided by engineer. */
+"Extra Debug Settings" = "Paramètres de déboggage supplémentaires";
+
+/* No comment provided by engineer. */
+"Float" = "Nombre à virgule";
+
+/* No comment provided by engineer. */
+"Folder either is empty or does not have read access." = "Le dossier est vide ou n'a pas d'accès en lecture.";
+
+/* No comment provided by engineer. */
 "Folders" = "Dossiers";
+
+/* No comment provided by engineer. */
+"Go to Discord Server" = "Accéder au serveur Discord";
+
+/* No comment provided by engineer. */
+"Go to Link" = "Accéder au lien";
 
 /* No comment provided by engineer. */
 "Home Screen" = "Écran d'Accueil";
 
 /* No comment provided by engineer. */
+"ideviceimagemounter DeveloperDiskImageModified_YourVersionHere.dmg DeveloperDiskImageModified_YourVersionHere.dmg.signature" = "ideviceimagemounter DeveloperDiskImageModified_VotreVersionIci.dmg DeveloperDiskImageModified_VotreVersionIci.dmg.signature";
+
+/* No comment provided by engineer. */
+"If you know the direct path to the file you are trying to access, please enter it here." = "Si vous connaissez le chemin d'accès direct au fichier auquel vous essayez d'accéder, veuillez l'entrer ici.";
+
+/* No comment provided by engineer. */
+"Install Profile" = "Installer le profil";
+
+/* No comment provided by engineer. */
+"Integer" = "Nombre entier";
+
+/* No comment provided by engineer. */
 "It is recommended you save your current layout before experimenting as only one undo is possible." = "Il est recommandé que vous sauvegardiez votre disposition actuelle avant de procéder car seulement une seule annulation est possible.";
+
+/* No comment provided by engineer. */
+"Key" = "Clé";
 
 /* No comment provided by engineer. */
 "Kouyou Privacy Policy" = "Politique de confidentialité de Kouyou";
@@ -170,13 +317,28 @@
 "None" = "Aucun";
 
 /* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
 "Open App" = "Ouvrir l'App";
+
+/* No comment provided by engineer. */
+"Open file browser in /" = "Ouvrir l'explorateur de fichier dans /";
+
+/* No comment provided by engineer. */
+"Open in built-in browser" = "Ouvrir le navigateur intégré ";
 
 /* No comment provided by engineer. */
 "Open in Filza" = "Ouvrir dans Filza";
 
 /* No comment provided by engineer. */
 "Open in Santander" = "Ouvrir dans Santander";
+
+/* No comment provided by engineer. */
+"Open with JIT" = "Ouvrir avec JIT";
+
+/* No comment provided by engineer. */
+"Options" = "Options";
 
 /* No comment provided by engineer. */
 "Ordering" = "Trier";
@@ -191,10 +353,22 @@
 "Overwrite CDHashes" = "Effacer les CDHashes";
 
 /* No comment provided by engineer. */
+"Page %@%@" = "Page %@%@";
+
+/* No comment provided by engineer. */
+"Pages" = "Pages";
+
+/* No comment provided by engineer. */
+"Pause" = "Pause";
+
+/* No comment provided by engineer. */
+"Play" = "Play";
+
+/* No comment provided by engineer. */
 "Remove three-app limit" = "Supprimer la limite de trois applications";
 
 /* No comment provided by engineer. */
-"Replace Testing" = "Remplacer les Tests";
+"Replace File" = "Remplacer le fichier";
 
 /* No comment provided by engineer. */
 "Replace with Absolute Solver" = "Remplacer par \"Absolute Solver\"";
@@ -215,13 +389,19 @@
 "Retain current order" = "Conserver l'ordre actuel";
 
 /* No comment provided by engineer. */
+"Search" = "Rechercher";
+
+/* No comment provided by engineer. */
 "Select Pages" = "Sélectionner les Pages";
+
+/* No comment provided by engineer. */
+"Set up JIT" = "Configurer JIT";
 
 /* No comment provided by engineer. */
 "Settings" = "Paramètres";
 
 /* No comment provided by engineer. */
-"Sideloading Tools" = "Outils de Sideloading";
+"Show FLEX" = "Montrer FLEX";
 
 /* No comment provided by engineer. */
 "Sort" = "Trier";
@@ -242,10 +422,34 @@
 "Sort separate from apps" = "Trier séparément des applications";
 
 /* No comment provided by engineer. */
+"Step 1" = "Étape 1";
+
+/* No comment provided by engineer. */
+"Step 2" = "Étape 2";
+
+/* No comment provided by engineer. */
+"Step 3" = "Étape 3";
+
+/* No comment provided by engineer. */
+"Step 4" = "Étape 4";
+
+/* No comment provided by engineer. */
+"Step 5" = "Étape 5";
+
+/* No comment provided by engineer. */
+"Storage" = "Stockage";
+
+/* No comment provided by engineer. */
 "Storage Management" = "Gestion du stockage";
 
 /* No comment provided by engineer. */
-"Testing Only" = "Test Uniquement";
+"String" = "Chaîne de caractère";
+
+/* No comment provided by engineer. */
+"Swift Packages" = "Paquets Swift";
+
+/* No comment provided by engineer. */
+"Test InfoSheetView" = "Test InfoSheetView";
 
 /* No comment provided by engineer. */
 "The previously saved layout will be overwritten." = "La disposition précédemment sauvegardée va être remplacée.";
@@ -257,14 +461,44 @@
 "Translators" = "Traducteurs";
 
 /* No comment provided by engineer. */
+"Trigger kernel panic" = "Déclencher une panique du kernel";
+
+/* No comment provided by engineer. */
+"Type" = "Type";
+
+/* No comment provided by engineer. */
 "Undo Last Sort" = "Annuler le Dernier Triage";
+
+/* No comment provided by engineer. */
+"Value" = "Valeur";
+
+/* No comment provided by engineer. */
+"Version: %@" = "Version: %@";
 
 /* No comment provided by engineer. */
 "View contents of blacklist files" = "Voir le contenu des fichiers blacklist";
 
 /* No comment provided by engineer. */
+"Warning" = "Avertissement";
+
+/* No comment provided by engineer. */
+"Welcome!" = "Bienvenue !";
+
+/* No comment provided by engineer. */
+"Whitelist" = "Whitelist";
+
+/* No comment provided by engineer. */
+"Widgets" = "Widgets";
+
+/* No comment provided by engineer. */
 "Wipe your device before returning to the person collecting hardware" = "Effacez votre appareil avant de le renvoyer à la personne le récupérant.";
+
+/* Do NOT under ANY circumstances translate the string 'I solemnly swear that I am up to no good'. */
+"You are about to enable extra debugging settings meant only for developers. If you understand the risks, please type 'I solemnly swear that I am up to no good' in the textfield below." = "Vous êtes sur le point d'activer les paramètres de deboggage supplémentaires destinées uniquement pour les développeurs. Si vous êtes conscient des risques, veuillez taper 'I solemnly swear that I am up to no good' dans le champ de texte ci-dessous.";
 
 /* No comment provided by engineer. */
 "You've come a long way, traveler. Have a :lungs:.\n🫁" = "Tu viens de loin, toi ! Voilà un cadeau pour toi... :lungs:.\n🫁";
+
+/* No comment provided by engineer. */
+"Z-A" = "Z-A";
 

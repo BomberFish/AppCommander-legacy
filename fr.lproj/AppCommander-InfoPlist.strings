@@ -1,2 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "AppCommander";
 
+/* Bundle name */
+"CFBundleName" = "AppCommander";
+
+/* Privacy - Media Library Usage Description */
+"NSAppleMusicUsageDescription" = "Autoriser l'accès complet au disque. Requis pour le bon fonctionnement de l'application. ";
 

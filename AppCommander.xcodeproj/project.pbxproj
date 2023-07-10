@@ -141,6 +141,7 @@
 		D631AC282A297568000302A7 /* VibrantColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrantColors.swift; sourceTree = "<group>"; };
 		D631AC292A297568000302A7 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		D631AC2A2A297568000302A7 /* Vibrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vibrant.swift; sourceTree = "<group>"; };
+		D631C7A32A5C656C0022BE2C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = "fr.lproj/AppCommander-InfoPlist.strings"; sourceTree = "<group>"; };
 		D634CC942A091B8200EA9859 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		D634CC962A091B9A00EA9859 /* TextField++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField++.swift"; sourceTree = "<group>"; };
 		D634CC982A091BB800EA9859 /* jit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jit.m; sourceTree = "<group>"; };
@@ -810,6 +811,7 @@
 			children = (
 				D68830A229E87C2B00F4D7DA /* de */,
 				D68830A529E87C6200F4D7DA /* en */,
+				D631C7A32A5C656C0022BE2C /* fr */,
 			);
 			name = "AppCommander-InfoPlist.strings";
 			sourceTree = "<group>";
