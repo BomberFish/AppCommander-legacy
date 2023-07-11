@@ -35,7 +35,7 @@ struct AppCommanderApp: App {
                 let configuration = TelemetryManagerConfiguration(appID: telemetryDeckID)
                 TelemetryManager.initialize(with: configuration)
                 print("Sending app launch signal!", loglevel: .info, logger: analyticsLogger)
-                TelemetryManager.send("appLaunchedRegularly") // TODO: Add more signals
+                TelemetryManager.send("appLaunchedRegularly")
             } else {
                 print("Analytics disabled by user.", loglevel: .info, logger: analyticsLogger)
             }

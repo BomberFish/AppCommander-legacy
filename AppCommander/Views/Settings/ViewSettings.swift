@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TelemetryClient
 
 struct ViewSettings: View {
     let options: [String] = ["Cozy", "Compact"]
@@ -125,6 +126,7 @@ struct ViewSettings: View {
             
         }
         .onAppear {
+            TelemetryManager.send("viewSettingsOpened")
             print("userdefaults query returns \(compactEnabled)")
         }
         .navigationTitle("View Options")

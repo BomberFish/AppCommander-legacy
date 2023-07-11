@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TelemetryClient
 
 struct ToolsView: View {
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
@@ -152,6 +153,7 @@ struct ToolsView: View {
         }
         .onAppear {
             debugEnabled = UserDefaults.standard.bool(forKey: "sex")
+            TelemetryManager.send("toolsOpened")
         }
     }
 }

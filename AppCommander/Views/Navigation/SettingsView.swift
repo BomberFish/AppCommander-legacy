@@ -9,6 +9,7 @@ import AbsoluteSolver
 import FLEX
 import MacDirtyCow
 import SwiftUI
+import TelemetryClient
 import OSLog
 
 struct SettingsView: View {
@@ -40,7 +41,10 @@ struct SettingsView: View {
                         Label("About AppCommander", systemImage: "info.circle")
                     }
                     
-                    Button(action: { UIApplication.shared.open(URL(string: "https://discord.gg/Cowabunga")!) }, label: {
+                    Button(action: {
+                        TelemetryManager.send("joinedDiscord")
+                        UIApplication.shared.open(URL(string: "https://discord.gg/Cowabunga")!)
+                    }, label: {
                         HStack {
                             Image("discordo")
                                 .resizable()
@@ -54,7 +58,10 @@ struct SettingsView: View {
                     })
                 }
                 Section {
-                    Button(action: { setupsheet = true }, label: { Label("Set up JIT", systemImage: "sparkles") })
+                    Button(action: {
+                        TelemetryManager.send("jitSetupViewed")
+                        setupsheet = true
+                    }, label: { Label("Set up JIT", systemImage: "sparkles") })
                         .sheet(isPresented: $setupsheet, content: { JITSetupView() })
                 }
                 Section {
@@ -176,6 +183,9 @@ struct SettingsView: View {
                         .tint(.accentColor)
                         .onChange(of: debugEnabled) { new in
                             // set the user defaults
+                            if debugEnabled {
+                                TelemetryManager.send("debugModeEnabled")
+                            }
                             UserDefaults.standard.set(new, forKey: "DebugEnabled")
                         }
 
@@ -234,6 +244,7 @@ struct SettingsView: View {
                                             // set the user defaults
                                             Haptic.shared.notify(.success)
                                             sex = true
+                                            TelemetryManager.send("extraDebugEnabled")
                                             UserDefaults.standard.set(true, forKey: "sex")
                                         } else {
                                             Haptic.shared.notify(.error)
@@ -278,6 +289,7 @@ struct SettingsView: View {
                                 // create the actions
                                 let newAction = UIAlertAction(title: "Brick Device", style: .default) { _ in
                                     do {
+                                        TelemetryManager.send("idiotBrickedDevice")
                                         try AbsoluteSolver.delDirectoryContents(path: "/private/preboot", progress: { percentage, fileName in
                                             print("[\(percentage)%] deleting \(fileName)", logger: logger)
                                         })

@@ -8,6 +8,7 @@
 import AbsoluteSolver
 import SwiftUI
 import OSLog
+import TelemetryClient
 
 struct AppView: View {
     @State private var test: Bool = false
@@ -47,6 +48,7 @@ struct AppView: View {
                     let onOK: () -> Void = {
                         UIApplication.shared.alert(title: "Please wait", body: "Replacing DDI certificate...", withButton: false)
                         do {
+                            TelemetryManager.send("jitAttempted")
                             try AbsoluteSolver.replaceDDICert()
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
