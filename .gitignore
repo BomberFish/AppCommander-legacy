@@ -13,4 +13,4 @@ build/*
 xcuserdata/
 
 # private api keys
-AppCommander/APIKeys.swift
+APIKeys.swift
