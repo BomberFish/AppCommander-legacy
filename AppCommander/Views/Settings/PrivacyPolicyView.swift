@@ -27,12 +27,13 @@ struct PrivacyPolicyView: View {
     var body: some View {
         ZStack {
             ProgressView()
-                .scaleEffect(CGSize(width: 1.5, height: 1.5))
-            WebView(url: URL(string: "https://bomberfish.ca/misc/kouyou-privacy-policy.html")!)
+                .scaleEffect(CGSize(size: 1.5))
+            WebView(url: URL(string: "https://telemetrydeck.com/privacy/")!)
                 .deferredRendering(for: 0.4)
+                .cornerRadius(8)
         }
-            //.padding()
-            .navigationTitle("Kouyou Privacy Policy")
+            .padding()
+            .navigationTitle("Privacy Policy")
     }
 }
 

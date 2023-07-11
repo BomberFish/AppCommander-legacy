@@ -10,20 +10,38 @@ import LocalConsole
 @preconcurrency import MacDirtyCow
 import SwiftUI
 import OSLog
+import TelemetryClient
 
 let appVersion = ((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown") + " (" + (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown") + ")")
 let consoleManager = LCManager.shared
-let launchedBefore =  UserDefaults.standard.bool(forKey: "launchedBefore")
 let funny: URL = Bundle.main.url(forResource: "bite_me", withExtension: "png")! //equivalent of the fabled coconut.jpg from tf2
 var currentAppMode: ApplicationMode = ApplicationMode.MacDirtyCow
-let aslogger = Logger(subsystem: "AbsoluteSolver", category: "wdOS")
+let aslogger = Logger(subsystem: "AbsoluteSolver", category: "")
 // var escaped = false
 // var has_cooked = false
+let analyticsLogger = Logger(subsystem: "Analytics", category: "Telemetry")
 
 @main
 struct AppCommanderApp: App {
+    @AppStorage("analyticsEnabled") var analyticsEnabled: Bool = true
+    @AppStorage("launchedBefore") var launchedBefore: Bool = false
+    
     init() {
-        UITableView.appearance().backgroundColor = .clear
+        /// This initializes analytics from TelemetryDeck. By default the API keys are not included in the public source release. You can supply your own by setting the `telemetryDeckID` variable. It is recommended to store it in a file named `APIKeys.swift` in the top-level directory of the repository, as the path is included in the gitignore.
+        if telemetryDeckID != nil {
+            if analyticsEnabled {
+                //initialize analytics
+                print("Initializing Analytics...", loglevel: .info, logger: analyticsLogger)
+                let configuration = TelemetryManagerConfiguration(appID: telemetryDeckID)
+                TelemetryManager.initialize(with: configuration)
+                print("Sending app launch signal!", loglevel: .info, logger: analyticsLogger)
+                TelemetryManager.send("appLaunchedRegularly") // TODO: Add more signals
+            } else {
+                print("Analytics disabled by user.", loglevel: .info, logger: analyticsLogger)
+            }
+        } else {
+            print("No Analytics ID provided!", loglevel: .fault, logger: analyticsLogger)
+        }
     }
     fileprivate let logger = Logger(subsystem: "AppCommanderApp", category: "Uncategorized")
     @State var escaped = false
@@ -60,18 +78,13 @@ struct AppCommanderApp: App {
                             // i just copied the entire code block, prints and everything, from stackoverflow.
                             // Will I change it at all? No!
                             if launchedBefore {
-                                // print("Not first launch.")
+                                 print("Not first launch.")
                                 // UIApplication.shared.alert(title: "⚠️ IMPORTANT ⚠️", body: "This app is still very much in development. If anything happens to your device, I will point and laugh at you.")
                             } else {
-                                // print("First launch, setting UserDefault.")
+                                 print("First launch, displaying telemetry notice.")
                                 // FIXME: body really sucks
-//                                    UIApplication.shared.choiceAlert(title: "Analytics", body: "Allow AppCommander to send anonymized data to improve your experience?", yesAction: {
-//                                        userDefaults.set(1, forKey: "analyticsLevel")
-//                                        userDefaults.set(true, forKey: "launchedBefore")
-//                                    }, noAction: {
-//                                        userDefaults.set(0, forKey: "analyticsLevel")
-//                                        userDefaults.set(true, forKey: "launchedBefore")
-//                                    })
+                                UIApplication.shared.alert(title: "Notice", body: "AppCommander uses anonymized telemetry for analytics purposes. You can change your preference anytime in Settings.")
+                                launchedBefore = true
                             }
 
                             if !(userDefaults.bool(forKey: "AbsoluteSolverDisabled")) {

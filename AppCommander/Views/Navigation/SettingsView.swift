@@ -12,6 +12,7 @@ import SwiftUI
 import OSLog
 
 struct SettingsView: View {
+    
     @State var consoleEnabled: Bool = UserDefaults.standard.bool(forKey: "LCEnabled")
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
     @State var analyticsLevel: Int = UserDefaults.standard.integer(forKey: "analyticsLevel")
@@ -23,6 +24,8 @@ struct SettingsView: View {
 
     @State var sheet: Bool = false
     @State var setupsheet: Bool = false
+    
+    @AppStorage("analyticsEnabled") var analyticsEnabled: Bool = true
     
     let logger = Logger(subsystem: "SettingsView", category: "Views")
 
@@ -36,6 +39,19 @@ struct SettingsView: View {
                     } label: {
                         Label("About AppCommander", systemImage: "info.circle")
                     }
+                    
+                    Button(action: { UIApplication.shared.open(URL(string: "https://discord.gg/Cowabunga")!) }, label: {
+                        HStack {
+                            Image("discordo")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .colorMultiply(.accentColor)
+                                .tint(.accentColor)
+                                .foregroundColor(.accentColor)
+                                .frame(width: 20, height: 20)
+                            Text("  Join the Discord!")
+                        }
+                    })
                 }
                 Section {
                     Button(action: { setupsheet = true }, label: { Label("Set up JIT", systemImage: "sparkles") })
@@ -118,48 +134,23 @@ struct SettingsView: View {
                 } header: {
                     Label("Storage Management", systemImage: "internaldrive")
                 }
-//                Section {
-//                    Picker(selection: $analyticsLevel) {
-//                        Text("None (Disabled)").tag(0)
-//                        Text("Limited").tag(1)
-//                        Text("Full").tag(2)
-//                    } label: {
-//                        Label("Analytics Level", systemImage: "chart.bar.xaxis")
-//                    }
-//                    .onChange(of: analyticsLevel) { new in
-//                        UserDefaults.standard.set(new, forKey: "analyticsLevel")
-//                        print(analyticsLevel)
-//                    }
-//                    NavigationLink {
-//                        PrivacyPolicyView()
-//                    } label: {
-//                        if #available(iOS 16, *) {
-//                            Label("Privacy Policy", systemImage: "person.badge.shield.checkmark")
-//                        } else {
-//                            Label("Privacy Policy", systemImage: "checkmark.shield.fill")
-//                        }
-//                    }
-//                } header: {
-//                    Label("Analytics", systemImage: "chart.bar")
-//                } footer: {
-//                    // a little bit cring-eh 🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦🇨🇦
-//                    Label("Powered by Kouyou", systemImage: "gearshape.2")
-//                }
-
-//                Section {
-//                    Button(action: { UIApplication.shared.open(URL(string: "https://discord.gg/Cowabunga")!) }, label: {
-//                        HStack {
-//                            Image("discordo")
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fit)
-//                                .colorMultiply(.accentColor)
-//                                .tint(.accentColor)
-//                                .foregroundColor(.accentColor)
-//                                .frame(width: 24, height: 24)
-//                            Text("  Join the Discord!")
-//                        }
-//                    })
-//                }
+                Section {
+                    Toggle(isOn: $analyticsEnabled, label: {
+                        Label("Analytics", systemImage: "chart.bar.xaxis")
+                    })
+                        .tint(.accentColor)
+                    NavigationLink {
+                        PrivacyPolicyView()
+                    } label: {
+                        if #available(iOS 16, *) {
+                            Label("Privacy Policy", systemImage: "person.badge.shield.checkmark")
+                        } else {
+                            Label("Privacy Policy", systemImage: "checkmark.shield.fill")
+                        }
+                    }
+                } header: {
+                    Label("Analytics", systemImage: "chart.bar")
+                }
 
 //                Section {
 //                    ForEach(contribs) { contrib in

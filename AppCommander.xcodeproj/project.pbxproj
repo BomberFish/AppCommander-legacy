@@ -72,6 +72,8 @@
 		D6D55A6729D25CC600DD6C4A /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A6629D25CC600DD6C4A /* BackupView.swift */; };
 		D6D55A7C29D5EE0800DD6C4A /* ReplaceTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D55A7B29D5EE0800DD6C4A /* ReplaceTestingView.swift */; };
 		D6DADAB02A5DA019007C385F /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DADAAF2A5DA019007C385F /* APIKeys.swift */; };
+		D6DADAB32A5DA451007C385F /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = D6DADAB22A5DA451007C385F /* TelemetryClient */; };
+		D6DADAB52A5DAFB7007C385F /* CGSize++.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DADAB42A5DAFB7007C385F /* CGSize++.swift */; };
 		D6E3FC7B29CDCBF000D019D1 /* Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7A29CDCBF000D019D1 /* Dynamic */; };
 		D6E3FC8029CDCC2000D019D1 /* AssetCatalogWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = D6E3FC7F29CDCC2000D019D1 /* AssetCatalogWrapper */; };
 		D6E3FC8229CDDFE600D019D1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E3FC8129CDDFE600D019D1 /* RootView.swift */; };
@@ -197,6 +199,7 @@
 		D6D55A6629D25CC600DD6C4A /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
 		D6D55A7B29D5EE0800DD6C4A /* ReplaceTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceTestingView.swift; sourceTree = "<group>"; };
 		D6DADAAF2A5DA019007C385F /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		D6DADAB42A5DAFB7007C385F /* CGSize++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize++.swift"; sourceTree = "<group>"; };
 		D6E3FC8129CDDFE600D019D1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D6E3FC8329CDE07700D019D1 /* Color++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color++.swift"; sourceTree = "<group>"; };
 		D6E3FC8529CDE2F300D019D1 /* SpringBoardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringBoardItem.swift; sourceTree = "<group>"; };
@@ -246,6 +249,7 @@
 				D6E552C929B2D60D0083E6A5 /* MarqueeText in Frameworks */,
 				D6D22B6229C64AC20095645B /* LocalConsole in Frameworks */,
 				D688309F29E870FF00F4D7DA /* IOKit.framework in Frameworks */,
+				D6DADAB32A5DA451007C385F /* TelemetryClient in Frameworks */,
 				D638E1B629DE1CE1004CCA55 /* CoreServices.framework in Frameworks */,
 				D688309D29E870F000F4D7DA /* IOSurface.framework in Frameworks */,
 				D6E6CF6129EB53F6009FC842 /* FilePicker in Frameworks */,
@@ -516,6 +520,7 @@
 				D631AC1E2A297568000302A7 /* Swift-Vibrant */,
 				D634CC962A091B9A00EA9859 /* TextField++.swift */,
 				D6E3FC8329CDE07700D019D1 /* Color++.swift */,
+				D6DADAB42A5DAFB7007C385F /* CGSize++.swift */,
 				D6E552B729B16E640083E6A5 /* Haptic++.swift */,
 				D638E1B229DAFA82004CCA55 /* View++.swift */,
 				D674868429D7821300BCE952 /* FM++.swift */,
@@ -564,6 +569,7 @@
 				D6EF35F329F04BC800E43042 /* AbsoluteSolver */,
 				D6EF362C29F1F3C800E43042 /* FluidGradient */,
 				D64A00CF29FEAC220000F32C /* FLEX */,
+				D6DADAB22A5DA451007C385F /* TelemetryClient */,
 			);
 			productName = Cache;
 			productReference = D6E5527D29B165400083E6A5 /* AppCommander.app */;
@@ -654,6 +660,7 @@
 				D6EF35F229F04BC800E43042 /* XCRemoteSwiftPackageReference "AbsoluteSolver-iOS" */,
 				D6EF362B29F1F3C800E43042 /* XCRemoteSwiftPackageReference "FluidGradient" */,
 				D64A00CE29FEAC220000F32C /* XCRemoteSwiftPackageReference "FLEX" */,
+				D6DADAB12A5DA451007C385F /* XCRemoteSwiftPackageReference "SwiftClient" */,
 			);
 			productRefGroup = D6E5527E29B165400083E6A5 /* Products */;
 			projectDirPath = "";
@@ -715,6 +722,7 @@
 				D6E3FC9929CDE6F500D019D1 /* MultiSelectPickerView.swift in Sources */,
 				D631AC2D2A297568000302A7 /* MMCQ.swift in Sources */,
 				D65AA4C729D860A100C3EBE7 /* WhitelistView.swift in Sources */,
+				D6DADAB52A5DAFB7007C385F /* CGSize++.swift in Sources */,
 				D6FC674929E5A28500585625 /* TranslatorsView.swift in Sources */,
 				D631AC352A297569000302A7 /* Filter.swift in Sources */,
 				D631AC2F2A297568000302A7 /* SVImage.swift in Sources */,
@@ -1222,6 +1230,14 @@
 				kind = branch;
 			};
 		};
+		D6DADAB12A5DA451007C385F /* XCRemoteSwiftPackageReference "SwiftClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TelemetryDeck/SwiftClient";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.4;
+			};
+		};
 		D6E3FC7929CDCBF000D019D1 /* XCRemoteSwiftPackageReference "Dynamic" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mhdhejazi/Dynamic";
@@ -1297,6 +1313,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D6D22B6029C64AC20095645B /* XCRemoteSwiftPackageReference "LocalConsole" */;
 			productName = LocalConsole;
+		};
+		D6DADAB22A5DA451007C385F /* TelemetryClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6DADAB12A5DA451007C385F /* XCRemoteSwiftPackageReference "SwiftClient" */;
+			productName = TelemetryClient;
 		};
 		D6E3FC7A29CDCBF000D019D1 /* Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
