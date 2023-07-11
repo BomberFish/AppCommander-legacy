@@ -186,7 +186,7 @@ struct AppView: View {
             
             Section {
                 Button {
-                    // UIApplication.shared.progressAlert(title: "Exporting IPA of \(sbapp.name)...")
+                    UIApplication.shared.progressAlert(title: "Exporting IPA of \(sbapp.name)...")
                     Task {
                         Haptic.shared.play(.medium)
                         do {

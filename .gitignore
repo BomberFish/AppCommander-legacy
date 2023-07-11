@@ -1,10 +1,16 @@
+# build files
 Payload
 Payload/*
 build
 build/*
 *.ipa
 *.tipa
+
+# causes hell in git
 .DS_Store
 */.DS_Store
 
 xcuserdata/
+
+# private api keys
+AppCommander/APIKeys.swift
