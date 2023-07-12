@@ -5,8 +5,19 @@ WORKING_LOCATION := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 TARGET = AppCommander
 CONFIGURATION = Release
 SDK = iphoneos
+KEYFILE := ./APIKeys.swift
+KEYVAR := ${TELEMETRYDECK_APPID}
+
 
 build:
+
+	@if [ ! -f $(KEYFILE) ]; then \
+			echo "import Foundation\nlet telemetryDeckID = \"$(KEYVAR)\"" > $(KEYFILE); \
+      echo "App ID written to file."; \
+  else \
+      echo "App ID file already exists."; \
+  fi
+
 	echo "Building $(TARGET) for $(SDK)..."
 	xcodebuild -project $(PROJECT) -scheme $(TARGET) -configuration $(CONFIGURATION) -sdk $(SDK) CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO SYMROOT=$(PWD)/build clean
 	xcodebuild -project $(PROJECT) -scheme $(TARGET) -configuration $(CONFIGURATION) -sdk $(SDK) CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO SYMROOT=$(PWD)/build -resolvePackageDependencies
