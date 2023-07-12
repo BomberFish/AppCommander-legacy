@@ -29,6 +29,7 @@ struct AppCommanderApp: App {
     init() {
         /// This initializes analytics from TelemetryDeck. By default the API keys are not included in the public source release. You can supply your own by setting the `telemetryDeckID` variable. It is recommended to store it in a file named `APIKeys.swift` in the top-level directory of the repository, as the path is included in the gitignore.
         if telemetryDeckID != nil {
+            print("AppCommander v\(appVersion)", loglevel: .info)
             if analyticsEnabled {
                 //initialize analytics
                 print("Initializing Analytics...", loglevel: .info, logger: analyticsLogger)
@@ -139,7 +140,6 @@ struct AppCommanderApp: App {
                 }
             }
             .task(priority: .high)  {
-                print("AppCommander v\(appVersion)", loglevel: .info, logger: logger)
 
                 DispatchQueue.global(qos: .background).sync {
                     Whitelist.top_secret_sauce { baked_goods in

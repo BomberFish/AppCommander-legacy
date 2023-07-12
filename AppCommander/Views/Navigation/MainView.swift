@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @State private var searchText = ""
     @State var debugEnabled: Bool = UserDefaults.standard.bool(forKey: "DebugEnabled")
-    @State var gridEnabled: Bool = false
+    @AppStorage("gridEnabled") var gridEnabled: Bool = false
     @State var compactEnabled: Bool = UserDefaults.standard.bool(forKey: "compactEnabled")
 
     // MARK: - Literally the worst code ever. Will I fix it? No!
