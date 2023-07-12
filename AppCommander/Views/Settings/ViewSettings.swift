@@ -92,7 +92,12 @@ struct ViewSettings: View {
                 .cornerRadius(16)
                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: 16, height: 16)))
             }
-            .listRowBackground(GradientView())
+            .listRowBackground(
+                GradientView()
+                    .cornerRadius(8)
+                    .ignoresSafeArea(.all)
+                    .frame(width: .infinity, height: .infinity)
+            )
                 
             Section {
                 RadioButtonGroup(items: options, selectedId: String(options[selected])) { tempselected in

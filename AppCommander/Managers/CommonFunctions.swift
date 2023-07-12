@@ -102,46 +102,50 @@ func delDirectoryContents(path: String, progress: ((Double,String)) -> ()) throw
 func respring() {
     UIImpactFeedbackGenerator(style: .soft).impactOccurred()
 
-    let view = UIView(frame: UIScreen.main.bounds)
-    view.backgroundColor = .black
-    view.alpha = 0
-
-    for window in UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).flatMap({ $0.windows.map { $0 } }) {
-        window.addSubview(view)
-        UIView.animate(withDuration: 0.5, delay: 0, animations: {
-            view.alpha = 1
-        })
+    let animator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1) {
+        let windows: [UIWindow] = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap(\.windows)
+        
+        for window in windows {
+            window.alpha = 0
+            window.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
     }
 
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+    animator.addCompletion { _ in
         MacDirtyCow.restartFrontboard()
         sleep(2) // give the springboard some time to restart before exiting
         exit(0)
     }
+    
+    animator.startAnimation()
 }
 
 func reboot() {
     UIImpactFeedbackGenerator(style: .soft).impactOccurred()
 
-    let view = UIView(frame: UIScreen.main.bounds)
-    view.backgroundColor = .black
-    view.alpha = 0
-
-    for window in UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).flatMap({ $0.windows.map { $0 } }) {
-        window.addSubview(view)
-        UIView.animate(withDuration: 0.5, delay: 0, animations: {
-            view.alpha = 1
-        })
+    let animator = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1) {
+        let windows: [UIWindow] = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap(\.windows)
+        
+        for window in windows {
+            window.alpha = 0
+            window.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
     }
-
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+    
+    animator.addCompletion { _ in
         trigger_memmove_oob_copy()
     }
+    
+    animator.startAnimation()
 }
 
 var connection: NSXPCConnection?
 
-// 💀
+// name is 💀
 func remvoeIconCache() {
     print("Removing icon cache", loglevel: .info)
     if connection == nil {

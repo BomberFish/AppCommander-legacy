@@ -35,11 +35,14 @@ You can install through AltStore, Sideloadly, or Xcode.
 
 TrollStore is not officially supported, and using enterprise signing apps such as Scarlet or ESign will not allow you to import backups.
 
+## Suggestions and support
+You can create an issue on this repo, or join the [Cowabunga Discord server](https://discord.gg/Cowabunga) where I or someone else can help you in the #appcommander channel.
+
+## Analytics
+AppCommander uses [TelemetryDeck](https://telemetrydeck.com) to collect anonymized analytics data. You can disable any data collection in the Settings tab, and view TelemetryKit's [privacy policy](https://telemetrydeck.com/privacy/).
+
 ## Building
 Just build like a normal Xcode project. Sign using your own team and bundle identifier. You can also build the IPA file by running `make`.
 
 ## Credits
 Credits can be viewed in the app by going to `Settings > About AppCommander`.
-
-## Suggestions and support
-You can create an issue on this repo, or join the [Cowabunga Discord server](https://discord.gg/MN8JgqSAqT) where I or someone else can help you in the #appcommander channel.

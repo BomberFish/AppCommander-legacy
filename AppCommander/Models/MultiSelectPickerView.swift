@@ -46,7 +46,7 @@ struct MultiSelectPickerView: View {
                 }
             }
             //// .background(GradientView())
-                .listRowBackground(Color.clear)
+//                .listRowBackground(Color.clear)
             //.listStyle(.sidebar)
         }
     }

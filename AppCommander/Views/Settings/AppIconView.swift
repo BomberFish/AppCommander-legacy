@@ -82,8 +82,8 @@ struct IconTile: View {
                 selected = (UIApplication.shared.alternateIconName == icon.iconName)
             }
             .padding()
-            .padding([.top], -2)
-            .frame(width: 180, height: 165)
+            .padding([.top], -10)
+            .frame(width: 200, height: 200)
             .cornerRadius(16)
             .background(.ultraThinMaterial)
         }
@@ -106,6 +106,7 @@ struct AppIconView: View {
                         IconTile(icon: icon, selectedicon: currentIcon ?? "AppIcon")
                     }
                 }
+                .padding([.horizontal], 5)
             }
             //.background(.thinMaterial)
             .navigationTitle("Alternate Icons")
