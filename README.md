@@ -11,7 +11,7 @@ IPA available in the [Releases](https://github.com/BomberFish/AppCommander/relea
 - iOS 15.5-15.7.1: **Supported.**
 - iOS **15**.7.2+: **Not supported.**
 - iOS 16.0-16.1.2: **Supported.**
-- iOS 16.2+: **Not supported.**
+- iOS 16.2-16.5: **Not supported... yet.**
 
 ## Features
 - **App Manager**
